@@ -1,0 +1,47 @@
+nextSentence really
+create-a-node-here really 2.19 1 {\nShoney's Inc. said }
+create-a-node-here really 2.113 2 {it will report a write-off of $2.5 million, or seven cents a share, for its fourth quarter }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.132 3 {ended yesterday.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e below 5002
+create-a-node-here really 3.79 4 {\nThe restaurant operator cited transaction costs from its 1988 recapitalization }
+create-a-node-here really 3.143 5 {as a result of a $160 million restructuring of its bank debt.}
+nextSentence really
+autolink_nodes 4 5 satelite result  5003
+autolink_nodes 5001 5003 satelite explanation-argumentative  5004
+create-a-node-here really 5.96 6 { \n\nThe write-off will be reported as an extraordinary item in the company's 1989 operating results.}
+nextSentence really
+autolink_nodes 5004 6 satelite elaboration-additional  5005
+nextSentence really
+create-a-node-here really 7.124 7 { \n\nIn addition, the effective interest rate on the $410 million of total remaining bank debt after the restructuring is 10.66%.}
+nextSentence really
+autolink_nodes 5005 7 satelite elaboration-additional  5006
+create-a-node-here really 8.139 8 {\nThe combined effect of these changes is expected to save the company about $4 million in interest expenses next year, or six cents a share.}
+nextSentence really
+autolink_nodes 5006 8 satelite evaluation-s  5007
+create-a-node-here really 10.14 9 { \n\nShoney's said }
+create-a-node-here really 10.69 10 {the latest restructuring affected bank indebtedness }
+autolink_nodes 9 10 nucleus attribution  5008
+create-a-node-here really 10.91 11 {that was incurred }
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e below 5009
+create-a-node-here really 10.166 12 {to finance $585 million of the company's $728 million recapitalization }
+autolink_nodes 11 12 satelite purpose  5010
+create-a-node-here really 11.0 13 {that took place in \n}
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5007 5008 satelite elaboration-additional  5012
+create-a-node-here really 12.93 14 {\nThe company has made payments of $175 million against the original $585 million of bank debt }
+create-a-node-here really 12.146 15 {incurred in connection with the recapitalization.}
+nextSentence really
+autolink_nodes 14 15 satelite-embedded elaboration-object-attribute-e  5013
+create-a-node-here really 13.95 16 {\nThese payments consisted of $54 million in scheduled payments and $121 million in prepayments, }
+nextSentence really
+create-a-node-here really 13.196 17 {funded by $82.8 million from operating cash flow, zero-coupon subordinated debt and assets sales.}
+nextSentence really
+autolink_nodes 16 17 satelite-embedded elaboration-additional-e  5014
+autolink_nodes 5013 5014 satelite elaboration-set-member  5015
+autolink_nodes 5012 5015 satelite elaboration-additional  5016
+disconnect_node 6 modify
+autolink_nodes 5004 6 satelite manner below 5017
+disconnect_node 5015 disconnect
+autolink_nodes 5008 5015 satelite elaboration-additional  5018

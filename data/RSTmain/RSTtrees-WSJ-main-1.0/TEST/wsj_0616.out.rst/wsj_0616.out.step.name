@@ -1,0 +1,287 @@
+nextSentence really
+create-a-node-here really 2.56 1 {\nAs competition heats up in Spain's crowded bank market, }
+create-a-node-here really 2.164 2 {Banco Exterior de Espana is seeking to shed its image of a state-owned bank and move into new activities.}
+nextSentence really
+autolink_nodes 1 2 nucleus circumstance  5001
+create-a-node-here really 4.123 3 { \n\nUnder the direction of its new chairman, Francisco Luzon, Spain's seventh largest bank is undergoing a tough restructuring }
+create-a-node-here really 4.131 4 {that }
+create-a-node-here really 4.147 5 {analysts say }
+autolink_nodes 4 5 satelite-embedded attribution-e  5002
+create-a-node-here really 4.204 6 {may be the first step toward the bank's privatization.}
+nextSentence really
+autolink_nodes 5002 6 multinuclear Same-Unit  5003
+autolink_nodes 3 5003 satelite-embedded elaboration-object-attribute-e  5004
+nextSentence really
+autolink_nodes 5001 5004 satelite elaboration-general-specific  5005
+disconnect_node 5004 disconnect
+create-a-node-here really 6.143 7 { \n\nThe state-owned industrial holding company Instituto Nacional de Industria and the Bank of Spain jointly hold a 13.94% stake in Banco Exterior.}
+nextSentence really
+nextSentence really
+create-a-node-here really 7.35 8 {\nThe government directly owns 51.4% }
+create-a-node-here really 7.94 9 {and Factorex, a financial services company, holds 8.42%.}
+nextSentence really
+autolink_nodes 5001 5004 satelite elaboration-additional  5006
+autolink_nodes 7 8 multinuclear List  5007
+autolink_nodes 5007 9 multinuclear List below 5007
+create-a-node-here really 8.46 10 {\nThe rest is listed on Spanish stock exchanges.}
+nextSentence really
+autolink_nodes 5007 10 multinuclear List below 5007
+disconnect_node 5004 disconnect
+autolink_nodes 5001 5004 satelite circumstance  5008
+autolink_nodes 5008 5007 satelite elaboration-set-member  5009
+create-a-node-here really 10.38 11 { \n\nSome analysts are concerned, however, }
+create-a-node-here really 10.87 12 {that Banco Exterior may have waited too long }
+create-a-node-here really 10.151 13 {to diversify from its traditional export-related activities.}
+nextSentence really
+autolink_nodes 12 13 satelite consequence-s  5010
+autolink_nodes 11 5010 nucleus attribution  5011
+create-a-node-here really 11.82 14 {\nCatching up with commercial competitors in retail banking and financial services, }
+create-a-node-here really 11.97 15 {they argue,}
+autolink_nodes 14 15 satelite-embedded attribution-e  5012
+create-a-node-here really 11.121 16 { will be difficult, }
+create-a-node-here really 11.169 17 {particularly if market conditions turn sour.}
+nextSentence really
+#autolink_nodes 16 17 satelite condition  5013
+#UNDID
+autolink_nodes 5012 16 multinuclear Same-Unit  5013
+autolink_nodes 5013 17 satelite condition  5014
+autolink_nodes 5011 5014 satelite explanation-argumentative  5015
+create-a-node-here really 13.21 18 { \n\nIf that proves true, }
+create-a-node-here really 13.38 19 {analysts say }
+create-a-node-here really 13.82 20 {Banco Exterior could be a prime partner }
+autolink_nodes 19 20 nucleus attribution  5016
+create-a-node-here really 13.118 21 {-- or even a takeover target -- }
+autolink_nodes 20 21 satelite-embedded elaboration-additional-e below 5017
+create-a-node-here really 13.159 22 {for either a Spanish or foreign bank }
+create-a-node-here really 13.212 23 {seeking to increase its market share after 1992, }
+autolink_nodes 22 23 satelite-embedded elaboration-object-attribute-e  5018
+create-a-node-here really 13.283 24 {when the European Community plans to dismantle financial barriers. }
+autolink_nodes 23 24 satelite temporal-same-time  5019
+autolink_nodes 5017 5018 multinuclear Same-Unit  5020
+autolink_nodes 18 5016 nucleus condition  5021
+autolink_nodes 5015 5021 satelite hypothetical  5022
+autolink_nodes 5009 5022 multinuclear Evaluation  5023
+create-a-node-here really 15.143 25 {\n\nWith 700 branches in Spain and 12 banking subsidiaries, five branches and 12 representative offices abroad, the Banco Exterior group has a lot }
+create-a-node-here really 15.175 26 {to offer a potential suitor.}
+nextSentence really
+autolink_nodes 25 26 satelite-embedded elaboration-object-attribute-e  5024
+autolink_nodes 5021 5024 satelite explanation-argumentative  5025
+create-a-node-here really 17.37 27 { \n\nMr. Luzon and his team, however, say }
+create-a-node-here really 17.76 28 {they aren't interested in a merger.}
+nextSentence really
+autolink_nodes 27 28 nucleus attribution  5026
+create-a-node-here really 18.26 29 {\nInstead, they are working }
+create-a-node-here really 18.100 30 {to transform Banco Exterior into an efficient bank by the end of 1992.}
+nextSentence really
+autolink_nodes 29 30 satelite purpose  5027
+#autolink_nodes 5026 5027 satelite preference  5028
+#UNDID
+autolink_nodes 5026 5027 satelite preference  5028
+create-a-node-here really 18.143 31 { "I want this to be a model of the way }
+create-a-node-here really 18.186 32 {a public-owned company should be run," }
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5029
+create-a-node-here really 18.206 33 {Mr. Luzon says. }
+autolink_nodes 5029 33 satelite attribution  5030
+autolink_nodes 5028 5030 satelite elaboration-additional  5031
+disconnect_node 5022 disconnect
+disconnect_node 5025 disconnect
+autolink_nodes 5014 5025 satelite hypothetical  5032
+autolink_nodes 5009 5015 multinuclear Contrast  5033
+disconnect_node 5015 disconnect
+autolink_nodes 5009 5015 satelite interpretation-s  5034
+autolink_nodes 5034 5031 satelite elaboration-additional  5035
+disconnect_node 5031 disconnect
+autolink_nodes 5025 5031 multinuclear Contrast  5036
+#create-a-node-here really 20.85 34 {\n\nBanco Exterior was created in 1929 to provide subsidized credits for Spanish exports.}
+#nextSentence really
+#disconnect_node 5004 modify
+#autolink_nodes 5001 5004 satelite elaboration-general-specific above 5036
+#UNDID
+#UNDID
+#disconnect_node 5004 disconnect
+#autolink_nodes 5001 5004 nucleus circumstance  5037
+#disconnect_node 5001 modify
+#autolink_nodes 5004 5001 satelite consequence-n below 5038
+#disconnect_node 5036 disconnect
+#UNDID
+#disconnect_node 5031 disconnect
+#disconnect_node 5030 modify
+#autolink_nodes 5028 5030 satelite reason  5039
+#autolink_nodes 5034 5039 satelite elaboration-additional  5040
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+disconnect_node 5004 modify
+autolink_nodes 5001 5004 nucleus consequence-n  5037
+disconnect_node 5031 disconnect
+disconnect_node 5030 modify
+autolink_nodes 5028 5030 satelite reason  5038
+autolink_nodes 5034 5038 satelite elaboration-additional  5039
+create-a-node-here really 20.35 34 {\n\nBanco Exterior was created in 1929 }
+create-a-node-here really 20.89 35 {to provide subsidized credits for Spanish exports.}
+nextSentence really
+autolink_nodes 34 35 satelite purpose  5040
+create-a-node-here really 21.75 36 {\nThe market for export financing was liberalized in the mid-1980s, however, }
+create-a-node-here really 21.116 37 {forcing the bank to face competition.}
+nextSentence really
+autolink_nodes 36 37 satelite consequence-s  5041
+autolink_nodes 5040 5041 multinuclear Sequence  5042
+create-a-node-here really 22.146 38 {\nAt the same time, many of Spain's traditional export markets in Latin America and other developing areas faced a sharp decline in economic growth.}
+nextSentence really
+autolink_nodes 5041 38 satelite temporal-same-time  5043
+create-a-node-here really 24.101 39 { \n\nAs a result, the volume of Banco Exterior's export credit portfolio plunged from 824 billion pesatas }
+nextSentence really
+create-a-node-here really 24.121 40 {($7.04 billion) }
+autolink_nodes 39 40 satelite-embedded restatement-e  5044
+create-a-node-here really 24.181 41 {as of Dec. 31, 1986, to its current 522 billion pesetas.}
+nextSentence really
+autolink_nodes 5044 41 multinuclear Same-Unit  5045
+autolink_nodes 5043 5045 nucleus result  5046
+disconnect_node 5046 disconnect
+autolink_nodes 5043 5040 satelite background  5047
+create-a-node-here really 26.68 42 { \n\nThe other two main pillars of Banco Exterior's traditional business }
+create-a-node-here really 26.125 43 {-- wholesale banking and foreign currency trading -- }
+autolink_nodes 42 43 satelite-embedded elaboration-set-member-e  5048
+create-a-node-here really 26.215 44 {also began to crumble under the weight of heavy competition and changing client needs.}
+nextSentence really
+autolink_nodes 5048 44 multinuclear Same-Unit  5049
+autolink_nodes 5045 5049 multinuclear List above 5050
+create-a-node-here really 28.38 45 { \n\nThe bank was hamstrung in its efforts }
+create-a-node-here really 28.117 46 {to face the challenges of a changing market by its links to the government,}
+autolink_nodes 45 46 satelite-embedded elaboration-object-attribute-e  5051
+create-a-node-here really 28.135 47 { analysts say.}
+nextSentence really
+autolink_nodes 5051 47 satelite attribution  5052
+create-a-node-here really 29.45 48 {\nUntil Mr. Luzon took the helm last November, }
+create-a-node-here really 29.87 49 {Banco Exterior was run by politicians }
+autolink_nodes 48 49 nucleus temporal-before  5053
+create-a-node-here really 29.132 50 {who lacked either the skills or the will }
+autolink_nodes 49 50 satelite-embedded elaboration-object-attribute-e below 5054
+create-a-node-here really 29.168 51 {to introduce innovative changes.}
+nextSentence really
+autolink_nodes 50 51 satelite-embedded elaboration-object-attribute-e  5055
+create-a-node-here really 30.32 52 {\nBut Mr. Luzon has moved swiftly }
+create-a-node-here really 30.63 53 {to streamline bureaucracy, }
+create-a-node-here really 30.78 54 {cut costs, }
+autolink_nodes 53 54 multinuclear List  5056
+create-a-node-here really 30.99 55 {increase capital }
+autolink_nodes 5056 55 multinuclear List below 5056
+create-a-node-here really 30.138 56 {and build up new areas of business.}
+nextSentence really
+autolink_nodes 5056 56 multinuclear List below 5056
+autolink_nodes 52 5056 satelite purpose  5057
+autolink_nodes 52 5056 satelite purpose  5058
+autolink_nodes 5052 5053 satelite consequence-s  5059
+autolink_nodes 5059 5057 multinuclear Contrast  5060
+autolink_nodes 5046 5060 satelite explanation-argumentative  5061
+create-a-node-here really 32.17 57 { \n\n"We've got a lot }
+create-a-node-here really 32.29 58 {to do," }
+autolink_nodes 57 58 satelite-embedded elaboration-object-attribute-e  5062
+create-a-node-here really 32.49 59 {he acknowledged.}
+nextSentence really
+autolink_nodes 5062 59 satelite attribution  5063
+#create-a-node-here really 32.82 60 { "We've got to move quickly."}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 32.83 60 { "We've got to move quickly." }
+autolink_nodes 5063 60 satelite elaboration-additional  5064
+autolink_nodes 5039 5061 satelite elaboration-additional  5065
+create-a-node-here really 34.56 61 {\n\nIn Mr. Luzon's first year, the bank eliminated 800 jobs.}
+nextSentence really
+create-a-node-here really 35.12 62 {\nNow it says }
+create-a-node-here really 35.80 63 {it'll trim another 1,200 jobs over the next three to four years.}
+nextSentence really
+autolink_nodes 62 63 nucleus attribution  5066
+autolink_nodes 61 5066 multinuclear Sequence  5067
+create-a-node-here really 36.56 64 {\nThe bank employs 8,000 people in Spain and 2,000 abroad.}
+nextSentence really
+autolink_nodes 5067 64 satelite elaboration-additional  5068
+create-a-node-here really 38.32 65 { \n\nTo strengthen its capital base, }
+create-a-node-here really 38.103 66 {Banco Exterior this year issued $105 million in subordinated debt, }
+create-a-node-here really 38.134 67 {launched two rights issues }
+autolink_nodes 66 67 multinuclear List  5069
+create-a-node-here really 38.193 68 {and sold stock held in its treasury to small investors.}
+nextSentence really
+autolink_nodes 5069 68 multinuclear List below 5069
+autolink_nodes 65 5069 nucleus purpose  5070
+create-a-node-here really 40.80 69 { \n\nThe bank is now aggressively marketing retail services at its domestic branches.}
+nextSentence really
+create-a-node-here really 41.133 70 {\nLast year's drop in export credit was partially offset by a 15% surge in lending to individuals and small and medium-sized companies.}
+nextSentence really
+autolink_nodes 69 70 satelite elaboration-additional  5071
+autolink_nodes 5070 5071 multinuclear List  5072
+disconnect_node 5071 disconnect
+autolink_nodes 5068 5070 multinuclear List  5073
+autolink_nodes 5073 5071 multinuclear List below 5073
+autolink_nodes 5064 5073 multinuclear Problem-Solution  5074
+disconnect_node 5060 disconnect
+autolink_nodes 5057 5074 satelite elaboration-general-specific  5075
+autolink_nodes 5046 5060 satelite elaboration-additional  5076
+create-a-node-here really 43.37 71 { \n\nThough Spain has an excess of banks, }
+create-a-node-here really 43.54 72 {analysts say }
+autolink_nodes 71 72 nucleus concession  5077
+create-a-node-here really 43.126 73 {the country still has one of the most profitable markets in Europe, }
+autolink_nodes 72 73 nucleus attribution  5078
+create-a-node-here really 43.181 74 {which will aid Banco Exterior with the tough tasks }
+autolink_nodes 73 74 satelite-embedded elaboration-additional-e below 5079
+create-a-node-here really 43.200 75 {it faces ahead.}
+nextSentence really
+autolink_nodes 74 75 satelite-embedded elaboration-object-attribute-e  5080
+autolink_nodes 5065 5077 satelite comment  5081
+create-a-node-here really 45.69 76 { \n\nExpansion plans also include acquisitions in growing foreign markets.}
+nextSentence really
+create-a-node-here really 46.14 77 {\nThe bank says }
+create-a-node-here really 46.91 78 {it's interested in purchasing banks in Morocco, Portugal and Puerto Rico.}
+nextSentence really
+autolink_nodes 77 78 nucleus attribution  5082
+create-a-node-here really 47.76 79 {\nBut the bank's retail activities in Latin America are likely to be cut back.}
+nextSentence really
+#autolink_nodes 5082 79 multinuclear Contrast  5083
+#UNDID
+autolink_nodes 76 5082 satelite elaboration-general-specific  5083
+autolink_nodes 5083 79 multinuclear Contrast  5084
+autolink_nodes 5081 5084 satelite elaboration-additional  5085
+create-a-node-here really 49.41 80 { \n\nBanco Exterior was one of the last banks }
+create-a-node-here really 49.73 81 {to create a brokerage house }
+autolink_nodes 80 81 satelite-embedded elaboration-object-attribute-e  5086
+create-a-node-here really 50.0 82 {before the four Spanish stock exchanges underwent sweeping changes in July.\n}
+#autolink_nodes 5086 82 satelite means  5087
+#UNDID
+autolink_nodes 5086 82 satelite temporal-before  5087
+create-a-node-here really 50.50 83 {The late start may be a handicap for the bank }
+create-a-node-here really 50.118 84 {as Spain continues to open up its market to foreign competition.}
+nextSentence really
+autolink_nodes 83 84 satelite circumstance  5088
+autolink_nodes 5087 5088 satelite interpretation-s  5089
+create-a-node-here really 52.23 85 { \n\nBut Mr. Luzon contends }
+create-a-node-here really 52.53 86 {that the experienced team }
+autolink_nodes 85 86 nucleus attribution  5090
+create-a-node-here really 52.104 87 {he brought with him from Banco Bilbao Vizcaya, }
+autolink_nodes 86 87 satelite-embedded elaboration-object-attribute-e below 5091
+create-a-node-here really 52.148 88 {where he was formerly director general, }
+#autolink_nodes 87 88 satelite-embedded elaboration-object-attribute-e  5092
+#UNDID
+autolink_nodes 87 88 satelite-embedded elaboration-additional-e  5092
+create-a-node-here really 52.227 89 {will whip the bank's capital market division into shape by the end of 1992.}
+autolink_nodes 5091 89 multinuclear Same-Unit  5093
+create-a-node-here really 53.19 90 {\nThe bank also says }
+create-a-node-here really 53.59 91 {it'll use its international network }
+autolink_nodes 90 91 nucleus attribution  5094
+create-a-node-here really 53.159 92 {to channel investment from London, Frankfurt, Zurich and Paris into the Spanish stock exchanges.}
+nextSentence really
+autolink_nodes 91 92 satelite purpose below 5095
+autolink_nodes 5090 5094 multinuclear List  5096
+autolink_nodes 5089 5096 multinuclear Contrast  5097
+#autolink_nodes 5085 5097 satelite elaboration-additional  5098
+#UNDID
+autolink_nodes 5085 5097 satelite elaboration-additional  5098
+disconnect_node 5007 modify
+autolink_nodes 5037 5007 satelite elaboration-part-whole below 5099

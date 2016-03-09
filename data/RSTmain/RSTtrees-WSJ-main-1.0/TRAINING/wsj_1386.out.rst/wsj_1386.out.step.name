@@ -1,0 +1,215 @@
+nextSentence really
+create-a-node-here really 2.19 1 {\nEastman Kodak Co., }
+create-a-node-here really 2.108 2 {seeking to position itself in the potentially huge high-definition television market, }
+autolink_nodes 1 2 satelite elaboration-object-attribute  5001
+create-a-node-here really 2.132 3 {unveiled a converter }
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+create-a-node-here really 2.214 4 {that can transform conventional motion-picture film into high-definition video.}
+nextSentence really
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5003
+create-a-node-here really 4.67 5 { \n\nThe move also helps the Rochester, N.Y., photographic giant ensure }
+autolink_nodes 5002 5 satelite elaboration-additional  5004
+create-a-node-here really 4.108 6 {that its motion-picture film business }
+create-a-node-here really 4.153 7 {-- for which it holds a virtual monopoly, }
+#create-a-node-here really 4.248 8 {supplying every Hollywood movie company -- isn't made obsolete by the upstart HDTV business.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 4.199 8 {supplying every Hollywood movie company -- }
+autolink_nodes 7 8 multinuclear List  5005
+autolink_nodes 6 5005 satelite elaboration-object-attribute  5006
+create-a-node-here really 5.0 9 {isn't made obsolete by the upstart HDTV business. \n}
+autolink_nodes 5006 9 multinuclear Same-Unit  5007
+autolink_nodes 5 5007 satelite purpose  5008
+#create-a-node-here really 6.43 10 {\nWhile the prototype converter is costly, it}
+#UNDID
+create-a-node-here really 6.41 10 {\nWhile the prototype converter is costly, }
+create-a-node-here really 6.100 11 {it's being lauded by the infant HDTV industry as a way }
+autolink_nodes 10 11 nucleus concession  5009
+create-a-node-here really 6.151 12 {of increasing the number of high-quality shows }
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e below 5010
+create-a-node-here really 6.190 13 {that can be seen on the new medium.}
+nextSentence really
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5008 5009 satelite evaluation-s  5012
+create-a-node-here really 8.82 14 { \n\n"The industry has been waiting with bated breath for the machines to come along," }
+autolink_nodes 5004 14 satelite background  5013
+create-a-node-here really 8.204 15 {says David Niles, president of Eleven Twenty Five Productions Inc., a New York pioneer in high-definition programming.}
+nextSentence really
+autolink_nodes 14 15 satelite attribution  5014
+create-a-node-here really 9.9 16 {\nHe notes }
+create-a-node-here really 9.61 17 {that industry executives have until now worried }
+autolink_nodes 16 17 nucleus attribution  5015
+autolink_nodes 5014 5015 satelite elaboration-additional  5016
+create-a-node-here really 9.116 18 {that they would face a severe shortage of programs }
+#autolink_nodes 17 18 satelite cause above 5016
+#UNDID
+autolink_nodes 17 18 satelite cause below 5017
+create-a-node-here really 10.0 19 {once consumers begin replacing their TV sets with HDTVs. \n}
+autolink_nodes 18 19 satelite contingency  5018
+create-a-node-here really 11.112 20 {\nJapanese electronic giants, such as Sony Corp. and Hitachi Ltd., have focused almost entirely on HDTV hardware, }
+autolink_nodes 5018 20 satelite reason  5019
+create-a-node-here really 11.183 21 {and virtually ignored software or programs shot in high-definition.}
+nextSentence really
+autolink_nodes 20 21 multinuclear List  5020
+create-a-node-here really 12.95 22 {\nAnd only a handful of small U.S. companies are engaged in high-definition software development.}
+nextSentence really
+autolink_nodes 5020 22 multinuclear List below 5020
+create-a-node-here really 13.93 23 {\nIt's estimated that just about 250 hours of HD programming is currently available for airing.}
+nextSentence really
+autolink_nodes 5020 23 satelite restatement  5021
+create-a-node-here really 15.11 24 { \n\nKodak says }
+autolink_nodes 5019 24 satelite problem-solution-s  5022
+create-a-node-here really 15.74 25 {its new CCD HDTV converter will help alleviate the problem }
+autolink_nodes 24 25 nucleus attribution  5023
+create-a-node-here really 15.161 26 {by allowing programmers and broadcasters to convert movies and television programs }
+autolink_nodes 25 26 satelite means below 5024
+create-a-node-here really 15.198 27 {shot in 35mm motion-picture film }
+autolink_nodes 26 27 satelite-embedded elaboration-object-attribute-e  5025
+create-a-node-here really 15.229 28 {into high-definition video.}
+nextSentence really
+autolink_nodes 5025 28 multinuclear Same-Unit  5026
+create-a-node-here really 16.52 29 {\nConsumers will be able to switch on their HDTV sets }
+#create-a-node-here really 16.117 30 {and get all the viewing benefits the high-tech medium offers.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 16.89 30 {and get all the viewing benefits }
+autolink_nodes 29 30 multinuclear List  5027
+autolink_nodes 28 5027 satelite result  5028
+create-a-node-here really 17.0 31 {the high-tech medium offers.\n}
+autolink_nodes 30 31 satelite-embedded elaboration-object-attribute-e  5029
+create-a-node-here really 17.43 32 {Otherwise, they'd be watching programs }
+#autolink_nodes 5026 32 multinuclear Disjunction above 5030
+#UNDID
+autolink_nodes 5026 32 multinuclear Disjunction above 5030
+create-a-node-here really 17.80 33 {that are no different in quality }
+autolink_nodes 32 33 satelite-embedded elaboration-object-attribute-e  5031
+create-a-node-here really 17.127 34 {from what they currently view on color TVs.}
+nextSentence really
+autolink_nodes 33 34 satelite comparison  5032
+create-a-node-here really 19.71 35 { \n\nIt would be like "watching a black and white movie on a color TV set," }
+autolink_nodes 5023 35 satelite comment  5033
+create-a-node-here really 19.181 36 {says Malcolm G. Saull, chairman of the film and video department at the Rochester Institute of Technology.}
+nextSentence really
+autolink_nodes 35 36 satelite attribution  5034
+create-a-node-here really 21.81 37 { \n\nThe new converters are "a critical link between film and the television domain," }
+autolink_nodes 5033 37 satelite evaluation-s  5035
+create-a-node-here really 21.200 38 {says Joerg D. Agin, vice president and general manager of Kodak's Motion Picture and Audiovisual Products division.}
+nextSentence really
+autolink_nodes 37 38 satelite attribution  5036
+create-a-node-here really 23.75 39 { \n\nKodak won't disclose the cost or when its converter will be on the market, }
+autolink_nodes 5013 39 satelite elaboration-additional  5037
+create-a-node-here really 23.144 40 {but it's estimated the machine may be available within two years.}
+nextSentence really
+autolink_nodes 39 40 satelite antithesis  5038
+change_rel 5031 Otherwise
+create-a-node-here really 24.41 41 {\nA similar machine already on the market, }
+autolink_nodes 5038 41 satelite elaboration-additional  5039
+create-a-node-here really 24.100 42 {made by Rank Sintel Ltd., a unit of Rank Organisation, }
+autolink_nodes 41 42 satelite-embedded elaboration-object-attribute-e  5040
+create-a-node-here really 24.125 43 {costs about $500,000.}
+nextSentence really
+autolink_nodes 5040 43 multinuclear Same-Unit  5041
+create-a-node-here really 26.40 44 { \n\nAnd the potential market is tremendous, }
+autolink_nodes 5041 44 multinuclear List above 5042
+create-a-node-here really 26.65 45 {industry experts say.}
+nextSentence really
+autolink_nodes 44 45 satelite attribution  5043
+create-a-node-here really 27.31 46 {\nIf HDTV takes off in the U.S., }
+create-a-node-here really 27.97 47 {there will be demand for some 4,000 to 5,000 HDTV converters, }
+#autolink_nodes 46 47 satelite condition  5044
+#UNDID
+autolink_nodes 46 47 nucleus condition  5044
+create-a-node-here really 28.0 48 {known in the industry as telecines.\n}
+autolink_nodes 47 48 satelite-embedded elaboration-object-attribute-e below 5045
+create-a-node-here really 28.99 49 {Demand will come first from programming production companies and then from television stations.}
+nextSentence really
+autolink_nodes 5043 5044 satelite example  5046
+autolink_nodes 5044 49 satelite elaboration-additional  5047
+create-a-node-here really 30.69 50 { \n\n"The converter is head and shoulders above anything else I've seen," }
+autolink_nodes 5039 50 satelite evaluation-s  5048
+create-a-node-here really 30.178 51 {says Richard J. Stumpf, vice president-engineering and development at MCA Inc. 's Universal City Studios.}
+nextSentence really
+autolink_nodes 50 51 satelite attribution  5049
+create-a-node-here really 31.46 52 {\nAnd Mr. Niles, the program producer, contends }
+create-a-node-here really 31.99 53 {that Kodak's move is "a sound marketing decision.}
+nextSentence really
+autolink_nodes 52 53 nucleus attribution  5050
+create-a-node-here really 32.39 54 {\nThey can't afford to stay out of HDTV."}
+nextSentence really
+autolink_nodes 53 54 multinuclear List  5051
+autolink_nodes 5049 5050 multinuclear List  5052
+create-a-node-here really 34.28 55 { \n\nIndeed, the stakes are high.}
+nextSentence really
+autolink_nodes 5052 55 satelite restatement  5053
+change_rel 55 elaboration-additional
+create-a-node-here really 35.40 56 {\nThe U.S. electronics industry estimates }
+autolink_nodes 55 56 satelite elaboration-additional  5054
+create-a-node-here really 35.154 57 {that the HDTV market will total about $150 billion over the next two decades, with an additional $400 billion }
+autolink_nodes 56 57 nucleus attribution  5055
+create-a-node-here really 35.194 58 {expected to go for related products.}
+nextSentence really
+autolink_nodes 57 58 satelite-embedded elaboration-object-attribute-e below 5056
+create-a-node-here really 37.52 59 { \n\nHDTVs break down images into more than 1,100 lines, }
+autolink_nodes 5037 59 satelite summary-s  5057
+create-a-node-here really 37.98 60 {compared with 525 for today's televisions,}
+autolink_nodes 59 60 satelite comparison  5058
+create-a-node-here really 37.141 61 { providing considerably sharper detail.}
+nextSentence really
+#autolink_nodes 59 61 satelite result above 5058
+#UNDID
+#autolink_nodes 59 61 satelite result below 5059
+#disconnect_node 60 disconnect
+#autolink_nodes 59 60 satelite comparison above 5059
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 5058 61 satelite result  5059
+create-a-node-here really 38.24 62 {\nAnd the sets are wider, }
+autolink_nodes 5059 62 multinuclear List  5060
+create-a-node-here really 39.0 63 {resembling the dimensions of a movie screen. \n}
+autolink_nodes 62 63 satelite elaboration-object-attribute  5061
+create-a-node-here really 40.48 64 {\nBut the financial rewards aren't expected soon, }
+#autolink_nodes 5060 64 multinuclear Contrast above 5062
+#UNDID
+autolink_nodes 5060 64 multinuclear Contrast above 5062
+create-a-node-here really 40.76 65 {nor are they guaranteed.}
+nextSentence really
+autolink_nodes 64 65 multinuclear List  5063
+create-a-node-here really 41.17 66 {\nExperts estimate }
+create-a-node-here really 41.94 67 {the first sets of HDTVs won't be available for another five to 10 years, }
+autolink_nodes 66 67 nucleus attribution  5064
+autolink_nodes 5062 5064 satelite elaboration-additional  5065
+create-a-node-here really 41.168 68 {and will probably retail for more than $3,000 each in today's dollars.}
+nextSentence really
+autolink_nodes 67 68 multinuclear List  5066
+create-a-node-here really 42.17 69 {\nSome critics say }
+autolink_nodes 5064 69 satelite comment  5067
+create-a-node-here really 42.65 70 {they won't be quickly embraced by consumers }
+autolink_nodes 69 70 nucleus attribution  5068
+create-a-node-here really 42.95 71 {because of the high price.}
+nextSentence really
+autolink_nodes 70 71 satelite reason below 5069
+create-a-node-here really 44.101 72 { \n\nNevertheless, Kodak couldn't risk letting HDTV turn its motion-picture film business into a dinosaur.}
+nextSentence really
+autolink_nodes 5067 72 multinuclear Contrast  5070
+disconnect_node 5070 disconnect
+autolink_nodes 5063 5070 satelite elaboration-additional  5071
+disconnect_node 72 disconnect
+disconnect_node 5071 disconnect
+autolink_nodes 5060 5071 satelite antithesis  5072
+collapsed_nodes {5072}
+autolink_nodes 5072 72 satelite comment  5073
+collapsed_nodes {}
+create-a-node-here really 44.125 73 { "Kodak understands }
+autolink_nodes 72 73 satelite elaboration-additional  5074
+create-a-node-here really 44.164 74 {HDTV is where everybody is going," }
+autolink_nodes 73 74 satelite evaluation-s  5075
+create-a-node-here really 44.190 75 {says RIT's Mr. Spaull.}
+nextSentence really
+autolink_nodes 74 75 satelite attribution  5076
+nextSentence really
+collapsed_nodes {5057}
+nextSentence really
+collapsed_nodes {}

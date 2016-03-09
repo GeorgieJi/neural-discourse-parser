@@ -1,0 +1,12 @@
+nextSentence really
+create-a-node-here really 2.24 1 {\nBrush Wellman Inc. said }
+create-a-node-here really 2.84 2 {its board increased the number of shares of common stock }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.141 3 {to be purchased under a previously authorized program }
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e below 5002
+create-a-node-here really 2.176 4 {to 3.9 million from 2.9 million.}
+nextSentence really
+autolink_nodes 5002 4 multinuclear Same-Unit  5003
+create-a-node-here really 4.94 5 { \n\nThe maker of engineered materials has acquired more than 2.7 million shares under the program.}
+nextSentence really
+autolink_nodes 5001 5 satelite elaboration-additional  5004

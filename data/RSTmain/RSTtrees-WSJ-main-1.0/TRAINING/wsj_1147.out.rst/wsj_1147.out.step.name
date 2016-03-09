@@ -1,0 +1,304 @@
+nextSentence really
+create-a-node-here really 2.45 1 {\nThe House approved a short-term spending bill}
+create-a-node-here really 2.97 2 { to keep the government operating through Nov. 15}
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+create-a-node-here really 2.146 3 { and provide $2.85 billion in emergency funds }
+autolink_nodes 2 3 multinuclear List  5002
+create-a-node-here really 2.225 4 {to assist in the recovery from Hurricane Hugo and the California earthquake.}
+nextSentence really
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5003
+create-a-node-here really 4.78 5 { \n\nThe 321-99 roll call vote reflected broad support for the disaster assistance,}
+autolink_nodes 5001 5 satelite elaboration-additional  5004
+create-a-node-here really 4.213 6 { but the cost to the Treasury is sure to aggravate budget pressures this year and next under the Gramm-Rudman deficit reduction law.}
+nextSentence really
+autolink_nodes 5 6 multinuclear Contrast  5005
+create-a-node-here really 6.60 7 { \n\nBy a lopsided 401-18 margin, the chamber rejected an effort }
+autolink_nodes 5004 7 multinuclear Contrast  5006
+create-a-node-here really 6.97 8 {to waive Gramm-Rudman for purposes}
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5007
+create-a-node-here really 6.134 9 { of addressing the two disasters, }
+autolink_nodes 8 9 satelite-embedded elaboration-object-attribute-e  5008
+create-a-node-here really 6.166 10 {and budget analysts estimate }
+autolink_nodes 5007 10 satelite interpretation-s  5009
+create-a-node-here really 6.259 11 {the increased appropriations will widen the fiscal 1990 deficit by at least $1.44 billion}
+autolink_nodes 10 11 nucleus attribution  5010
+create-a-node-here really 6.334 12 { unless offsetting spending cuts or new revenues are found by Congress.}
+nextSentence really
+autolink_nodes 11 12 multinuclear Otherwise  5011
+create-a-node-here really 8.55 13 { \n\nThe budget impact will be greater still in fiscal 1991,}
+#autolink_nodes 5009 13 satelite comparison  5012
+#UNDID
+autolink_nodes 5009 13 satelite comparison  5012
+create-a-node-here really 8.188 14 { and the issue forced a confrontation between the Appropriations Committee leadership and Budget Committee Chairman Leon Panetta,}
+autolink_nodes 13 14 nucleus result  5013
+create-a-node-here really 9.0 15 { whose California district was at the center of the earthquake last week.\n}
+autolink_nodes 14 15 satelite-embedded elaboration-object-attribute-e below 5014
+create-a-node-here really 9.38 16 {Going to the well of the chamber, }
+autolink_nodes 5014 16 satelite elaboration-additional below 5015
+create-a-node-here really 9.63 17 {Mr. Panetta demanded }
+#autolink_nodes 16 17 nucleus elaboration-additional  5016
+#UNDID
+autolink_nodes 16 17 multinuclear Temporal-Same-Time  5016
+create-a-node-here really 9.94 18 {the costs be fully counted.}
+nextSentence really
+autolink_nodes 17 18 nucleus attribution  5017
+create-a-node-here really 10.51 19 {\nHis prominent role put him in the awkward position }
+autolink_nodes 5016 19 satelite circumstance  5018
+create-a-node-here really 10.97 20 {of challenging the very committee members }
+autolink_nodes 19 20 satelite-embedded elaboration-object-attribute-e  5019
+create-a-node-here really 10.162 21 {on whom his state will be most dependent in the months ahead.}
+nextSentence really
+autolink_nodes 20 21 satelite-embedded elaboration-general-specific-e  5020
+create-a-node-here really 12.30 22 { \n\n"We do not come to this House }
+autolink_nodes 5018 22 satelite elaboration-additional  5021
+create-a-node-here really 12.58 23 {asking for any handout,"}
+#autolink_nodes 22 23 satelite circumstance  5022
+#UNDID
+autolink_nodes 22 23 satelite purpose  5022
+create-a-node-here really 12.93 24 { said the California Democrat. }
+autolink_nodes 5022 24 satelite attribution  5023
+create-a-node-here really 12.161 25 {"We do not intend to hide these costs from the American people."}
+nextSentence really
+autolink_nodes 5023 25 satelite elaboration-additional  5024
+collapsed_nodes {5024}
+collapsed_nodes {5024 5021}
+collapsed_nodes {5024 5021 5010}
+collapsed_nodes {5024 5021 5010 5012}
+collapsed_nodes {5024 5021 5010 5012 5004}
+create-a-node-here really 14.145 26 { \n\nThe $2.85 billion package incorporates $500 million for low-interest disaster loans, $1 billion in highway construction funds, and $1.35 billion }
+autolink_nodes 5006 26 multinuclear Topic-Drift above 5025
+create-a-node-here really 14.208 27 {divided between general emergency assistance and a reserve }
+autolink_nodes 26 27 satelite-embedded elaboration-object-attribute-e  5026
+create-a-node-here really 14.246 28 {to be available to President Bush }
+autolink_nodes 27 28 satelite purpose  5027
+create-a-node-here really 14.301 29 {to meet unanticipated costs from the two disasters.}
+nextSentence really
+autolink_nodes 28 29 multinuclear List  5028
+create-a-node-here really 15.41 30 {\nThe funds are in addition to $1.1 billion}
+autolink_nodes 5026 30 satelite elaboration-additional  5029
+create-a-node-here really 15.69 31 { appropriated last month}
+autolink_nodes 30 31 satelite-embedded elaboration-additional-e  5030
+create-a-node-here really 15.110 32 { to assist in the recovery from Hugo,}
+autolink_nodes 5030 32 satelite purpose  5031
+create-a-node-here really 15.203 33 { bringing the total for the two disasters to nearly $4 billion in unanticipated spending.}
+nextSentence really
+autolink_nodes 5031 33 satelite interpretation-s  5032
+create-a-node-here really 17.40 34 { \n\nBecause of the vagaries of Gramm-Rudman,}
+autolink_nodes 5029 34 satelite explanation-argumentative  5033
+create-a-node-here really 17.86 35 { the immediate impact is relatively small.}
+nextSentence really
+autolink_nodes 34 35 nucleus result  5034
+create-a-node-here really 18.45 36 {\nBut the appropriations set in motion spending}
+autolink_nodes 5034 36 nucleus concession  5035
+create-a-node-here really 18.110 37 { that adds to an already grim budget picture for fiscal 1991.}
+nextSentence really
+autolink_nodes 36 37 satelite-embedded elaboration-object-attribute-e below 5036
+create-a-node-here really 19.71 38 {\nWithin the appropriations process, the situation is even more difficult}
+autolink_nodes 5033 38 satelite comparison  5037
+collapsed_nodes {5024 5021 5010 5012 5004 5035}
+create-a-node-here really 19.135 39 { since the costs will be counted against the share of funds }
+autolink_nodes 38 39 satelite result  5038
+create-a-node-here really 19.177 40 {to be allocated to those subcommittees}
+autolink_nodes 39 40 satelite-embedded purpose-e  5039
+create-a-node-here really 19.229 41 { that recently have had the greatest difficulty }
+autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e  5040
+create-a-node-here really 19.262 42 {in staying within the budget.}
+nextSentence really
+autolink_nodes 41 42 satelite-embedded elaboration-object-attribute-e  5041
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032}
+create-a-node-here really 21.19 43 { \n\nThe underlying bill}
+autolink_nodes 5037 43 satelite elaboration-additional  5042
+create-a-node-here really 21.43 44 { approved yesterday }
+autolink_nodes 43 44 satelite-embedded elaboration-additional-e  5043
+create-a-node-here really 21.59 45 {is required }
+autolink_nodes 5043 45 multinuclear Same-Unit  5044
+create-a-node-here really 21.118 46 {to keep the government operating past midnight tonight,}
+autolink_nodes 45 46 satelite purpose  5045
+create-a-node-here really 21.169 47 { and this urgency has contributed to the speed }
+autolink_nodes 5044 47 satelite cause  5046
+create-a-node-here really 21.206 48 {-- and, critics say, mistakes -- }
+autolink_nodes 47 48 satelite evaluation-s  5047
+create-a-node-here really 21.267 49 {that have accompanied the package of disaster assistance.}
+nextSentence really
+autolink_nodes 5047 49 multinuclear Same-Unit  5048
+create-a-node-here really 22.49 50 {\nThe hastily drafted measure could hurt California}
+autolink_nodes 5048 50 satelite explanation-argumentative  5049
+create-a-node-here really 22.133 51 { by requiring it to put up more matching funds for emergency highway assistance }
+autolink_nodes 50 51 satelite means  5050
+create-a-node-here really 22.170 52 {than otherwise would be required.}
+nextSentence really
+autolink_nodes 51 52 satelite-embedded comparison-e  5051
+create-a-node-here really 23.38 53 {\nAnd the state's delegation is fearful }
+#autolink_nodes 5049 53 satelite evaluation-s  5052
+#UNDID
+autolink_nodes 5049 53 satelite evaluation-s  5052
+create-a-node-here really 23.135 54 {that the new funding will be counted against a separate $185 million in federal highway funds}
+autolink_nodes 53 54 nucleus attribution  5053
+create-a-node-here really 23.205 55 { it would expect to receive under its normal allocation this year.}
+autolink_nodes 54 55 satelite-embedded elaboration-object-attribute-e below 5054
+create-a-node-here really 25.97 56 { \n\nAlso, the high price of San Francisco real estate puts the state at odds with federal regulations}
+autolink_nodes 5053 56 multinuclear List  5055
+create-a-node-here really 25.139 57 { more attuned to the national average.}
+nextSentence really
+autolink_nodes 56 57 satelite-embedded elaboration-additional-e  5056
+create-a-node-here really 26.29 58 {\nFor example, disaster loans, }
+autolink_nodes 5056 58 satelite example  5057
+create-a-node-here really 26.82 59 {which will go to small businesses and homeowners,}
+autolink_nodes 58 59 satelite-embedded elaboration-additional-e  5058
+create-a-node-here really 26.127 60 { offer credit as low as 4% in some cases.}
+nextSentence really
+autolink_nodes 5058 60 multinuclear Same-Unit  5059
+create-a-node-here really 27.53 61 {\nBut the San Francisco delegation finds itself asking }
+autolink_nodes 5059 61 nucleus concession  5060
+create-a-node-here really 27.120 62 {that the cap per household be lifted to $500,000 from $100,000 }
+autolink_nodes 61 62 nucleus attribution  5061
+create-a-node-here really 27.181 63 {to assist the hard hit but often wealthy Marina district.}
+nextSentence really
+autolink_nodes 62 63 satelite purpose below 5062
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052}
+create-a-node-here really 29.57 64 { \n\nThe Senate is expected to make some modifications today, }
+autolink_nodes 5046 64 satelite elaboration-additional  5063
+create-a-node-here really 29.169 65 {but both the White House and Congress appear most anxious to speed final approval before tonight's deadline.}
+nextSentence really
+autolink_nodes 64 65 multinuclear Contrast  5064
+create-a-node-here really 30.46 66 {\nAdministration pressure discourages any effort}
+autolink_nodes 5064 66 satelite elaboration-additional  5065
+create-a-node-here really 30.75 67 { to add to total funding,}
+autolink_nodes 66 67 satelite-embedded elaboration-object-attribute-e  5066
+create-a-node-here really 30.140 68 { and the Senate changes are expected to be largely technical }
+autolink_nodes 5066 68 multinuclear List  5067
+create-a-node-here really 30.172 69 {-- dealing with highway aid }
+#autolink_nodes 68 69 satelite-embedded example-e  5068
+#UNDID
+create-a-node-here really 30.261 70 {and lifting the ceiling on total Small Business Administration loans to $1.8 billion }
+autolink_nodes 69 70 multinuclear List  5068
+autolink_nodes 68 5068 satelite-embedded example-e  5069
+create-a-node-here really 30.313 71 {to accommodate the increased activity expected. }
+autolink_nodes 70 71 satelite purpose  5070
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065 5063}
+create-a-node-here really 32.29 72 {\n\nYesterday's floor action came}
+autolink_nodes 5042 72 satelite circumstance  5071
+create-a-node-here really 32.133 73 { as a House-Senate conference approved a nearly $8.5 billion fiscal 1990 military construction bill,}
+autolink_nodes 72 73 multinuclear Temporal-Same-Time  5072
+create-a-node-here really 32.181 74 { representing a 5% reduction from last year }
+autolink_nodes 73 74 satelite-embedded elaboration-part-whole-e  5073
+create-a-node-here really 32.256 75 {and making severe cuts from Pentagon requests for installations abroad.}
+nextSentence really
+autolink_nodes 74 75 multinuclear List  5074
+nextSentence really
+create-a-node-here really 33.40 76 {\nAn estimated $25.8 million is allocated }
+autolink_nodes 5074 76 multinuclear List below 5074
+create-a-node-here really 33.69 77 {to continue work in Oman.}
+nextSentence really
+autolink_nodes 76 77 satelite purpose  5075
+create-a-node-here really 34.43 78 {\nBut all funding is cut for the Philippines,}
+autolink_nodes 5074 78 multinuclear Contrast above 5076
+nextSentence really
+create-a-node-here really 34.155 79 { and projects in South Korea are cut to $13.6 million, or less than a sixth of the administration's request.}
+nextSentence really
+autolink_nodes 78 79 multinuclear List  5077
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065 5063 5071}
+create-a-node-here really 36.51 80 { \n\nCloser to home, the negotiators were more generous.}
+nextSentence really
+autolink_nodes 5025 80 multinuclear Topic-Drift below 5077
+nextSentence really
+nextSentence really
+create-a-node-here really 37.141 81 {\nAn estimated $38.9 million was set aside for military installations in the home state of North Carolina Rep. W.G. Hefner, the House chairman.}
+nextSentence really
+autolink_nodes 80 81 satelite example  5078
+nextSentence really
+create-a-node-here really 38.52 82 {\nAnd $70.2 million would go to projects in Tennessee }
+autolink_nodes 81 82 multinuclear List  5079
+create-a-node-here really 38.133 83 {represented by his Senate counterpart and fellow Democrat, Sen. James Sasser.}
+nextSentence really
+autolink_nodes 82 83 satelite-embedded elaboration-additional-e  5080
+create-a-node-here really 39.71 84 {\nTexas and California are traditionally powerful within the conference, }
+autolink_nodes 5078 84 satelite elaboration-additional  5081
+create-a-node-here really 39.155 85 {but equally striking is the dominance of Alaska, Pennsylvania and West Virginia }
+autolink_nodes 84 85 multinuclear Comparison  5082
+create-a-node-here really 39.222 86 {because of their power elsewhere in the appropriations process.}
+nextSentence really
+autolink_nodes 85 86 satelite result  5083
+nextSentence really
+create-a-node-here really 40.53 87 {\nSenate Appropriations Committee Chairman Robert Byrd }
+autolink_nodes 5081 87 satelite elaboration-additional  5084
+nextSentence really
+create-a-node-here really 40.68 88 {(D., W.Va.)}
+autolink_nodes 87 88 satelite-embedded elaboration-additional-e  5085
+create-a-node-here really 40.99 89 { even added report language}
+autolink_nodes 5085 89 multinuclear Same-Unit  5086
+nextSentence really
+create-a-node-here really 40.137 90 { listing $49.4 million in projects}
+#autolink_nodes 89 90 satelite-embedded elaboration-object-attribute-e  5087
+#UNDID
+autolink_nodes 89 90 satelite-embedded elaboration-object-attribute-e  5087
+create-a-node-here really 40.176 91 { he wants in the budget next year. }
+autolink_nodes 5087 91 satelite-embedded elaboration-object-attribute-e  5088
+disconnect_node 5086 disconnect
+autolink_nodes 5082 5086 satelite elaboration-additional  5089
+create-a-node-here really 42.83 92 {\n\nNo individual illustrated this mix of power more yesterday than Sen. Daniel Inouye }
+autolink_nodes 5089 92 satelite explanation-argumentative  5090
+nextSentence really
+create-a-node-here really 42.101 93 {(D., Hawaii), }
+autolink_nodes 92 93 satelite-embedded elaboration-additional-e  5091
+create-a-node-here really 42.148 94 {who chairs the Senate defense subcommittee.}
+nextSentence really
+autolink_nodes 5091 94 satelite-embedded elaboration-additional-e  5092
+create-a-node-here really 43.76 95 {\nIn the final trading, the House was insistent on setting aside $500 million }
+create-a-node-here really 43.107 96 {to carry out base closings }
+autolink_nodes 95 96 satelite purpose  5093
+create-a-node-here really 43.143 97 {ordered to begin in fiscal 1990.}
+nextSentence really
+autolink_nodes 96 97 satelite-embedded elaboration-additional-e  5094
+create-a-node-here really 44.58 98 {\nBut it gave ground to Mr. Inouye on a number of projects, }
+autolink_nodes 5093 98 nucleus antithesis  5095
+create-a-node-here really 44.109 99 {ranging from a $11 million parking garage here,}
+autolink_nodes 98 99 satelite-embedded example-e below 5096
+create-a-node-here really 44.143 100 { to a land transfer in Hawaii,}
+autolink_nodes 99 100 multinuclear List  5097
+create-a-node-here really 44.164 101 { to a provision }
+autolink_nodes 5097 101 multinuclear List below 5097
+create-a-node-here really 44.223 102 {to assist the Makwah Indian Tribe in Washington state.}
+nextSentence really
+autolink_nodes 101 102 satelite-embedded elaboration-object-attribute-e  5098
+create-a-node-here really 45.57 103 {\nThe tribe is one of the poorest in the Pacific Northwest.}
+nextSentence really
+autolink_nodes 102 103 satelite elaboration-additional  5099
+autolink_nodes 5092 5095 satelite explanation-argumentative  5100
+create-a-node-here really 47.11 104 { \n\nMr. Inouye,}
+autolink_nodes 5095 104 satelite elaboration-additional  5101
+create-a-node-here really 47.68 105 { who chairs the select committee on Indian Affairs, }
+autolink_nodes 104 105 satelite-embedded elaboration-additional-e  5102
+create-a-node-here really 47.88 106 {used his power }
+autolink_nodes 5102 106 multinuclear Same-Unit  5103
+create-a-node-here really 47.160 107 {to move $400,000 from the Air Force to the Bureau of Indian Affairs}
+autolink_nodes 106 107 satelite purpose  5104
+create-a-node-here really 47.210 108 { to assist in renovating a decommissoned base}
+autolink_nodes 5104 108 satelite purpose  5105
+create-a-node-here really 47.272 109 { to accommodate a drug and alcohol rehabilitation center.}
+nextSentence really
+autolink_nodes 108 109 satelite purpose  5106
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065 5063 5071 5103}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065 5063 5071 5103 5101}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065 5063 5071 5103 5101 5100}
+collapsed_nodes {5024 5021 5010 5012 5004 5035 5038 5032 5057 5055 5052 5065 5063 5071 5103 5101 5100 5089}
+create-a-node-here really 49.116 110 { \n\nMeanwhile, House-Senate negotiators have tentatively agreed on a $3.18 billion anti-drug and anti-crime intitiative,}
+autolink_nodes 5025 110 multinuclear Topic-Drift below 5106
+create-a-node-here really 49.159 111 { cutting other federal spending 0.43% }
+autolink_nodes 110 111 satelite means  5107
+create-a-node-here really 49.178 112 {to pay for it.}
+nextSentence really
+autolink_nodes 111 112 satelite purpose  5108
+create-a-node-here really 50.82 113 {\nA formal House-Senate conference is expected to ratify the accord later this week.}
+nextSentence really
+autolink_nodes 5107 113 satelite elaboration-additional  5109
+collapsed_nodes {}
+disconnect_node 48 disconnect
+autolink_nodes 47 48 satelite-embedded evaluation-s-e  5110
+collapsed_nodes {5006}
+collapsed_nodes {5006 5025}
+collapsed_nodes {}

@@ -1,0 +1,335 @@
+nextSentence really
+create-a-node-here really 2.118 1 {\nNicaraguan President Daniel Ortega may have accomplished over the weekend what his U.S. antagonists have failed to do:}
+create-a-node-here really 2.166 2 { revive a constituency for the Contra rebels.}
+nextSentence really
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+create-a-node-here really 4.50 3 { \n\nLawmakers haven't publicly raised the possibility }
+create-a-node-here really 4.93 4 {of renewing military aid to the Contras,}
+create-a-node-here really 4.172 5 { and President Bush parried the question at a news conference here Saturday,}
+create-a-node-here really 4.188 6 { saying only }
+create-a-node-here really 4.196 7 {that }
+create-a-node-here really 4.241 8 {"if there's an all-out military offensive,}
+create-a-node-here really 4.294 9 { that's going to change the equation 180 degrees."}
+nextSentence really
+#autolink_nodes 8 9 nucleus condition  5002
+#UNDID
+autolink_nodes 8 9 nucleus-embedded condition-e  5002
+autolink_nodes 7 5002 multinuclear Same-Unit  5003
+#autolink_nodes 6 5003 nucleus attribution  5004
+#UNDID
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5004
+autolink_nodes 5 6 satelite-embedded elaboration-additional-e  5005
+autolink_nodes 6 5003 nucleus attribution  5006
+autolink_nodes 5004 5005 multinuclear List  5007
+create-a-node-here really 6.41 10 { \n\nBut Mr. Ortega's threat over the weekend }
+create-a-node-here really 6.90 11 {to end a 19-month cease-fire with the rebels }
+create-a-node-here really 6.116 12 {seeking to topple him,}
+create-a-node-here really 6.175 13 { effectively elevated the Contras as a policy priority }
+create-a-node-here really 6.255 14 {just as they were slipping from the agendas of their most ardent supporters.}
+autolink_nodes 13 14 satelite temporal-same-time  5008
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e  5009
+autolink_nodes 10 5009 satelite-embedded elaboration-object-attribute-e  5010
+autolink_nodes 5008 5010 multinuclear Same-Unit  5011
+autolink_nodes 5011 5007 satelite antithesis  5012
+nextSentence really
+create-a-node-here really 8.38 15 { \n\nSenate Majority Leader George Mitchell}
+create-a-node-here really 8.54 16 { (D., Maine)}
+create-a-node-here really 8.103 17 { said yesterday on NBC-TV's "Meet the Press" }
+create-a-node-here really 8.188 18 {that Mr. Ortega's threat was "a very unwise move, particularly the timing of it."}
+nextSentence really
+#autolink_nodes 15 16 satelite-embedded elaboration-additional-e  5013
+#UNDID
+autolink_nodes 15 16 satelite-embedded elaboration-additional-e  5013
+autolink_nodes 17 5013 multinuclear Same-Unit  5014
+autolink_nodes 5014 18 nucleus attribution  5015
+autolink_nodes 5012 5015 satelite evidence  5016
+create-a-node-here really 10.59 19 { \n\nThe threat came during a two-day celebration in Costa Rica }
+create-a-node-here really 10.134 20 {to highlight Central America's progress toward democracy in the region,}
+create-a-node-here really 10.246 21 { attended by President Bush, Canadian Prime Minister Brian Mulroney and 14 other Western Hemisphere leaders.}
+autolink_nodes 20 21 satelite-embedded elaboration-object-attribute-e  5017
+autolink_nodes 19 5017 satelite-embedded elaboration-object-attribute-e  5018
+create-a-node-here really 11.47 22 {\nMr. Bush returned to Washington Saturday night.}
+nextSentence really
+autolink_nodes 21 22 satelite elaboration-additional  5019
+disconnect_node 5019 disconnect
+autolink_nodes 5018 5019 satelite-embedded elaboration-object-attribute-e  5020
+autolink_nodes 5016 5020 satelite elaboration-additional  5021
+collapsed_nodes {5020}
+collapsed_nodes {5020 5015}
+create-a-node-here really 13.31 23 { \n\nMr. Ortega announced on Friday }
+#create-a-node-here really 13.77 24 {that he would end the cease-fire this week}
+#UNDID
+create-a-node-here really 13.139 24 {that he would end the cease-fire this week in response to the periodic Contra assaults against his army.}
+autolink_nodes 23 24 nucleus attribution  5022
+create-a-node-here really 14.33 25 {\nSaturday, he amended his remarks }
+create-a-node-here really 14.44 26 {to say }
+create-a-node-here really 14.98 27 {that he would continue to abide by the cease-fire }
+create-a-node-here really 14.157 28 {if the U.S. ends its financial support for the Contras.}
+nextSentence really
+autolink_nodes 27 28 satelite condition  5023
+autolink_nodes 26 5023 nucleus attribution  5024
+autolink_nodes 25 5024 satelite-embedded elaboration-object-attribute-e  5025
+create-a-node-here really 15.9 29 {\nHe asked }
+create-a-node-here really 15.107 30 {that the remaining U.S. humanitarian aid be diverted to disarming and demobilizing the rebels.}
+nextSentence really
+autolink_nodes 29 30 nucleus attribution  5026
+autolink_nodes 5025 5026 satelite elaboration-additional  5027
+autolink_nodes 5027 5022 satelite antithesis  5028
+autolink_nodes 5021 5028 satelite elaboration-additional  5029
+collapsed_nodes {5020 5015 5025}
+#create-a-node-here really 17.52 31 { \n\nNot only did Mr. Ortega's comments come in the midst}
+#create-a-node-here really 17.107 32 { of what was intended as a showcase for the region,}
+#create-a-node-here really 17.223 33 { it came as Nicaragua is under special international scrutiny in anticipation of its planned February elections.}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 17.103 31 { \n\nNot only did Mr. Ortega's comments come in the midst of what was intended as a showcase for the region,}
+create-a-node-here really 17.116 32 { it came }
+create-a-node-here really 17.223 33 {as Nicaragua is under special international scrutiny in anticipation of its planned February elections.}
+autolink_nodes 32 33 satelite temporal-same-time  5030
+autolink_nodes 31 5030 multinuclear List  5031
+create-a-node-here really 18.45 34 {\nOutside observers are gathering in Nicaragua }
+create-a-node-here really 18.116 35 {to monitor the registration and treatment of opposition candidates.}
+nextSentence really
+autolink_nodes 34 35 satelite purpose  5032
+autolink_nodes 5030 5032 satelite elaboration-additional  5033
+autolink_nodes 5029 5031 satelite circumstance  5034
+collapsed_nodes {5020 5015 5025 5033}
+create-a-node-here really 19.63 36 {\nAnd important U.S. lawmakers must decide at the end of November}
+create-a-node-here really 19.191 37 { if the Contras are to receive the rest of the $49 million in so-called humanitarian assistance under a bipartisan agreement}
+create-a-node-here really 19.242 38 { reached with the Bush administration in March.}
+nextSentence really
+autolink_nodes 37 38 satelite-embedded elaboration-object-attribute-e  5035
+autolink_nodes 36 5035 nucleus attribution  5036
+create-a-node-here really 21.28 39 { \n\nThe humanitarian assistance,}
+create-a-node-here really 21.97 40 { which pays for supplies such as food and clothing for the rebels}
+create-a-node-here really 21.152 41 { amassed along the Nicaraguan border with Honduras,}
+create-a-node-here really 21.183 42 { replaced the military aid }
+create-a-node-here really 21.224 43 {cut off by Congress in February 1988.}
+nextSentence really
+autolink_nodes 42 43 satelite-embedded elaboration-object-attribute-e  5037
+autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e  5038
+#autolink_nodes 39 5038 satelite-embedded elaboration-object-attribute-e  5039
+#autolink_nodes 5037 5039 multinuclear Same-Unit  5040
+#disconnect_node 5038 modify
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 39 5038 satelite-embedded elaboration-additional-e  5039
+autolink_nodes 5037 5039 multinuclear Same-Unit  5040
+autolink_nodes 5036 5040 satelite background  5041
+create-a-node-here really 22.32 44 {\nWhile few lawmakers anticipated }
+create-a-node-here really 22.90 45 {that the humanitarian aid would be cut off next month,}
+create-a-node-here really 22.137 46 { Mr. Ortega's threat practically guarantees}
+create-a-node-here really 22.186 47 { that the humanitarian aid will be continued.}
+autolink_nodes 46 47 nucleus attribution  5042
+autolink_nodes 44 45 nucleus attribution  5043
+autolink_nodes 5043 5042 nucleus antithesis  5044
+nextSentence really
+nextSentence really
+#create-a-node-here really 24.81 48 { \n\nSenate Minority Leader Robert Dole (R., Kan.) said yesterday on "Meet the Press":}
+#nextSentence really
+#create-a-node-here really 25.42 49 { "I would hope after his {Mr.\nOrtega's} act yesterday or the day before,}
+#create-a-node-here really 25.123 50 { we'd have unanimous support for quick action on remaining humanitarian aid."}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 24.35 48 { \n\nSenate Minority Leader Robert Dole }
+create-a-node-here really 24.49 49 {(R., Kan.)}
+create-a-node-here really 24.89 50 { said yesterday on "Meet the Press":}
+nextSentence really
+#create-a-node-here really 25.42 51 { "I would hope after his {Mr.\nOrtega's} act yesterday or the day before,}
+#create-a-node-here really 25.123 52 { we'd have unanimous support for quick action on remaining humanitarian aid."}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 24.108 51 { "I would hope }
+create-a-node-here really 25.119 52 {after his {Mr.\nOrtega's} act yesterday or the day before, we'd have unanimous support for quick action on remaining humanitarian aid."}
+nextSentence really
+autolink_nodes 51 52 nucleus attribution  5045
+autolink_nodes 48 49 satelite-embedded elaboration-additional-e  5046
+autolink_nodes 50 5046 multinuclear Same-Unit  5047
+autolink_nodes 5047 5045 nucleus attribution  5048
+create-a-node-here really 25.143 53 { Sen. Dole also said}
+create-a-node-here really 25.196 54 { he hoped for unanimous support for a resolution }
+create-a-node-here really 25.227 55 {he plans to offer tomorrow }
+create-a-node-here really 25.264 56 {denouncing the Nicaraguan leader.}
+nextSentence really
+autolink_nodes 54 55 satelite-embedded elaboration-additional-e  5049
+autolink_nodes 5049 56 satelite-embedded elaboration-object-attribute-e  5050
+autolink_nodes 53 5050 nucleus attribution  5051
+autolink_nodes 5048 5051 satelite elaboration-additional  5052
+#autolink_nodes 5044 5052 satelite evidence  5053
+#UNDID
+autolink_nodes 5044 5052 satelite evidence  5053
+autolink_nodes 5053 5041 satelite circumstance  5054
+collapsed_nodes {5020 5015 5025 5033 5041}
+autolink_nodes 5034 5054 satelite elaboration-additional  5055
+create-a-node-here really 27.68 57 { \n\nWhile renewing military aid had been considered out of the question,}
+create-a-node-here really 27.93 58 { rejected by Congress}
+create-a-node-here really 27.143 59 { and de-emphasized by the Bush administration,}
+create-a-node-here really 27.218 60 { Mr. Ortega's statement provides Contra supporters with the opportunity}
+create-a-node-here really 27.264 61 { to press the administration on the issue.}
+autolink_nodes 60 61 satelite-embedded elaboration-object-attribute-e  5056
+autolink_nodes 57 58 multinuclear List  5057
+autolink_nodes 5057 59 multinuclear List below 5057
+autolink_nodes 5057 5056 nucleus antithesis  5058
+create-a-node-here really 29.37 62 { \n\n"The administration should now state }
+#create-a-node-here really 29.48 63 {that if}
+#UNDID
+create-a-node-here really 29.45 63 {that}
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 29.111 64 { if the {February} election is voided by the Sandinistas . . .}
+create-a-node-here really 29.151 65 { they should call for military aid,"}
+create-a-node-here really 29.212 66 { said former Assistant Secretary of State Elliott Abrams.}
+nextSentence really
+autolink_nodes 65 64 satelite-embedded condition-e  5059
+autolink_nodes 5059 63 multinuclear Same-Unit  5060
+autolink_nodes 62 5060 nucleus attribution  5061
+autolink_nodes 5061 66 satelite attribution  5062
+create-a-node-here really 29.262 67 { "In these circumstances, I think they'd win."}
+nextSentence really
+autolink_nodes 5062 67 satelite evaluation-s  5063
+autolink_nodes 5058 5063 satelite antithesis  5064
+create-a-node-here really 31.19 68 { \n\nSen. Mitchell said }
+create-a-node-here really 31.87 69 {that congressional Democrats intend to honor the March agreement}
+create-a-node-here really 31.165 70 { to give non-lethal support to the Contras through the February elections,}
+create-a-node-here really 31.188 71 { although he added }
+create-a-node-here really 31.220 72 {that the agreement requires }
+create-a-node-here really 31.274 73 {that the Contras not initiate any military action.}
+nextSentence really
+disconnect_node 5063 disconnect
+#autolink_nodes 5058 5063 satelite elaboration-additional  5065
+#UNDID
+#autolink_nodes 72 73 nucleus attribution  5065
+#UNDID
+autolink_nodes 72 73 nucleus attribution  5065
+autolink_nodes 71 5065 nucleus attribution  5066
+autolink_nodes 69 70 satelite-embedded elaboration-object-attribute-e  5067
+autolink_nodes 68 5067 nucleus attribution  5068
+autolink_nodes 5058 5063 satelite elaboration-additional  5069
+autolink_nodes 5068 5066 satelite antithesis  5070
+autolink_nodes 5069 5070 satelite antithesis  5071
+create-a-node-here really 33.20 74 { \n\nMr. Ortega's threat }
+create-a-node-here really 33.49 75 {to breach the cease-fire }
+create-a-node-here really 33.58 76 {comes}
+create-a-node-here really 33.100 77 { as U.S. officials were acknowledging }
+create-a-node-here really 33.158 78 {that the Contras have at times violated it themselves.}
+autolink_nodes 77 78 nucleus attribution  5072
+autolink_nodes 76 5072 satelite temporal-same-time  5073
+autolink_nodes 74 75 satelite-embedded elaboration-object-attribute-e  5074
+autolink_nodes 5074 5073 multinuclear Same-Unit  5075
+disconnect_node 5072 disconnect
+#autolink_nodes 76 5072 multinuclear Temporal-Same-Time  5076
+#UNDID
+autolink_nodes 5072 5075 multinuclear Temporal-Same-Time  5076
+create-a-node-here really 34.31 79 {\nSecretary of State James Baker,}
+create-a-node-here really 34.81 80 { who accompanied President Bush to Costa Rica,}
+create-a-node-here really 34.108 81 { told reporters Friday:}
+create-a-node-here really 34.130 82 { "I have no reason}
+create-a-node-here really 34.151 83 { to deny reports }
+create-a-node-here really 34.208 84 {that some Contras ambushed some Sandinista soldiers."}
+nextSentence really
+autolink_nodes 83 84 satelite-embedded elaboration-object-attribute-e  5077
+autolink_nodes 82 5077 satelite-embedded elaboration-object-attribute-e  5078
+autolink_nodes 79 80 satelite-embedded elaboration-additional-e  5079
+autolink_nodes 5079 81 multinuclear Same-Unit  5080
+autolink_nodes 5080 5078 nucleus attribution  5081
+create-a-node-here really 36.66 85 { \n\nMr. Baker's assistant for inter-American affairs, Bernard Aronson,}
+create-a-node-here really 36.89 86 { while maintaining }
+create-a-node-here really 36.145 87 {that the Sandinistas had also broken the cease-fire,}
+create-a-node-here really 36.163 88 { acknowledged:}
+create-a-node-here really 36.208 89 { "It's never very clear who starts what."}
+nextSentence really
+autolink_nodes 88 89 nucleus attribution  5082
+autolink_nodes 86 87 nucleus attribution  5083
+#autolink_nodes 85 5083 satelite-embedded elaboration-object-attribute-e  5084
+#UNDID
+#autolink_nodes 85 5083 satelite-embedded elaboration-additional-e  5084
+#UNDID
+autolink_nodes 85 5083 satelite-embedded elaboration-additional-e  5084
+#autolink_nodes 5082 5084 multinuclear Same-Unit  5085
+#UNDID
+disconnect_node 88 disconnect
+autolink_nodes 88 5084 multinuclear Same-Unit  5085
+#autolink_nodes 5085 89 nucleus attribution  5086
+#UNDID
+autolink_nodes 5085 89 nucleus attribution  5086
+create-a-node-here really 36.222 90 { He added }
+create-a-node-here really 36.276 91 {that the U.S. has cut off aid to some rebel units }
+create-a-node-here really 36.341 92 {when it was determined that those units broke the cease-fire.}
+autolink_nodes 91 92 satelite circumstance  5087
+autolink_nodes 90 5087 nucleus attribution  5088
+autolink_nodes 5086 5088 satelite elaboration-additional  5089
+autolink_nodes 5081 5089 multinuclear List  5090
+autolink_nodes 5072 5090 satelite example  5091
+create-a-node-here really 38.67 93 { \n\nIn addition to undermining arguments in favor of ending Contra aid,}
+create-a-node-here really 38.186 94 { Mr. Ortega's remarks also played to the suspicions of some U.S. officials and conservatives outside the government}
+create-a-node-here really 38.220 95 { that he is searching for ways}
+create-a-node-here really 38.270 96 { to manipulate or void the February elections.}
+nextSentence really
+autolink_nodes 95 96 satelite-embedded elaboration-object-attribute-e  5092
+autolink_nodes 94 5092 satelite-embedded elaboration-object-attribute-e  5093
+autolink_nodes 5093 93 multinuclear List  5094
+create-a-node-here really 40.25 97 { \n\nAdministration officials }
+create-a-node-here really 40.72 98 {traveling with President Bush in Costa Rica}
+create-a-node-here really 40.121 99 { interpreted Mr. Ortega's wavering as a sign }
+create-a-node-here really 40.182 100 {that he isn't responding to the military attacks so much }
+create-a-node-here really 40.214 101 {as he is searching for ways}
+create-a-node-here really 40.266 102 { to strengthen his hand prior to the elections.}
+nextSentence really
+autolink_nodes 101 102 satelite-embedded elaboration-object-attribute-e  5095
+autolink_nodes 100 5095 satelite comparison  5096
+#autolink_nodes 97 98 satelite-embedded elaboration-object-attribute-e  5097
+#autolink_nodes 5097 99 multinuclear Same-Unit  5098
+#autolink_nodes 99 5096 satelite-embedded elaboration-object-attribute-e  5099
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 97 98 satelite-embedded elaboration-additional-e  5097
+autolink_nodes 99 5097 multinuclear Same-Unit  5098
+autolink_nodes 99 5096 satelite-embedded elaboration-object-attribute-e  5099
+create-a-node-here really 41.16 103 {\nMr. Abrams said }
+create-a-node-here really 41.97 104 {that Mr. Ortega is seeking to demobilize the Contras prior to the elections }
+create-a-node-here really 41.124 105 {to remove any pressure}
+create-a-node-here really 41.153 106 { to hold fair elections.}
+autolink_nodes 105 106 satelite-embedded elaboration-object-attribute-e  5100
+autolink_nodes 104 5100 satelite purpose  5101
+autolink_nodes 103 5101 nucleus attribution  5102
+create-a-node-here really 43.49 107 { \n\n"My sense is what they have in mind is an excuse }
+create-a-node-here really 43.88 108 {for clamping down on campaigning" }
+create-a-node-here really 43.143 109 {by creating an atmosphere of a military emergency,}
+create-a-node-here really 43.157 110 { he said.}
+nextSentence really
+autolink_nodes 108 109 satelite purpose  5103
+autolink_nodes 107 5103 satelite-embedded elaboration-process-step-e  5104
+autolink_nodes 5104 110 satelite attribution  5105
+disconnect_node 109 modify
+autolink_nodes 108 109 satelite means  5106
+autolink_nodes 5102 5105 satelite elaboration-additional  5107
+autolink_nodes 5098 5107 satelite example  5108
+autolink_nodes 5094 5108 satelite example  5109
+autolink_nodes 5109 5076 satelite circumstance  5110
+collapsed_nodes {5020 5015 5025 5033 5041 5076}
+collapsed_nodes {5020 5015 5025 5033 5041 5076 5070}
+autolink_nodes 5071 5110 satelite elaboration-additional  5111
+collapsed_nodes {5020 5015 5025 5033 5041 5076 5070 5054}
+autolink_nodes 5055 5111 satelite elaboration-additional  5112
+autolink_nodes 5001 5112 satelite summary-n  5113
+collapsed_nodes {5020 5025 5033 5041 5076 5070 5054}
+collapsed_nodes {5025 5033 5041 5076 5070 5054}
+collapsed_nodes {5033 5041 5076 5070 5054}
+collapsed_nodes {5041 5076 5070 5054}
+collapsed_nodes {5076 5070}
+collapsed_nodes {5076}
+collapsed_nodes {}
+disconnect_node 5006 disconnect
+autolink_nodes 5 5006 satelite elaboration-additional  5114

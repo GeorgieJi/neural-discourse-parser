@@ -1,0 +1,26 @@
+nextSentence really
+create-a-node-here really 2.18 1 {\nTelxon Corp. said }
+create-a-node-here really 2.66 2 {its vice president for manufacturing resigned}
+nextSentence really
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.141 3 { and its Houston work force has been trimmed by 40 people, or about 15%.}
+autolink_nodes 2 3 multinuclear List  5002
+create-a-node-here really 4.59 4 { \n\nThe maker of hand-held computers and computer systems said }
+create-a-node-here really 4.96 5 {the personnel changes were needed }
+autolink_nodes 4 5 nucleus attribution  5003
+create-a-node-here really 4.156 6 {to improve the efficiency of its manufacturing operation.}
+nextSentence really
+autolink_nodes 5 6 satelite purpose below 5004
+autolink_nodes 5001 5003 satelite explanation-argumentative  5005
+create-a-node-here really 6.17 7 { \n\nThe company said }
+create-a-node-here really 6.85 8 {it hasn't named a successor to Ronald Bufton, the vice president }
+autolink_nodes 7 8 nucleus attribution  5006
+create-a-node-here really 6.101 9 {who resigned.}
+nextSentence really
+autolink_nodes 8 9 satelite-embedded elaboration-additional-e below 5007
+disconnect_node 9 disconnect
+autolink_nodes 8 9 satelite-embedded elaboration-object-attribute-e  5008
+autolink_nodes 5005 5006 satelite elaboration-additional  5009
+create-a-node-here really 7.38 10 {\nIts Houston work force now totals 230.}
+nextSentence really
+autolink_nodes 5009 10 satelite elaboration-additional  5010

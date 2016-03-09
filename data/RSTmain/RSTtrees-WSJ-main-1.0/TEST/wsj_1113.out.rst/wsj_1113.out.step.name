@@ -1,0 +1,30 @@
+nextSentence really
+create-a-node-here really 2.31 1 {\nFalcon Holding Group Inc. said }
+create-a-node-here really 2.184 2 {it agreed to acquire about 54,000 subscribers from First Carolina Cable TV Limited Partnership for about $100 million, or roughly $2,000 a subscriber.}
+nextSentence really
+create-a-node-here really 4.84 3 { \n\nThe subscribers are in 52 different communities in Georgia, Alabama and Mississippi.}
+nextSentence really
+create-a-node-here really 6.51 4 { \n\nCompletion of the sale is expected early next year,}
+create-a-node-here really 6.67 5 { Falcon said.}
+nextSentence really
+create-a-node-here really 8.83 6 { \n\nCurrently, Falcon has about 750,000 cable-television subscribers around the nation;}
+create-a-node-here really 8.167 7 { the company's cable-television unit reported 1988 revenue of about $100 million.}
+nextSentence really
+create-a-node-here really 10.85 8 { \n\nIn composite trading on the American Stock Exchange, Falcon closed at $20, unchanged.}
+nextSentence really
+autolink_nodes 2 1 satelite attribution  5001
+autolink_nodes 5 4 nucleus attribution  5002
+autolink_nodes 7 6 multinuclear List  5003
+autolink_nodes 5001 3 satelite elaboration-additional  5004
+autolink_nodes 5004 5002 satelite elaboration-additional  5005
+autolink_nodes 5005 5003 satelite background  5006
+autolink_nodes 5006 8 satelite consequence-s  5007
+disconnect_node 3 disconnect
+disconnect_node 5002 disconnect
+autolink_nodes 5002 3 multinuclear List  5008
+disconnect_node 5003 disconnect
+disconnect_node 8 disconnect
+autolink_nodes 5001 5008 satelite elaboration-additional  5009
+autolink_nodes 5009 5003 satelite background  5010
+autolink_nodes 5010 8 satelite consequence-s  5011
+collapsed_nodes {}

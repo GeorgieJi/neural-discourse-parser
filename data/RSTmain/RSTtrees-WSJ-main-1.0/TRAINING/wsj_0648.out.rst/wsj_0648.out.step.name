@@ -1,0 +1,325 @@
+nextSentence really
+create-a-node-here really 2.23 1 {\nInsurers may see claims}
+create-a-node-here really 2.71 2 { resulting from the San Francisco earthquake }
+create-a-node-here really 2.101 3 {totaling nearly $1 billion }
+create-a-node-here really 2.131 4 {-- far less than the claims}
+create-a-node-here really 2.168 5 { they face from Hurricane Hugo -- }
+create-a-node-here really 2.262 6 {but the recent spate of catastrophes should jolt property insurance rates in coming months.}
+nextSentence really
+#autolink_nodes 4 5 satelite-embedded elaboration-process-step-e  5001
+#UNDID
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5001
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5002
+autolink_nodes 5002 3 satelite-embedded elaboration-additional-e  5003
+#autolink_nodes 3 5001 satelite elaboration-additional  5004
+#UNDID
+autolink_nodes 3 5001 satelite comparison  5004
+#autolink_nodes 5003 6 satelite elaboration-additional  5005
+#UNDID
+autolink_nodes 5003 6 satelite antithesis  5005
+create-a-node-here really 4.139 7 { \n\nThe property claims service division of the American Insurance Services Group estimated insured losses from the earthquake at $960 million.}
+create-a-node-here really 5.190 8 {\nThis estimate doesn't include claims under workers' compensation, life, health disability and liability insurance and damage to infrastructure such as bridges, highways and public buildings.}
+nextSentence really
+#autolink_nodes 7 8 satelite elaboration-additional  5006
+#UNDID
+#autolink_nodes 7 8 satelite antithesis  5006
+#UNDID
+autolink_nodes 7 8 satelite elaboration-additional  5006
+create-a-node-here really 7.40 9 { \n\nThe estimated earthquake losses are low }
+create-a-node-here really 7.81 10 {compared with the $4 billion in claims}
+create-a-node-here really 7.125 11 { that insurers face from Hurricane Hugo,}
+create-a-node-here really 7.194 12 { which ripped through the Caribbean and the Carolinas last month.}
+autolink_nodes 11 12 satelite-embedded elaboration-additional-e  5007
+autolink_nodes 10 5007 satelite-embedded elaboration-object-attribute-e  5008
+autolink_nodes 9 5008 satelite comparison  5009
+create-a-node-here really 8.90 13 {\nThat's because only about 30% of California homes and businesses had earthquake insurance }
+create-a-node-here really 8.114 14 {to cover the losses.}
+nextSentence really
+autolink_nodes 13 14 satelite-embedded elaboration-object-attribute-e  5010
+autolink_nodes 5009 5010 satelite explanation-argumentative  5011
+autolink_nodes 5006 5011 satelite elaboration-additional  5012
+autolink_nodes 5005 5012 satelite elaboration-additional  5013
+create-a-node-here really 10.45 15 { \n\nHowever, insurance brokers and executives say}
+create-a-node-here really 10.252 16 { that the combination of the Bay area earthquake, Hugo and last week's explosion at the Phillips Petroleum Co. 's refinery in Pasadena, Texas, will cause property insurance and reinsurance rates to jump.}
+nextSentence really
+#autolink_nodes 15 16 nucleus attribution  5014
+#autolink_nodes 5014 5013 satelite background  5015
+#UNDID
+#UNDID
+disconnect_node 5012 disconnect
+disconnect_node 6 disconnect
+autolink_nodes 6 5003 satelite antithesis  5014
+autolink_nodes 15 16 nucleus attribution  5015
+autolink_nodes 5015 5012 satelite antithesis  5016
+create-a-node-here really 12.49 17 { \n\nOther insurance rates such as casualty insurance,}
+create-a-node-here really 12.89 18 { which would cover liability claims,}
+create-a-node-here really 12.127 19 { aren't likely to firm right away,}
+create-a-node-here really 12.212 20 { says Alice Cornish, an industry analyst with Northington Research in Avon, Conn.}
+#autolink_nodes 17 18 satelite definition  5017
+#UNDID
+#autolink_nodes 17 18 satelite-embedded elaboration-object-attribute-e  5017
+#autolink_nodes 19 5017 multinuclear Same-Unit  5018
+#autolink_nodes 5018 20 satelite attribution  5019
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 17 18 satelite-embedded elaboration-additional-e  5017
+autolink_nodes 5017 19 multinuclear Same-Unit  5018
+autolink_nodes 5018 20 satelite attribution  5019
+create-a-node-here really 13.12 21 {\nShe believes}
+create-a-node-here really 13.138 22 { the impact of losses from these catastrophes isn't likely to halt the growth of the industry's surplus capital next year.}
+nextSentence really
+autolink_nodes 21 22 nucleus attribution  5020
+autolink_nodes 5020 5019 satelite circumstance  5021
+autolink_nodes 5016 5021 satelite elaboration-additional  5022
+create-a-node-here really 15.53 23 { \n\nProperty reinsurance rates are likely to climb first,}
+create-a-node-here really 15.87 24 { analysts and brokers believe.}
+nextSentence really
+autolink_nodes 23 24 satelite attribution  5023
+create-a-node-here really 15.199 25 { "The reinsurance market has been bloodied by disasters" in the U.S. as well as in Great Britain and Europe,}
+create-a-node-here really 15.293 26 { says Thomas Rosencrants, director of research at Interstate/Johnson Lane Inc. in Atlanta.}
+nextSentence really
+autolink_nodes 25 26 satelite attribution  5024
+autolink_nodes 5023 5024 satelite explanation-argumentative  5025
+create-a-node-here really 17.58 27 { \n\nInsurers typically retain a small percentage of the risks }
+create-a-node-here really 17.78 28 {they underwrite }
+create-a-node-here really 17.117 29 {and pass on the rest of the losses.}
+nextSentence really
+autolink_nodes 27 28 satelite-embedded elaboration-object-attribute-e  5026
+autolink_nodes 5026 29 multinuclear List  5027
+create-a-node-here really 18.53 30 {\nInsurers buy this insurance protection for themselves}
+create-a-node-here really 18.97 31 { by giving up a portion of the premiums }
+create-a-node-here really 18.125 32 {they collect on a policy}
+create-a-node-here really 18.146 33 { to another firm }
+create-a-node-here really 18.175 34 {-- a reinsurance company,}
+create-a-node-here really 18.228 35 { which, in turn, accepts a portion of any losses }
+create-a-node-here really 18.259 36 {resulting from this policy.}
+nextSentence really
+autolink_nodes 35 36 satelite-embedded elaboration-object-attribute-e  5028
+autolink_nodes 34 5028 satelite-embedded elaboration-object-attribute-e  5029
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5030
+autolink_nodes 33 5030 multinuclear Same-Unit  5031
+autolink_nodes 33 5029 satelite-embedded elaboration-object-attribute-e  5032
+autolink_nodes 30 5031 satelite means  5033
+autolink_nodes 5027 5033 satelite elaboration-additional  5034
+create-a-node-here really 19.181 37 {\nInsurers, such as Cigna Corp., Transamerica Corp, and Aetna Life & Casualty Co., buy reinsurance from other U.S.-based companies and Lloyd's of London for one catastrophe at a time.}
+nextSentence really
+autolink_nodes 5033 37 satelite example  5035
+create-a-node-here really 21.15 38 { \n\nAfter Hugo hit,}
+create-a-node-here really 21.71 39 { many insurers exhausted their reinsurance coverage }
+create-a-node-here really 21.100 40 {and had to tap reinsurers}
+create-a-node-here really 21.130 41 { to replace that coverage }
+create-a-node-here really 21.206 42 {in case there were any other major disasters before the end of the year.}
+nextSentence really
+autolink_nodes 40 41 satelite purpose  5036
+#autolink_nodes 39 5036 multinuclear Cause-Result  5037
+#autolink_nodes 5037 38 satelite circumstance  5038
+#autolink_nodes 5036 42 satelite hypothetical  5039
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 5036 42 satelite hypothetical  5037
+#autolink_nodes 5036 39 satelite reason below 5038
+#UNDID
+autolink_nodes 5037 39 satelite reason  5038
+#autolink_nodes 5038 38 satelite temporal-after  5039
+#UNDID
+autolink_nodes 39 38 satelite temporal-after  5039
+#create-a-node-here really 23.48 43 { \n\nAfter the earthquake two weeks ago, brokers say }
+#UNDID
+create-a-node-here really 23.35 43 { \n\nAfter the earthquake two weeks ago,}
+create-a-node-here really 23.51 44 { brokers say}
+create-a-node-here really 23.115 45 { companies scrambled to replace reinsurance coverages again }
+create-a-node-here really 23.211 46 {and Lloyd's syndicates turned to the London market excess lines for protection of their own.}
+autolink_nodes 43 44 satelite-embedded attribution-e  5040
+autolink_nodes 45 46 satelite consequence-s  5041
+#autolink_nodes 5040 5041 nucleus attribution  5042
+#UNDID
+autolink_nodes 5040 5041 multinuclear Same-Unit  5042
+autolink_nodes 5038 5042 multinuclear Sequence  5043
+autolink_nodes 5043 5034 satelite background  5044
+autolink_nodes 5024 5044 satelite evidence  5045
+autolink_nodes 5022 5025 satelite elaboration-additional  5046
+create-a-node-here really 25.102 47 { \n\nJames Snedeker, senior vice president of Gill & Roeser Inc., a New York-based reinsurance broker, says}
+create-a-node-here really 25.115 48 { insurers}
+create-a-node-here really 25.149 49 { who took big losses this fall}
+create-a-node-here really 25.206 50 { and had purchased little reinsurance in recent years}
+create-a-node-here really 25.256 51 { will be asked to pay some pretty hefty rates }
+create-a-node-here really 25.301 52 {if they want to buy reinsurance for 1990.}
+nextSentence really
+autolink_nodes 51 52 satelite condition  5047
+autolink_nodes 49 50 multinuclear List  5048
+autolink_nodes 48 5048 satelite-embedded elaboration-object-attribute-e  5049
+autolink_nodes 5047 5049 multinuclear Same-Unit  5050
+autolink_nodes 47 5050 nucleus attribution  5051
+#create-a-node-here really 26.171 53 {\nHowever, companies with few catastrophe losses this year and already big buyers of reinsurance are likely to see their rates remain flat, or perhaps even decline slightly.}
+#nextSentence really
+#UNDID
+#UNDID
+#create-a-node-here really 26.137 53 {\nHowever, companies with few catastrophe losses this year and already big buyers of reinsurance are likely to see their rates remain flat,}
+#create-a-node-here really 26.175 54 { or perhaps even decline slightly.}
+#autolink_nodes 53 54 satelite hypothetical  5052
+#autolink_nodes 5052 5051 multinuclear Contrast  5053
+#create-a-node-here really 27.90 55 {\nMany companies will be negotiating their 1990 reinsurance contracts in the next few weeks.}
+#nextSentence really
+#autolink_nodes 5053 55 satelite circumstance  5054
+#UNDID
+#autolink_nodes 5053 55 nucleus circumstance  5054
+#create-a-node-here really 29.25 56 { \n\n"It's a seller's market,"}
+#create-a-node-here really 29.84 57 { said Mr. Snedeker of the reinsurance market right now.}
+#autolink_nodes 56 57 satelite attribution  5055
+#autolink_nodes 5054 5055 nucleus interpretation-n  5056
+#create-a-node-here really 31.104 58 { \n\nBut some large insurers, such as State Farm Mutual Automobile Insurance Co., don't purchase reinsurance,}
+#create-a-node-here really 31.136 59 { but fund their own program.}
+#nextSentence really
+#autolink_nodes 58 59 multinuclear List  5057
+#create-a-node-here really 32.91 60 {\nA few years ago, State Farm, the nation's largest home insurer, stopped buying reinsurance }
+#create-a-node-here really 32.149 61 {because no one carrier could provide all the coverage }
+#create-a-node-here really 32.168 62 {that it needed }
+#create-a-node-here really 32.222 63 {and the company found it cheaper to self-reinsure.}
+#nextSentence really
+#autolink_nodes 61 62 satelite-embedded elaboration-object-attribute-e  5058
+#autolink_nodes 60 5058 satelite reason  5059
+#autolink_nodes 63 5059 satelite result  5060
+#create-a-node-here really 33.27 64 {\nThe $472 million of losses }
+#create-a-node-here really 33.60 65 {State Farm expects from Hugo }
+#nextSentence really
+#create-a-node-here really 33.178 66 {and an additional $300 million from the earthquake are less than 5% of State Farm's $16.7 billion total net worth.}
+#nextSentence really
+#autolink_nodes 64 65 satelite-embedded elaboration-object-attribute-e  5061
+#autolink_nodes 5061 66 multinuclear Same-Unit  5062
+#autolink_nodes 5060 5062 satelite evidence  5063
+#autolink_nodes 5057 5063 satelite elaboration-additional  5064
+#autolink_nodes 5056 5064 satelite antithesis  5065
+#autolink_nodes 5045 5065 satelite elaboration-additional  5066
+#create-a-node-here really 35.56 67 { \n\nSince few insurers have announced what amount of losses }
+#create-a-node-here really 35.99 68 {they expect to see from the earthquake,}
+#create-a-node-here really 35.192 69 { it's impossible to get a clear picture of the quake's impact on fourth-quarter earnings,}
+#create-a-node-here really 35.257 70 { said Herbert Goodfriend at Prudential-Bache Securities Corp.}
+#autolink_nodes 67 68 satelite-embedded elaboration-object-attribute-e  5067
+#autolink_nodes 69 5067 satelite reason  5068
+#autolink_nodes 5068 70 satelite attribution  5069
+#create-a-node-here really 37.92 71 { \n\nTransamerica expects an after-tax charge of less than $3 million against fourth-quarter net;}
+#create-a-node-here really 37.195 72 { Hartford Insurance Group, a unit of ITT Corp., expects a $15 million or 10 cents after-tax charge;}
+#create-a-node-here really 37.283 73 { and Fireman's Fund Corp. expects a charge of no more than $50 million before taxes }
+#create-a-node-here really 37.319 74 {and after using its reinsurance.}
+#nextSentence really
+#autolink_nodes 73 74 satelite circumstance  5070
+#UNDID
+#autolink_nodes 73 74 satelite temporal-after  5070
+#autolink_nodes 72 71 multinuclear List  5071
+#autolink_nodes 5071 5070 multinuclear List below 5071
+#autolink_nodes 5069 5071 satelite antithesis  5072
+#UNDID
+#autolink_nodes 5069 5071 satelite elaboration-additional  5072
+#UNDID
+#autolink_nodes 5069 5071 satelite example  5072
+#autolink_nodes 5014 5046 satelite summary-n  5073
+#autolink_nodes 5072 5073 multinuclear Topic-Drift  5074
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 26.171 53 {\nHowever, companies with few catastrophe losses this year and already big buyers of reinsurance are likely to see their rates remain flat, or perhaps even decline slightly.}
+autolink_nodes 5051 53 multinuclear Contrast  5052
+create-a-node-here really 27.90 54 {\nMany companies will be negotiating their 1990 reinsurance contracts in the next few weeks.}
+nextSentence really
+autolink_nodes 5052 54 nucleus circumstance  5053
+create-a-node-here really 29.25 55 { \n\n"It's a seller's market,"}
+create-a-node-here really 29.84 56 { said Mr. Snedeker of the reinsurance market right now.}
+nextSentence really
+autolink_nodes 55 56 satelite attribution  5054
+autolink_nodes 5053 5054 nucleus interpretation-n  5055
+create-a-node-here really 31.104 57 { \n\nBut some large insurers, such as State Farm Mutual Automobile Insurance Co., don't purchase reinsurance,}
+create-a-node-here really 31.136 58 { but fund their own program.}
+nextSentence really
+autolink_nodes 57 58 multinuclear List  5056
+autolink_nodes 5055 5056 satelite antithesis  5057
+collapsed_nodes {5044}
+collapsed_nodes {5044 5052}
+autolink_nodes 5045 5057 satelite elaboration-additional  5058
+create-a-node-here really 32.91 59 {\nA few years ago, State Farm, the nation's largest home insurer, stopped buying reinsurance }
+create-a-node-here really 32.149 60 {because no one carrier could provide all the coverage }
+create-a-node-here really 32.168 61 {that it needed }
+create-a-node-here really 32.222 62 {and the company found it cheaper to self-reinsure.}
+nextSentence really
+autolink_nodes 60 61 satelite-embedded elaboration-object-attribute-e  5059
+autolink_nodes 59 5059 satelite reason  5060
+autolink_nodes 5060 62 nucleus result  5061
+create-a-node-here really 33.26 63 {\nThe $472 million of losses}
+create-a-node-here really 33.60 64 { State Farm expects from Hugo }
+nextSentence really
+create-a-node-here really 33.178 65 {and an additional $300 million from the earthquake are less than 5% of State Farm's $16.7 billion total net worth.}
+nextSentence really
+autolink_nodes 63 64 satelite-embedded elaboration-object-attribute-e  5062
+autolink_nodes 65 5062 multinuclear Same-Unit  5063
+autolink_nodes 5061 5063 satelite evidence  5064
+autolink_nodes 5056 5064 satelite elaboration-additional  5065
+create-a-node-here really 35.55 66 { \n\nSince few insurers have announced what amount of losses}
+create-a-node-here really 35.99 67 { they expect to see from the earthquake,}
+create-a-node-here really 35.192 68 { it's impossible to get a clear picture of the quake's impact on fourth-quarter earnings,}
+create-a-node-here really 35.257 69 { said Herbert Goodfriend at Prudential-Bache Securities Corp.}
+autolink_nodes 66 67 satelite-embedded elaboration-object-attribute-e  5066
+autolink_nodes 68 5066 satelite explanation-argumentative  5067
+autolink_nodes 5067 69 satelite attribution  5068
+create-a-node-here really 37.92 70 { \n\nTransamerica expects an after-tax charge of less than $3 million against fourth-quarter net;}
+create-a-node-here really 37.195 71 { Hartford Insurance Group, a unit of ITT Corp., expects a $15 million or 10 cents after-tax charge;}
+create-a-node-here really 37.282 72 { and Fireman's Fund Corp. expects a charge of no more than $50 million before taxes}
+create-a-node-here really 37.319 73 { and after using its reinsurance.}
+nextSentence really
+autolink_nodes 72 73 satelite temporal-after  5069
+autolink_nodes 71 5069 multinuclear List  5070
+autolink_nodes 5070 70 multinuclear List below 5070
+autolink_nodes 5068 5070 satelite example  5071
+autolink_nodes 5014 5046 satelite summary-n  5072
+collapsed_nodes {5044 5052 5046}
+autolink_nodes 5072 5071 multinuclear Topic-Drift  5073
+collapsed_nodes {}

@@ -1,0 +1,263 @@
+nextSentence really
+create-a-node-here really 2.87 1 {\nIn a startling turnabout, Members of the Senate Intelligence Committee are complaining }
+create-a-node-here really 2.146 2 {that someone in the executive branch is leaking on them.}
+nextSentence really
+autolink_nodes 1 2 satelite cause  5001
+create-a-node-here really 3.59 3 {\nDavid Boren, the Intelligence Committee chairman, is upset }
+autolink_nodes 5001 3 satelite elaboration-additional  5002
+#create-a-node-here really 3.150 4 {that someone leaked a letter to the committee from the Reagan administration suggesting }
+#UNDID
+create-a-node-here really 3.139 4 {that someone leaked a letter to the committee from the Reagan administration }
+autolink_nodes 3 4 satelite reason  5003
+create-a-node-here really 3.153 5 {suggesting }
+autolink_nodes 4 5 satelite elaboration-additional  5004
+create-a-node-here really 3.261 6 {that the U.S. would undertake to warn Panamanian thug Manuel Noriega if it got wind of an impending coup }
+autolink_nodes 5 6 satelite elaboration-additional  5005
+create-a-node-here really 4.0 7 {that might result in his assassination. \n}
+autolink_nodes 6 7 satelite-embedded elaboration-object-attribute-e  5006
+create-a-node-here really 5.120 8 {\nWith due respect to "highly classified correspondence" and other buzzwords, the leakers are performing a public service.}
+nextSentence really
+autolink_nodes 5002 8 satelite comment  5007
+#create-a-node-here really 6.63 9 {\nIf the CIA has become a protection service for Mr. Noriega, the}
+#UNDID
+create-a-node-here really 6.60 9 {\nIf the CIA has become a protection service for Mr. Noriega, }
+create-a-node-here really 7.0 10 {the American people ought to know.\n}
+autolink_nodes 9 10 nucleus condition  5008
+autolink_nodes 8 5008 satelite elaboration-additional  5009
+change_rel 9 concession
+change_rel 9 circumstance
+create-a-node-here really 7.88 11 {What went wrong in Panama is a fitting subject for public and congressional inquiry.}
+nextSentence really
+autolink_nodes 5008 11 satelite elaboration-additional  5010
+create-a-node-here really 8.64 12 {\nNaturally, Senator Boren and his committee would like free rein }
+autolink_nodes 5009 12 satelite comment  5011
+create-a-node-here really 8.98 13 {to blame the executive branch }
+autolink_nodes 12 13 satelite purpose  5012
+create-a-node-here really 8.154 14 {while stamping "top secret" on their own complicity.}
+nextSentence really
+autolink_nodes 5012 14 satelite temporal-same-time  5013
+create-a-node-here really 9.22 15 {\nBut there's no danger }
+autolink_nodes 5013 15 satelite antithesis  5014
+create-a-node-here really 9.58 16 {of exposing sources and methods }
+autolink_nodes 15 16 satelite elaboration-object-attribute  5015
+create-a-node-here really 9.127 17 {in disclosing the debate running up and down Pennsylvania Avenue.}
+nextSentence really
+autolink_nodes 5015 17 satelite manner  5016
+create-a-node-here really 10.4 18 {\nAnd }
+autolink_nodes 5016 18 multinuclear List  5017
+create-a-node-here really 10.49 19 {if Congress is going to assume authority }
+create-a-node-here really 10.84 20 {to micromanage foreign policy, }
+create-a-node-here really 10.146 21 {it's going to have to take some of the responsibility too.}
+nextSentence really
+autolink_nodes 18 21 multinuclear Same-Unit  5018
+#autolink_nodes 5018 19 satelite condition  5019
+#UNDID
+autolink_nodes 18 19 satelite condition  5019
+#autolink_nodes 19 20 satelite-embedded elaboration-object-attribute-e  5020
+#UNDID
+autolink_nodes 19 20 satelite purpose  5020
+create-a-node-here really 13.0 22 { \n\nThe President of the United States urged the Panamanian armed forces to move against Mr. Noriega.\n}
+autolink_nodes 5007 22 satelite background  5021
+create-a-node-here really 13.19 23 {When they did, }
+create-a-node-here really 13.65 24 {his commanders didn't have the initiative }
+autolink_nodes 22 24 satelite result  5022
+autolink_nodes 24 23 satelite temporal-same-time  5023
+create-a-node-here really 13.109 25 {to do more than block a couple of roads.}
+nextSentence really
+autolink_nodes 24 25 satelite-embedded elaboration-object-attribute-e below 5024
+create-a-node-here really 14.65 26 {\nThe executive branch bears the first responsibility for timidity.}
+nextSentence really
+autolink_nodes 5023 26 satelite result  5025
+create-a-node-here really 15.43 27 {\nBut what kind of initiative can you expect }
+autolink_nodes 26 27 satelite comment  5026
+create-a-node-here really 15.81 28 {given the climate set by Congress?}
+nextSentence really
+autolink_nodes 27 28 satelite circumstance  5027
+create-a-node-here really 17.141 29 { \n\nFor example, what exactly did the CIA tell Major Giroldi and his fellow coup plotters about U.S. laws and executive orders on assassinations?}
+nextSentence really
+autolink_nodes 5021 29 satelite example  5028
+create-a-node-here really 18.62 30 {\nWhat part did U.S. warnings play in the major's unwillingness }
+autolink_nodes 29 30 satelite result  5029
+create-a-node-here really 18.86 31 {to pull the trigger }
+autolink_nodes 30 31 satelite-embedded elaboration-object-attribute-e  5030
+create-a-node-here really 18.130 32 {when he had General Noriega in custody, }
+autolink_nodes 5030 32 satelite temporal-same-time  5031
+create-a-node-here really 18.177 33 {but was under attack by pro-Noriega troops?}
+nextSentence really
+autolink_nodes 32 33 satelite antithesis  5032
+create-a-node-here really 19.46 34 {\nMr. Noriega didn't suffer from any hesitation }
+#autolink_nodes 5031 34 multinuclear Contrast  5033
+#UNDID
+autolink_nodes 5031 34 multinuclear Contrast  5033
+create-a-node-here really 20.0 35 {once he had the pistol.\n}
+autolink_nodes 34 35 satelite condition  5034
+create-a-node-here really 20.56 36 {Maybe we need a CIA version of the Miranda warning: }
+autolink_nodes 5033 36 satelite hypothetical  5035
+create-a-node-here really 20.79 37 {You have the right }
+autolink_nodes 36 37 satelite restatement  5036
+create-a-node-here really 20.116 38 {to conceal your coup intentions, }
+autolink_nodes 37 38 satelite-embedded elaboration-object-attribute-e  5037
+create-a-node-here really 20.146 39 {because we may rat on you.}
+nextSentence really
+autolink_nodes 5037 39 satelite reason  5038
+create-a-node-here really 21.38 40 {\nOr maybe a Surgeon General's warning: }
+autolink_nodes 5036 40 multinuclear Disjunction  5039
+create-a-node-here really 21.86 41 {Confiding in the United States may be fatal.}
+nextSentence really
+autolink_nodes 40 41 satelite restatement  5040
+create-a-node-here really 23.92 42 { \n\nCIA chief William Webster, hardly a Washington malcontent, got the debate started last week }
+autolink_nodes 5028 42 satelite explanation-argumentative  5041
+create-a-node-here really 23.106 43 {by noting }
+autolink_nodes 42 43 satelite means  5042
+create-a-node-here really 23.135 44 {that the executive order }
+create-a-node-here really 23.162 45 {banning assassinations }
+autolink_nodes 44 45 satelite elaboration-object-attribute  5043
+create-a-node-here really 23.216 46 {had contributed to U.S. paralysis during the coup.}
+nextSentence really
+autolink_nodes 5043 46 multinuclear Same-Unit  5044
+autolink_nodes 43 5044 satelite manner  5045
+change_rel 5044 explanation-argumentative
+create-a-node-here really 24.103 47 {\nThe CIA's Deputy Director of Operations, Richard Stoltz, tried to smooth things over a few days later, }
+autolink_nodes 5042 47 satelite elaboration-additional  5046
+create-a-node-here really 24.157 48 {but instead simply underlined Mr. Webster's point.}
+nextSentence really
+autolink_nodes 47 48 satelite antithesis  5047
+create-a-node-here really 24.207 49 { "The interpretation" of the executive order, }
+autolink_nodes 48 49 satelite explanation-argumentative  5048
+create-a-node-here really 24.228 50 {Mr. Stoltz said, }
+autolink_nodes 49 50 satelite attribution  5049
+#create-a-node-here really 24.247 51 {"and the way in}
+#UNDID
+create-a-node-here really 24.245 51 {"and the way }
+autolink_nodes 5049 51 multinuclear List  5050
+create-a-node-here really 24.312 52 {in which the various committees have over time interpreted it, }
+autolink_nodes 51 52 satelite elaboration-object-attribute  5051
+create-a-node-here really 24.381 53 {has led in my view to a proper caution on the part of operators, }
+change_rel 5050 
+#change_rel 5049 Same-Unit
+#UNDID
+change_rel 5049 Same-Unit
+#autolink_nodes 5050 53 multinuclear Same-Unit below 5051
+#UNDID
+autolink_nodes 5050 53 multinuclear List below 5051
+change_rel 5049 Same-Unit
+create-a-node-here really 24.400 54 {including me." }
+#autolink_nodes 53 54 satelite-embedded elaboration-object-attribute-e  5052
+#UNDID
+autolink_nodes 53 54 satelite elaboration-part-whole  5052
+create-a-node-here really 24.476 55 {In other words, Congress won't let the CIA do much of anything anymore, }
+autolink_nodes 5046 55 satelite restatement  5053
+create-a-node-here really 24.509 56 {and that's fine with the CIA.}
+nextSentence really
+autolink_nodes 55 56 multinuclear List  5054
+create-a-node-here really 25.20 57 {\nThe pay's the same, }
+autolink_nodes 56 57 satelite elaboration-additional  5055
+create-a-node-here really 25.47 58 {and the duty's lighter.}
+nextSentence really
+autolink_nodes 57 58 multinuclear List  5056
+create-a-node-here really 27.30 59 { \n\nAnd of course, doing anything }
+autolink_nodes 5041 59 multinuclear List  5057
+create-a-node-here really 27.75 60 {that might be second-guessed by Congress }
+autolink_nodes 59 60 satelite elaboration-object-attribute  5058
+create-a-node-here really 27.103 61 {carries heavy penalties.}
+nextSentence really
+autolink_nodes 5058 61 satelite result  5059
+create-a-node-here really 28.45 62 {\nWitness the Walsh prosecution of Ollie North.}
+nextSentence really
+autolink_nodes 61 62 satelite evidence  5060
+create-a-node-here really 29.108 63 {\nThe Intelligence Committee's ranking Republican, Senator William Cohen, joined with Senator George Mitchell }
+autolink_nodes 62 63 satelite elaboration-additional  5061
+create-a-node-here really 29.154 64 {to write a best seller about Iran-Contra, }
+autolink_nodes 63 64 satelite purpose  5062
+create-a-node-here really 29.182 65 {deploring "Men of Zeal."}
+nextSentence really
+autolink_nodes 64 65 satelite elaboration-object-attribute  5063
+create-a-node-here really 29.280 66 { No doubt many people in the CIA, the Pentagon and the National Security Council have read it.}
+nextSentence really
+autolink_nodes 5062 66 satelite comment  5064
+create-a-node-here really 30.73 67 {\nWhat kind of initiative should anyone expect from people out on the line }
+autolink_nodes 66 67 satelite interpretation-s  5065
+create-a-node-here really 30.98 68 {who've read all this }
+autolink_nodes 67 68 satelite-embedded elaboration-object-attribute-e  5066
+create-a-node-here really 30.127 69 {and know what can happen }
+autolink_nodes 68 69 multinuclear List  5067
+create-a-node-here really 30.144 70 {if they fail?}
+nextSentence really
+autolink_nodes 69 70 satelite condition  5068
+create-a-node-here really 31.69 71 {\nWho wants to end up as the protagonist in a Bill Cohen morality play?}
+nextSentence really
+autolink_nodes 5066 71 satelite comment  5069
+create-a-node-here really 33.158 72 { \n\nThe order against assassinations is another artifact of the same congressional mind-set, a product of the 1970s Vietnam syndrome against any executive action.}
+nextSentence really
+autolink_nodes 5059 72 satelite explanation-argumentative  5070
+create-a-node-here really 34.56 73 {\nPresident Bush would do himself and the country a favor }
+autolink_nodes 72 73 satelite comment  5071
+create-a-node-here really 34.125 74 {by rescinding the order as an ambiguous intrusion on his ability }
+autolink_nodes 73 74 satelite means  5072
+create-a-node-here really 34.167 75 {to defend America's national security.}
+nextSentence really
+autolink_nodes 74 75 satelite-embedded elaboration-object-attribute-e  5073
+create-a-node-here really 35.33 76 {\nThere are of course good reasons }
+autolink_nodes 5071 76 satelite concession  5074
+create-a-node-here really 35.93 77 {the U.S. shouldn't get into the assassination business, }
+autolink_nodes 76 77 satelite elaboration-object-attribute  5075
+create-a-node-here really 35.154 78 {but rescinding the executive order is not the same thing }
+autolink_nodes 5075 78 satelite antithesis  5076
+create-a-node-here really 35.219 79 {as saying the U.S. should start passing out exploding cigars.}
+nextSentence really
+autolink_nodes 78 79 satelite comparison  5077
+create-a-node-here really 36.32 80 {\nThe world being the nasty place }
+autolink_nodes 5077 80 satelite concession  5078
+create-a-node-here really 36.43 81 {it is, }
+autolink_nodes 80 81 satelite elaboration-object-attribute  5079
+create-a-node-here really 36.86 82 {we want Presidents to have the freedom }
+disconnect_node 5079 disconnect
+autolink_nodes 82 5079 satelite concession  5080
+autolink_nodes 5076 5080 satelite elaboration-additional  5081
+create-a-node-here really 36.110 83 {to order operations }
+autolink_nodes 82 83 satelite purpose below 5082
+create-a-node-here really 37.0 84 {in which someone might get killed.\n}
+autolink_nodes 83 84 satelite-embedded elaboration-object-attribute-e  5083
+create-a-node-here really 37.59 85 {In such situations, you cannot write rules in advance, }
+autolink_nodes 5083 85 satelite explanation-argumentative  5084
+create-a-node-here really 37.86 86 {you can only make sure }
+autolink_nodes 85 86 nucleus concession  5085
+create-a-node-here really 37.129 87 {the President takes the responsibility.}
+nextSentence really
+autolink_nodes 86 87 satelite enablement below 5086
+create-a-node-here really 39.111 88 { \n\nThe executive order and the reported agreements with the Intelligence Committee are neither sensible nor moral.}
+nextSentence really
+autolink_nodes 5070 88 satelite summary-s  5087
+create-a-node-here really 40.18 89 {\nAs it now stands, }
+autolink_nodes 88 89 satelite elaboration-additional  5088
+create-a-node-here really 40.49 90 {the U.S. can bomb Tripoli, }
+autolink_nodes 89 90 satelite example  5089
+create-a-node-here really 40.93 91 {but can't "assassinate" Colonel Gadhafi.}
+nextSentence really
+#autolink_nodes 90 91 satelite antithesis  5090
+#UNDID
+autolink_nodes 90 91 multinuclear Contrast  5090
+create-a-node-here really 41.81 92 {\nIt can send a fighter squadron to strafe terrorist hideouts in the Bekaa Valley, }
+autolink_nodes 5090 92 multinuclear List above 5091
+create-a-node-here really 42.0 93 {but can't shoot Abu Nidal.\n}
+autolink_nodes 92 93 multinuclear Contrast  5092
+create-a-node-here really 42.95 94 {Both the assassination order and the quality of debate in Washington are telling the world }
+autolink_nodes 5089 94 satelite interpretation-s  5093
+create-a-node-here really 42.117 95 {that the only way }
+autolink_nodes 94 95 satelite elaboration-additional  5094
+create-a-node-here really 42.149 96 {the U.S. will kill a madman }
+autolink_nodes 95 96 satelite elaboration-object-attribute  5095
+create-a-node-here really 42.171 97 {is by making sure }
+autolink_nodes 5095 97 multinuclear Same-Unit  5096
+create-a-node-here really 42.216 98 {we take some innocent civilians with him.}
+nextSentence really
+autolink_nodes 97 98 satelite manner  5097
+collapsed_nodes {5041}
+collapsed_nodes {5041 5057}
+nextSentence really
+nextSentence really
+collapsed_nodes {}
+disconnect_node 5006 modify
+autolink_nodes 5 5006 nucleus attribution  5098
+disconnect_node 5020 modify
+autolink_nodes 21 5020 satelite condition  5099

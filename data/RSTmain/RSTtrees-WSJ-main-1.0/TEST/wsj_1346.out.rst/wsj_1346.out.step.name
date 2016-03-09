@@ -1,0 +1,46 @@
+nextSentence really
+create-a-node-here really 2.36 1 {\nCummins Engine Co., Columbus, Ind., }
+create-a-node-here really 2.95 2 {hurt by a drop in engine orders from heavy-truck makers,}
+nextSentence really
+nextSentence really
+create-a-node-here really 2.209 3 { reported a third-quarter loss of $39.7 million, or $4.12 a share, on essentially flat sales of $807.6 million.}
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 4.154 4 { \n\nIn the year-earlier period, the maker of diesel engines and parts had a narrower deficit of $17.6 million, or $1.84 a share, with sales of $808.3 million.}
+nextSentence really
+create-a-node-here really 5.19 5 {\nA spokeswoman said }
+create-a-node-here really 5.50 6 {shipments of truck engines, }
+create-a-node-here really 5.125 7 {which provide a higher margin than most of the company's other products,}
+create-a-node-here really 5.162 8 { declined 16% from a year earlier.}
+nextSentence really
+autolink_nodes 1 2 satelite-embedded elaboration-additional-e  5001
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+autolink_nodes 5002 4 satelite background  5003
+autolink_nodes 5 6 nucleus attribution  5004
+autolink_nodes 6 7 satelite-embedded elaboration-object-attribute-e below 5005
+autolink_nodes 5005 8 multinuclear Same-Unit  5006
+nextSentence really
+create-a-node-here really 7.45 9 { \n\nAlthough Cummins's stock stumbled last month }
+create-a-node-here really 7.111 10 {after the company projected a "substantial" third-period loss, }
+create-a-node-here really 7.208 11 {the stock also fell $1.125 in composite New York Stock Exchange trading yesterday, to $51.75.}
+nextSentence really
+create-a-node-here really 8.65 12 {\nIt traded as high as $64 a month ago, before the loss projection.}
+nextSentence really
+create-a-node-here really 10.73 13 { \n\nFor the nine months, the latest loss trimmed net income to $3.6 million, }
+create-a-node-here really 10.162 14 {which after payment of preferred dividends represented a 31-cent loss a common share.}
+nextSentence really
+create-a-node-here really 11.63 15 {\nThe year-before loss was $8.4 million, or $1.36 a common share.}
+nextSentence really
+autolink_nodes 5003 5004 satelite elaboration-additional  5007
+autolink_nodes 9 10 satelite-embedded temporal-after-e  5008
+autolink_nodes 5008 11 multinuclear Same-Unit  5009
+autolink_nodes 5009 12 satelite elaboration-additional  5010
+autolink_nodes 13 14 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5011 15 multinuclear Comparison  5012
+autolink_nodes 5007 5010 satelite elaboration-additional  5013
+collapsed_nodes {5007}
+autolink_nodes 5013 5012 satelite elaboration-additional  5014
+collapsed_nodes {}
+collapsed_nodes {5014}
+collapsed_nodes {}

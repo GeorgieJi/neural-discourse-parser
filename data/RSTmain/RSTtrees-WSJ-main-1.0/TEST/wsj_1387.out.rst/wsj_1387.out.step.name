@@ -1,0 +1,366 @@
+nextSentence really
+create-a-node-here really 2.47 1 {\nYet another political scandal is racking Japan.}
+nextSentence really
+create-a-node-here really 3.70 2 {\nBut this time it's hurting opposition as well as ruling-party members.}
+nextSentence really
+autolink_nodes 1 2 nucleus circumstance  5001
+create-a-node-here really 4.4 3 {\nAnd }
+create-a-node-here really 4.22 4 {as it unfolds, }
+create-a-node-here really 4.105 5 {it's revealing some of the more tangled and seamier aspects of Japanese society.}
+nextSentence really
+autolink_nodes 4 5 nucleus-embedded circumstance-e  5002
+autolink_nodes 3 5002 multinuclear Same-Unit  5003
+create-a-node-here really 6.49 6 { \n\nAlready, ruling Liberal Democratic Party demands }
+create-a-node-here really 6.109 7 {that opposition members testify under oath in parliament }
+autolink_nodes 6 7 satelite-embedded elaboration-object-attribute-e  5004
+create-a-node-here really 6.154 8 {have stalled one budget committee session }
+autolink_nodes 5004 8 multinuclear Same-Unit  5005
+create-a-node-here really 6.246 9 {and forced the committee to plan a special two-day investigation at the end of the month.}
+nextSentence really
+autolink_nodes 5005 9 multinuclear List above 5006
+disconnect_node 1 modify
+autolink_nodes 2 1 satelite consequence-n  5007
+autolink_nodes 5007 5003 satelite elaboration-additional  5008
+autolink_nodes 5008 5006 satelite evidence  5009
+create-a-node-here really 7.40 10 {\nBut the scandal itself is so convoluted }
+create-a-node-here really 7.96 11 {that ruling-party members are divided between those }
+autolink_nodes 10 11 satelite consequence-s  5010
+create-a-node-here really 7.138 12 {who want to pursue the matter in hope }
+create-a-node-here really 7.172 13 {of undermining the opposition }
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 11 5011 satelite-embedded elaboration-object-attribute-e  5012
+create-a-node-here really 7.186 14 {and those }
+#autolink_nodes 5012 14 multinuclear List  5013
+#UNDID
+autolink_nodes 5012 14 multinuclear Contrast  5013
+create-a-node-here really 7.226 15 {who favor leaving well enough alone.}
+autolink_nodes 14 15 satelite-embedded elaboration-object-attribute-e  5014
+#autolink_nodes 5009 5010 satelite elaboration-additional  5015
+#UNDID
+autolink_nodes 5006 5010 nucleus concession  5015
+create-a-node-here really 9.37 16 { \n\n"The opposition can be the most hurt }
+create-a-node-here really 9.74 17 {because everyone already figures }
+autolink_nodes 16 17 satelite explanation-argumentative  5016
+create-a-node-here really 9.110 18 {the LDP is that kind of beast," }
+autolink_nodes 17 18 nucleus attribution  5017
+create-a-node-here really 9.211 19 {says Shigezo Hayasaka, former aide to LDP kingmaker Kakuei Tanaka and now an independent analyst.}
+nextSentence really
+autolink_nodes 5016 19 satelite attribution  5018
+create-a-node-here really 10.5 20 {\nBut, }
+create-a-node-here really 10.18 21 {he adds, }
+autolink_nodes 20 21 satelite-embedded attribution-e  5019
+create-a-node-here really 10.37 22 {"We can't tell }
+autolink_nodes 5019 22 multinuclear Same-Unit  5020
+create-a-node-here really 10.65 23 {where it will go at all }
+autolink_nodes 22 23 nucleus attribution-n  5021
+create-a-node-here really 10.110 24 {because we're still in the middle of it."}
+nextSentence really
+autolink_nodes 5020 24 satelite consequence-n  5022
+autolink_nodes 5018 5022 satelite elaboration-additional  5023
+autolink_nodes 5009 5023 satelite interpretation-s  5024
+disconnect_node 5022 modify
+disconnect_node 24 modify
+#autolink_nodes 5020 24 satelite circumstance  5025
+#UNDID
+autolink_nodes 5021 24 satelite circumstance  5025
+autolink_nodes 5018 5020 multinuclear Contrast  5026
+create-a-node-here really 12.44 25 { \n\nThis time, the scandal centers on donations }
+create-a-node-here really 13.0 26 {made by the not-quite-mainstream pachinko parlor industry.\n}
+autolink_nodes 25 26 satelite-embedded elaboration-object-attribute-e  5027
+create-a-node-here really 13.76 27 {Pachinko, a kind of pinball, is Japan's favorite form of legal gambling.}
+nextSentence really
+autolink_nodes 5024 5027 satelite elaboration-general-specific  5028
+create-a-node-here really 14.41 28 {\nThe donations so far appear to be small, }
+create-a-node-here really 14.84 29 {especially compared with the huge sums }
+autolink_nodes 28 29 satelite-embedded comparison-e  5029
+create-a-node-here really 14.153 30 {that changed hands in the Recruit Co. influence-peddling scandal }
+autolink_nodes 29 30 satelite-embedded elaboration-object-attribute-e  5030
+create-a-node-here really 14.197 31 {that plagued the ruling party last year.}
+nextSentence really
+autolink_nodes 30 31 satelite-embedded elaboration-object-attribute-e  5031
+autolink_nodes 26 27 satelite elaboration-additional  5032
+create-a-node-here really 15.36 32 {\nBut the implications could be great.}
+nextSentence really
+autolink_nodes 5029 32 multinuclear Contrast  5033
+create-a-node-here really 17.40 33 { \n\nPachinko is slightly on the shady side, }
+create-a-node-here really 17.98 34 {often linked to the lower ranks of Japan's underworld }
+create-a-node-here really 17.158 35 {and regularly at the top of annual lists of tax evaders.}
+nextSentence really
+autolink_nodes 34 35 multinuclear List  5034
+autolink_nodes 33 5034 satelite manner  5035
+create-a-node-here really 18.64 36 {\nRecently the industry has faced the threat of new restrictions, }
+create-a-node-here really 18.127 37 {and political donations may have been made with the intent }
+create-a-node-here really 18.140 38 {to bribe.}
+nextSentence really
+autolink_nodes 37 38 satelite-embedded elaboration-object-attribute-e  5036
+autolink_nodes 36 5036 nucleus circumstance  5037
+autolink_nodes 5035 5037 multinuclear List  5038
+create-a-node-here really 19.54 39 {\nAlso, about 60% of pachinko parlor owners are Korean, }
+create-a-node-here really 19.144 40 {many of whom maintain close ties with North or South Korean residents' organizations, }
+autolink_nodes 39 40 satelite-embedded elaboration-additional-e  5039
+create-a-node-here really 19.206 41 {and donations by such foreign groups are illegal in Japan.}
+nextSentence really
+autolink_nodes 5039 41 multinuclear List  5040
+autolink_nodes 5038 5040 multinuclear List below 5040
+autolink_nodes 32 5038 satelite explanation-argumentative  5041
+create-a-node-here really 21.60 42 { \n\nTo many Japanese, pachinko is benign or enticingly unsavory.}
+nextSentence really
+disconnect_node 5038 disconnect
+create-a-node-here really 22.115 43 {\nGarish neon pachinko marquees blaze from the main streets and narrow alleys of cities and towns across the country.}
+nextSentence really
+create-a-node-here really 23.21 44 {\nDevotees pass hours, }
+create-a-node-here really 23.51 45 {watching the lights blink }
+create-a-node-here really 23.94 46 {and listening to the metal balls ping, }
+autolink_nodes 45 46 multinuclear List  5042
+autolink_nodes 44 5042 satelite-embedded elaboration-additional-e  5043
+create-a-node-here really 23.116 47 {as much to gamble }
+create-a-node-here really 23.144 48 {as to get a little time }
+create-a-node-here really 23.191 49 {to be anonymous, alone with their thoughts.}
+nextSentence really
+autolink_nodes 48 49 satelite-embedded elaboration-object-attribute-e  5044
+autolink_nodes 5043 47 satelite purpose  5045
+autolink_nodes 47 5044 multinuclear Proportion  5046
+autolink_nodes 43 5045 satelite elaboration-additional  5047
+autolink_nodes 42 5047 nucleus evaluation-s  5048
+create-a-node-here really 24.11 50 {\nAt 500 yen }
+nextSentence really
+create-a-node-here really 24.23 51 {($3.60) }
+autolink_nodes 50 51 satelite-embedded restatement-e  5049
+create-a-node-here really 24.81 52 {for a handful of balls, pachinko is a common pastime, }
+create-a-node-here really 24.98 53 {and has been }
+create-a-node-here really 24.176 54 {since it took root as cheap entertainment in the years after World War II.}
+nextSentence really
+autolink_nodes 53 54 satelite temporal-after  5050
+autolink_nodes 5049 52 multinuclear Same-Unit  5051
+autolink_nodes 5051 5050 satelite background  5052
+autolink_nodes 5047 5052 satelite comment below 5053
+disconnect_node 5052 disconnect
+autolink_nodes 5045 5052 satelite elaboration-additional  5054
+autolink_nodes 5038 5048 multinuclear Contrast above 5055
+autolink_nodes 5033 5055 satelite explanation-argumentative  5056
+create-a-node-here really 26.114 55 { \n\nBut the total of all those pinging balls has created an industry with a reported annual income of 13 trillion yen }
+create-a-node-here really 26.139 56 {(almost $92 billion),}
+autolink_nodes 5027 5056 satelite interpretation-s  5057
+autolink_nodes 55 56 satelite-embedded restatement-e  5058
+create-a-node-here really 26.202 57 { or nearly the size of Japan's vaunted automobile industry.}
+nextSentence really
+autolink_nodes 5058 57 multinuclear Same-Unit  5059
+disconnect_node 5048 disconnect
+#disconnect_node 5038 disconnect
+#UNDID
+disconnect_node 5038 disconnect
+autolink_nodes 32 5038 satelite explanation-argumentative  5060
+autolink_nodes 5048 5059 multinuclear Contrast  5061
+create-a-node-here really 27.4 58 {\nAnd }
+create-a-node-here really 27.95 59 {because the pachinko industry is regularly at the top of annual lists for tax evasion, }
+create-a-node-here really 27.123 60 {some observers estimate }
+autolink_nodes 59 60 nucleus-embedded reason-e  5062
+autolink_nodes 58 5062 multinuclear Same-Unit  5063
+create-a-node-here really 27.180 61 {the real income could be as much as 20 trillion yen. }
+autolink_nodes 60 61 nucleus attribution  5064
+autolink_nodes 5059 5063 satelite evaluation-s  5065
+create-a-node-here really 29.32 62 {\n\nIf that money were being taxed, }
+create-a-node-here really 29.102 63 {it could bring the government a badly needed several trillion yen.}
+nextSentence really
+autolink_nodes 62 63 nucleus condition  5066
+disconnect_node 5063 disconnect
+autolink_nodes 5063 5066 nucleus evaluation-n  5067
+autolink_nodes 5059 5067 satelite evaluation-s  5068
+#disconnect_node 5067 disconnect
+#disconnect_node 5063 disconnect
+#UNDID
+#UNDID
+disconnect_node 5063 modify
+autolink_nodes 5066 5063 nucleus hypothetical  5069
+create-a-node-here really 30.29 64 {\nIn 1984, an attempt was made }
+create-a-node-here really 31.0 65 {to crack down on the industry with tougher restrictions.\n}
+autolink_nodes 64 65 satelite-embedded elaboration-object-attribute-e  5070
+create-a-node-here really 31.30 66 {Then, in 1988, a proposal }
+create-a-node-here really 31.65 67 {to keep better track of income }
+autolink_nodes 66 67 satelite-embedded elaboration-object-attribute-e  5071
+create-a-node-here really 31.107 68 {by selling prepaid cards for pachinko }
+autolink_nodes 67 68 satelite means  5072
+create-a-node-here really 31.137 69 {was fielded in parliament.}
+nextSentence really
+autolink_nodes 5071 69 multinuclear Same-Unit  5073
+autolink_nodes 5070 5073 multinuclear Sequence  5074
+#create-a-node-here really 32.40 70 {\nThe proposal split the industry in two, }
+#UNDID
+create-a-node-here really 32.76 70 {\nThe proposal split the industry in two, along the lines of national origin: }
+autolink_nodes 5073 70 satelite elaboration-additional  5075
+create-a-node-here really 32.110 71 {North Koreans oppose the plan }
+create-a-node-here really 32.168 72 {while South Koreans, Japanese and Taiwanese accept it }
+create-a-node-here really 32.187 73 {or are neutral.}
+autolink_nodes 72 73 multinuclear Disjunction  5076
+autolink_nodes 71 5076 multinuclear Contrast  5077
+autolink_nodes 70 5077 satelite elaboration-set-member  5078
+create-a-node-here really 34.51 74 { \n\nIn August, a conservative weekly magazine reported }
+create-a-node-here really 34.140 75 {that a pachinko industry organization donated money to Japan Socialist Party members.}
+nextSentence really
+autolink_nodes 74 75 nucleus attribution  5079
+autolink_nodes 5074 5079 multinuclear Sequence below 5079
+create-a-node-here really 35.21 76 {\nThe magazine alleged }
+create-a-node-here really 35.30 77 {that }
+autolink_nodes 76 77 nucleus attribution  5080
+create-a-node-here really 35.59 78 {in making the donations, }
+create-a-node-here really 35.115 79 {the pachinko industry may have been offering bribes }
+autolink_nodes 78 79 nucleus-embedded manner-e  5081
+autolink_nodes 77 5081 multinuclear Same-Unit  5082
+create-a-node-here really 35.171 80 {to win support in the battle against prepaid cards, }
+autolink_nodes 5082 80 satelite purpose below 5083
+create-a-node-here really 35.306 81 {or it may have been laundering money back and forth between the JSP and the North Korean residents' organization, the Chosen Soren.}
+nextSentence really
+autolink_nodes 5083 81 multinuclear Disjunction  5084
+autolink_nodes 5079 5080 satelite elaboration-additional  5085
+disconnect_node 5080 modify
+autolink_nodes 5079 5080 satelite interpretation-s  5086
+create-a-node-here really 37.59 82 { \n\nThe Chosen Soren and the JSP immediately denied the report.}
+nextSentence really
+autolink_nodes 5086 82 multinuclear Statement-Response  5087
+create-a-node-here really 38.76 83 {\nAnd at first, neither the opposition nor the LDP wanted to pursue the issue.}
+nextSentence really
+create-a-node-here really 39.29 84 {\nBut the press kept it alive; }
+create-a-node-here really 39.107 85 {as with the Recruit scandal, lists began circulating with names of people }
+create-a-node-here really 39.134 86 {who had received money.}
+nextSentence really
+autolink_nodes 85 86 satelite-embedded elaboration-object-attribute-e  5088
+autolink_nodes 84 5088 satelite manner  5089
+autolink_nodes 83 5089 multinuclear Contrast  5090
+autolink_nodes 5087 5090 multinuclear Sequence above 5091
+create-a-node-here really 41.63 87 { \n\nWithin a matter of weeks, less-conservative magazines reported }
+create-a-node-here really 41.161 88 {that members of the ruling LDP had received much larger donations from pachinko organizations.}
+nextSentence really
+autolink_nodes 87 88 nucleus attribution  5092
+autolink_nodes 5089 5092 nucleus consequence-n  5093
+create-a-node-here really 42.47 89 {\nSo far, though, there have been no allegations }
+create-a-node-here really 42.74 90 {that the contributions }
+autolink_nodes 89 90 satelite-embedded elaboration-object-attribute-e  5094
+create-a-node-here really 42.103 91 {the LDP members received }
+autolink_nodes 90 91 satelite-embedded elaboration-object-attribute-e  5095
+create-a-node-here really 42.126 92 {amounted to bribes.}
+nextSentence really
+autolink_nodes 5095 92 multinuclear Same-Unit  5096
+autolink_nodes 5092 5094 satelite elaboration-additional below 5097
+create-a-node-here really 43.35 93 {\nThen the two camps upped the ante: }
+autolink_nodes 5090 93 multinuclear Sequence above 5098
+create-a-node-here really 43.47 94 {Reports }
+create-a-node-here really 43.105 95 {that Chosen Soren had donated directly to JSP members }
+autolink_nodes 94 95 satelite-embedded elaboration-object-attribute-e  5099
+create-a-node-here really 43.146 96 {were rapidly countered by statements }
+autolink_nodes 5099 96 multinuclear Same-Unit  5100
+create-a-node-here really 43.243 97 {that the South Korean residents' organization had long been donating directly to LDP members.}
+nextSentence really
+autolink_nodes 96 97 satelite-embedded elaboration-object-attribute-e  5101
+autolink_nodes 93 5100 satelite elaboration-general-specific  5102
+create-a-node-here really 45.25 98 { \n\nThe JSP admitted Oct. 13 }
+create-a-node-here really 45.111 99 {that its members received about eight million yen from the pachinko organization, }
+autolink_nodes 98 99 nucleus attribution  5103
+create-a-node-here really 45.170 100 {and charged LDP members with receiving 125 million yen }
+autolink_nodes 5103 100 multinuclear List  5104
+create-a-node-here really 45.185 101 {($880,000)}
+autolink_nodes 100 101 satelite-embedded restatement-e  5105
+create-a-node-here really 45.254 102 { and other opposition parties with taking about 2.5 million yen.}
+nextSentence really
+autolink_nodes 5105 102 multinuclear Same-Unit  5106
+#autolink_nodes 5100 5104 satelite evidence  5107
+#UNDID
+autolink_nodes 5098 5104 multinuclear Sequence below 5106
+create-a-node-here really 46.49 103 {\nOn Friday, the chief cabinet secretary announced }
+autolink_nodes 5098 103 multinuclear Sequence below 5106
+create-a-node-here really 46.132 104 {that eight cabinet ministers had received five million yen from the industry, }
+autolink_nodes 103 104 nucleus attribution  5107
+create-a-node-here really 46.159 105 {including 450,000 yen }
+autolink_nodes 104 105 satelite-embedded elaboration-set-member-e below 5108
+disconnect_node 105 modify
+autolink_nodes 104 105 satelite-embedded elaboration-part-whole-e  5109
+create-a-node-here really 46.173 106 {($3,175) }
+autolink_nodes 105 106 satelite-embedded restatement-e  5110
+create-a-node-here really 47.0 107 {by Prime Minister Toshiki Kaifu.\n}
+autolink_nodes 5110 107 multinuclear Same-Unit  5111
+autolink_nodes 5028 5061 satelite elaboration-additional  5112
+create-a-node-here really 47.24 108 {No one has alleged }
+create-a-node-here really 47.75 109 {that the donations were by themselves illegal.}
+nextSentence really
+autolink_nodes 108 109 nucleus attribution-n  5113
+autolink_nodes 5107 5113 satelite comment  5114
+create-a-node-here really 49.78 110 { \n\nDirect donations from either of the residents' organizations would be illegal }
+create-a-node-here really 49.126 111 {because the groups are defined as foreign, }
+autolink_nodes 110 111 satelite explanation-argumentative  5115
+autolink_nodes 5113 5115 satelite explanation-argumentative  5116
+create-a-node-here really 49.176 112 {but both groups deny making direct donations.}
+nextSentence really
+autolink_nodes 5115 112 multinuclear Contrast  5117
+create-a-node-here really 50.9 113 {\nThey say }
+create-a-node-here really 50.75 114 {its possible some of their members may be donating privately.}
+nextSentence really
+autolink_nodes 113 114 nucleus attribution  5118
+autolink_nodes 112 5118 satelite elaboration-additional  5119
+create-a-node-here really 52.33 115 { \n\nThe issue is further complicated }
+create-a-node-here really 52.46 116 {because }
+create-a-node-here really 52.106 117 {although the organizations represent Korean residents, }
+create-a-node-here really 52.165 118 {those residents were largely born and raised in Japan }
+autolink_nodes 117 118 nucleus-embedded concession-e  5120
+autolink_nodes 116 5120 multinuclear Same-Unit  5121
+create-a-node-here really 52.199 119 {and many speak only Japanese.}
+nextSentence really
+autolink_nodes 5120 119 satelite consequence-s  5122
+autolink_nodes 115 5121 satelite explanation-argumentative  5123
+create-a-node-here really 53.72 120 {\nThat they retain Korean citizenship and ties is a reflection of history }
+create-a-node-here really 53.141 121 {-- their parents were shipped in as laborers during the decades }
+create-a-node-here really 53.195 122 {when Japan occupied Korea before World War II -- }
+autolink_nodes 121 122 satelite-embedded elaboration-object-attribute-e  5124
+autolink_nodes 120 5124 satelite background  5125
+create-a-node-here really 53.223 123 {and the discrimination }
+disconnect_node 5124 modify
+autolink_nodes 120 5124 satelite-embedded background-e  5126
+create-a-node-here really 53.273 124 {that still faces Koreans in Japanese society.}
+nextSentence really
+autolink_nodes 123 124 satelite-embedded elaboration-object-attribute-e  5127
+autolink_nodes 5126 5127 multinuclear Same-Unit  5128
+autolink_nodes 5121 5128 satelite elaboration-additional  5129
+autolink_nodes 5116 5123 satelite elaboration-additional  5130
+create-a-node-here really 55.36 125 { \n\nMany Japanese think it only natural }
+create-a-node-here really 55.118 126 {that the organizations or their members would donate to politicians, the way }
+create-a-node-here really 55.141 127 {many Japanese do, }
+autolink_nodes 126 127 satelite-embedded elaboration-object-attribute-e  5131
+autolink_nodes 125 5131 nucleus attribution  5132
+create-a-node-here really 55.170 128 {to win favor or support.}
+nextSentence really
+autolink_nodes 5131 128 satelite purpose below 5133
+autolink_nodes 5130 5132 satelite comment  5134
+create-a-node-here really 57.74 129 { \n\nBoth residents' organizations admit to receiving some funding from abroad.}
+nextSentence really
+create-a-node-here really 58.117 130 {\nBut LDP members and supporters of the prepaid card idea tend to speak in innuendo about the JSP's alleged donations, }
+create-a-node-here really 58.131 131 {implying }
+create-a-node-here really 58.200 132 {that North Korean money would be more suspect than South Korean }
+autolink_nodes 131 132 nucleus attribution  5135
+autolink_nodes 130 5135 satelite-embedded elaboration-additional-e  5136
+create-a-node-here really 58.238 133 {because North Korea is communist }
+create-a-node-here really 58.270 134 {and South Korea is an ally.}
+nextSentence really
+autolink_nodes 133 134 multinuclear Contrast  5137
+autolink_nodes 5135 5137 satelite consequence-n  5138
+autolink_nodes 129 5136 nucleus antithesis  5139
+autolink_nodes 5134 5139 satelite interpretation-s  5140
+#disconnect_node 5139 modify
+#autolink_nodes 5134 5139 satelite elaboration-additional  5141
+#collapsed_nodes {5112}
+#collapsed_nodes {5112 5074}
+#UNDID
+#collapsed_nodes {5112}
+#collapsed_nodes {5112 5074}
+#collapsed_nodes {5112 5074 5139}
+#UNDID
+autolink_nodes 5112 5074 satelite elaboration-additional  5141
+disconnect_node 5042 disconnect
+autolink_nodes 44 5042 satelite manner  5142
+#disconnect_node 5066 disconnect
+#UNDID
+#disconnect_node 5066 disconnect
+#UNDID
+#disconnect_node 5066 modify
+#UNDID
+#disconnect_node 5066 modify
+#UNDID
+disconnect_node 5138 disconnect
+autolink_nodes 130 5138 satelite elaboration-additional  5143

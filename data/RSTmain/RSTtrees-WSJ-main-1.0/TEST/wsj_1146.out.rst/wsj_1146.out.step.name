@@ -1,0 +1,1163 @@
+nextSentence really
+create-a-node-here really 2.41 1 {\nThe Polish rat will eat well this winter.}
+nextSentence really
+create-a-node-here really 4.91 2 { \n\nTons of delectably rotting potatoes, barley and wheat will fill damp barns across the land }
+create-a-node-here really 4.147 3 {as thousands of farmers turn the state's buyers away.}
+nextSentence really
+autolink_nodes 2 3 satelite circumstance  5001
+#autolink_nodes 1 5001 nucleus cause  5002
+#UNDID
+#autolink_nodes 5001 1 satelite consequence-s  5002
+#UNDID
+#autolink_nodes 5001 1 satelite cause  5002
+#UNDID
+autolink_nodes 5001 1 satelite consequence-s  5002
+create-a-node-here really 5.40 4 {\nMany a piglet won't be born as a result,}
+create-a-node-here really 5.93 5 { and many a ham will never hang in a butcher shop.}
+#autolink_nodes 5 4 multinuclear List  5003
+#autolink_nodes 5002 5003 satelite consequence-s  5004
+#UNDID
+#UNDID
+autolink_nodes 4 5 multinuclear Consequence  5003
+autolink_nodes 5002 5003 satelite consequence-s  5004
+create-a-node-here really 6.26 6 {\nBut with inflation raging,}
+create-a-node-here really 6.120 7 { grain in the barn will still be a safer bet for the private farmer than money in the bank.}
+nextSentence really
+autolink_nodes 6 7 nucleus circumstance  5005
+autolink_nodes 5004 5005 satelite explanation-argumentative  5006
+create-a-node-here really 8.71 8 { \n\nOnce again, the indomitable peasant holds Poland's future in his hands.}
+nextSentence really
+autolink_nodes 5006 8 nucleus interpretation-n  5007
+create-a-node-here really 9.72 9 {\nUntil his labor can produce a profit in this dying and distorted system,}
+create-a-node-here really 9.140 10 { even Solidarity's sympathetic new government won't win him over.}
+nextSentence really
+autolink_nodes 9 10 nucleus condition  5008
+autolink_nodes 5007 5008 satelite elaboration-additional  5009
+create-a-node-here really 10.36 11 {\nIn coming months, emergency food aid}
+create-a-node-here really 10.64 12 { moving in from the West}
+create-a-node-here really 10.150 13 { will be the one buffer between a meat-hungry public and a new political calamity.}
+nextSentence really
+autolink_nodes 11 12 satelite-embedded elaboration-additional-e  5010
+autolink_nodes 5010 13 multinuclear Same-Unit  5011
+autolink_nodes 5009 5011 satelite elaboration-additional  5012
+create-a-node-here really 12.82 14 { \n\nFactory workers on strike knocked Poland's Communist bosses off balance last year;}
+#create-a-node-here really 12.139 15 { this year, it was the farmers who brought them down.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 12.116 15 { this year, it was the farmers}
+create-a-node-here really 12.143 16 { who brought them down.}
+autolink_nodes 15 16 satelite-embedded elaboration-object-attribute-e  5013
+autolink_nodes 5013 14 multinuclear Contrast  5014
+create-a-node-here really 13.48 17 {\nIn June, farmers held onto meat, milk and grain,}
+create-a-node-here really 13.105 18 { waiting for July's usual state-directed price rises.}
+nextSentence really
+disconnect_node 5013 disconnect
+autolink_nodes 14 5013 nucleus comparison  5015
+autolink_nodes 17 18 satelite circumstance  5016
+create-a-node-here really 14.36 19 {\nThe Communists froze prices instead.}
+nextSentence really
+create-a-node-here really 15.26 20 {\nThe farmers ran a boycott,}
+create-a-node-here really 15.67 21 { and meat disappeared from the shops.}
+nextSentence really
+#autolink_nodes 20 21 nucleus result  5017
+#UNDID
+#autolink_nodes 20 21 multinuclear Cause-Result  5017
+#UNDID
+#autolink_nodes 20 21 multinuclear Consequence  5017
+#UNDID
+autolink_nodes 20 21 multinuclear Consequence  5017
+#autolink_nodes 19 5017 nucleus problem-solution-n  5018
+#autolink_nodes 5016 5018 satelite elaboration-additional  5019
+#UNDID
+#UNDID
+#autolink_nodes 5017 19 satelite problem-solution-n  5018
+#UNDID
+autolink_nodes 19 5017 nucleus problem-solution-n  5018
+autolink_nodes 5016 5018 nucleus result  5019
+create-a-node-here really 16.42 22 {\nOn Aug. 1, the state tore up its controls,}
+create-a-node-here really 16.70 23 { and food prices leaped.}
+autolink_nodes 22 23 nucleus consequence-n  5020
+autolink_nodes 5020 5019 multinuclear Sequence  5021
+#create-a-node-here really 17.42 24 {\nWithout buffer stocks, inflation exploded.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 17.22 24 {\nWithout buffer stocks,}
+create-a-node-here really 17.46 25 { inflation exploded.}
+nextSentence really
+autolink_nodes 24 25 nucleus circumstance  5022
+autolink_nodes 5020 5022 nucleus result  5023
+autolink_nodes 5015 5021 satelite elaboration-additional  5024
+autolink_nodes 5012 5024 satelite elaboration-additional  5025
+create-a-node-here really 19.114 26 { \n\nThat was when the tame old Peasants' Party, desperate to live through the crisis, broke ranks with the Communists }
+create-a-node-here really 19.191 27 {and joined with Solidarity in the East Bloc's first liberated government.}
+nextSentence really
+autolink_nodes 26 27 multinuclear List  5026
+create-a-node-here really 21.52 28 { \n\nBut by the time Solidarity took office in September,}
+create-a-node-here really 21.77 29 { the damage was done.}
+nextSentence really
+collapsed_nodes {5021}
+autolink_nodes 5024 5026 satelite elaboration-additional  5027
+collapsed_nodes {}
+#autolink_nodes 28 29 nucleus antithesis  5028
+#UNDID
+disconnect_node 5026 disconnect
+autolink_nodes 5021 5026 satelite elaboration-additional  5028
+autolink_nodes 28 29 nucleus circumstance  5029
+autolink_nodes 5026 5029 nucleus concession  5030
+create-a-node-here really 21.101 30 { "Shortageflation," }
+create-a-node-here really 21.140 31 {as economists have come to call it,}
+create-a-node-here really 21.160 32 { had gone hyper.}
+disconnect_node 5030 disconnect
+#disconnect_node 5021 disconnect
+#UNDID
+disconnect_node 5021 disconnect
+autolink_nodes 5026 5021 satelite circumstance  5031
+autolink_nodes 30 31 satelite-embedded attribution-e  5032
+autolink_nodes 32 5032 multinuclear Same-Unit  5033
+create-a-node-here really 22.76 33 {\nThe cost of raising a pig kept bounding ahead of the return for selling one.}
+nextSentence really
+autolink_nodes 5033 33 satelite restatement  5034
+autolink_nodes 5030 5034 satelite explanation-argumentative  5035
+create-a-node-here really 23.25 34 {\nThe farmers stayed angry.}
+nextSentence really
+create-a-node-here really 24.15 35 {\nThey still are.}
+nextSentence really
+autolink_nodes 34 35 multinuclear List  5036
+autolink_nodes 5035 5036 satelite elaboration-additional  5037
+collapsed_nodes {5015}
+collapsed_nodes {5015 5021}
+collapsed_nodes {5015 5021 5031}
+collapsed_nodes {5021 5031}
+collapsed_nodes {}
+collapsed_nodes {5031}
+collapsed_nodes {5031 5015}
+collapsed_nodes {5031 5015 5011}
+autolink_nodes 5025 5037 satelite elaboration-additional  5038
+disconnect_node 5037 disconnect
+collapsed_nodes {5031 5011}
+autolink_nodes 5015 5037 satelite elaboration-additional  5039
+disconnect_node 5036 disconnect
+disconnect_node 34 disconnect
+autolink_nodes 5035 34 nucleus consequence-n  5040
+disconnect_node 5040 disconnect
+#autolink_nodes 34 35 multinuclear List  5041
+#UNDID
+autolink_nodes 34 35 multinuclear List  5041
+collapsed_nodes {5031 5011 5035}
+autolink_nodes 5015 5040 satelite elaboration-additional  5042
+create-a-node-here really 26.102 36 { \n\nAt dawn on a cool day, hundreds travel to the private market in Radzymin, a town not far from Warsaw, }
+create-a-node-here really 26.145 37 {hauling pigs, cattle and sacks of feed }
+create-a-node-here really 26.208 38 {that the state's official buyers can't induce them to sell.}
+autolink_nodes 37 38 satelite-embedded elaboration-object-attribute-e  5043
+autolink_nodes 36 5043 satelite-embedded elaboration-object-attribute-e  5044
+create-a-node-here really 27.44 39 {\nHere, they are searching for a higher price.}
+nextSentence really
+autolink_nodes 5044 39 satelite elaboration-additional  5045
+create-a-node-here really 29.164 40 { \n\nIn a crush of trucks and horse carts on the trodden field, Andrzej Latowski wrestles a screeching, overweight hog into the trunk of a private butcher's Polish Fiat.}
+nextSentence really
+disconnect_node 39 disconnect
+#autolink_nodes 39 5044 nucleus reason  5046
+#UNDID
+autolink_nodes 5044 39 satelite purpose  5046
+create-a-node-here really 29.210 41 { "Of course it's better to sell private," }
+create-a-node-here really 29.222 42 {he says,}
+create-a-node-here really 29.257 43 { as the butcher trundles away. }
+autolink_nodes 41 42 satelite attribution  5047
+autolink_nodes 42 43 satelite temporal-same-time  5048
+autolink_nodes 5047 40 satelite circumstance  5049
+create-a-node-here really 29.303 44 {"Why should anybody want to sell to them?"}
+nextSentence really
+#autolink_nodes 5049 44 satelite interpretation-s  5050
+#UNDID
+autolink_nodes 5049 44 satelite interpretation-s  5050
+autolink_nodes 5046 5050 satelite example  5051
+create-a-node-here really 31.45 45 { \n\nThe young farmer makes money on the few hogs }
+create-a-node-here really 31.63 46 {he sells here.}
+autolink_nodes 45 46 satelite-embedded elaboration-object-attribute-e  5052
+create-a-node-here really 32.18 47 {\nHe won't for long,}
+create-a-node-here really 32.87 48 { because his old state sources of rye and potatoes are drying up.}
+nextSentence really
+autolink_nodes 47 48 satelite reason  5053
+create-a-node-here really 32.111 49 { "There's no feed," }
+create-a-node-here really 32.123 50 {he says.}
+nextSentence really
+autolink_nodes 49 50 satelite attribution  5054
+autolink_nodes 5053 5054 satelite elaboration-additional  5055
+create-a-node-here really 32.161 51 { "You can't buy anything nowadays.}
+nextSentence really
+disconnect_node 5054 disconnect
+autolink_nodes 5054 51 multinuclear List  5056
+create-a-node-here really 33.18 52 {\nI don't know why."}
+nextSentence really
+autolink_nodes 5052 5053 nucleus antithesis  5057
+autolink_nodes 48 5056 satelite elaboration-additional  5058
+autolink_nodes 5050 5057 satelite elaboration-additional  5059
+#disconnect_node 5058 disconnect
+#UNDID
+create-a-node-here really 35.23 53 { \n\nEdward Chojnowski does.}
+#autolink_nodes 52 53 multinuclear Contrast  5060
+#UNDID
+create-a-node-here really 36.64 54 {\nHis truck is parked across the field, in a row of grain sellers.}
+nextSentence really
+create-a-node-here really 37.63 55 {\nLike the others, it is loaded with rye, wheat and oats in sacks}
+create-a-node-here really 37.86 56 { labeled "Asbestos.}
+nextSentence really
+create-a-node-here really 38.18 57 {\nMade in U.S.S.R." }
+disconnect_node 5059 disconnect
+disconnect_node 40 disconnect
+autolink_nodes 40 5046 satelite circumstance  5060
+disconnect_node 5057 disconnect
+disconnect_node 44 disconnect
+disconnect_node 5052 disconnect
+autolink_nodes 5060 5047 satelite elaboration-additional  5061
+autolink_nodes 5047 44 satelite restatement  5062
+autolink_nodes 5062 5052 satelite explanation-argumentative  5063
+disconnect_node 5056 disconnect
+autolink_nodes 5063 5053 nucleus antithesis  5064
+disconnect_node 5054 disconnect
+autolink_nodes 51 52 satelite elaboration-additional  5065
+disconnect_node 52 disconnect
+#autolink_nodes 5054 51 satelite elaboration-additional  5066
+#UNDID
+autolink_nodes 5054 51 satelite elaboration-additional  5066
+autolink_nodes 5053 5066 satelite elaboration-additional below 5067
+autolink_nodes 5066 52 satelite rhetorical-question  5068
+autolink_nodes 55 56 satelite-embedded elaboration-object-attribute-e  5069
+#autolink_nodes 56 57 satelite topic-shift  5070
+#UNDID
+autolink_nodes 56 57 satelite-embedded elaboration-object-attribute-e  5070
+#autolink_nodes 5069 54 satelite circumstance  5071
+#UNDID
+autolink_nodes 54 5069 satelite elaboration-additional  5071
+autolink_nodes 53 5071 satelite elaboration-additional  5072
+disconnect_node 5046 disconnect
+create-a-node-here really 38.58 58 {The farmer at the next truck shouts,}
+create-a-node-here really 38.71 59 { "Wheat! }
+create-a-node-here really 38.85 60 {It's nice!}
+nextSentence really
+create-a-node-here really 38.110 61 { It won't be cheaper!}
+nextSentence really
+create-a-node-here really 38.131 62 { We sell direct!"}
+nextSentence really
+autolink_nodes 59 60 satelite evaluation-s  5073
+autolink_nodes 60 61 multinuclear List  5074
+autolink_nodes 5073 62 satelite elaboration-additional  5075
+autolink_nodes 58 5075 nucleus attribution  5076
+create-a-node-here really 38.197 63 { A heavy, kerchiefed woman runs a handful through her fingers,}
+create-a-node-here really 38.238 64 { and counts him out a pile of zlotys.}
+nextSentence really
+autolink_nodes 63 64 multinuclear List  5077
+autolink_nodes 5076 5077 satelite consequence-s  5078
+create-a-node-here really 40.28 65 { \n\n"Country people breed pigs,"}
+create-a-node-here really 40.53 66 { says Mr. Chojnowski,}
+create-a-node-here really 40.96 67 { leaning against the back of his truck.}
+nextSentence really
+autolink_nodes 66 67 satelite-embedded elaboration-additional-e  5079
+autolink_nodes 65 5079 satelite attribution  5080
+create-a-node-here really 40.137 68 { "They can't buy feed from the state.}
+nextSentence really
+create-a-node-here really 41.19 69 {\nThere isn't enough.}
+nextSentence really
+autolink_nodes 68 69 satelite reason  5081
+autolink_nodes 5080 5081 satelite elaboration-additional  5082
+create-a-node-here really 42.41 70 {\nSome state middlemen come to buy from me.}
+nextSentence really
+create-a-node-here really 43.6 71 {\nI sell}
+create-a-node-here really 43.23 72 { -- a little.}
+nextSentence really
+autolink_nodes 69 70 satelite evidence  5083
+autolink_nodes 71 72 satelite elaboration-additional  5084
+autolink_nodes 70 5084 satelite consequence-s  5085
+create-a-node-here really 44.13 73 {\nI am waiting.}
+nextSentence really
+create-a-node-here really 45.28 74 {\nI have plenty more at home."}
+nextSentence really
+autolink_nodes 73 74 satelite elaboration-additional  5086
+disconnect_node 5081 disconnect
+#autolink_nodes 5080 5081 nucleus concession  5087
+#autolink_nodes 5085 5086 satelite elaboration-additional  5088
+#UNDID
+#disconnect_node 5080 modify
+#autolink_nodes 5081 5080 satelite antithesis  5088
+#UNDID
+#UNDID
+#autolink_nodes 5072 5078 satelite elaboration-additional  5088
+#UNDID
+#UNDID
+#autolink_nodes 5081 5080 satelite concession  5087
+#collapsed_nodes {5031 5011 5035 5077}
+#autolink_nodes 5087 5078 satelite circumstance  5088
+#collapsed_nodes {5031 5011 5035 5077 5078}
+#UNDID
+#UNDID
+autolink_nodes 5080 5078 satelite circumstance  5087
+collapsed_nodes {5031 5011 5035 5078}
+autolink_nodes 5087 5081 satelite antithesis  5088
+autolink_nodes 5072 5088 satelite elaboration-additional  5089
+disconnect_node 5081 disconnect
+autolink_nodes 5087 5081 multinuclear Contrast  5090
+autolink_nodes 5081 5086 satelite elaboration-additional  5091
+create-a-node-here really 47.58 75 { \n\nOn this morning, he doesn't sell much in Radzymin, either.}
+create-a-node-here really 48.62 76 {\nAt closing time, farmers cart out most of what they carted in.}
+nextSentence really
+autolink_nodes 75 76 satelite elaboration-additional  5092
+create-a-node-here really 49.48 77 {\nA private market like this just isn't big enough}
+create-a-node-here really 49.81 78 { to absorb all that business.}
+nextSentence really
+autolink_nodes 77 78 satelite-embedded elaboration-object-attribute-e  5093
+autolink_nodes 5092 5093 satelite explanation-argumentative  5094
+collapsed_nodes {5031 5011 5035 5078 5090}
+autolink_nodes 5089 5094 satelite elaboration-additional  5095
+collapsed_nodes {5031 5011 5035 5078 5090 5064}
+autolink_nodes 5095 5061 multinuclear Contrast  5096
+autolink_nodes 5096 5046 satelite circumstance  5097
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042}
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046}
+autolink_nodes 5097 5025 multinuclear Topic-Drift  5098
+create-a-node-here really 51.22 79 { \n\nThe hulk of Stalinism,}
+create-a-node-here really 51.36 80 { it seems,}
+create-a-node-here really 51.71 81 { will not quickly crumble away.}
+nextSentence really
+autolink_nodes 79 80 satelite-embedded comment-e  5099
+autolink_nodes 81 5099 multinuclear Same-Unit  5100
+#create-a-node-here really 52.45 82 {\nState monopolies will keep on stifling trade,}
+#UNDID
+create-a-node-here really 52.67 82 {\nState monopolies will keep on stifling trade, "free" prices or not,}
+create-a-node-here really 52.107 83 { until something else replaces them.}
+#autolink_nodes 82 83 satelite condition  5101
+#UNDID
+autolink_nodes 82 83 satelite circumstance  5101
+disconnect_node 9 modify
+autolink_nodes 10 9 satelite circumstance  5102
+autolink_nodes 5100 5101 satelite elaboration-additional  5103
+create-a-node-here really 53.97 84 {\nPolish agriculture will need a whole private network of procurement, processing and distribution }
+create-a-node-here really 53.138 85 {-- plus a new manufacturing industry }
+create-a-node-here really 53.203 86 {to supply it with tractors, pesticides, fertilizers and feed.}
+nextSentence really
+autolink_nodes 85 86 satelite-embedded elaboration-object-attribute-e  5104
+#autolink_nodes 84 5104 satelite-embedded elaboration-object-attribute-e  5105
+#UNDID
+autolink_nodes 84 5104 satelite elaboration-additional  5105
+autolink_nodes 5105 5103 satelite circumstance  5106
+#create-a-node-here really 55.38 87 { \n\nThe Communists spent 40 years working }
+#UNDID
+create-a-node-here really 55.30 87 { \n\nThe Communists spent 40 years }
+create-a-node-here really 55.42 88 {working }
+create-a-node-here really 55.56 89 {to ensure }
+create-a-node-here really 55.113 90 {that no such capitalistic structures ever arose here.}
+autolink_nodes 89 90 nucleus attribution  5107
+#autolink_nodes 89 88 nucleus purpose  5108
+#UNDID
+autolink_nodes 88 5107 satelite purpose  5108
+autolink_nodes 87 5108 satelite manner  5109
+create-a-node-here really 56.99 91 {\nBuilding them now will require undergirding from the West, and removal of political deadwood, a job}
+create-a-node-here really 56.139 92 { that Solidarity has barely started.}
+nextSentence really
+autolink_nodes 91 92 satelite-embedded elaboration-object-attribute-e  5110
+autolink_nodes 5110 5109 satelite background  5111
+autolink_nodes 5106 5111 satelite elaboration-additional  5112
+create-a-node-here really 57.60 93 {\nBut Polish agriculture does possess one great asset already:}
+create-a-node-here really 57.84 94 { the private farmer.}
+nextSentence really
+autolink_nodes 93 94 satelite-embedded elaboration-object-attribute-e  5113
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046 5111}
+autolink_nodes 5113 5112 multinuclear Problem-Solution  5114
+create-a-node-here really 59.42 95 { \n\n"We are dealing with real entrepreneurs," }
+create-a-node-here really 59.80 96 {says Antoni Leopold, an economist }
+create-a-node-here really 59.147 97 {who advises Rural Solidarity, the union's countryside offshoot.}
+nextSentence really
+autolink_nodes 96 97 satelite-embedded elaboration-additional-e  5115
+autolink_nodes 95 5115 satelite attribution  5116
+create-a-node-here really 59.177 98 { "There are a lot of them,}
+create-a-node-here really 59.206 99 { and they have property."}
+nextSentence really
+autolink_nodes 98 99 multinuclear List  5117
+autolink_nodes 5116 5117 satelite elaboration-additional  5118
+autolink_nodes 5113 5118 satelite elaboration-additional  5119
+create-a-node-here really 61.16 100 { \n\nPolish peasants,}
+create-a-node-here really 61.50 101 { spurning the collectivizers,}
+create-a-node-here really 61.107 102 { were once a source of shame to orthodox Communists.}
+nextSentence really
+autolink_nodes 100 101 satelite-embedded elaboration-object-attribute-e  5120
+autolink_nodes 102 5120 multinuclear Same-Unit  5121
+create-a-node-here really 62.57 103 {\nNow, among Communist reformers, they are objects of envy.}
+nextSentence really
+autolink_nodes 5121 103 nucleus antithesis  5122
+create-a-node-here really 63.64 104 {\nFood is the reformer's top priority, the key to popular support.}
+nextSentence really
+autolink_nodes 5122 104 satelite explanation-argumentative  5123
+create-a-node-here really 64.26 105 {\nAs the Chinese have shown }
+create-a-node-here really 64.60 106 {and the Soviets are learning,}
+create-a-node-here really 64.86 107 { family farms thrive }
+create-a-node-here really 64.114 108 {where collectives fail.}
+nextSentence really
+autolink_nodes 107 108 multinuclear Contrast  5124
+autolink_nodes 105 106 multinuclear List  5125
+autolink_nodes 5125 5124 nucleus attribution  5126
+autolink_nodes 104 5126 satelite elaboration-additional  5127
+create-a-node-here really 65.10 109 {\nOwnership,}
+create-a-node-here really 65.25 110 { it seems,}
+create-a-node-here really 65.54 111 { is the best fertilizer.}
+nextSentence really
+autolink_nodes 109 110 satelite-embedded comment-e  5128
+autolink_nodes 111 5128 multinuclear Same-Unit  5129
+autolink_nodes 5126 5129 satelite restatement  5130
+#disconnect_node 5130 disconnect
+#UNDID
+create-a-node-here really 66.32 112 {\nThe Poles have had it all along.}
+autolink_nodes 5130 112 satelite elaboration-additional  5131
+create-a-node-here really 68.70 113 { \n\nPoland's 2.7 million small private farms cover 76% of its arable land.}
+nextSentence really
+create-a-node-here really 69.164 114 {\nOn it, a quarter of the country's 39 million people produce three-quarters of its grain, beef, eggs and milk, and nine-tenths of its fruit, vegetables and potatoes.}
+nextSentence really
+autolink_nodes 113 114 satelite elaboration-additional  5132
+create-a-node-here really 70.77 115 {\nLike the Roman Catholic Church, the Polish peasant is a pillar of the nation.}
+nextSentence really
+create-a-node-here really 71.18 116 {\nTry as they might,}
+create-a-node-here really 71.75 117 { the Communists could neither replace nor break him.}
+nextSentence really
+autolink_nodes 116 117 nucleus antithesis  5133
+create-a-node-here really 72.17 118 {\nAnd they did try.}
+nextSentence really
+autolink_nodes 5133 118 satelite elaboration-additional  5134
+autolink_nodes 5134 115 satelite circumstance  5135
+autolink_nodes 115 5132 satelite circumstance  5136
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046 5111 5127}
+autolink_nodes 5123 5135 satelite elaboration-additional  5137
+autolink_nodes 5118 5137 satelite elaboration-additional  5138
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046 5111 5127 5097}
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046 5111 5127 5097 5112}
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046 5127 5097}
+collapsed_nodes {5031 5011 5035 5078 5090 5064 5042 5046 5127 5097 5112}
+autolink_nodes 5098 5114 multinuclear Topic-Drift below 5138
+create-a-node-here really 74.66 119 { \n\nA few miles past Radzymin, a dirt road narrows to a track of sand }
+create-a-node-here really 74.126 120 {and leads into Zalubice, a village of tumbledown farms.}
+#nextSentence really
+#collapsed_nodes {5011 5078 5090 5064 5046 5127 5097 5112}
+#collapsed_nodes {5011 5127 5112}
+#disconnect_node 5097 disconnect
+#collapsed_nodes {5011 5127 5112 5046}
+#UNDID
+#UNDID
+disconnect_node 5097 disconnect
+disconnect_node 5114 disconnect
+collapsed_nodes {5011 5078 5090 5064 5046 5127 5097 5112}
+collapsed_nodes {5011 5127 5112}
+collapsed_nodes {5011 5127 5112 5046}
+#autolink_nodes 5040 5097 satelite example  5139
+#UNDID
+autolink_nodes 5040 5097 satelite elaboration-additional  5139
+collapsed_nodes {5011 5127 5112 5046 5139}
+autolink_nodes 5042 5114 satelite elaboration-additional  5140
+collapsed_nodes {5011 5127 5112 5046 5139 5137}
+autolink_nodes 119 120 multinuclear List  5141
+disconnect_node 5112 disconnect
+autolink_nodes 5119 5112 satelite problem-solution-n  5142
+create-a-node-here really 75.57 121 {\nCzeslaw Pyszkiewicz owns 30 acres in 14 scattered scraps.}
+nextSentence really
+create-a-node-here really 76.67 122 {\nHe grows rye and potatoes for a few hens, five cows and 25 piglets.}
+nextSentence really
+autolink_nodes 121 122 multinuclear List  5143
+create-a-node-here really 77.59 123 {\nIn patched pants and torn shoes, he stands in his barnyard }
+create-a-node-here really 77.121 124 {eyeing the ground with a look both helpless and sardonic.}
+nextSentence really
+autolink_nodes 5141 5143 satelite elaboration-additional  5144
+autolink_nodes 123 124 nucleus circumstance  5145
+create-a-node-here really 79.16 125 { \n\n"It's bad soil,"}
+create-a-node-here really 79.30 126 { he says.}
+nextSentence really
+autolink_nodes 125 126 satelite attribution  5146
+create-a-node-here really 81.29 127 { \n\nUntil 1963, it was good soil.}
+nextSentence really
+create-a-node-here really 82.34 128 {\nThen the state put in a reservoir }
+create-a-node-here really 82.78 129 {to supply the area with drinking water.}
+nextSentence really
+collapsed_nodes {5011 5127 5112 5137}
+disconnect_node 5143 disconnect
+autolink_nodes 128 129 satelite purpose  5147
+autolink_nodes 5147 127 multinuclear Sequence  5148
+create-a-node-here really 83.39 130 {\nFarmers lay down before the bulldozers.}
+create-a-node-here really 84.26 131 {\nTheir protest was ignored.}
+nextSentence really
+disconnect_node 5147 disconnect
+#autolink_nodes 5147 127 satelite temporal-after  5149
+#UNDID
+autolink_nodes 127 5147 nucleus temporal-after  5149
+autolink_nodes 130 131 multinuclear Contrast  5150
+autolink_nodes 5149 5150 satelite consequence-s  5151
+create-a-node-here really 85.51 132 {\nThe dam caused the water level to drop in Zalubice.}
+autolink_nodes 5151 132 nucleus consequence-n  5152
+autolink_nodes 5146 5152 satelite explanation-argumentative  5153
+create-a-node-here really 86.43 133 {\nMr Pyszkiewicz smiles and his brow furrows.}
+nextSentence really
+create-a-node-here really 87.20 134 {\nHe expected as much.}
+nextSentence really
+autolink_nodes 133 134 satelite elaboration-additional  5154
+autolink_nodes 5152 5154 satelite elaboration-additional  5155
+disconnect_node 5151 modify
+autolink_nodes 132 5151 satelite background below 5156
+disconnect_node 5154 modify
+#autolink_nodes 132 5154 satelite comment above 5156
+#UNDID
+autolink_nodes 5156 5154 satelite comment  5157
+autolink_nodes 5143 5145 satelite elaboration-additional  5158
+autolink_nodes 5145 5153 satelite elaboration-additional  5159
+create-a-node-here really 89.77 135 { \n\nIn his lifetime, 47 years, the Communists brought electricity to his village }
+create-a-node-here really 89.129 136 {and piped in drinking water from the reservoir.}
+autolink_nodes 135 136 multinuclear List  5160
+create-a-node-here really 90.10 137 {\nNo phones.}
+nextSentence really
+create-a-node-here really 91.7 138 {\nNo gas.}
+nextSentence really
+autolink_nodes 137 138 multinuclear List  5161
+autolink_nodes 5161 5160 multinuclear Contrast above 5162
+create-a-node-here really 91.51 139 { "We wanted them to build a road here,"}
+create-a-node-here really 91.65 140 { he says.}
+nextSentence really
+autolink_nodes 139 140 satelite attribution  5163
+create-a-node-here really 91.85 141 { "They started,}
+create-a-node-here really 91.114 142 { and then abandoned it."}
+nextSentence really
+autolink_nodes 141 142 multinuclear Sequence  5164
+autolink_nodes 5164 5163 multinuclear Contrast above 5165
+autolink_nodes 5161 5165 multinuclear List below 5165
+create-a-node-here really 91.192 143 { A tractor, his only mechanized equipment, stands in front of the pigsty.}
+nextSentence really
+create-a-node-here really 91.212 144 { "It's Russian.}
+nextSentence really
+create-a-node-here really 92.17 145 {\nGood for nothing.}
+nextSentence really
+create-a-node-here really 93.20 146 {\nParts are a tragedy.}
+nextSentence really
+autolink_nodes 143 144 satelite elaboration-additional  5166
+#autolink_nodes 5166 145 nucleus evaluation-s  5167
+#UNDID
+autolink_nodes 5166 145 nucleus evaluation-n  5167
+create-a-node-here really 94.29 147 {\nEven if I had a lot of money,}
+#create-a-node-here really 94.64 148 { I couldn't buy what I need." }
+#UNDID
+create-a-node-here really 94.63 148 { I couldn't buy what I need."}
+autolink_nodes 147 148 nucleus concession  5168
+autolink_nodes 146 5168 satelite elaboration-additional  5169
+autolink_nodes 5167 5169 satelite explanation-argumentative  5170
+create-a-node-here really 96.57 149 { \n\nThe farmer can say the same for coal, cement, saw blades.}
+nextSentence really
+autolink_nodes 5170 149 satelite elaboration-additional  5171
+disconnect_node 5165 disconnect
+#autolink_nodes 5165 5171 satelite elaboration-additional  5172
+#UNDID
+autolink_nodes 5165 5171 satelite elaboration-additional  5172
+autolink_nodes 5161 5172 multinuclear List below 5172
+disconnect_node 5171 modify
+autolink_nodes 5161 5171 satelite elaboration-additional  5173
+#create-a-node-here really 97.76 150 {\nIn Poland, only 4% of all investment goes toward making things farmers want;}
+#collapsed_nodes {5011 5127 5112 5137 5173}
+#autolink_nodes 5162 150 satelite circumstance  5174
+#UNDID
+#autolink_nodes 5162 150 nucleus circumstance  5174
+#UNDID
+#UNDID
+create-a-node-here really 97.77 150 {\nIn Poland, only 4% of all investment goes toward making things farmers want; }
+collapsed_nodes {5011 5127 5112 5137 5171}
+collapsed_nodes {5011 5127 5112 5137 5171 5173}
+autolink_nodes 5162 150 nucleus background  5174
+create-a-node-here really 97.115 151 {in the West, it is closer to 20%.}
+#autolink_nodes 5174 151 nucleus antithesis  5175
+#UNDID
+autolink_nodes 5174 151 satelite comparison  5175
+collapsed_nodes {5011 5127 5112 5137 5171 5173 5159}
+autolink_nodes 5175 5158 satelite circumstance  5176
+autolink_nodes 5158 5141 satelite circumstance  5177
+create-a-node-here really 98.63 152 {\nThe few big state farms take first crack at what does get made.}
+nextSentence really
+create-a-node-here really 99.65 153 {\nThey use 60% more fertilizer per acre, twice the high-grade feed.}
+nextSentence really
+autolink_nodes 152 153 satelite elaboration-additional  5178
+autolink_nodes 5176 5178 satelite elaboration-additional  5179
+create-a-node-here really 100.61 154 {\nYet their best boast is that they produce 32% of Polish pork.}
+nextSentence really
+autolink_nodes 153 154 satelite antithesis  5180
+create-a-node-here really 102.24 155 { \n\n"I've heard from friends}
+create-a-node-here really 102.63 156 { that state farms are subsidized,"}
+create-a-node-here really 102.90 157 { Mr. Pyszkiewicz says }
+create-a-node-here really 102.150 158 {as his wife, Wieslawa, sets some chairs out in the sun.}
+nextSentence really
+autolink_nodes 155 156 nucleus attribution  5181
+autolink_nodes 5181 157 satelite attribution  5182
+autolink_nodes 157 158 satelite temporal-same-time  5183
+create-a-node-here really 102.179 159 { "We have one near here.}
+nextSentence really
+create-a-node-here really 103.24 160 {\nThere is a lot of waste.}
+nextSentence really
+autolink_nodes 159 160 satelite comment  5184
+autolink_nodes 5182 5184 satelite elaboration-additional  5185
+create-a-node-here really 104.40 161 {\nA private farmer never wastes anything."}
+nextSentence really
+autolink_nodes 161 5185 satelite antithesis  5186
+create-a-node-here really 106.76 162 { \n\nThe state quit shoving peasants onto its subsidized farms over 30 years ago.}
+nextSentence really
+create-a-node-here really 107.40 163 {\nBut it never did let up on the pressure.}
+nextSentence really
+autolink_nodes 162 163 nucleus antithesis  5187
+create-a-node-here really 108.69 164 {\nUntil recently, a farmer with no heir had to will the state his land }
+create-a-node-here really 108.97 165 {to collect his pension.}
+nextSentence really
+autolink_nodes 164 165 satelite purpose  5188
+autolink_nodes 164 165 satelite purpose  5189
+create-a-node-here really 109.53 166 {\nThe pension's size still depends on how much produce }
+create-a-node-here really 109.77 167 {he sells the state.}
+nextSentence really
+#autolink_nodes 166 167 satelite-embedded elaboration-object-attribute-e  5190
+#UNDID
+autolink_nodes 166 167 satelite-embedded elaboration-object-attribute-e  5190
+autolink_nodes 5190 5188 satelite background  5191
+create-a-node-here really 110.36 168 {\nHis allotment of materials also did,}
+create-a-node-here really 110.99 169 { until the state couldn't hold up its end of that bargain.}
+#autolink_nodes 5187 5191 satelite evidence  5192
+#UNDID
+create-a-node-here really 111.45 170 {\nYet the state alone sells seeds and machines.}
+#nextSentence really
+#UNDID
+disconnect_node 5177 disconnect
+collapsed_nodes {5011 5127 5112 5137 5171 5173 5159 5185}
+autolink_nodes 5186 5179 satelite circumstance  5192
+autolink_nodes 5187 5191 satelite evidence  5193
+#autolink_nodes 168 169 satelite circumstance  5194
+#UNDID
+autolink_nodes 5191 168 satelite elaboration-additional  5194
+autolink_nodes 168 169 satelite circumstance  5195
+autolink_nodes 5195 170 nucleus antithesis  5196
+create-a-node-here really 112.24 171 {\nWhen supplies are short,}
+create-a-node-here really 112.90 172 { it often hands them over only in exchange for milk or grain.}
+nextSentence really
+autolink_nodes 171 172 nucleus circumstance  5197
+autolink_nodes 5196 5197 satelite elaboration-additional  5198
+create-a-node-here really 114.107 173 { \n\nA private farmer in Poland is free to buy and sell land, hire help, decide what to grow and how to grow it.}
+create-a-node-here really 115.33 174 {\nHe is free to invest in chickens,}
+create-a-node-here really 115.76 175 { and to fail for lack of chicken wire.}
+nextSentence really
+autolink_nodes 174 175 multinuclear Contrast  5199
+autolink_nodes 173 5199 satelite elaboration-additional  5200
+create-a-node-here really 116.25 176 {\nHe has plenty of freedom }
+create-a-node-here really 116.48 177 {-- but no choices.}
+nextSentence really
+autolink_nodes 176 177 multinuclear Contrast  5201
+autolink_nodes 5201 5200 satelite circumstance  5202
+create-a-node-here really 118.22 178 { \n\n"I'm on my own land," }
+create-a-node-here really 118.48 179 {Mr. Pyszkiewicz says.}
+nextSentence really
+autolink_nodes 178 179 satelite attribution  5203
+create-a-node-here really 118.110 180 { "I don't have to listen to what anybody tells me to do."}
+nextSentence really
+autolink_nodes 5203 180 nucleus consequence-n  5204
+create-a-node-here really 120.13 181 { \n\n"Sometimes," }
+create-a-node-here really 120.32 182 {says his wife,}
+create-a-node-here really 120.63 183 { "we're happy about that."}
+nextSentence really
+autolink_nodes 181 182 satelite-embedded attribution-e  5205
+autolink_nodes 183 5205 multinuclear Same-Unit  5206
+autolink_nodes 5204 5206 satelite evaluation-s  5207
+autolink_nodes 5202 5207 satelite elaboration-additional  5208
+collapsed_nodes {5011 5127 5112 5137 5171 5173 5159 5185 5194}
+autolink_nodes 5208 5193 satelite background  5209
+collapsed_nodes {5011 5127 5112 5137 5171 5173 5185 5194}
+collapsed_nodes {5011 5127 5112 5137 5171 5173 5185 5194 5157}
+disconnect_node 5162 disconnect
+collapsed_nodes {5011 5127 5112 5137 5185 5194 5157}
+collapsed_nodes {5011 5127 5112 5137 5185 5194 5157 5159}
+autolink_nodes 5158 5162 satelite elaboration-additional below 5210
+collapsed_nodes {5011 5127 5112 5137 5185 5194 5157 5159 5171}
+collapsed_nodes {5011 5127 5112 5137 5185 5194 5157 5159 5171 5138}
+#autolink_nodes 5119 5177 satelite elaboration-additional above 5210
+#UNDID
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171}
+autolink_nodes 5135 5177 satelite elaboration-additional  5211
+disconnect_node 5177 modify
+autolink_nodes 5135 5177 satelite example  5212
+autolink_nodes 5192 5209 satelite elaboration-additional  5213
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179}
+autolink_nodes 5119 5213 satelite elaboration-additional below 5214
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213}
+create-a-node-here really 122.24 184 { \n\nBy starving the peasant,}
+create-a-node-here really 122.65 185 { the Communists have starved Poland.}
+autolink_nodes 184 185 nucleus means  5215
+create-a-node-here really 123.73 186 {\nVillages like Zalubice exist in a desert of poor schools and few doctors.}
+nextSentence really
+create-a-node-here really 124.37 187 {\nFarm income is 15% below the average.}
+nextSentence really
+create-a-node-here really 125.33 188 {\nThe young leave, especially girls}
+create-a-node-here really 125.67 189 { who won't milk cows by hand.}
+nextSentence really
+autolink_nodes 188 189 satelite-embedded elaboration-object-attribute-e  5216
+create-a-node-here really 126.51 190 {\nSome men stay, their best friend a bottle of vodka,}
+create-a-node-here really 126.96 191 { but two million acres have gone fallow.}
+nextSentence really
+autolink_nodes 190 191 multinuclear List  5217
+#autolink_nodes 5217 5216 multinuclear List below 5217
+#UNDID
+autolink_nodes 5217 5216 multinuclear List below 5217
+autolink_nodes 5217 187 multinuclear List below 5217
+autolink_nodes 5217 186 multinuclear List below 5217
+autolink_nodes 5215 5217 satelite consequence-s  5218
+create-a-node-here really 127.17 192 {\nWithout machines,}
+create-a-node-here really 127.51 193 { good farms can't get bigger.}
+autolink_nodes 192 193 nucleus circumstance  5219
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5217}
+create-a-node-here really 128.64 194 {\nSo the potato crop, once 47 million tons, is down to 35 million.}
+nextSentence really
+create-a-node-here really 129.36 195 {\nMeat consumption is at 1979's level,}
+create-a-node-here really 129.68 196 { pork production at 1973's,}
+create-a-node-here really 129.96 197 { milk output at 1960's.}
+nextSentence really
+autolink_nodes 196 197 multinuclear List  5220
+autolink_nodes 5220 195 multinuclear List below 5220
+autolink_nodes 5220 194 multinuclear List below 5220
+autolink_nodes 5219 5220 satelite evidence  5221
+create-a-node-here really 131.38 198 { \n\nIf a food crisis undid the Communists,}
+create-a-node-here really 131.83 199 { a food revolution will make Solidarity.}
+nextSentence really
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213}
+autolink_nodes 5218 5221 satelite elaboration-additional  5222
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217}
+autolink_nodes 198 199 nucleus antithesis  5223
+autolink_nodes 5223 5222 satelite background  5224
+create-a-node-here really 132.56 200 {\nThe potential is displayed along every road into Warsaw:}
+create-a-node-here really 132.90 201 { row upon row of greenhouses,}
+create-a-node-here really 132.134 202 { stretching out behind modern mansions }
+create-a-node-here really 132.173 203 {that trumpet their owners' wealth.}
+nextSentence really
+autolink_nodes 202 203 satelite-embedded elaboration-object-attribute-e  5225
+autolink_nodes 201 5225 satelite-embedded elaboration-object-attribute-e  5226
+autolink_nodes 200 5226 satelite-embedded elaboration-object-attribute-e  5227
+create-a-node-here really 133.53 204 {\nVegetables are abundant and full of flavor in Poland,}
+create-a-node-here really 133.94 205 { the pickles and sauerkraut sublime,}
+create-a-node-here really 133.133 206 { the state monopolies long broken.}
+nextSentence really
+autolink_nodes 204 205 multinuclear List  5228
+autolink_nodes 206 5228 multinuclear List  5229
+autolink_nodes 5224 5227 satelite elaboration-additional  5230
+autolink_nodes 5227 5229 satelite elaboration-additional  5231
+create-a-node-here really 134.31 207 {\nGrain, milk and meat come next.}
+nextSentence really
+autolink_nodes 5231 207 satelite elaboration-additional  5232
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139}
+create-a-node-here really 136.85 208 { \n\nA private challenge to the monolithic tractor industry will take more time and money }
+create-a-node-here really 136.112 209 {than Poland can spare,}
+create-a-node-here really 136.176 210 { although a smokehouse or a local dairy can spring up fast.}
+nextSentence really
+autolink_nodes 208 209 satelite comparison  5233
+#autolink_nodes 5233 210 satelite antithesis  5234
+#UNDID
+autolink_nodes 5233 210 satelite comparison  5234
+create-a-node-here really 137.52 211 {\nPoland makes no machinery for a plant on that scale.}
+autolink_nodes 5234 211 satelite elaboration-additional  5235
+create-a-node-here really 138.34 212 {\nSolidarity wants it from the West.}
+nextSentence really
+autolink_nodes 5235 212 multinuclear Problem-Solution  5236
+create-a-node-here really 139.61 213 {\nMaria Stolzman, one of its farm experts, lays it on the line:}
+create-a-node-here really 139.102 214 { "The World Bank will be brought in }
+create-a-node-here really 139.142 215 {to help us destroy the old system."}
+nextSentence really
+autolink_nodes 214 215 satelite purpose  5237
+autolink_nodes 213 5237 nucleus attribution  5238
+autolink_nodes 212 5238 satelite elaboration-additional  5239
+create-a-node-here really 141.37 216 { \n\nFelix Siemienas is destroying it now.}
+nextSentence really
+create-a-node-here really 142.14 217 {\nHe packs pork.}
+nextSentence really
+create-a-node-here really 143.35 218 {\nA law went on the books in January }
+create-a-node-here really 143.65 219 {that let him smoke bacon }
+create-a-node-here really 143.92 220 {without breeding pigs.}
+nextSentence really
+autolink_nodes 219 220 satelite circumstance  5240
+autolink_nodes 218 5240 satelite-embedded elaboration-object-attribute-e  5241
+autolink_nodes 216 217 satelite elaboration-additional  5242
+create-a-node-here really 144.13 221 {\nHe cashed in.}
+nextSentence really
+autolink_nodes 5241 221 nucleus consequence-n  5243
+autolink_nodes 5242 5243 satelite elaboration-additional  5244
+create-a-node-here really 145.47 222 {\nPoland is short on enterprises, not enterprise.}
+nextSentence really
+autolink_nodes 5244 222 nucleus interpretation-n  5245
+create-a-node-here really 147.76 223 { \n\n"I pay a lot to the farmer and five times the state salary to my employees,"}
+create-a-node-here really 147.90 224 { he says.}
+nextSentence really
+autolink_nodes 223 224 satelite attribution  5246
+create-a-node-here really 148.16 225 {\nHe is in Warsaw }
+create-a-node-here really 148.36 226 {to open a shop.}
+nextSentence really
+autolink_nodes 225 226 satelite purpose  5247
+create-a-node-here really 148.65 227 { "I hire transportation,}
+create-a-node-here really 148.119 228 { and my customers have fresh cold cuts every day.}
+nextSentence really
+autolink_nodes 227 228 nucleus result  5248
+autolink_nodes 5247 5248 satelite elaboration-additional  5249
+create-a-node-here really 149.25 229 {\nI don't subsidize anyone.}
+nextSentence really
+create-a-node-here really 150.30 230 {\nEveryone around me lives well.}
+nextSentence really
+create-a-node-here really 151.24 231 {\nYes, my prices are high.}
+nextSentence really
+create-a-node-here really 152.15 232 {\nIf nobody buys,}
+create-a-node-here really 152.44 233 { I bring my prices down.}
+nextSentence really
+autolink_nodes 232 233 nucleus condition  5250
+autolink_nodes 231 5250 nucleus antithesis  5251
+create-a-node-here really 153.16 234 {\nThat's the rule.}
+nextSentence really
+create-a-node-here really 154.19 235 {\nThat's the market."}
+nextSentence really
+autolink_nodes 234 235 multinuclear List  5252
+autolink_nodes 5251 5252 satelite restatement  5253
+disconnect_node 5252 modify
+autolink_nodes 5251 5252 satelite elaboration-additional  5254
+#autolink_nodes 230 5254 multinuclear List  5255
+#UNDID
+#autolink_nodes 229 230 multinuclear List  5255
+#UNDID
+autolink_nodes 229 230 multinuclear Contrast  5255
+autolink_nodes 5246 5249 satelite elaboration-additional  5256
+autolink_nodes 5256 5255 satelite elaboration-additional  5257
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5255}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5255 5249}
+autolink_nodes 5257 5254 satelite elaboration-additional  5258
+autolink_nodes 5245 5258 satelite example  5259
+create-a-node-here really 156.34 236 { \n\nMr. Siemienas is making a fortune }
+create-a-node-here really 156.58 237 {-- $10,000 a month,}
+#create-a-node-here really 156.72 238 { he says.}
+#UNDID
+#create-a-node-here really 156.72 238 { he says.}
+#UNDID
+autolink_nodes 236 237 satelite-embedded elaboration-additional-e  5260
+create-a-node-here really 156.72 238 { he says.}
+autolink_nodes 5260 238 satelite attribution  5261
+#disconnect_node 5254 disconnect
+#UNDID
+create-a-node-here really 157.100 239 {\nHe has bought some trendy Western clothes, and a green Mercedes with an American flag in the window.}
+nextSentence really
+autolink_nodes 5261 239 satelite elaboration-additional  5262
+create-a-node-here really 158.33 240 {\nBut the meat-processing machines }
+create-a-node-here really 158.51 241 {he picked up }
+create-a-node-here really 158.73 242 {are 50 years old.}
+nextSentence really
+autolink_nodes 240 241 satelite-embedded elaboration-object-attribute-e  5263
+autolink_nodes 242 5263 multinuclear Same-Unit  5264
+create-a-node-here really 158.112 243 { "I don't want expensive machines.}
+nextSentence really
+autolink_nodes 5264 243 satelite reason  5265
+create-a-node-here really 159.25 244 {\nIf the situation changes,}
+create-a-node-here really 159.57 245 { I'll get stuck with them."}
+nextSentence really
+autolink_nodes 244 245 nucleus condition  5266
+autolink_nodes 5266 5265 satelite circumstance  5267
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5255 5249 5254}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5255 5254}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5254}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139}
+disconnect_node 5258 disconnect
+autolink_nodes 5262 5258 satelite result  5268
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258}
+autolink_nodes 5245 5268 satelite example  5269
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5265}
+create-a-node-here really 161.16 246 { \n\nThat's politics.}
+nextSentence really
+autolink_nodes 5025 5230 satelite elaboration-additional  5270
+autolink_nodes 5239 5269 satelite elaboration-additional  5271
+create-a-node-here really 162.77 247 {\nBy taking power in a deal with the Peasant Party's onetime Communist stooges,}
+create-a-node-here really 162.129 248 { Solidarity has spooked the rural entrepreneur.}
+nextSentence really
+autolink_nodes 247 248 nucleus means  5272
+create-a-node-here really 163.39 249 {\nRural Solidarity objected, to no avail,}
+create-a-node-here really 163.111 250 { when Solidarity leader Lech Walesa accepted the Peasants' support.}
+nextSentence really
+autolink_nodes 249 250 satelite circumstance  5273
+create-a-node-here really 164.31 251 {\nIt objected again in September }
+create-a-node-here really 164.141 252 {when Prime Minister Tadeusz Mazowiecki reluctantly named a Peasant Party man as his agriculture minister.}
+nextSentence really
+disconnect_node 5235 disconnect
+autolink_nodes 5235 5271 nucleus problem-solution-n  5274
+disconnect_node 5269 disconnect
+disconnect_node 5244 disconnect
+#autolink_nodes 215 5244 satelite elaboration-additional  5275
+#UNDID
+autolink_nodes 5244 5269 nucleus interpretation-n  5275
+autolink_nodes 5238 5275 satelite elaboration-additional  5276
+autolink_nodes 5270 5274 satelite elaboration-additional  5277
+autolink_nodes 251 252 satelite circumstance  5278
+#autolink_nodes 5273 5278 multinuclear Sequence  5279
+#UNDID
+autolink_nodes 5273 5278 multinuclear List  5279
+autolink_nodes 5272 5279 satelite elaboration-additional  5280
+create-a-node-here really 166.85 253 { \n\nBoth the Peasants and Rural Solidarity are forming new political parties for farmers.}
+create-a-node-here really 167.58 254 {\nThe Peasants can make a credible case, against Solidarity,}
+create-a-node-here really 167.120 255 { that hell-bent reform will drive millions from the land.}
+nextSentence really
+autolink_nodes 254 255 satelite-embedded elaboration-object-attribute-e  5281
+autolink_nodes 253 5281 satelite elaboration-additional  5282
+create-a-node-here really 168.52 256 {\nNext Spring, the two will battle in local elections.}
+nextSentence really
+autolink_nodes 5282 5280 satelite background  5283
+create-a-node-here really 169.84 257 {\nBut until then, and probably long afterward, the Communists' apparat of obstruction }
+create-a-node-here really 169.156 258 {-- from the head of the dairy co-op to the village bank manager -- }
+create-a-node-here really 169.205 259 {will stay planted in the Polish countryside.}
+nextSentence really
+autolink_nodes 257 258 satelite-embedded elaboration-additional-e  5284
+autolink_nodes 5284 259 multinuclear Same-Unit  5285
+autolink_nodes 256 5285 nucleus temporal-before  5286
+disconnect_node 256 disconnect
+autolink_nodes 5283 256 satelite elaboration-additional  5287
+autolink_nodes 5285 5287 satelite antithesis  5288
+create-a-node-here really 171.51 260 { \n\n"We know how to get from capitalism to socialism," }
+create-a-node-here really 171.99 261 {Sergiusz Niciporuk is saying one afternoon.}
+nextSentence really
+autolink_nodes 260 261 satelite attribution  5289
+create-a-node-here really 171.161 262 { "We don't know how to get from socialism to capitalism."}
+nextSentence really
+autolink_nodes 5289 262 multinuclear Contrast  5290
+autolink_nodes 5288 5290 satelite explanation-argumentative  5291
+create-a-node-here really 171.266 263 { He farms 12 acres in Grabowiec, two miles from the Soviet border in one of Poland's poorest places.}
+nextSentence really
+create-a-node-here really 172.130 264 {\nNow he is mounting the steps of a stucco building in a nearby village, on a visit to the Communist administrator, the "naczelnik."}
+nextSentence really
+autolink_nodes 5290 263 satelite elaboration-additional  5292
+create-a-node-here really 174.28 265 { \n\n"Many people in Poland hope }
+create-a-node-here really 174.67 266 {this government will break down," }
+create-a-node-here really 174.91 267 {says Mr. Niciporuk,}
+create-a-node-here really 174.154 268 { who belongs to the local council and to Rural Solidarity.}
+nextSentence really
+autolink_nodes 267 268 satelite-embedded elaboration-object-attribute-e  5293
+autolink_nodes 265 266 nucleus attribution  5294
+autolink_nodes 5294 5293 satelite attribution  5295
+disconnect_node 263 disconnect
+#autolink_nodes 264 263 multinuclear List  5296
+#UNDID
+create-a-node-here really 174.197 269 { "That's what the naczelnik counts on.}
+autolink_nodes 5295 269 satelite elaboration-additional  5296
+#create-a-node-here really 175.31 270 {\nHe is our most dangerous enemy.}
+#nextSentence really
+#disconnect_node 269 disconnect
+#autolink_nodes 5295 269 satelite elaboration-additional  5297
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+disconnect_node 5290 disconnect
+autolink_nodes 5290 263 satelite elaboration-additional  5297
+disconnect_node 269 disconnect
+create-a-node-here really 175.31 270 {\nHe is our most dangerous enemy.}
+nextSentence really
+#autolink_nodes 269 270 nucleus evaluation-n  5298
+#UNDID
+autolink_nodes 5295 269 satelite elaboration-additional  5298
+disconnect_node 269 disconnect
+autolink_nodes 269 270 satelite evaluation-s  5299
+autolink_nodes 5299 5295 satelite circumstance  5300
+autolink_nodes 264 5300 satelite elaboration-additional  5301
+create-a-node-here really 176.22 271 {\nEvery time he sees me,}
+create-a-node-here really 176.51 272 { he gets very nervous." }
+autolink_nodes 271 272 nucleus circumstance  5302
+autolink_nodes 5301 5302 satelite elaboration-additional  5303
+create-a-node-here really 178.46 273 {\n\nThe farmer barges into the naczelnik's office.}
+nextSentence really
+create-a-node-here really 179.52 274 {\nA thin man in a gray suit looks up from a newspaper.}
+nextSentence really
+create-a-node-here really 180.19 275 {\nMr. Niciporuk sits.}
+nextSentence really
+create-a-node-here really 181.56 276 {\nAnatol Pawlowski's leg begins jiggling beneath his desk.}
+nextSentence really
+disconnect_node 5302 disconnect
+autolink_nodes 5288 5297 satelite explanation-argumentative  5304
+autolink_nodes 273 274 satelite consequence-s  5305
+autolink_nodes 275 5305 multinuclear Sequence  5306
+autolink_nodes 5306 276 satelite consequence-s  5307
+autolink_nodes 5302 5307 satelite evidence  5308
+create-a-node-here really 183.55 277 { \n\n"Solidarity doesn't care for the good of this region," }
+create-a-node-here really 183.93 278 {he says after a few pleasantries.}
+nextSentence really
+autolink_nodes 277 278 satelite attribution  5309
+create-a-node-here really 183.151 279 { "They want to turn everything upside down in a week.}
+nextSentence really
+#autolink_nodes 5309 279 satelite explanation-argumentative  5310
+#UNDID
+autolink_nodes 5309 279 satelite evidence  5310
+create-a-node-here really 184.33 280 {\nMr. Niciporuk here wants 60 acres}
+create-a-node-here really 184.74 281 { used at the moment by a state farm.}
+autolink_nodes 280 281 satelite-embedded elaboration-object-attribute-e  5311
+create-a-node-here really 185.19 282 {\nHe can't guarantee }
+create-a-node-here really 185.55 283 {that he can use it any better."}
+nextSentence really
+autolink_nodes 282 283 nucleus attribution-n  5312
+create-a-node-here really 187.56 284 { \n\n"I am ready at any moment to compete with a state farm."}
+#nextSentence really
+#UNDID
+#autolink_nodes 5311 5312 satelite antithesis  5313
+#UNDID
+autolink_nodes 5311 5312 satelite elaboration-additional  5313
+disconnect_node 279 modify
+autolink_nodes 5309 279 satelite elaboration-additional  5314
+disconnect_node 279 modify
+autolink_nodes 5309 279 satelite explanation-argumentative  5315
+autolink_nodes 5315 5313 satelite example  5316
+autolink_nodes 5316 284 multinuclear Contrast  5317
+create-a-node-here really 189.30 285 { \n\nThe naczelnik averts his eyes.}
+nextSentence really
+create-a-node-here really 189.55 286 { "What have you got?}
+nextSentence really
+create-a-node-here really 190.19 287 {\nNot even a tractor.}
+nextSentence really
+create-a-node-here really 191.42 288 {\nAnd you want to make wicker baskets, too."}
+nextSentence really
+disconnect_node 284 modify
+autolink_nodes 5316 284 multinuclear Statement-Response  5318
+autolink_nodes 287 288 multinuclear List  5319
+autolink_nodes 5319 286 multinuclear Question-Answer above 5320
+autolink_nodes 5320 285 satelite circumstance  5321
+create-a-node-here really 193.30 289 { \n\n"I can do five things at once }
+create-a-node-here really 193.59 290 {-- to be a businessman."}
+nextSentence really
+autolink_nodes 289 290 satelite restatement  5322
+autolink_nodes 5322 5321 multinuclear Statement-Response  5323
+create-a-node-here really 195.16 291 { \n\n"Big business," }
+create-a-node-here really 195.53 292 {Mr. Pawlowski snorts in English.}
+nextSentence really
+autolink_nodes 291 292 satelite attribution  5324
+#autolink_nodes 5322 5324 satelite comment  5325
+#UNDID
+#autolink_nodes 5322 5324 multinuclear Statement-Response  5325
+#UNDID
+disconnect_node 5322 disconnect
+autolink_nodes 5322 5321 multinuclear Statement-Response  5325
+autolink_nodes 5318 5325 satelite elaboration-additional  5326
+autolink_nodes 5325 5324 satelite comment  5327
+create-a-node-here really 196.24 293 {\nThe farmer stands to go.}
+create-a-node-here really 197.26 294 {\nThe naczelnik stands, too.}
+nextSentence really
+autolink_nodes 293 294 multinuclear List  5328
+autolink_nodes 5326 5308 satelite circumstance  5329
+disconnect_node 5308 disconnect
+autolink_nodes 5301 5308 satelite elaboration-additional  5330
+disconnect_node 5308 disconnect
+disconnect_node 5300 disconnect
+autolink_nodes 5300 5308 satelite elaboration-additional  5331
+create-a-node-here really 199.34 295 { \n\n"I care very much for this post," }
+create-a-node-here really 199.47 296 {he says.}
+nextSentence really
+autolink_nodes 295 296 satelite attribution  5332
+create-a-node-here really 199.78 297 { "Eight years I've had it.}
+nextSentence really
+autolink_nodes 5332 297 satelite elaboration-additional  5333
+create-a-node-here really 200.40 298 {\nA cultural center has been built, shops.}
+nextSentence really
+autolink_nodes 5333 298 satelite consequence-s  5334
+create-a-node-here really 201.52 299 {\nSuddenly, I am not a comfortable man for Solidarity.}
+nextSentence really
+create-a-node-here really 202.29 300 {\nI have accomplished too much.}
+nextSentence really
+create-a-node-here really 203.21 301 {\nThey want to do more.}
+nextSentence really
+autolink_nodes 300 301 nucleus concession  5335
+autolink_nodes 299 5335 satelite explanation-argumentative  5336
+autolink_nodes 5334 5336 nucleus antithesis  5337
+create-a-node-here really 204.26 302 {\nI wish them all the best!"}
+nextSentence really
+autolink_nodes 5337 302 satelite comment  5338
+create-a-node-here really 206.18 303 { \n\nThe farmer leaves.}
+nextSentence really
+create-a-node-here really 207.33 304 {\nAnd the naczelnik shuts his door.}
+nextSentence really
+autolink_nodes 303 304 multinuclear Sequence  5339
+disconnect_node 5280 disconnect
+disconnect_node 5279 disconnect
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5265}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258}
+disconnect_node 5265 disconnect
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258}
+autolink_nodes 5268 5265 multinuclear Contrast  5340
+disconnect_node 5274 disconnect
+disconnect_node 5275 disconnect
+autolink_nodes 5275 5274 satelite circumstance  5341
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230 5140}
+autolink_nodes 5270 5341 satelite elaboration-additional  5342
+#autolink_nodes 5266 246 nucleus interpretation-n  5343
+#UNDID
+autolink_nodes 5266 246 nucleus interpretation-n  5343
+autolink_nodes 5272 5279 satelite elaboration-additional  5344
+#disconnect_node 5274 disconnect
+#disconnect_node 5235 disconnect
+#autolink_nodes 5235 5239 satelite elaboration-additional  5345
+#disconnect_node 5239 modify
+#autolink_nodes 5234 5239 satelite problem-solution-s above 5345
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+disconnect_node 5341 disconnect
+disconnect_node 5274 disconnect
+disconnect_node 5235 disconnect
+autolink_nodes 5235 5239 satelite problem-solution-s  5345
+disconnect_node 5244 disconnect
+disconnect_node 5239 disconnect
+autolink_nodes 5239 5235 satelite problem-solution-n  5346
+autolink_nodes 5244 5346 satelite circumstance  5347
+autolink_nodes 5347 5269 nucleus interpretation-n  5348
+autolink_nodes 5265 5343 satelite elaboration-additional  5349
+disconnect_node 244 disconnect
+disconnect_node 5343 disconnect
+#disconnect_node 245 disconnect
+#UNDID
+disconnect_node 245 disconnect
+autolink_nodes 245 244 satelite condition  5350
+autolink_nodes 5265 5350 satelite elaboration-additional  5351
+autolink_nodes 246 5344 satelite elaboration-general-specific  5352
+autolink_nodes 5344 5304 satelite elaboration-additional  5353
+disconnect_node 5304 disconnect
+disconnect_node 5287 disconnect
+#disconnect_node 5279 disconnect
+#UNDID
+disconnect_node 5344 disconnect
+autolink_nodes 5344 5287 nucleus consequence-n  5354
+autolink_nodes 5304 5354 satelite antithesis  5355
+autolink_nodes 246 5355 satelite elaboration-general-specific  5356
+disconnect_node 5307 disconnect
+autolink_nodes 5331 264 satelite circumstance  5357
+autolink_nodes 5307 5326 satelite elaboration-additional  5358
+autolink_nodes 5357 5358 satelite elaboration-additional  5359
+autolink_nodes 5297 5359 satelite elaboration-additional  5360
+autolink_nodes 5338 5328 satelite circumstance  5361
+autolink_nodes 5361 5339 satelite elaboration-additional  5362
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230 5140 5328}
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230 5140 5328 5334}
+autolink_nodes 5327 5362 satelite elaboration-additional  5363
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230 5140 5328 5334 5340}
+autolink_nodes 5348 5356 satelite elaboration-additional  5364
+collapsed_nodes {5011 5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230 5140 5328 5334 5340 5347}
+autolink_nodes 5270 5364 satelite elaboration-additional  5365
+collapsed_nodes {5112 5185 5194 5157 5159 5171 5138 5179 5213 5221 5217 5232 5139 5258 5230 5140 5328 5334 5340 5347}
+collapsed_nodes {5221 5217 5232 5258 5230 5328 5334 5340 5347}
+collapsed_nodes {5258 5328 5334 5340 5347}
+collapsed_nodes {5258 5328 5334 5340}
+collapsed_nodes {5328 5334}
+collapsed_nodes {5334}
+disconnect_node 9 modify
+autolink_nodes 10 9 satelite condition  5366
+disconnect_node 5074 modify
+autolink_nodes 59 5074 satelite elaboration-additional below 5367
+collapsed_nodes {}
+collapsed_nodes {5362}
+collapsed_nodes {5362 5359}
+collapsed_nodes {5362 5359 5356}
+collapsed_nodes {5362 5359 5356 5340}
+collapsed_nodes {5362 5359 5356 5340 5364}
+collapsed_nodes {5362 5359 5356 5340 5364 5230}
+collapsed_nodes {5362 5359 5356 5340 5364 5230 5140}
+collapsed_nodes {5362 5359 5356 5340 5364 5230}
+collapsed_nodes {5362 5359 5356 5340 5364}
+collapsed_nodes {}

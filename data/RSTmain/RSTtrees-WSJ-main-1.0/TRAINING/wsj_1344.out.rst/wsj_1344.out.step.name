@@ -1,0 +1,47 @@
+nextSentence really
+create-a-node-here really 2.132 1 {\nLucas Industries PLC, a British maker of industrial parts and systems, reported a 28% rise in pretax profit for the year to July 31,}
+create-a-node-here really 2.217 2 { helped in particular by a 32% jump in operating profit at its aerospace division.}
+nextSentence really
+autolink_nodes 1 2 satelite reason  5001
+nextSentence really
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 4.59 3 { \n\nPretax profit in the latest year climbed to #187.1 million }
+autolink_nodes 5001 3 satelite elaboration-additional  5002
+create-a-node-here really 4.79 4 {($297.1 million) }
+autolink_nodes 3 4 satelite-embedded elaboration-additional-e  5003
+#create-a-node-here really 4.103 5 {from #146.3 million (}
+#autolink_nodes 5003 5 multinuclear Same-Unit  5004
+#UNDID
+#UNDID
+create-a-node-here really 4.102 5 {from #146.3 million }
+autolink_nodes 5003 5 multinuclear Same-Unit  5004
+create-a-node-here really 4.123 6 {($232.3 million). }
+autolink_nodes 5 6 satelite-embedded elaboration-additional-e  5005
+nextSentence really
+nextSentence really
+create-a-node-here really 6.124 7 {\n\nProfit after taxes and minority interests but before extraordinary items climbed 27% to #143.4 million from #112.5 million, }
+autolink_nodes 5004 7 multinuclear List above 5006
+nextSentence really
+create-a-node-here really 6.172 8 {with earnings per share rising to 85.1 pence }
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5007
+nextSentence really
+nextSentence really
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 6.182 9 {($1.35)}
+autolink_nodes 8 9 satelite-embedded elaboration-additional-e  5008
+create-a-node-here really 6.202 10 { from 79.4 pence }
+autolink_nodes 5008 10 multinuclear Same-Unit  5009
+create-a-node-here really 7.0 11 {($1.26). \n}
+autolink_nodes 10 11 satelite-embedded elaboration-additional-e  5010
+create-a-node-here really 8.58 12 {\nThe results were at the upper end of market expectations, }
+autolink_nodes 5002 12 satelite evaluation-s  5011
+create-a-node-here really 9.0 13 {which ranged from #185 million to #188 million. \n}
+nextSentence really
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5012
+collapsed_nodes {5011}
+nextSentence really
+collapsed_nodes {}

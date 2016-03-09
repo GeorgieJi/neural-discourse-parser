@@ -1,0 +1,139 @@
+nextSentence really
+create-a-node-here really 2.58 1 {\nA frozen mountaintop in Tibet may offer an important clue }
+create-a-node-here really 2.107 2 {about whether the Earth is warming perilously.}
+nextSentence really
+create-a-node-here really 4.144 3 { \n\nResearchers at Ohio State University and Lanzhou Institute of Glaciology and Geocryology in China have analyzed samples of glacial ice in Tibet }
+create-a-node-here really 4.155 4 {and say }
+create-a-node-here really 4.298 5 {temperatures there have been significantly higher on average over the past half-century than in any similar period in the past 10,000 years.}
+nextSentence really
+create-a-node-here really 6.51 6 { \n\nThe ice samples are an important piece of evidence }
+create-a-node-here really 6.74 7 {supporting theories }
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+#autolink_nodes 3 4 satelite attribution  5002
+#UNDID
+autolink_nodes 4 5 nucleus attribution  5002
+#autolink_nodes 3 5002 multinuclear Interpretation  5003
+#UNDID
+autolink_nodes 3 5002 multinuclear Interpretation  5003
+autolink_nodes 5001 5003 satelite elaboration-additional  5004
+create-a-node-here really 6.133 8 {that the Earth has warmed considerably in recent times, }
+create-a-node-here really 6.178 9 {largely because of pollutants in the air, }
+create-a-node-here really 7.0 10 {and will warm far more in the century ahead.\n}
+#create-a-node-here really 7.37 11 {A substantial warming would melt }
+#UNDID
+create-a-node-here really 7.73 11 {A substantial warming would melt some of the Earth's polar ice caps, }
+create-a-node-here really 7.109 12 {raising the level of the oceans }
+create-a-node-here really 7.180 13 {and causing widespread flooding of heavily populated coastal areas.}
+nextSentence really
+autolink_nodes 6 7 satelite-embedded elaboration-additional-e  5005
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5006
+autolink_nodes 8 9 satelite consequence-n  5007
+autolink_nodes 5007 10 multinuclear Same-Unit  5008
+autolink_nodes 11 12 multinuclear Sequence  5009
+autolink_nodes 5009 13 multinuclear Sequence below 5009
+autolink_nodes 10 5009 satelite elaboration-additional  5010
+autolink_nodes 5003 5005 satelite elaboration-additional  5011
+create-a-node-here really 9.21 14 { \n\n"If you can use data }
+create-a-node-here really 9.67 15 {to reconstruct what happened in the past, }
+create-a-node-here really 9.133 16 {you have much more confidence in predictions for the future," }
+create-a-node-here really 9.194 17 {said Lonnie Thompson, a research scientist at Ohio State }
+create-a-node-here really 9.239 18 {who dug for and analyzed the ice samples.}
+nextSentence really
+autolink_nodes 14 15 satelite-embedded purpose-e  5012
+autolink_nodes 5012 16 nucleus condition  5013
+autolink_nodes 5013 17 satelite attribution  5014
+autolink_nodes 17 18 satelite elaboration-additional  5015
+collapsed_nodes {6}
+autolink_nodes 5005 5014 satelite comment  5016
+create-a-node-here really 11.51 19 { \n\nTo compare temperatures over the past 10,000 years,}
+create-a-node-here really 11.130 20 { researchers analyzed the changes in concentrations of two forms of oxygen.}
+nextSentence really
+create-a-node-here really 12.53 21 {\nThese measurements can indicate temperature changes, }
+create-a-node-here really 12.75 22 {researchers said, }
+create-a-node-here really 12.141 23 {because the rates of evaporation of these oxygen atoms differ }
+create-a-node-here really 12.168 24 {as temperatures change.}
+nextSentence really
+autolink_nodes 19 20 nucleus purpose  5017
+autolink_nodes 21 22 satelite-embedded attribution-e  5018
+autolink_nodes 5018 23 satelite explanation-argumentative  5019
+autolink_nodes 23 24 multinuclear Temporal-Same-Time  5020
+autolink_nodes 5017 5019 satelite elaboration-additional  5021
+autolink_nodes 5016 5021 satelite elaboration-additional  5022
+create-a-node-here really 14.101 25 { \n\nAnalysis of ice from the Dunde ice cap, a glacial plateau in Tibet 17,000 feet above sea level, show }
+create-a-node-here really 14.217 26 {that average temperatures were higher in 1937-87 than in any other 50-year period since before the last Ice Age,}
+create-a-node-here really 14.240 27 { Mr. Thompson said.}
+nextSentence really
+create-a-node-here really 15.28 28 {\nSome climate models project }
+create-a-node-here really 15.87 29 {that interior regions of Asia would be among the first }
+create-a-node-here really 15.122 30 {to heat up in a global warming }
+create-a-node-here really 15.159 31 {because they are far from oceans,}
+create-a-node-here really 15.199 32 { which moderate temperature changes.}
+nextSentence really
+#autolink_nodes 25 26 satelite-embedded elaboration-additional-e  5023
+#UNDID
+#autolink_nodes 25 26 satelite-embedded elaboration-additional-e  5023
+#autolink_nodes 5023 27 satelite attribution  5024
+#autolink_nodes 5019 5024 satelite example  5025
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 25 26 nucleus attribution  5023
+autolink_nodes 5023 27 satelite attribution  5024
+autolink_nodes 5019 5024 satelite example  5025
+autolink_nodes 28 29 nucleus attribution  5026
+autolink_nodes 29 30 satelite-embedded elaboration-object-attribute-e below 5027
+#autolink_nodes 30 31 satelite consequence-n  5028
+#UNDID
+autolink_nodes 30 31 satelite-embedded consequence-n-e  5028
+autolink_nodes 31 32 satelite elaboration-additional  5029
+create-a-node-here really 17.49 33 { \n\nBut the ice-core samples aren't definitive proof }
+create-a-node-here really 17.139 34 {that the so-called greenhouse effect will lead to further substantial global heating, }
+create-a-node-here really 18.0 35 {Mr. Thompson acknowledged.\n}
+create-a-node-here really 18.37 36 {According to greenhouse theories,}
+create-a-node-here really 18.77 37 { increased carbon dioxide emissions,}
+create-a-node-here really 18.124 38 { largely caused by burning of fossil fuels,}
+create-a-node-here really 18.161 39 { will cause the Earth to warm up }
+create-a-node-here really 18.227 40 {because carbon dioxide prevents heat from escaping into space.}
+nextSentence really
+autolink_nodes 33 34 satelite-embedded elaboration-object-attribute-e  5030
+autolink_nodes 5030 35 satelite attribution  5031
+autolink_nodes 36 37 nucleus attribution  5032
+autolink_nodes 37 38 satelite-embedded elaboration-object-attribute-e below 5033
+autolink_nodes 5033 39 multinuclear Same-Unit  5034
+autolink_nodes 5034 40 satelite consequence-n below 5035
+autolink_nodes 5024 5026 satelite elaboration-additional  5036
+autolink_nodes 5026 5031 satelite elaboration-additional  5037
+autolink_nodes 5031 5032 satelite elaboration-additional  5038
+create-a-node-here really 20.12 41 { \n\nSkeptics say}
+create-a-node-here really 20.22 42 { that }
+create-a-node-here really 20.45 43 {if that's the case,}
+create-a-node-here really 20.121 44 { temperatures should have risen fairly uniformly over the past century, }
+create-a-node-here really 20.167 45 {reflecting the increase in carbon dioxide.}
+nextSentence really
+create-a-node-here really 21.216 46 {\nInstead, the Dunde ice-core record shows increasing temperatures from 1900 through the early 1950s, decreasing temperatures from the late 1950s through the mid-1970s, then higher temperatures again through last year.}
+nextSentence really
+create-a-node-here really 22.55 47 {\nOther temperature data show similar unexplained swings.}
+nextSentence really
+create-a-node-here really 24.52 48 { \n\n"Climate varies drastically due to natural causes," }
+create-a-node-here really 24.74 49 {said Mr. Thompson.}
+nextSentence really
+create-a-node-here really 25.12 50 {\nBut he said }
+create-a-node-here really 25.102 51 {ice samples from Peru, Greenland and Antarctica all show substantial signs of warming.}
+nextSentence really
+autolink_nodes 41 42 nucleus attribution  5039
+autolink_nodes 43 44 nucleus-embedded condition-e  5040
+autolink_nodes 44 45 satelite-embedded elaboration-object-attribute-e below 5041
+autolink_nodes 5039 5040 multinuclear Same-Unit  5042
+autolink_nodes 5042 46 multinuclear Contrast above 5043
+autolink_nodes 47 48 satelite example  5044
+autolink_nodes 48 49 satelite attribution  5045
+autolink_nodes 50 51 nucleus attribution  5046
+autolink_nodes 5045 5046 multinuclear Contrast  5047
+autolink_nodes 5043 5044 satelite elaboration-additional  5048
+collapsed_nodes {6 5043}
+autolink_nodes 5032 5048 satelite elaboration-additional  5049
+collapsed_nodes {6}
+collapsed_nodes {6 5004}
+collapsed_nodes {}
+collapsed_nodes {5004}
+collapsed_nodes {}

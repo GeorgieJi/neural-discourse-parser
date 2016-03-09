@@ -1,0 +1,102 @@
+nextSentence really
+create-a-node-here really 2.31 1 {\nMoody's Investors Service said }
+showText really
+create-a-node-here really 2.131 2 {it reduced its rating on $165 million of subordinated debt of this Beverly Hills, Calif., thrift,}
+create-a-node-here really 3.0 3 { citing turmoil in the market for low-grade, high-yield securities.\n}
+create-a-node-here really 3.19 4 {The agency said }
+create-a-node-here really 3.95 5 {it reduced its rating on the thrift's subordinated debt to B-2 from Ba-2 }
+create-a-node-here really 4.0 6 {and will keep the debt under review for possible further downgrade.\n}
+create-a-node-here really 5.0 7 {Columbia Savings is a major holder of so-called junk bonds.\n}
+create-a-node-here really 5.36 8 {New federal legislation requires }
+create-a-node-here really 6.0 9 {that all thrifts divest themselves of such speculative securities over a period of years.\n}
+create-a-node-here really 6.78 10 {Columbia Savings officials weren't available for comment on the downgrade. }
+autolink_nodes 2 1 satelite attribution  5001
+autolink_nodes 2 3 satelite reason below 5002
+autolink_nodes 6 5 multinuclear List  5003
+autolink_nodes 5003 4 satelite attribution  5004
+autolink_nodes 9 8 satelite attribution  5005
+autolink_nodes 7 5004 multinuclear List  5006
+autolink_nodes 5001 5006 satelite elaboration-general-specific  5007
+collapsed_nodes {5006}
+autolink_nodes 5007 5005 satelite background  5008
+autolink_nodes 5008 10 satelite elaboration-additional  5009
+create-a-node-here really 8.29 11 {\n\nFRANKLIN SAVINGS ASSOCIATION }
+#create-a-node-here really 8.48 12 {(Ottawa, Kan.) }
+#UNDID
+create-a-node-here really 8.51 12 {(Ottawa, Kan.) -- }
+create-a-node-here really 8.91 13 {Moody's Investors Service Inc. said }
+create-a-node-here really 9.0 14 {it downgraded its rating to B-2 from Ba-3 on less than $20 million of this thrift's senior subordinated notes.\n}
+create-a-node-here really 9.28 15 {The rating concern said }
+create-a-node-here really 9.138 16 {Franklin's "troubled diversification record in the securities business" was one reason for the downgrade, }
+create-a-node-here really 9.241 17 {citing the troubles at its L.F. Rothschild subsidiary and the possible sale of other subsidiaries. }
+create-a-node-here really 9.271 18 {"They perhaps had concern }
+create-a-node-here really 9.315 19 {that we were getting out of all these," }
+create-a-node-here really 9.358 20 {said Franklin President Duane H. Hall. }
+create-a-node-here really 9.371 21 {"I think }
+create-a-node-here really 10.0 22 {it was a little premature on their part." \n}
+nextSentence really
+change_constit 12 Point-of-Origin
+change_constit 11 SectionTitle
+autolink_nodes 14 13 satelite attribution  5010
+autolink_nodes 18 19 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5011 20 satelite attribution  5012
+autolink_nodes 22 21 satelite attribution  5013
+#autolink_nodes 15 16 nucleus attribution  5014
+#UNDID
+autolink_nodes 16 15 satelite attribution  5014
+autolink_nodes 5014 17 satelite-embedded consequence-s-e  5015
+autolink_nodes 5010 5015 multinuclear Reason  5016
+#autolink_nodes 5012 5013 satelite interpretation-s  5017
+#UNDID
+autolink_nodes 5012 5013 satelite evaluation-s  5017
+autolink_nodes 5016 5017 satelite interpretation-s  5018
+collapsed_nodes {5006 5017}
+change_constit 5018 SectionText
+autolink_nodes 12 11 multinuclear TextualOrganization  5019
+autolink_nodes 5019 5018 multinuclear TextualOrganization below 5019
+change_constit 5009 SectionText
+collapsed_nodes {5006 5017 5005}
+collapsed_nodes {5006 5017 5005 5016}
+collapsed_nodes {5017 5016}
+collapsed_nodes {5017 5016}
+collapsed_nodes {5017 5016 5005}
+collapsed_nodes {5017 5016 5005 5006}
+collapsed_nodes {5017 5016}
+collapsed_nodes {5017 5016}
+collapsed_nodes {5017 5016 5005}
+collapsed_nodes {5017 5016 5005 5006}
+change_constit 5009 SectionTitle
+#autolink_nodes 5019 5009 multinuclear TextualOrganization above 5020
+#UNDID
+#change_constit 5009 SectionTitle
+#UNDID
+change_constit 5009 SectionText
+autolink_nodes 5019 5009 multinuclear TextualOrganization above 5020
+collapsed_nodes {5017 5016 5005}
+collapsed_nodes {5017 5016}
+disconnect_node 3 disconnect
+autolink_nodes 2 3 satelite result below 5021
+disconnect_node 5006 disconnect
+disconnect_node 5005 disconnect
+disconnect_node 10 disconnect
+disconnect_node 7 disconnect
+autolink_nodes 5004 7 satelite background  5022
+autolink_nodes 5022 5005 satelite result  5023
+autolink_nodes 5023 10 satelite elaboration-additional  5024
+autolink_nodes 5001 5024 satelite summary-n  5025
+collapsed_nodes {5017 5016}
+collapsed_nodes {}
+disconnect_node 17 disconnect
+autolink_nodes 5014 17 satelite result  5026
+disconnect_node 15 disconnect
+autolink_nodes 5026 15 satelite attribution  5027
+#disconnect_node 5025 disconnect
+#UNDID
+#change_constit 5025 
+#UNDID
+disconnect_node 5025 disconnect
+collapsed_nodes {5024}
+#autolink_nodes 5019 5025 multinuclear Topic-Shift above 5028
+#UNDID
+autolink_nodes 5019 5025 multinuclear Topic-Shift above 5028
+collapsed_nodes {}

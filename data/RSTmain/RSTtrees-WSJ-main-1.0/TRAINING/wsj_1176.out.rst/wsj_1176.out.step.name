@@ -1,0 +1,82 @@
+nextSentence really
+create-a-node-here really 2.20 1 {\nDunkin' Donuts Inc.,}
+create-a-node-here really 2.86 2 { battling a takeover proposal by Canada's DD Acquisition Corp.,}
+create-a-node-here really 2.95 3 { said }
+create-a-node-here really 2.147 4 {that its directors will evaluate takeover offers }
+create-a-node-here really 2.171 5 {submitted by Nov. 10.}
+nextSentence really
+create-a-node-here really 4.16 6 { \n\nDunkin' Donuts, }
+#create-a-node-here really 4.43 7 {based in Randolph, Mass.}
+#nextSentence really
+#create-a-node-here really 4.64 8 {, previously said }
+#autolink_nodes 1 2 satelite-embedded elaboration-additional-e  5001
+#autolink_nodes 5001 3 multinuclear Same-Unit  5002
+#autolink_nodes 5002 4 satelite attribution  5003
+#UNDID
+#autolink_nodes 5002 4 nucleus attribution  5003
+#autolink_nodes 4 5 satelite elaboration-object-attribute below 5004
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 4.45 7 {based in Randolph, Mass., }
+create-a-node-here really 4.64 8 {previously said }
+create-a-node-here really 4.98 9 {it would explore "alternatives,}
+autolink_nodes 1 2 satelite-embedded elaboration-additional-e  5001
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+autolink_nodes 5002 4 nucleus attribution  5003
+autolink_nodes 5003 5 satelite elaboration-object-attribute  5004
+autolink_nodes 6 7 satelite-embedded elaboration-object-attribute-e  5005
+autolink_nodes 5005 8 multinuclear Same-Unit  5006
+autolink_nodes 5006 9 nucleus attribution  5007
+create-a-node-here really 4.149 10 {" including a leveraged buy-out of the company, }
+create-a-node-here really 4.204 11 {but hadn't set a date for submission of proposals. }
+create-a-node-here really 6.69 12 {\n\nDunkin' Donuts Chairman and Chief Executive Robert M. Rosenberg said }
+create-a-node-here really 6.100 13 {"a sale is one alternative }
+create-a-node-here really 6.123 14 {being considered," }
+autolink_nodes 9 10 satelite example below 5008
+autolink_nodes 5008 11 multinuclear List  5009
+autolink_nodes 12 13 nucleus attribution  5010
+autolink_nodes 13 14 satelite elaboration-additional below 5011
+autolink_nodes 5004 5007 satelite elaboration-additional  5012
+autolink_nodes 5007 5010 satelite elaboration-additional  5013
+create-a-node-here really 6.140 15 {but he added }
+create-a-node-here really 6.209 16 {the board hasn't decided whether to sell the doughnut franchiser.}
+nextSentence really
+create-a-node-here really 8.16 17 { \n\nDD Acquisition, }
+create-a-node-here really 8.118 18 {jointly owned by Unicorp Canada Corp. 's Kingsbridge Capital Group unit and Cara Operations Ltd., }
+create-a-node-here really 8.158 19 {has made a $45-a-share tender offer }
+create-a-node-here really 8.204 20 {valued at $268 million for Dunkin' Donuts.}
+nextSentence really
+create-a-node-here really 10.104 21 { \n\nDunkin' Donuts' announcement followed DD Acquisition's request to the Delaware Court of Chancery Monday }
+create-a-node-here really 10.161 22 {to set a trial date for its suit against the company.}
+nextSentence really
+create-a-node-here really 11.29 23 {\nThe trial had been postponed }
+create-a-node-here really 11.104 24 {to allow Dunkin' Donuts to seek alternatives to DD Acquisition's offer.}
+nextSentence really
+autolink_nodes 15 16 nucleus attribution  5014
+autolink_nodes 5010 5014 satelite elaboration-additional  5015
+autolink_nodes 17 18 satelite-embedded elaboration-object-attribute-e  5016
+autolink_nodes 5016 19 multinuclear Same-Unit  5017
+autolink_nodes 19 20 satelite elaboration-object-attribute  5018
+autolink_nodes 5015 5017 satelite elaboration-additional  5019
+#autolink_nodes 21 22 satelite-embedded elaboration-object-attribute-e  5020
+#UNDID
+autolink_nodes 21 22 satelite-embedded elaboration-object-attribute-e  5020
+autolink_nodes 23 24 satelite purpose  5021
+autolink_nodes 5017 5020 satelite elaboration-additional  5022
+autolink_nodes 22 5021 satelite elaboration-additional  5023
+collapsed_nodes {5012}
+collapsed_nodes {}
+collapsed_nodes {}
+disconnect_node 5 disconnect
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e below 5024
+disconnect_node 14 disconnect
+autolink_nodes 13 14 satelite-embedded elaboration-additional-e below 5025
+disconnect_node 20 disconnect
+autolink_nodes 19 20 satelite-embedded elaboration-object-attribute-e  5026
+collapsed_nodes {5012}
+collapsed_nodes {}

@@ -1,0 +1,76 @@
+nextSentence really
+create-a-node-here really 2.133 1 {\nA group of shareholders filed suit against Imperial Corp. of America, Drexel Burnham Lambert Inc., First Executive Corp. and others, }
+create-a-node-here really 2.201 2 {charging them with artificially inflating Imperial's stock price }
+autolink_nodes 1 2 satelite elaboration-additional  5001
+create-a-node-here really 2.239 3 {to protect certain major investors.}
+nextSentence really
+autolink_nodes 2 3 satelite purpose  5002
+create-a-node-here really 4.14 4 { \n\nThe complaint,}
+autolink_nodes 5001 4 satelite summary-n  5003
+create-a-node-here really 4.51 5 { filed in federal district court, }
+autolink_nodes 4 5 satelite-embedded elaboration-additional-e  5004
+create-a-node-here really 4.139 6 {accuses Imperial and other defendants of issuing false and misleading financial data.}
+nextSentence really
+autolink_nodes 5004 6 multinuclear Same-Unit  5005
+create-a-node-here really 5.16 7 {\nIt also charges }
+autolink_nodes 5005 7 satelite elaboration-additional  5006
+create-a-node-here really 5.122 8 {that Imperial, the holding company for Imperial Savings & Loan, experienced major losses and writedowns}
+autolink_nodes 7 8 nucleus attribution  5007
+create-a-node-here really 5.232 9 { because of improper assessment of the risks of junk-bond investments and wholesale consumer loan packages.}
+nextSentence really
+autolink_nodes 8 9 satelite result below 5008
+create-a-node-here really 6.35 10 {\nThe suit seeks unspecified damages.}
+nextSentence really
+autolink_nodes 5006 10 satelite elaboration-additional  5009
+create-a-node-here really 8.25 11 { \n\nImperial is in the midst }
+autolink_nodes 5009 11 satelite background  5010
+create-a-node-here really 8.64 12 {of reducing its junk-bond holdings }
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e  5011
+create-a-node-here really 8.119 13 {and getting out of the investment banking business }
+autolink_nodes 12 13 multinuclear List  5012
+create-a-node-here really 8.175 14 {in order to return to traditional thrift activities.}
+nextSentence really
+autolink_nodes 13 14 satelite purpose  5013
+create-a-node-here really 10.59 15 { \n\nThe derivative suit is similar to a class-action complaint }
+autolink_nodes 5010 15 satelite elaboration-additional  5014
+create-a-node-here really 10.87 16 {filed earlier this year.}
+nextSentence really
+autolink_nodes 15 16 satelite-embedded elaboration-object-attribute-e  5015
+create-a-node-here really 11.29 17 {\nImperial said in a statement }
+autolink_nodes 5015 17 satelite elaboration-additional  5016
+create-a-node-here really 11.148 18 {it expects other complaints to be filed in the wake of the original suit and a recent article in Barron's magazine }
+autolink_nodes 17 18 nucleus attribution  5017
+create-a-node-here really 11.191 19 {that focused on the company's problems.}
+nextSentence really
+autolink_nodes 18 19 satelite-embedded elaboration-additional-e below 5018
+create-a-node-here really 13.36 20 { \n\nAlthough an Imperial spokesman said }
+autolink_nodes 5016 20 satelite elaboration-additional  5019
+create-a-node-here really 13.101 21 {the company hadn't yet been served with the derivative suit, }
+autolink_nodes 20 21 nucleus attribution  5020
+create-a-node-here really 13.143 22 {he reiterated the company's statement }
+autolink_nodes 5020 22 nucleus antithesis  5021
+create-a-node-here really 13.216 23 {that it would vigorously defend itself against the class-action suit.}
+nextSentence really
+autolink_nodes 22 23 satelite-embedded elaboration-object-attribute-e below 5022
+create-a-node-here really 14.45 24 {\nSpokesmen at Drexel and First Executive said }
+autolink_nodes 5021 24 satelite elaboration-additional  5023
+create-a-node-here really 14.100 25 {the companies hadn't yet been served with the suit.}
+nextSentence really
+autolink_nodes 24 25 nucleus attribution  5024
+create-a-node-here really 16.23 26 { \n\nIn a separate complaint}
+autolink_nodes 5023 26 satelite elaboration-additional  5025
+create-a-node-here really 16.62 27 { also filed in federal court here, }
+autolink_nodes 26 27 satelite-embedded elaboration-additional-e  5026
+create-a-node-here really 16.218 28 {shareholder Max Grill of New York charged Imperial, its top executives and directors with breach of fiduciary duty and squandering the company's assets.}
+nextSentence really
+autolink_nodes 5026 28 multinuclear Same-Unit  5027
+create-a-node-here really 17.14 29 {\nImperial said }
+#autolink_nodes 5025 29 satelite elaboration-additional  5028
+#UNDID
+autolink_nodes 5027 29 satelite elaboration-additional  5028
+create-a-node-here really 17.63 30 {it hadn't been served with this suit either. }
+autolink_nodes 29 30 nucleus attribution  5029
+collapsed_nodes {5003}
+collapsed_nodes {}
+collapsed_nodes {5003}
+collapsed_nodes {}

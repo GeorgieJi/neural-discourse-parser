@@ -1,0 +1,14 @@
+nextSentence really
+create-a-node-here really 2.169 1 {\nHarris Ravine, executive vice president of customer satisfaction, was named executive vice president, finance and administration of this maker of data storage equipment.}
+nextSentence really
+create-a-node-here really 3.45 2 {\nMr. Ravine succeeds William R. Mansfield Jr.,}
+create-a-node-here really 3.108 3 { who will remain with the company until the end of the year }
+create-a-node-here really 3.137 4 {to support the transition }
+create-a-node-here really 3.175 5 {and to complete important projects.}
+nextSentence really
+autolink_nodes 4 5 multinuclear List  5001
+#autolink_nodes 3 5001 satelite explanation-argumentative  5002
+#UNDID
+autolink_nodes 3 5001 satelite reason  5002
+autolink_nodes 2 5002 satelite-embedded elaboration-additional-e  5003
+autolink_nodes 1 5003 satelite elaboration-additional  5004

@@ -1,0 +1,63 @@
+nextSentence really
+showText really
+create-a-node-here really 2.84 1 {\nMerger and acquisition activity in the third quarter exceeded the year-earlier pace,}
+create-a-node-here really 2.157 2 { said Merrill Lynch & Co. 's W.T. Grimm & Co. unit in Schaumburg, Ill.}
+autolink_nodes 1 2 satelite attribution  5001
+create-a-node-here really 4.113 3 { \n\nA total of 672 transactions were announced during the latest quarter, up 13% from the year-earlier period's 597, }
+create-a-node-here really 5.0 4 {Grimm said.\n}
+autolink_nodes 3 4 satelite attribution  5002
+create-a-node-here really 5.16 5 {Transactions }
+create-a-node-here really 5.50 6 {in which prices were disclosed }
+create-a-node-here really 5.117 7 {totaled $71.9 billion, up 36% from $52.9 billion a year earlier,}
+create-a-node-here really 5.139 8 { the company added.}
+autolink_nodes 5 6 satelite-embedded elaboration-object-attribute-e  5003
+autolink_nodes 7 5003 multinuclear Same-Unit  5004
+autolink_nodes 5004 8 satelite attribution  5005
+autolink_nodes 5002 5005 satelite elaboration-additional  5006
+create-a-node-here really 7.30 9 { \n\nGrimm counted 16 transactions }
+create-a-node-here really 7.116 10 {valued at $1 billion or more in the latest period, twice as many as a year earlier.}
+autolink_nodes 9 10 satelite-embedded elaboration-object-attribute-e  5007
+autolink_nodes 5006 5007 satelite elaboration-additional  5008
+create-a-node-here really 8.39 11 {\nThe largest was the $12 billion merger }
+create-a-node-here really 8.77 12 {creating Bristol-Myers Squibb Co. }
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e  5009
+autolink_nodes 5007 5009 satelite elaboration-additional  5010
+create-a-node-here really 10.106 13 {\n\nIn the first nine months, 1,977 transactions were announced, up 15% from 1,716 in the year-earlier period.}
+collapsed_nodes {5010}
+create-a-node-here really 11.13 14 {\nTransactions }
+create-a-node-here really 11.47 15 {in which prices were disclosed}
+create-a-node-here really 11.118 16 { totaled $188.1 billion, up 15% from $163.2 billion a year earlier.}
+autolink_nodes 14 15 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5011 16 multinuclear Same-Unit  5012
+autolink_nodes 13 5012 satelite elaboration-additional  5013
+autolink_nodes 5013 5008 multinuclear Comparison  5014
+create-a-node-here really 13.94 17 { \n\nCiting current stock market conditions and the trend away from highly leveraged transactions, }
+create-a-node-here really 13.109 18 {Grimm said }
+create-a-node-here really 13.225 19 {it wasn't certain that the total value of transactions for the year will exceed the record $247 billion in 1988.}
+autolink_nodes 18 19 nucleus attribution  5015
+autolink_nodes 18 17 satelite-embedded circumstance-e  5016
+collapsed_nodes {5010 5013}
+autolink_nodes 5014 5015 satelite elaboration-additional  5017
+disconnect_node 5015 modify
+autolink_nodes 5014 5015 satelite interpretation-s  5018
+collapsed_nodes {5013}
+collapsed_nodes {}
+disconnect_node 5015 disconnect
+disconnect_node 5013 disconnect
+collapsed_nodes {5010}
+autolink_nodes 5008 5013 satelite elaboration-additional  5019
+collapsed_nodes {5010 5013}
+autolink_nodes 5019 5001 satelite summary-s  5020
+collapsed_nodes {5010 5013 5005}
+autolink_nodes 5020 5015 satelite interpretation-s  5021
+collapsed_nodes {5010 5013 5005 5001}
+collapsed_nodes {5010 5013 5005 5001 5015}
+collapsed_nodes {5010 5013 5001 5015}
+collapsed_nodes {5013 5001 5015}
+collapsed_nodes {5001 5015}
+collapsed_nodes {5001}
+collapsed_nodes {}
+disconnect_node 17 modify
+autolink_nodes 18 17 satelite circumstance  5022
+disconnect_node 5016 disconnect
+autolink_nodes 19 5016 nucleus attribution  5023

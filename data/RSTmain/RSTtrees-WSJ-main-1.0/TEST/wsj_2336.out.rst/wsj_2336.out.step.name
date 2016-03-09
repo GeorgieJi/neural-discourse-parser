@@ -1,0 +1,89 @@
+nextSentence really
+create-a-node-here really 2.27 1 {\nMedChem Products Inc. said }
+create-a-node-here really 2.68 2 {a U.S. District Court in Boston ruled }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.132 3 {that a challenge by MedChem to the validity of a U.S. patent }
+create-a-node-here really 2.158 4 {held by Pharmacia Inc. }
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5002
+create-a-node-here really 2.181 5 {was "without merit."}
+nextSentence really
+autolink_nodes 5002 5 multinuclear Same-Unit  5003
+autolink_nodes 2 5003 nucleus attribution  5004
+#create-a-node-here really 4.36 6 { \n\nPharmacia, based in Upsala, Sweden, }
+#UNDID
+create-a-node-here really 4.11 6 { \n\nPharmacia, }
+create-a-node-here really 4.39 7 {based in Upsala, Sweden, }
+autolink_nodes 6 7 satelite-embedded elaboration-additional-e  5005
+create-a-node-here really 4.83 8 {had charged in a lawsuit against MedChem }
+autolink_nodes 5005 8 multinuclear Same-Unit  5006
+create-a-node-here really 5.0 9 {that MedChem's AMVISC product line infringes on the Pharmacia patent.\n}
+autolink_nodes 5006 9 nucleus attribution  5007
+create-a-node-here really 5.68 10 {The patent is related to hyaluronic acid, a rooster-comb extract }
+create-a-node-here really 5.92 11 {used in eye surgery.}
+nextSentence really
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5008
+autolink_nodes 5001 5007 multinuclear Contrast  5009
+autolink_nodes 5009 5008 satelite elaboration-general-specific  5010
+create-a-node-here really 6.86 12 {\nIn its lawsuit, Pharmacia is seeking unspecified damages and a preliminary injunction }
+create-a-node-here really 6.140 13 {to block MedChem from selling the AMVISC products.}
+nextSentence really
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5010 5011 satelite elaboration-general-specific  5012
+create-a-node-here really 7.25 14 {\nA MedChem spokesman said }
+create-a-node-here really 7.117 15 {the products contribute about a third of MedChem's sales and 10% to 20% of its earnings.}
+nextSentence really
+autolink_nodes 14 15 nucleus attribution  5013
+create-a-node-here really 9.12 16 { \n\nIn the year }
+create-a-node-here really 9.37 17 {ended Aug. 31, 1988, }
+autolink_nodes 16 17 satelite-embedded elaboration-object-attribute-e  5014
+nextSentence really
+create-a-node-here really 9.117 18 {MedChem earned $2.9 million, or 72 cents a share, on sales of $17.4 million.}
+nextSentence really
+autolink_nodes 5014 18 multinuclear Same-Unit  5015
+autolink_nodes 5013 5015 satelite elaboration-additional  5016
+autolink_nodes 5011 5016 satelite elaboration-additional  5017
+create-a-node-here really 11.13 19 { \n\nMedChem said }
+create-a-node-here really 11.119 20 {the court's ruling was issued as part of a "first-phase trial" in the patent-infringement proceedings }
+create-a-node-here really 11.173 21 {and concerns only one of its defenses in the case.}
+nextSentence really
+autolink_nodes 20 21 multinuclear List  5018
+autolink_nodes 19 5018 nucleus attribution  5019
+create-a-node-here really 12.8 22 {\nIt said }
+create-a-node-here really 12.76 23 {it is considering "all of its options in light of the decision, }
+autolink_nodes 22 23 nucleus attribution  5020
+create-a-node-here really 12.109 24 {including a possible appeal."}
+nextSentence really
+#autolink_nodes 23 24 satelite-embedded elaboration-set-member-e below 5021
+#UNDID
+autolink_nodes 23 24 satelite-embedded elaboration-set-member-e below 5021
+autolink_nodes 5019 5020 satelite elaboration-additional  5022
+create-a-node-here really 12.149 25 { The medical-products company added }
+create-a-node-here really 12.226 26 {that it plans to "assert its other defenses" against Pharmacia's lawsuit,}
+autolink_nodes 25 26 nucleus attribution  5023
+create-a-node-here really 12.251 27 { including the claim }
+create-a-node-here really 12.303 28 {that it hasn't infringed on Pharmacia's patent. }
+autolink_nodes 27 28 satelite-embedded elaboration-object-attribute-e  5024
+autolink_nodes 5023 5024 satelite-embedded elaboration-set-member-e  5025
+disconnect_node 5020 disconnect
+autolink_nodes 5020 5025 multinuclear List  5026
+#autolink_nodes 5012 5019 satelite elaboration-additional  5027
+#UNDID
+#autolink_nodes 5019 5026 multinuclear Problem-Solution  5027
+#UNDID
+#autolink_nodes 5019 5026 multinuclear Problem-Solution  5027
+#UNDID
+collapsed_nodes {5019}
+collapsed_nodes {5019 5026}
+collapsed_nodes {5019 5026 5012}
+autolink_nodes 5019 5026 multinuclear Problem-Solution  5027
+autolink_nodes 5012 5027 satelite elaboration-additional  5028
+collapsed_nodes {5018 5010}
+collapsed_nodes {5010}
+collapsed_nodes {}
+create-a-node-here really 14.13 29 {\n\nMedChem said }
+create-a-node-here really 14.71 30 {that the court scheduled a conference for next Monday }
+autolink_nodes 29 30 nucleus attribution  5029
+create-a-node-here really 14.159 31 {-- to set a date for proceedings on Pharmacia's motion for a preliminary injunction.}
+nextSentence really
+autolink_nodes 30 31 satelite purpose below 5030
+autolink_nodes 5028 5029 satelite elaboration-additional  5031

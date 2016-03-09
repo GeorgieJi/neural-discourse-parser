@@ -1,0 +1,116 @@
+nextSentence really
+create-a-node-here really 2.32 1 {\nKaufman & Broad Home Corp. said }
+nextSentence really
+create-a-node-here really 2.92 2 {it formed a $53.4 million limited partnership subsidiary }
+create-a-node-here really 2.158 3 {to buy land in California suitable for residential development.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e  5001
+autolink_nodes 1 5001 nucleus attribution  5002
+create-a-node-here really 4.116 4 { \n\nThe partnership, Kaufman & Broad Land Development Venture Limited Partnership, is a 50-50 joint venture with a trust}
+create-a-node-here really 4.323 5 { created by institutional clients of Heitman Advisory Corp., a unit of Heitman Financial Corp., a real estate advisory, management and development company with offices in Chicago and Beverly Hills, Calif.}
+nextSentence really
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5003
+autolink_nodes 5002 5003 satelite elaboration-additional  5004
+create-a-node-here really 5.91 6 {\nKaufman & Broad, a home building company, declined to identify the institutional investors.}
+nextSentence really
+autolink_nodes 5003 6 satelite elaboration-additional  5005
+create-a-node-here really 7.9 7 { \n\nThe land }
+create-a-node-here really 7.49 8 {to be purchased by the joint venture }
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5006
+create-a-node-here really 7.99 9 {hasn't yet received zoning and other approvals }
+autolink_nodes 5006 9 multinuclear Same-Unit  5007
+create-a-node-here really 7.128 10 {required for development, }
+autolink_nodes 9 10 satelite-embedded elaboration-object-attribute-e  5008
+create-a-node-here really 7.199 11 {and part of Kaufman & Broad's job will be to obtain such approvals.}
+nextSentence really
+autolink_nodes 5007 11 nucleus circumstance  5009
+autolink_nodes 5005 5009 satelite elaboration-additional  5010
+create-a-node-here really 9.30 12 { \n\nThe partnership runs the risk }
+create-a-node-here really 9.84 13 {that it may not get the approvals for development,}
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5011
+create-a-node-here really 9.160 14 { but in return, it can buy land at wholesale rather than retail prices, }
+autolink_nodes 5011 14 multinuclear Contrast  5012
+create-a-node-here really 9.201 15 {which can result in sizable savings, }
+autolink_nodes 14 15 satelite cause  5013
+create-a-node-here really 9.281 16 {said Bruce Karatz, president and chief executive officer of Kaufman & Broad.}
+nextSentence really
+autolink_nodes 5012 16 satelite attribution  5014
+create-a-node-here really 11.37 17 { \n\n"There are really very few companies }
+create-a-node-here really 11.110 18 {that have adequate capital to buy properties in a raw state for cash.}
+nextSentence really
+autolink_nodes 17 18 satelite-embedded elaboration-object-attribute-e  5015
+autolink_nodes 5014 5015 multinuclear List  5016
+create-a-node-here really 12.39 19 {\nTypically, developers option property, }
+create-a-node-here really 12.52 20 {and then }
+create-a-node-here really 12.100 21 {once they get the administrative approvals, }
+create-a-node-here really 12.118 22 {they buy it," }
+create-a-node-here really 12.139 23 {said Mr. Karatz, }
+create-a-node-here really 12.150 24 {adding }
+create-a-node-here really 12.159 25 {that }
+create-a-node-here really 12.175 26 {he believes }
+create-a-node-here really 12.222 27 {the joint venture is the first of its kind.}
+nextSentence really
+autolink_nodes 26 27 nucleus attribution  5017
+autolink_nodes 25 5017 multinuclear Same-Unit  5018
+autolink_nodes 24 5018 nucleus attribution  5019
+autolink_nodes 21 22 nucleus circumstance  5020
+autolink_nodes 5020 20 multinuclear Same-Unit  5021
+autolink_nodes 19 5021 multinuclear Sequence  5022
+autolink_nodes 5022 23 satelite attribution  5023
+#autolink_nodes 5023 5019 satelite elaboration-additional  5024
+#UNDID
+autolink_nodes 23 5019 satelite-embedded elaboration-additional-e  5024
+collapsed_nodes {5024}
+collapsed_nodes {5024 5015}
+collapsed_nodes {5024 5015 5014}
+collapsed_nodes {5024 5014}
+autolink_nodes 5016 5023 multinuclear List below 5024
+collapsed_nodes {5024 5014 5022}
+collapsed_nodes {5024 5014 5022 5015}
+#create-a-node-here really 14.33 28 { "We usually operate in that conservative manner." \n\nBy setting up the joint venture, }
+#create-a-node-here really 14.91 29 {Kaufman & Broad can take the more aggressive approach }
+#UNDID
+#UNDID
+create-a-node-here really 13.0 28 { "We usually operate in that conservative manner." \n}
+autolink_nodes 5016 28 multinuclear List below 5024
+create-a-node-here really 14.33 29 {\nBy setting up the joint venture, }
+create-a-node-here really 14.91 30 {Kaufman & Broad can take the more aggressive approach }
+autolink_nodes 29 30 nucleus means  5025
+create-a-node-here really 14.115 31 {of buying raw land, }
+autolink_nodes 30 31 satelite-embedded elaboration-object-attribute-e below 5026
+create-a-node-here really 14.181 32 {while avoiding the negative impacts to its own balance sheet, }
+create-a-node-here really 14.201 33 {Mr. Karatz said.}
+nextSentence really
+autolink_nodes 5026 32 multinuclear Temporal-Same-Time  5027
+autolink_nodes 5025 33 satelite attribution  5028
+autolink_nodes 5016 5028 multinuclear List below 5028
+collapsed_nodes {5024 5014 5022 5015}
+collapsed_nodes {5024 5014 5022 5015 5028}
+collapsed_nodes {5024 5014 5022 5015 5028}
+create-a-node-here really 15.51 34 {\nThe company is putting up only 10% of the capital, }
+create-a-node-here really 15.162 35 {although it is responsible for providing management, planning and processing services to the joint venture.}
+nextSentence really
+#autolink_nodes 34 35 multinuclear Contrast  5029
+#UNDID
+autolink_nodes 34 35 multinuclear Contrast  5029
+autolink_nodes 5016 5029 satelite elaboration-additional  5030
+create-a-node-here really 17.30 36 { \n\n"This is one of the best ways }
+create-a-node-here really 17.63 37 {to assure a pipeline of land }
+autolink_nodes 36 37 satelite-embedded elaboration-object-attribute-e  5031
+create-a-node-here really 17.121 38 {to fuel our growth at a minimum risk to our company," }
+autolink_nodes 37 38 satelite purpose  5032
+create-a-node-here really 17.142 39 {Mr. Karatz said. }
+autolink_nodes 5031 39 satelite attribution  5033
+autolink_nodes 5029 5033 satelite means  5034
+autolink_nodes 5009 5030 multinuclear List  5035
+collapsed_nodes {5024 5014 5022 5015 5028 5023}
+collapsed_nodes {5014 5015 5028}
+collapsed_nodes {5015 5028}
+collapsed_nodes {5028}
+disconnect_node 21 disconnect
+autolink_nodes 22 21 satelite-embedded circumstance-e  5036
+disconnect_node 26 disconnect
+autolink_nodes 27 26 satelite-embedded attribution-e  5037
+collapsed_nodes {}
+collapsed_nodes {5004}
+collapsed_nodes {}

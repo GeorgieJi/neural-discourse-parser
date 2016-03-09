@@ -1,0 +1,577 @@
+nextSentence really
+create-a-node-here really 2.16 1 {\nAs Helen Boehm, }
+create-a-node-here really 2.53 2 {who owns an art porcelain company,}
+autolink_nodes 1 2 satelite-embedded elaboration-additional-e  5001
+create-a-node-here really 2.87 3 { sipped her luncheon cocktail, }
+autolink_nodes 5001 3 multinuclear List  5002
+create-a-node-here really 2.129 4 {she reeled off the names of a few pals }
+autolink_nodes 5002 4 nucleus temporal-same-time  5003
+create-a-node-here really 2.209 5 {-- Prince Charles, Princess Diana, Sarah Ferguson, John Kluge, Milton Petrie.}
+nextSentence really
+autolink_nodes 4 5 satelite-embedded elaboration-set-member-e below 5004
+create-a-node-here really 4.5 6 { \n\nThen,}
+autolink_nodes 5003 6 multinuclear Sequence  5005
+create-a-node-here really 4.51 7 { flashing a diamond ring as big as the Ritz}
+create-a-node-here really 4.83 8 { ("my day diamond, darling"),}
+autolink_nodes 7 8 satelite comment  5006
+create-a-node-here really 4.115 9 { she told her two companions }
+autolink_nodes 5006 9 nucleus temporal-same-time  5007
+autolink_nodes 6 5007 multinuclear Same-Unit  5008
+create-a-node-here really 4.175 10 {that she is on the "board" of the Vatican Museum in Rome.}
+nextSentence really
+autolink_nodes 9 10 nucleus attribution  5009
+create-a-node-here really 6.16 11 { \n\nAs it turns out,}
+autolink_nodes 5005 11 satelite elaboration-additional  5010
+create-a-node-here really 6.63 12 { the board has a lot of important members, }
+autolink_nodes 11 12 nucleus consequence-s  5011
+create-a-node-here really 6.91 13 {including Winton Blount }
+#autolink_nodes 12 13 satelite example below 5012
+#create-a-node-here really 6.135 14 {(former postmaster general of the U.S.),}
+#UNDID
+#UNDID
+#autolink_nodes 12 13 satelite-embedded example-e below 5012
+#UNDID
+autolink_nodes 12 13 satelite-embedded example-e below 5012
+create-a-node-here really 6.135 14 {(former postmaster general of the U.S.),}
+autolink_nodes 13 14 satelite-embedded elaboration-additional-e  5013
+create-a-node-here really 6.159 15 { Mrs. Henry Gaisman }
+autolink_nodes 5013 15 multinuclear List  5014
+create-a-node-here really 6.207 16 {(widow of the inventor of auto-strop razor) }
+autolink_nodes 15 16 satelite-embedded elaboration-additional-e  5015
+#create-a-node-here really 6.231 17 {and Vincent Murphy (}
+#UNDID
+create-a-node-here really 6.230 17 {and Vincent Murphy }
+autolink_nodes 5014 17 multinuclear List below 5015
+create-a-node-here really 6.280 18 {(an investment banker at Merrill Lynch & Co.) }
+autolink_nodes 17 18 satelite-embedded elaboration-additional-e  5016
+create-a-node-here really 6.327 19 {But Mrs. Boehm didn't mention any of them. }
+autolink_nodes 5011 19 satelite antithesis  5017
+create-a-node-here really 8.36 20 {\n\n"Helen Boehm has a way with names," }
+collapsed_nodes {5011}
+autolink_nodes 5010 20 satelite comment  5018
+create-a-node-here really 8.90 21 {says James Revson, a gossip columnist for Newsday }
+autolink_nodes 20 21 satelite attribution  5019
+create-a-node-here really 8.142 22 {(and son of Joseph Revson, a founder of Revlon).}
+nextSentence really
+autolink_nodes 21 22 satelite-embedded elaboration-additional-e  5020
+create-a-node-here really 9.43 23 {\nLike which are droppable and which are not.}
+nextSentence really
+autolink_nodes 5019 23 satelite elaboration-additional  5021
+create-a-node-here really 11.75 24 { \n\nWith the fall social season well under way, name-droppers are out in force,}
+collapsed_nodes {5011 5021}
+collapsed_nodes {5011 5021 5010}
+autolink_nodes 5018 24 satelite background  5022
+create-a-node-here really 11.149 25 { trying to impress their betters and sometimes put down their lessers.}
+nextSentence really
+autolink_nodes 24 25 multinuclear Temporal-Same-Time  5023
+create-a-node-here really 12.92 26 {\nBut the truth is that almost everyone, from real-estate agents to city fathers, name-drops; }
+autolink_nodes 5023 26 nucleus concession  5024
+create-a-node-here really 12.152 27 {and a surprising number of people have an ancient uncle }
+autolink_nodes 26 27 satelite elaboration-additional below 5025
+create-a-node-here really 12.204 28 {who claims he lived next door to the cartoonist }
+autolink_nodes 27 28 satelite-embedded elaboration-object-attribute-e  5026
+create-a-node-here really 12.238 29 {who did the Katzenjammer Kids.}
+nextSentence really
+autolink_nodes 28 29 satelite-embedded elaboration-object-attribute-e  5027
+create-a-node-here really 12.271 30 { (In case you have forgotten,}
+autolink_nodes 5027 30 satelite elaboration-additional  5028
+#create-a-node-here really 12.303 31 { his name was Rudolph Dirks.}
+#nextSentence really
+#autolink_nodes 30 31 nucleus condition  5029
+#create-a-node-here really 14.28 32 {) \n\n"Name-dropping is pervasive }
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 12.305 31 { his name was Rudolph Dirks.) }
+autolink_nodes 30 31 nucleus condition  5029
+create-a-node-here really 14.28 32 {\n\n"Name-dropping is pervasive }
+collapsed_nodes {5011 5021 5010 5024}
+autolink_nodes 5022 32 satelite comment  5030
+create-a-node-here really 14.52 33 {and getting more so }
+autolink_nodes 32 33 satelite comparison  5031
+create-a-node-here really 14.105 34 {as society becomes more complex and alienating," }
+autolink_nodes 5031 34 satelite circumstance  5032
+create-a-node-here really 14.193 35 {says Herbert Freudenberger, a New York psychoanalyst, with a high-powered clientele.}
+nextSentence really
+autolink_nodes 5032 35 satelite attribution  5033
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 14.268 36 { "It can be an avenue of entrance to a certain sector of society. . . .}
+nextSentence really
+autolink_nodes 5033 36 satelite elaboration-additional  5034
+create-a-node-here really 14.327 37 { It provides some people a needed sense of affiliation }
+change_rel 36 explanation-argumentative
+autolink_nodes 36 37 satelite elaboration-additional  5035
+create-a-node-here really 14.380 38 {and can help open up a conversation with someone }
+autolink_nodes 37 38 multinuclear List  5036
+create-a-node-here really 14.400 39 {you don't know."}
+nextSentence really
+autolink_nodes 38 39 satelite-embedded elaboration-object-attribute-e  5037
+create-a-node-here really 16.66 40 { \n\nLike the Long Island matron in the theater district the other day }
+autolink_nodes 5035 40 satelite example  5038
+create-a-node-here really 16.94 41 {who swore to a stranger }
+autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e  5039
+create-a-node-here really 16.130 42 {that she once met Liza Minnelli.}
+nextSentence really
+autolink_nodes 41 42 nucleus attribution  5040
+create-a-node-here really 16.169 43 { "I was having a drink in Sardi's, }
+autolink_nodes 5040 43 satelite elaboration-additional  5041
+create-a-node-here really 16.219 44 {when all of a sudden I saw a woman's backside }
+autolink_nodes 43 44 multinuclear Temporal-Same-Time  5042
+create-a-node-here really 16.263 45 {coming up the steps on the second floor }
+autolink_nodes 44 45 satelite-embedded elaboration-additional-e  5043
+create-a-node-here really 16.303 46 {and she was wearing sequined slacks.}
+nextSentence really
+autolink_nodes 5043 46 satelite elaboration-additional  5044
+create-a-node-here really 17.7 47 {\nI knew }
+autolink_nodes 5042 47 satelite elaboration-additional  5045
+create-a-node-here really 17.36 48 {it was someone important,}
+autolink_nodes 47 48 nucleus attribution  5046
+create-a-node-here really 17.80 49 { so I followed her into the ladies room }
+autolink_nodes 5046 49 nucleus reason  5047
+create-a-node-here really 17.113 50 {and sure enough, it was Liza.}
+nextSentence really
+autolink_nodes 5047 50 satelite elaboration-additional  5048
+create-a-node-here really 18.11 51 {\nSo I said, }
+autolink_nodes 50 51 nucleus result  5049
+#create-a-node-here really 18.22 52 {`Hello.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 18.24 52 {`Hello. '}
+autolink_nodes 51 52 nucleus attribution  5050
+create-a-node-here really 18.43 53 { And she said, }
+autolink_nodes 5050 53 multinuclear Statement-Response  5051
+nextSentence really
+create-a-node-here really 18.57 54 {`Hello. ' }
+autolink_nodes 53 54 nucleus attribution  5052
+create-a-node-here really 18.77 55 {Can you imagine?}
+nextSentence really
+autolink_nodes 5051 55 satelite rhetorical-question below 5053
+create-a-node-here really 19.23 56 {\nLiza said hello to me."}
+nextSentence really
+autolink_nodes 55 56 satelite elaboration-additional  5054
+collapsed_nodes {5011 5021 5010 5024 5045}
+collapsed_nodes {5011 5021 5010 5024 5045 5038}
+create-a-node-here really 21.28 57 { \n\nSome people must drop names }
+autolink_nodes 5034 57 satelite elaboration-additional  5055
+create-a-node-here really 21.67 58 {-- call it an irresistible impulse.}
+nextSentence really
+autolink_nodes 57 58 satelite elaboration-additional  5056
+create-a-node-here really 21.128 59 { "They can't help talking about the big important people }
+autolink_nodes 5056 59 satelite elaboration-additional  5057
+create-a-node-here really 21.142 60 {they know,}
+autolink_nodes 59 60 satelite-embedded elaboration-object-attribute-e  5058
+create-a-node-here really 21.185 61 { even if they don't really know them," }
+autolink_nodes 5058 61 satelite circumstance  5059
+create-a-node-here really 21.212 62 {says Dr. Freudenberger.}
+nextSentence really
+autolink_nodes 5059 62 satelite attribution  5060
+create-a-node-here really 23.49 63 { \n\nBeauregard Houston-Montgomery, a New York writer }
+autolink_nodes 5060 63 satelite example  5061
+create-a-node-here really 23.103 64 {who changed his name from William Stretch in 1980,}
+autolink_nodes 63 64 satelite-embedded elaboration-additional-e  5062
+create-a-node-here really 23.138 65 { is an inveterate name-dropper.}
+nextSentence really
+autolink_nodes 5062 65 multinuclear Same-Unit  5063
+create-a-node-here really 23.181 66 { "I do it innately and pathologically, }
+autolink_nodes 5063 66 satelite explanation-argumentative  5064
+create-a-node-here really 23.189 67 {and }
+autolink_nodes 66 67 multinuclear List  5065
+create-a-node-here really 23.240 68 {while it may occasionally get me into trouble, }
+create-a-node-here really 23.296 69 {it's also gotten me access to parties and society," }
+autolink_nodes 68 69 nucleus concession  5066
+autolink_nodes 67 5066 multinuclear Same-Unit  5067
+create-a-node-here really 23.308 70 {he says.}
+nextSentence really
+autolink_nodes 5065 70 satelite attribution  5068
+create-a-node-here really 25.66 71 { \n\nName-dropping recently helped Mr. Houston-Montgomery crash a party}
+autolink_nodes 5068 71 satelite example  5069
+create-a-node-here really 25.119 72 { Fame magazine threw for 100 of the 2,809 people }
+autolink_nodes 71 72 satelite-embedded elaboration-object-attribute-e  5070
+create-a-node-here really 25.172 73 {mentioned in the diaries of the late Andy Warhol.}
+nextSentence really
+autolink_nodes 72 73 satelite-embedded elaboration-object-attribute-e  5071
+create-a-node-here really 25.186 74 { "I guess }
+autolink_nodes 5071 74 satelite explanation-argumentative  5072
+create-a-node-here really 25.229 75 {I might have asked Beauregard to leave,}
+autolink_nodes 74 75 nucleus attribution  5073
+create-a-node-here really 25.267 76 { but he drops so many good names, }
+autolink_nodes 5073 76 nucleus concession  5074
+create-a-node-here really 25.300 77 {we decided to let him stay," }
+autolink_nodes 76 77 nucleus circumstance  5075
+create-a-node-here really 25.345 78 {says Steven Greenberg, publisher of Fame.}
+nextSentence really
+autolink_nodes 5074 78 satelite attribution  5076
+create-a-node-here really 25.399 79 { "After all, Warhol was the ultimate namedropper, }
+autolink_nodes 5076 79 satelite elaboration-additional  5077
+create-a-node-here really 25.438 80 {dropping five a day in his diaries.}
+nextSentence really
+autolink_nodes 79 80 satelite-embedded elaboration-additional-e  5078
+create-a-node-here really 26.35 81 {\nAnd Beauregard was mentioned twice }
+autolink_nodes 5078 81 satelite elaboration-additional  5079
+create-a-node-here really 26.80 82 {-- although very briefly and in passing."}
+nextSentence really
+autolink_nodes 81 82 satelite elaboration-additional  5080
+create-a-node-here really 28.28 83 { \n\nMr. Houston-Montgomery says }
+autolink_nodes 5077 83 satelite elaboration-additional  5081
+create-a-node-here really 28.107 84 {that at the party he waved to Malcolm Forbes, publisher of Forbes magazine }
+autolink_nodes 83 84 nucleus attribution  5082
+create-a-node-here really 28.150 85 {("We've been in the columns together"),}
+#autolink_nodes 5082 85 satelite comment  5083
+#create-a-node-here really 28.189 86 { Mary Boone, a New York art dealer }
+#autolink_nodes 5083 86 multinuclear Same-Unit  5084
+#create-a-node-here really 28.216 87 {("I think she knows me,}
+#autolink_nodes 86 87 satelite comment  5085
+#create-a-node-here really 28.240 88 { but I'm not sure ")}
+#autolink_nodes 87 88 multinuclear Contrast  5086
+#create-a-node-here really 28.276 89 { and Bridget Fonda, the actress }
+#autolink_nodes 5084 89 multinuclear Same-Unit below 5086
+#create-a-node-here really 28.296 90 {("She knows me, }
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#autolink_nodes 5082 85 satelite-embedded comment-e  5083
+#UNDID
+autolink_nodes 84 85 satelite-embedded comment-e below 5083
+create-a-node-here really 28.189 86 { Mary Boone, a New York art dealer }
+autolink_nodes 5083 86 multinuclear Same-Unit  5084
+#create-a-node-here really 28.217 87 {("I think she knows me, }
+#autolink_nodes 86 87 satelite-embedded comment-e  5085
+#create-a-node-here really 28.240 88 {but I'm not sure ")}
+#autolink_nodes 87 88 multinuclear Contrast  5086
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 28.203 87 {("I think }
+autolink_nodes 86 87 satelite-embedded comment-e  5085
+create-a-node-here really 28.221 88 {she knows me, }
+autolink_nodes 87 88 nucleus attribution  5086
+create-a-node-here really 28.244 89 {but I'm not sure ")}
+autolink_nodes 5086 89 multinuclear Contrast  5087
+#create-a-node-here really 28.281 90 { and Bridget Fonda, the actress (}
+#UNDID
+create-a-node-here really 28.280 90 { and Bridget Fonda, the actress }
+autolink_nodes 5084 90 multinuclear Same-Unit below 5087
+create-a-node-here really 28.300 91 {("She knows me, }
+autolink_nodes 90 91 satelite-embedded comment-e  5088
+create-a-node-here really 28.348 92 {but we're not really the best of friends"). }
+autolink_nodes 91 92 multinuclear Contrast  5089
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064}
+create-a-node-here really 30.39 93 {\n\nMr. Revson, the gossip columnist, says }
+autolink_nodes 5055 93 multinuclear List  5090
+create-a-node-here really 30.60 94 {there are people }
+autolink_nodes 93 94 nucleus attribution  5091
+create-a-node-here really 30.117 95 {who actually plan whose names they are going to drop }
+#autolink_nodes 94 95 satelite-embedded elaboration-object-attribute-e below 5092
+#UNDID
+autolink_nodes 94 95 satelite-embedded elaboration-object-attribute-e below 5092
+create-a-node-here really 30.146 96 {before attending a party.}
+nextSentence really
+autolink_nodes 95 96 satelite circumstance  5093
+create-a-node-here really 31.104 97 {\nThese droppers don't flaunt only their friendships with the Trumps, Brooke Astor or Georgette Mosbacher.}
+nextSentence really
+autolink_nodes 5091 97 satelite elaboration-additional  5094
+create-a-node-here really 31.165 98 { "They even drop semi-obscure names like Wolfgang Flottl,}
+autolink_nodes 97 98 satelite elaboration-additional  5095
+create-a-node-here really 31.220 99 { whom everybody these days apparently has heard of }
+autolink_nodes 98 99 satelite-embedded elaboration-object-attribute-e  5096
+create-a-node-here really 31.250 100 {but no one really knows," }
+autolink_nodes 99 100 multinuclear Contrast  5097
+create-a-node-here really 31.271 101 {says Mr. Revson.}
+nextSentence really
+autolink_nodes 5096 101 satelite attribution  5098
+create-a-node-here really 31.332 102 { "It's the one-upsmanship of name-dropping that counts."}
+nextSentence really
+autolink_nodes 5098 102 satelite elaboration-additional  5099
+create-a-node-here really 33.50 103 { \n\nBut name-dropping has other benefits, often civic.}
+nextSentence really
+autolink_nodes 102 103 nucleus concession  5100
+create-a-node-here really 34.47 104 {\nIn the name of civic pride and from the desire }
+autolink_nodes 103 104 satelite explanation-argumentative below 5101
+create-a-node-here really 34.81 105 {to nullify a negative image, }
+autolink_nodes 104 105 satelite-embedded elaboration-object-attribute-e  5102
+create-a-node-here really 34.171 106 {some city promoters seek to link their municipality with the most recognizable names }
+autolink_nodes 5102 106 multinuclear Same-Unit  5103
+create-a-node-here really 34.198 107 {the city has to offer.}
+nextSentence really
+autolink_nodes 106 107 satelite-embedded elaboration-object-attribute-e  5104
+create-a-node-here really 36.15 108 { \n\nTake Cleveland.}
+nextSentence really
+autolink_nodes 5103 108 satelite example  5105
+create-a-node-here really 37.24 109 {\nIt has gotten a bad rep }
+autolink_nodes 108 109 satelite explanation-argumentative  5106
+create-a-node-here really 37.91 110 {because its once heavily polluted Cuyahoga River caught fire, }
+autolink_nodes 109 110 multinuclear Cause-Result  5107
+create-a-node-here really 37.173 111 {because former Mayor Ralph Perk set his hair on fire with an acetylene torch }
+autolink_nodes 110 111 multinuclear List  5108
+create-a-node-here really 37.278 112 {and because its proposed Rock 'n' Roll Hall of Fame was recently refused an urban-development grant.}
+nextSentence really
+autolink_nodes 5108 112 multinuclear List below 5108
+create-a-node-here really 38.46 113 {\nSome people call it "The Mistake on the Lake" }
+#autolink_nodes 5107 113 satelite elaboration-additional  5109
+#UNDID
+autolink_nodes 5107 113 satelite evaluation-s  5109
+create-a-node-here really 38.74 114 {-- Lake Erie, that is. }
+autolink_nodes 113 114 satelite-embedded elaboration-general-specific-e  5110
+#create-a-node-here really 40.22 115 {\n\n"It helps to point out}
+#autolink_nodes 5109 115 satelite elaboration-additional  5111
+#create-a-node-here really 40.102 116 { how many important people came through Cleveland on their way to the top,"}
+#autolink_nodes 115 116 nucleus attribution  5112
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 40.98 115 {\n\n"It helps to point out how many important people came through Cleveland on their way to the top," }
+autolink_nodes 5109 115 satelite elaboration-additional  5111
+create-a-node-here really 40.197 116 {says George Miller, executive director of the New Cleveland Campaign, a nonprofit organization}
+autolink_nodes 115 116 satelite attribution  5112
+create-a-node-here really 40.242 117 { devoted to citing the city's strengths.}
+nextSentence really
+autolink_nodes 116 117 satelite-embedded elaboration-object-attribute-e  5113
+create-a-node-here really 42.16 118 { \n\nMr. Miller notes}
+autolink_nodes 5112 118 satelite elaboration-additional  5114
+create-a-node-here really 42.96 119 { that actor Paul Newman's family owned a sporting-goods store in Cleveland,}
+autolink_nodes 118 119 nucleus attribution  5115
+create-a-node-here really 42.142 120 { that the late actress Margaret Hamilton,}
+autolink_nodes 119 120 multinuclear List  5116
+create-a-node-here really 42.196 121 { who played the bad witch in "The Wizard Of Oz," }
+autolink_nodes 120 121 satelite-embedded elaboration-additional-e  5117
+create-a-node-here really 42.240 122 {once ran a nursery school in Cleveland }
+autolink_nodes 5117 122 multinuclear Same-Unit  5118
+create-a-node-here really 42.374 123 {and that comedian Bob Hope's father, a stonemason, once worked on a church next to Severence Hall, Cleveland's main concert hall.}
+nextSentence really
+autolink_nodes 5116 123 multinuclear List below 5118
+create-a-node-here really 42.438 124 { "Power names like that don't hurt the city's reputation," }
+autolink_nodes 5115 124 satelite elaboration-additional  5119
+create-a-node-here really 42.459 125 {Mr. Miller says.}
+nextSentence really
+autolink_nodes 124 125 satelite attribution  5120
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109}
+create-a-node-here really 44.47 126 { \n\nIn Hollywood, an average family can gain cachet}
+autolink_nodes 5106 126 multinuclear List  5121
+create-a-node-here really 44.77 127 { from moving into a home }
+autolink_nodes 126 127 satelite means  5122
+create-a-node-here really 44.119 128 {vacated by the famous or near famous.}
+nextSentence really
+autolink_nodes 127 128 satelite-embedded elaboration-object-attribute-e  5123
+create-a-node-here really 44.181 129 { "Why we even just sold a three-bedroom house in Van Nuys}
+autolink_nodes 5122 129 satelite explanation-argumentative  5124
+create-a-node-here really 44.252 130 { and were able to keep the price firm in a weak real-estate market}
+autolink_nodes 129 130 multinuclear List  5125
+create-a-node-here really 44.267 131 { by noting}
+autolink_nodes 130 131 satelite means  5126
+create-a-node-here really 44.317 132 { that the original Lone Ranger lived there," }
+autolink_nodes 131 132 nucleus attribution  5127
+create-a-node-here really 44.413 133 {says David Rambo, a sales associate with Jon Douglas Co., a Los Angeles real-estate agency.}
+nextSentence really
+autolink_nodes 5125 133 satelite attribution  5128
+create-a-node-here really 44.462 134 { "Most people can't even remember his name."}
+nextSentence really
+autolink_nodes 5128 134 satelite elaboration-additional  5129
+nextSentence really
+create-a-node-here really 44.486 135 { (It is John Hart.)}
+autolink_nodes 134 135 satelite elaboration-general-specific  5130
+create-a-node-here really 46.15 136 { \n\nMr. Rambo says }
+autolink_nodes 5129 136 multinuclear List  5131
+create-a-node-here really 46.45 137 {that a 3.2-acre property }
+autolink_nodes 136 137 nucleus attribution  5132
+create-a-node-here really 46.86 138 {overlooking the San Fernando Valley }
+autolink_nodes 137 138 satelite-embedded elaboration-additional-e below 5133
+create-a-node-here really 46.114 139 {is priced at $4 million}
+autolink_nodes 5133 139 multinuclear Same-Unit  5134
+create-a-node-here really 46.173 140 { because the late actor Erroll Flynn once lived there.}
+nextSentence really
+autolink_nodes 5134 140 satelite reason below 5135
+create-a-node-here really 46.209 141 { "If Flynn hadn't lived there, }
+autolink_nodes 5132 141 satelite elaboration-additional  5136
+create-a-node-here really 46.268 142 {the property might have been priced $1 million lower,"}
+autolink_nodes 141 142 nucleus condition  5137
+create-a-node-here really 46.289 143 { says Mr. Rambo,}
+autolink_nodes 5137 143 satelite attribution  5138
+create-a-node-here really 46.302 144 { noting }
+#create-a-node-here really 46.346 145 {that Flynn's house has been bulldozed, }
+#UNDID
+autolink_nodes 143 144 satelite elaboration-additional  5139
+create-a-node-here really 46.345 145 {that Flynn's house has been bulldozed,}
+autolink_nodes 144 145 nucleus attribution  5140
+create-a-node-here really 46.387 146 { and only the swimming pool remains. }
+autolink_nodes 145 146 multinuclear Cause-Result  5141
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022}
+create-a-node-here really 48.76 147 {\n\nPress agents and public-relations practitioners are notorious name-droppers.}
+nextSentence really
+autolink_nodes 5030 147 multinuclear Topic-Drift  5142
+create-a-node-here really 49.45 148 {\nAnd some even do it with malice aforethought.}
+nextSentence really
+autolink_nodes 147 148 satelite elaboration-additional  5143
+create-a-node-here really 50.66 149 {\nLen Kessler, a financial publicist in New York, sometimes uses it }
+autolink_nodes 5143 149 satelite example  5144
+create-a-node-here really 50.106 150 {to get the attention of journalists}
+autolink_nodes 149 150 satelite purpose  5145
+create-a-node-here really 50.133 151 { who try to avoid him.}
+nextSentence really
+autolink_nodes 150 151 satelite-embedded elaboration-object-attribute-e  5146
+create-a-node-here really 51.8 152 {\nHe says }
+autolink_nodes 5145 152 satelite explanation-argumentative  5147
+create-a-node-here really 51.17 153 {that}
+autolink_nodes 152 153 nucleus attribution  5148
+create-a-node-here really 51.111 154 { when Dan Dorfman, a financial columnist with USA Today, hasn't returned his phone calls,}
+create-a-node-here really 51.162 155 { he leaves messages with Mr. Dorfman's office }
+autolink_nodes 154 155 nucleus circumstance  5149
+autolink_nodes 153 5149 multinuclear Same-Unit  5150
+create-a-node-here really 51.174 156 {saying }
+autolink_nodes 155 156 satelite-embedded elaboration-object-attribute-e below 5151
+create-a-node-here really 51.259 157 {that he has an important story on Donald Trump, Meshulam Riklis or Marvin Davis.}
+nextSentence really
+autolink_nodes 156 157 nucleus attribution  5152
+create-a-node-here really 53.10 158 { \n\nHe admits }
+autolink_nodes 5148 158 satelite elaboration-additional  5153
+create-a-node-here really 53.65 159 {he has no story on any of them on these occasions.}
+nextSentence really
+autolink_nodes 158 159 nucleus attribution  5154
+create-a-node-here really 53.111 160 { "But it does get him to return my calls,}
+#autolink_nodes 5154 160 nucleus antithesis  5155
+#UNDID
+autolink_nodes 5154 160 nucleus antithesis  5155
+create-a-node-here really 53.158 161 { and it makes me feel better for the times}
+autolink_nodes 160 161 multinuclear List  5156
+create-a-node-here really 53.192 162 { he's given me the brushoff,"}
+autolink_nodes 161 162 satelite-embedded elaboration-object-attribute-e  5157
+create-a-node-here really 53.216 163 { Mr. Kessler says. }
+autolink_nodes 5156 163 satelite attribution below 5158
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022 5155}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022 5155 5153}
+create-a-node-here really 55.80 164 {\n\nThere are, of course, obvious dangers to blatant, unsubstantiated name-dropping.}
+nextSentence really
+autolink_nodes 5142 164 satelite evaluation-s  5159
+create-a-node-here really 56.74 165 {\nJeffry Thal, a publicity agent for the Lantz Office in Los Angeles, warns }
+autolink_nodes 164 165 satelite explanation-argumentative  5160
+create-a-node-here really 56.149 166 {that dropping the wrong name labels the dropper as a fake and a fraud.}
+nextSentence really
+autolink_nodes 165 166 nucleus attribution  5161
+create-a-node-here really 56.166 167 { "Get caught}
+autolink_nodes 5161 167 satelite elaboration-additional  5162
+create-a-node-here really 56.203 168 { and you're dead in the water," }
+autolink_nodes 167 168 multinuclear Cause-Result  5163
+create-a-node-here really 56.222 169 {says Mr. Thal.}
+nextSentence really
+autolink_nodes 5163 169 satelite attribution  5164
+create-a-node-here really 58.14 170 { \n\nMr. Thal says }
+autolink_nodes 5164 170 satelite example  5165
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 58.84 171 {that Elizabeth Taylor, a client, "hates being called `Liz. '. . .}
+nextSentence really
+autolink_nodes 170 171 nucleus attribution  5166
+create-a-node-here really 58.125 172 { If directors or producers phone me }
+autolink_nodes 5166 172 nucleus result  5167
+create-a-node-here really 58.138 173 {and say }
+autolink_nodes 172 173 multinuclear List  5168
+create-a-node-here really 58.161 174 {they know `Liz, ' }
+autolink_nodes 173 174 nucleus attribution  5169
+create-a-node-here really 58.173 175 {I know }
+autolink_nodes 5168 175 nucleus condition  5170
+create-a-node-here really 58.200 176 {they've never met her.}
+nextSentence really
+autolink_nodes 175 176 nucleus attribution  5171
+create-a-node-here really 59.23 177 {\nShe prefers `Elizabeth.}
+nextSentence really
+autolink_nodes 5170 177 satelite explanation-argumentative below 5172
+nextSentence really
+nextSentence really
+create-a-node-here really 62.21 178 { '" \n\nIn New York society, Pat Buckley, the very social wife of author William Buckley, has the nicknames "Mrs.\nBuckles" and "Patsy."}
+autolink_nodes 5167 178 multinuclear List  5173
+create-a-node-here really 62.71 179 { And her husband sometimes calls her "Ducky."}
+nextSentence really
+autolink_nodes 178 179 satelite elaboration-additional  5174
+create-a-node-here really 62.101 180 { "But call her `Patty, ' }
+autolink_nodes 5174 180 multinuclear Contrast  5175
+create-a-node-here really 62.130 181 {and it's a sure giveaway}
+autolink_nodes 180 181 nucleus condition  5176
+create-a-node-here really 62.161 182 { you're not in her circle,}
+autolink_nodes 181 182 satelite-embedded elaboration-object-attribute-e below 5177
+create-a-node-here really 62.202 183 { because she doesn't use that name,"}
+autolink_nodes 5176 183 multinuclear Cause-Result  5178
+create-a-node-here really 62.281 184 { says Joan Kron, editor-in-chief of Avenue magazine, a monthly publication}
+autolink_nodes 5178 184 satelite attribution  5179
+create-a-node-here really 62.315 185 { sent to all the right names.}
+nextSentence really
+autolink_nodes 184 185 satelite-embedded elaboration-object-attribute-e  5180
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022 5155 5153 5179}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022 5155 5153 5179 5173}
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022 5155 5153 5179 5173 5162}
+create-a-node-here really 64.153 186 { \n\nJohn Spencer Churchill, a nephew of the late Sir Winston Churchill, former prime minister of Great Britain, isn't that impressed with most name-droppers }
+autolink_nodes 5160 186 satelite elaboration-additional  5181
+create-a-node-here really 64.167 187 {he meets.}
+nextSentence really
+autolink_nodes 186 187 satelite-embedded elaboration-object-attribute-e  5182
+create-a-node-here really 65.44 188 {\nThat's because they only drop "mere names," }
+autolink_nodes 5182 188 satelite reason  5183
+create-a-node-here really 65.68 189 {says Mr. Churchill.}
+nextSentence really
+autolink_nodes 188 189 satelite attribution  5184
+create-a-node-here really 67.30 190 { \n\nCurrently writing his memoirs,}
+autolink_nodes 5183 190 satelite explanation-argumentative  5185
+create-a-node-here really 67.189 191 { Mr. Churchill, an artist, tells how tycoons such as the late Jean Paul Getty, the oil billionnaire, were, in fact, known only by one initial, their last.}
+nextSentence really
+autolink_nodes 190 191 nucleus circumstance  5186
+create-a-node-here really 67.221 192 { "When you're at the club, }
+autolink_nodes 5186 192 satelite elaboration-additional  5187
+create-a-node-here really 67.233 193 {you ask}
+autolink_nodes 192 193 nucleus circumstance  5188
+nextSentence really
+create-a-node-here really 67.270 194 { whether they've spoken to `G.' }
+autolink_nodes 193 194 nucleus attribution  5189
+create-a-node-here really 67.289 195 {Now they know }
+autolink_nodes 5189 195 satelite elaboration-additional below 5190
+create-a-node-here really 67.307 196 {who you mean }
+autolink_nodes 195 196 nucleus attribution  5191
+create-a-node-here really 67.325 197 {and you know }
+autolink_nodes 5191 197 multinuclear List  5192
+create-a-node-here really 67.343 198 {who you mean.}
+nextSentence really
+autolink_nodes 197 198 nucleus attribution  5193
+create-a-node-here really 68.21 199 {\nBut no one else does.}
+nextSentence really
+autolink_nodes 5192 199 multinuclear Contrast above 5194
+create-a-node-here really 69.26 200 {\nNow that's name-dropping, }
+#autolink_nodes 5188 200 nucleus definition  5195
+#UNDID
+autolink_nodes 5188 200 satelite comment  5195
+create-a-node-here really 69.43 201 {if you know }
+autolink_nodes 200 201 satelite condition  5196
+create-a-node-here really 69.62 202 {what I mean." }
+autolink_nodes 201 202 nucleus attribution  5197
+collapsed_nodes {5011 5021 5010 5024 5045 5038 5084 5081 5070 5069 5064 5119 5109 5138 5136 5131 5121 5100 5095 5094 5022 5155 5153 5179 5173 5162 5159}
+collapsed_nodes {}
+disconnect_node 5006 disconnect
+autolink_nodes 5009 5006 satelite-embedded temporal-same-time-e  5198
+disconnect_node 68 disconnect
+autolink_nodes 69 68 satelite-embedded concession-e  5199
+disconnect_node 154 disconnect
+autolink_nodes 5151 154 satelite-embedded circumstance-e  5200
+collapsed_nodes {5159}
+collapsed_nodes {}

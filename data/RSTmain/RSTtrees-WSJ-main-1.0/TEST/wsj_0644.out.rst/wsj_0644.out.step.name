@@ -1,0 +1,10 @@
+nextSentence really
+create-a-node-here really 2.154 1 {\nBruce W. Wilkinson, president and chief executive officer, was named to the additional post of chairman of this architectural and design services concern.}
+nextSentence really
+create-a-node-here really 3.61 2 {\nMr. Wilkinson, 45 years old, succeeds Thomas A. Bullock, 66, }
+create-a-node-here really 3.92 3 {who is retiring as chairman }
+create-a-node-here really 3.167 4 {but will continue as a director and chairman of the executive committee.}
+nextSentence really
+autolink_nodes 3 4 nucleus concession  5001
+autolink_nodes 2 5001 satelite-embedded elaboration-additional-e  5002
+autolink_nodes 1 5002 satelite circumstance  5003

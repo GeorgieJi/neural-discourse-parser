@@ -1,0 +1,178 @@
+nextSentence really
+create-a-node-here really 2.108 1 {\nThe following U.S. Treasury, corporate and municipal offerings are tentatively scheduled for sale this week,}
+create-a-node-here really 2.158 2 { according to Dow Jones Capital Markets Report:}
+autolink_nodes 1 2 satelite attribution  5001
+nextSentence really
+nextSentence really
+create-a-node-here really 4.49 3 { \n\n$15.2 billion of three-month and six-month bills.}
+create-a-node-here really 6.15 4 { \n\nTwo-year notes,}
+create-a-node-here really 6.67 5 { refinancing about $9.6 billion in maturing debt.}
+nextSentence really
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5002
+create-a-node-here really 8.31 6 { \n\n$9.75 billion of 52-week bills.}
+nextSentence really
+autolink_nodes 5002 6 multinuclear List  5003
+autolink_nodes 5003 3 multinuclear List below 5003
+create-a-node-here really 10.32 7 { \n\nConnecticut Light & Power Co. --}
+create-a-node-here really 10.99 8 { Three million shares of $25 preferred, via competitive bidding.}
+nextSentence really
+change_constit 8 
+autolink_nodes 7 8 satelite elaboration-general-specific  5004
+create-a-node-here really 12.26 9 { \n\nB&H Crude Carriers Ltd. --}
+create-a-node-here really 12.83 10 { Four million common shares, via Salomon Brothers Inc.}
+autolink_nodes 9 10 satelite elaboration-general-specific  5005
+create-a-node-here really 14.25 11 { \n\nBaldwin Technology Co. --}
+create-a-node-here really 14.93 12 { 2.6 million Class A shares, via Smith Barney Harris Upham & Co.}
+autolink_nodes 11 12 satelite elaboration-general-specific  5006
+create-a-node-here really 16.34 13 { \n\nBlockbuster Entertainment Corp. --}
+create-a-node-here really 16.51 14 { $250 million}
+create-a-node-here really 16.69 15 { (face amount)}
+create-a-node-here really 16.135 16 { Liquid Yield Option Notes, via Merrill Lynch Capital Markets.}
+autolink_nodes 14 15 satelite-embedded elaboration-additional-e  5007
+autolink_nodes 16 5007 multinuclear Same-Unit  5008
+autolink_nodes 13 5008 satelite elaboration-additional  5009
+disconnect_node 5008 modify
+autolink_nodes 13 5008 satelite elaboration-general-specific  5010
+create-a-node-here really 18.24 17 { \n\nChase Manhattan Corp. --}
+create-a-node-here really 18.79 18 { 14 million common shares, via Goldman, Sachs & Co.}
+autolink_nodes 17 18 satelite elaboration-general-specific  5011
+create-a-node-here really 20.16 19 { \n\nComcast Corp. --}
+create-a-node-here really 20.76 20 { $150 million convertible debentures, via Merrill Lynch.}
+nextSentence really
+autolink_nodes 19 20 satelite elaboration-general-specific  5012
+create-a-node-here really 22.17 21 { \n\nCSS Industries --}
+create-a-node-here really 22.67 22 { 1.3 million common shares, via Merrill Lynch.}
+nextSentence really
+autolink_nodes 21 22 satelite elaboration-general-specific  5013
+create-a-node-here really 24.31 23 { \n\nEastern Utilities Associates --}
+create-a-node-here really 24.83 24 { 1.5 million common shares, via PaineWebber Inc.}
+autolink_nodes 23 24 satelite elaboration-general-specific  5014
+create-a-node-here really 26.30 25 { \n\nEmployee Benefit Plans Inc. --}
+create-a-node-here really 26.94 26 { Two million common shares, via Dean Witter Capital Markets.}
+nextSentence really
+autolink_nodes 25 26 satelite elaboration-additional  5015
+disconnect_node 26 modify
+autolink_nodes 25 26 satelite elaboration-general-specific  5016
+create-a-node-here really 28.16 27 { \n\nExabyte Corp. --}
+create-a-node-here really 28.64 28 { 2,850,000 common shares, via Goldman Sachs.}
+nextSentence really
+autolink_nodes 27 28 satelite elaboration-general-specific  5017
+create-a-node-here really 30.21 29 { \n\nKnowledgeware Inc. --}
+create-a-node-here really 30.79 30 { 2.4 million common shares, via Montgomery Securities.}
+nextSentence really
+autolink_nodes 29 30 satelite elaboration-general-specific  5018
+create-a-node-here really 32.9 31 { \n\nOregon --}
+create-a-node-here really 32.103 32 { $100 million of general obligation veterans' tax notes, Series 1989, via competitive bid.}
+nextSentence really
+autolink_nodes 31 32 satelite elaboration-general-specific  5019
+autolink_nodes 5017 5018 multinuclear List  5020
+autolink_nodes 5020 5016 multinuclear List below 5020
+autolink_nodes 5020 5014 multinuclear List below 5020
+autolink_nodes 5020 5013 multinuclear List below 5020
+autolink_nodes 5020 5012 multinuclear List below 5020
+autolink_nodes 5020 5011 multinuclear List below 5020
+autolink_nodes 5020 5010 multinuclear List below 5020
+autolink_nodes 5020 5006 multinuclear List below 5020
+autolink_nodes 5020 5005 multinuclear List below 5020
+autolink_nodes 5020 5004 multinuclear List below 5020
+collapsed_nodes {5004}
+collapsed_nodes {5004 5006}
+collapsed_nodes {5004 5006 5010}
+collapsed_nodes {5004 5006 5010 5005}
+collapsed_nodes {5004 5006 5010 5005 5011}
+collapsed_nodes {5004 5006 5010 5005 5011 5012}
+collapsed_nodes {5004 5006 5010 5005 5011 5012 5013}
+collapsed_nodes {5004 5006 5010 5005 5011 5012 5013 5014}
+collapsed_nodes {5004 5006 5010 5005 5011 5012 5013 5014 5016}
+collapsed_nodes {5004 5006 5010 5005 5011 5012 5013 5014 5016 5017}
+collapsed_nodes {5004 5006 5010 5005 5011 5012 5013 5014 5016 5017 5018}
+autolink_nodes 5001 5003 satelite elaboration-set-member  5021
+autolink_nodes 5021 5020 satelite elaboration-set-member  5022
+create-a-node-here really 34.19 33 { \n\nWashington, D.C. --}
+create-a-node-here really 34.81 34 { $200 million of 1990 general obligation tax revenue notes}
+create-a-node-here really 34.101 35 { (Series 1990A),}
+create-a-node-here really 34.126 36 { via competitive bid.}
+nextSentence really
+autolink_nodes 34 35 satelite-embedded elaboration-additional-e  5023
+autolink_nodes 36 5023 multinuclear Same-Unit  5024
+autolink_nodes 33 5024 satelite elaboration-general-specific  5025
+create-a-node-here really 36.35 37 { \n\nVirginia Public School Authority --}
+create-a-node-here really 36.92 38 { $55,730,000 of school financing bonds, 1989 Series B}
+create-a-node-here really 36.115 39 { (1987 resolution),}
+create-a-node-here really 36.140 40 { via competitive bid.}
+nextSentence really
+autolink_nodes 38 39 satelite-embedded elaboration-additional-e  5026
+autolink_nodes 40 5026 multinuclear Same-Unit  5027
+autolink_nodes 37 5027 satelite elaboration-general-specific  5028
+create-a-node-here really 38.16 41 { \n\nAustin, Texas --}
+create-a-node-here really 38.50 42 { $68,230,000 of various bonds,}
+nextSentence really
+create-a-node-here really 38.191 43 { including $32 million hotel occupancy tax revenue bonds, Series 1989A, and $36.23 million convention center revenue bonds, Series 1989B,}
+create-a-node-here really 38.229 44 { via a Morgan Stanley & Co. group.}
+nextSentence really
+autolink_nodes 42 43 satelite-embedded elaboration-set-member-e  5029
+autolink_nodes 44 5029 multinuclear Same-Unit  5030
+autolink_nodes 41 5030 satelite elaboration-general-specific  5031
+nextSentence really
+create-a-node-here really 40.51 45 { \n\nCalifornia Health Facilities Financing Authority --}
+create-a-node-here really 40.131 46 { $144.5 million of Kaiser Permanente revenue bonds, via a PaineWebber group.}
+nextSentence really
+#autolink_nodes 45 46 satelite elaboration-general-specific  5032
+#UNDID
+autolink_nodes 45 46 satelite elaboration-general-specific  5032
+create-a-node-here really 42.14 47 { \n\nConnecticut --}
+create-a-node-here really 42.164 48 { $100 million of general obligation capital appreciation bonds, College Savings Plan, 1989 Series B, via a Prudential-Bache Capital Funding group.}
+autolink_nodes 47 48 satelite elaboration-general-specific  5033
+create-a-node-here really 44.53 49 { \n\nPennsylvania Higher Education Facilities Authority --}
+create-a-node-here really 44.153 50 { $117 million of revenue bonds for Hahnemann University, Series 1989, via a Merrill Lynch group.}
+nextSentence really
+autolink_nodes 49 50 satelite elaboration-general-specific  5034
+create-a-node-here really 46.29 51 { \n\nTennessee Valley Authority --}
+create-a-node-here really 46.86 52 { Three billion of power bonds, via First Boston Corp.}
+autolink_nodes 51 52 satelite elaboration-general-specific  5035
+create-a-node-here really 48.53 53 { \n\nUniversity of Medicine And Dentistry of New Jersey --}
+create-a-node-here really 48.118 54 { $55 million of Series C bonds, via a Prudential-Bache group.}
+nextSentence really
+autolink_nodes 53 54 satelite elaboration-general-specific  5036
+create-a-node-here really 50.69 55 { \n\nWest Virginia Parkways, Economic Development And Tourism Authority --}
+create-a-node-here really 50.150 56 { $143 million of parkway revenue bonds, Series 1989, via a PaineWebber group.}
+nextSentence really
+autolink_nodes 55 56 satelite elaboration-general-specific  5037
+create-a-node-here really 52.21 57 { \n\nSan Antonio, Texas --}
+create-a-node-here really 52.109 58 { $640 million of gas and electric revenue refunding bonds, via a First Boston group.}
+nextSentence really
+autolink_nodes 57 58 satelite elaboration-general-specific  5038
+nextSentence really
+create-a-node-here really 54.53 59 { \n\nSouth Dakota Health & Education Facility Authority --}
+create-a-node-here really 54.162 60 { $51.1 million of Rapid City Regional Hospital bonds, via a Dougherty, Dawkins, Strand & Yost Inc. group.}
+nextSentence really
+autolink_nodes 59 60 satelite elaboration-general-specific  5039
+autolink_nodes 5025 5019 multinuclear List  5040
+autolink_nodes 5040 5028 multinuclear List below 5040
+autolink_nodes 5040 5031 multinuclear List below 5040
+autolink_nodes 5040 5032 multinuclear List below 5040
+autolink_nodes 5040 5033 multinuclear List below 5040
+autolink_nodes 5040 5034 multinuclear List below 5040
+autolink_nodes 5040 5035 multinuclear List below 5040
+autolink_nodes 5040 5036 multinuclear List below 5040
+autolink_nodes 5040 5037 multinuclear List below 5040
+autolink_nodes 5040 5038 multinuclear List below 5040
+autolink_nodes 5040 5039 multinuclear List below 5040
+autolink_nodes 5022 5040 satelite elaboration-set-member  5041
+collapsed_nodes {5006 5010 5005 5011 5012 5013 5014 5016 5017 5018}
+collapsed_nodes {5006 5010 5011 5012 5013 5014 5016 5017 5018}
+collapsed_nodes {5010 5011 5012 5013 5014 5016 5017 5018}
+collapsed_nodes {5011 5012 5013 5014 5016 5017 5018}
+collapsed_nodes {5012 5013 5014 5016 5017 5018}
+collapsed_nodes {5013 5014 5016 5017 5018}
+collapsed_nodes {5014 5016 5017 5018}
+collapsed_nodes {5016 5017 5018}
+collapsed_nodes {5017 5018}
+collapsed_nodes {5018}
+collapsed_nodes {}
+disconnect_node 5003 modify
+autolink_nodes 5001 5003 satelite-embedded elaboration-set-member-e below 5042
+disconnect_node 5020 modify
+autolink_nodes 5042 5020 satelite-embedded elaboration-set-member-e below 5043
+disconnect_node 5040 modify
+autolink_nodes 5043 5040 satelite-embedded elaboration-set-member-e  5044

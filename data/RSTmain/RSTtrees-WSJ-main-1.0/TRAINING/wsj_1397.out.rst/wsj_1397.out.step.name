@@ -1,0 +1,472 @@
+nextSentence really
+create-a-node-here really 2.23 1 {\nWhen last we left him, }
+create-a-node-here really 2.78 2 {FBI Agent Nick Mancuso had solved a murder mystery, }
+autolink_nodes 1 2 nucleus circumstance  5001
+create-a-node-here really 2.123 3 {unraveled a Washington political scandal, }
+autolink_nodes 2 3 multinuclear List  5002
+create-a-node-here really 2.206 4 {and racked up some pretty good ratings numbers in the miniseries "Favorite Son."}
+nextSentence really
+autolink_nodes 5002 4 multinuclear List below 5002
+create-a-node-here really 2.268 5 { What next for the crusty FBI agent with the heart of gold?}
+nextSentence really
+autolink_nodes 5001 5 satelite rhetorical-question  5003
+create-a-node-here really 3.28 6 {\nA spinoff series, of course.}
+nextSentence really
+autolink_nodes 5 6 multinuclear Question-Answer  5004
+create-a-node-here really 5.49 7 { \n\nThere are plenty of worse inspirations for shows }
+autolink_nodes 5003 7 satelite comment  5005
+create-a-node-here really 5.106 8 {-- and most of them had already made the fall lineup: }
+autolink_nodes 7 8 satelite elaboration-additional  5006
+create-a-node-here really 5.115 9 {a nun }
+create-a-node-here really 5.147 10 {raising some lovable orphans.}
+nextSentence really
+autolink_nodes 9 10 satelite-embedded elaboration-object-attribute-e  5007
+create-a-node-here really 6.13 11 {\nA den mother }
+create-a-node-here really 6.50 12 {raising some lovable teen models.}
+nextSentence really
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e  5008
+create-a-node-here really 7.34 13 {\nA bunch of tans and bathing suits }
+create-a-node-here really 7.67 14 {posing as lovable lifeguards.}
+nextSentence really
+autolink_nodes 13 14 satelite-embedded elaboration-object-attribute-e  5009
+autolink_nodes 5007 5008 multinuclear List  5010
+autolink_nodes 5010 5009 multinuclear List below 5010
+autolink_nodes 8 5010 satelite example  5011
+create-a-node-here really 9.71 15 { \n\nIn that context, Robert Loggia's riveting performance as the unlovable }
+create-a-node-here really 9.96 16 {-- even crotchety -- }
+autolink_nodes 15 16 satelite-embedded elaboration-additional-e  5012
+create-a-node-here really 9.162 17 {veteran agent seems a better franchise for a series than most.}
+nextSentence really
+autolink_nodes 5012 17 multinuclear Same-Unit  5013
+autolink_nodes 5010 5013 multinuclear Comparison above 5014
+create-a-node-here really 10.30 18 {\nWeek by week on "Mancuso FBI" }
+nextSentence really
+nextSentence really
+create-a-node-here really 10.62 19 {(NBC, Fridays, 10 p.m. ET), }
+autolink_nodes 18 19 satelite-embedded elaboration-additional-e  5015
+create-a-node-here really 10.156 20 {he pokes around the crime styles of the rich, famous and powerful of the Washington scene }
+autolink_nodes 5015 20 multinuclear Same-Unit  5016
+create-a-node-here really 10.197 21 {-- a loose cannon on deck at the FBI.}
+nextSentence really
+autolink_nodes 20 21 satelite-embedded interpretation-s-e  5017
+create-a-node-here really 12.80 22 { \n\nOver the first few weeks, "Mancuso FBI" has sprung straight from the headlines, }
+create-a-node-here really 12.168 23 {which is either a commendable stab at topicality, or a lack of imagination, or both.}
+nextSentence really
+autolink_nodes 22 23 satelite interpretation-s  5018
+create-a-node-here really 13.59 24 {\nThe opening show featured a secretary of defense designate }
+create-a-node-here really 13.85 25 {accused of womanizing }
+autolink_nodes 24 25 satelite-embedded elaboration-object-attribute-e  5019
+create-a-node-here really 13.107 26 {(a la John Tower).}
+nextSentence really
+#autolink_nodes 5019 26 satelite-embedded manner-e  5020
+#UNDID
+autolink_nodes 5019 26 satelite-embedded manner-e  5020
+#create-a-node-here really 14.28 27 {\nWhen his secretary is found }
+#create-a-node-here really 14.46 28 {floating dead }
+#autolink_nodes 27 28 satelite-embedded elaboration-object-attribute-e  5021
+#create-a-node-here really 14.69 29 {in the pol's pool, }
+#autolink_nodes 5021 29 multinuclear Same-Unit  5022
+#create-a-node-here really 14.110 30 {Mancuso is called in to investigate. }
+#autolink_nodes 5022 30 nucleus circumstance  5023
+#autolink_nodes 5020 5023 satelite elaboration-additional  5024
+#create-a-node-here really 16.37 31 {\n\nLast week, a young black girl claimed}
+#create-a-node-here really 16.87 32 { she had been raped by a white police officer }
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 14.61 27 {\nWhen his secretary is found floating dead in the pol's pool, }
+create-a-node-here really 14.102 28 {Mancuso is called in to investigate. }
+autolink_nodes 27 28 nucleus circumstance  5021
+autolink_nodes 5020 5021 satelite elaboration-additional  5022
+create-a-node-here really 16.38 29 {\n\nLast week, a young black girl claimed }
+create-a-node-here really 16.87 30 {she had been raped by a white police officer }
+autolink_nodes 29 30 nucleus attribution  5023
+create-a-node-here really 16.113 31 {(a la Tawana Brawley).}
+nextSentence really
+autolink_nodes 5023 31 satelite-embedded manner-e  5024
+autolink_nodes 5022 5024 multinuclear Sequence  5025
+create-a-node-here really 17.70 32 {\nIn this week's show, there's an unsafe nuclear weaponsmaking facility }
+create-a-node-here really 17.93 33 {(a la Rocky Flats).}
+nextSentence really
+autolink_nodes 32 33 satelite-embedded manner-e  5026
+autolink_nodes 5025 5026 multinuclear Sequence below 5026
+autolink_nodes 5016 5018 satelite elaboration-additional  5027
+autolink_nodes 5018 5025 satelite evidence  5028
+autolink_nodes 5005 5027 satelite elaboration-additional  5029
+create-a-node-here really 19.56 34 { \n\nAlong the way, we're introduced to the supporting cast: }
+create-a-node-here really 19.88 35 {a blond bombshell secretary }
+create-a-node-here really 19.106 36 {(Randi Brazen }
+autolink_nodes 35 36 satelite-embedded elaboration-general-specific-e  5030
+create-a-node-here really 19.137 37 {-- her real name, honest), }
+autolink_nodes 36 37 satelite-embedded comment-e  5031
+create-a-node-here really 19.163 38 {a scheming young boss }
+create-a-node-here really 19.184 39 {(Fredric Lehne), }
+autolink_nodes 38 39 satelite-embedded elaboration-general-specific-e  5032
+autolink_nodes 5030 5032 multinuclear List  5033
+create-a-node-here really 19.213 40 {another blonde bombshell }
+create-a-node-here really 19.249 41 {who's also an idealistic lawyer }
+autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e  5034
+create-a-node-here really 19.270 42 {(Lindsay Frost), }
+autolink_nodes 5034 42 satelite-embedded elaboration-general-specific-e  5035
+autolink_nodes 5033 5035 multinuclear List below 5035
+create-a-node-here really 19.297 43 {and a forensics expert }
+create-a-node-here really 19.319 44 {(Charles Siebert).}
+nextSentence really
+#autolink_nodes 43 44 satelite-embedded elaboration-general-specific-e  5036
+#UNDID
+autolink_nodes 43 44 satelite-embedded elaboration-general-specific-e  5036
+autolink_nodes 5033 5036 multinuclear List below 5036
+autolink_nodes 34 5033 satelite elaboration-set-member  5037
+autolink_nodes 5029 5037 satelite elaboration-additional  5038
+create-a-node-here really 21.37 45 { \n\nIf all of this seems a little stale, }
+create-a-node-here really 21.91 46 {it's redeemed in part by some tricky plot twists: }
+autolink_nodes 45 46 nucleus condition  5039
+disconnect_node 45 modify
+autolink_nodes 46 45 satelite antithesis  5040
+create-a-node-here really 21.167 47 {The usual suspects are found to be guilty, then not guilty, then guilty }
+create-a-node-here really 21.200 48 {-- but of a different crime. }
+autolink_nodes 47 48 satelite antithesis  5041
+autolink_nodes 5040 5041 satelite explanation-argumentative  5042
+create-a-node-here really 21.296 49 {(In last week's rape case, for example, the girl turns out to have been a victim of incest, }
+create-a-node-here really 21.345 50 {and the biggest villains are the politicians }
+#create-a-node-here really 21.370 51 {who exploit the case.}
+#nextSentence really
+#autolink_nodes 50 51 satelite-embedded elaboration-object-attribute-e  5043
+#UNDID
+#UNDID
+#create-a-node-here really 21.376 52 {) }
+#UNDID
+#UNDID
+nextSentence really
+create-a-node-here really 21.372 51 {who exploit the case.) }
+autolink_nodes 50 51 satelite-embedded elaboration-object-attribute-e  5043
+autolink_nodes 49 5043 multinuclear List  5044
+autolink_nodes 5041 5044 satelite example  5045
+create-a-node-here really 21.445 52 {Most of all though, the show is redeemed by the character of Mancuso.}
+nextSentence really
+create-a-node-here really 23.72 53 { \n\nWhat makes the veteran FBI man so endearing is his hard-bitten cynicism }
+autolink_nodes 52 53 satelite explanation-argumentative  5046
+create-a-node-here really 23.87 54 {-- earned, }
+autolink_nodes 53 54 satelite-embedded elaboration-additional-e  5047
+create-a-node-here really 23.104 55 {we discover, }
+autolink_nodes 54 55 satelite-embedded attribution-e  5048
+disconnect_node 55 modify
+autolink_nodes 54 55 satelite attribution  5049
+create-a-node-here really 23.176 56 {when he was assigned to the civil rights movement back in the 1960s.}
+nextSentence really
+autolink_nodes 5049 56 satelite circumstance  5050
+create-a-node-here really 24.43 57 {\nHe wasn't protecting the Freedom Marchers; }
+create-a-node-here really 24.82 58 {he was tailing them as subversives.}
+nextSentence really
+#autolink_nodes 57 58 multinuclear Contrast  5051
+#UNDID
+autolink_nodes 57 58 nucleus antithesis  5051
+autolink_nodes 5047 5051 satelite elaboration-additional  5052
+create-a-node-here really 25.47 59 {\nThis is not the "Mississippi Burning" scenario }
+create-a-node-here really 25.86 60 {that thrills his young colleagues: }
+autolink_nodes 59 60 satelite-embedded elaboration-object-attribute-e  5053
+autolink_nodes 5051 5053 satelite elaboration-additional  5054
+create-a-node-here really 25.142 61 {"Kid, you've been reading Classic Comics too long," }
+create-a-node-here really 25.160 62 {Mancuso says. }
+autolink_nodes 61 62 satelite attribution  5055
+disconnect_node 5053 disconnect
+create-a-node-here really 25.209 63 {"Back in 1964, the FBI had five black agents.}
+nextSentence really
+autolink_nodes 5055 63 multinuclear Contrast  5056
+create-a-node-here really 26.43 64 {\nThree were chauffeurs for J. Edgar Hoover, }
+create-a-node-here really 26.74 65 {and two cleaned his house."}
+nextSentence really
+autolink_nodes 64 65 multinuclear List  5057
+autolink_nodes 63 5057 satelite elaboration-set-member  5058
+autolink_nodes 5053 5056 satelite comment  5059
+autolink_nodes 5052 5059 satelite example  5060
+create-a-node-here really 28.66 66 { \n\nAt the core of Mr. Loggia's Mancuso is his world-weary truculence.}
+nextSentence really
+create-a-node-here really 29.50 67 {\nHe describes a reporter as "Miss First Amendment."}
+nextSentence really
+create-a-node-here really 29.106 68 { He describes a drowned corpse as "Esther Williams."}
+nextSentence really
+autolink_nodes 67 68 multinuclear List  5061
+create-a-node-here really 29.115 69 { And }
+create-a-node-here really 29.161 70 {when he's told "Try a little tenderness," }
+create-a-node-here really 29.180 71 {he shoots back }
+#autolink_nodes 70 71 satelite circumstance  5062
+#UNDID
+autolink_nodes 70 71 nucleus circumstance  5062
+autolink_nodes 69 5062 multinuclear Same-Unit  5063
+create-a-node-here really 29.227 72 {"I'm going home to try a little linguine." }
+#autolink_nodes 5063 72 nucleus attribution  5064
+#UNDID
+autolink_nodes 5063 72 multinuclear Statement-Response above 5064
+autolink_nodes 5061 5064 multinuclear List below 5064
+autolink_nodes 66 5061 satelite example  5065
+autolink_nodes 5059 5065 multinuclear List  5066
+create-a-node-here really 31.126 73 {\n\nYet for all his cynicism, he's at heart a closet idealist, a softy with a secret crush on truth, justice and the American Way.}
+nextSentence really
+autolink_nodes 5060 73 multinuclear Contrast  5067
+create-a-node-here really 32.21 74 {\nHe's the kind of guy }
+create-a-node-here really 32.52 75 {who rescues trampled flags.}
+nextSentence really
+autolink_nodes 74 75 satelite-embedded elaboration-object-attribute-e  5068
+autolink_nodes 73 5068 satelite elaboration-additional  5069
+create-a-node-here really 34.54 76 { \n\nIf "Mancuso FBI" has an intriguing central character, }
+create-a-node-here really 34.84 77 {it also has a major flaw: }
+autolink_nodes 76 77 multinuclear Contrast  5070
+create-a-node-here really 34.112 78 {It's wildly overwritten.}
+nextSentence really
+#autolink_nodes 77 78 satelite elaboration-additional  5071
+#UNDID
+autolink_nodes 77 78 satelite elaboration-general-specific  5071
+create-a-node-here really 35.51 79 {\nExecutive Producers Steve Sohmer and Jeff Bleckner }
+create-a-node-here really 35.105 80 {(and writer/producers Ken Solarz and Steve Bello) }
+#autolink_nodes 79 80 satelite elaboration-additional  5072
+#UNDID
+autolink_nodes 79 80 satelite-embedded elaboration-additional-e  5072
+create-a-node-here really 35.157 81 {have revved this show up to the breaking point. }
+autolink_nodes 5072 81 multinuclear Same-Unit  5073
+#autolink_nodes 5038 5046 satelite elaboration-additional  5074
+#UNDID
+autolink_nodes 5038 5042 satelite elaboration-additional  5074
+autolink_nodes 5074 5046 satelite elaboration-additional  5075
+create-a-node-here really 37.34 82 {\n\nTo start, there's always a crisis }
+create-a-node-here really 37.69 83 {-- and someone always worries, }
+autolink_nodes 82 83 multinuclear List  5076
+create-a-node-here really 37.113 84 {"What if the press gets a hold of this?"}
+nextSentence really
+autolink_nodes 83 84 nucleus attribution  5077
+create-a-node-here really 37.161 85 { At least once an episode we see protestors }
+create-a-node-here really 37.181 86 {marching around }
+autolink_nodes 85 86 satelite-embedded elaboration-object-attribute-e  5078
+create-a-node-here really 37.203 87 {screaming slogans.}
+nextSentence really
+autolink_nodes 86 87 multinuclear List  5079
+autolink_nodes 5070 5073 satelite elaboration-additional  5080
+create-a-node-here really 38.35 88 {\nAt least once Mancuso's boss yells }
+create-a-node-here really 38.48 89 {"In here }
+create-a-node-here really 38.61 90 {-- now," }
+autolink_nodes 89 90 multinuclear Temporal-Same-Time  5081
+autolink_nodes 88 5081 nucleus attribution  5082
+autolink_nodes 5078 5082 multinuclear List  5083
+create-a-node-here really 38.110 91 {and proceeds to dress his investigator down: }
+#create-a-node-here really 38.135 92 {"You are a dinosaur .}
+#nextSentence really
+#autolink_nodes 91 92 satelite manner  5084
+#autolink_nodes 5082 5084 multinuclear Sequence  5085
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+nextSentence really
+nextSentence really
+create-a-node-here really 38.140 92 {"You are a dinosaur . . . }
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 38.175 93 {a hangover in a $10 suit . . . }
+autolink_nodes 92 93 multinuclear List  5084
+create-a-node-here really 38.234 94 {One more word and you are out on a park bench, mister."}
+nextSentence really
+autolink_nodes 5084 94 multinuclear List below 5084
+autolink_nodes 91 5084 satelite manner  5085
+autolink_nodes 5082 5085 multinuclear Sequence  5086
+create-a-node-here really 38.277 95 { Finally, of course, the boss gives in,}
+create-a-node-here really 38.306 96 { but he's still yelling: }
+autolink_nodes 95 96 multinuclear Contrast  5087
+create-a-node-here really 38.363 97 {"I find myself explaining anything to Teddy Kennedy, }
+create-a-node-here really 38.411 98 {you'll be chasing stolen cars in Anchorage."}
+nextSentence really
+autolink_nodes 97 98 nucleus condition  5088
+autolink_nodes 96 5088 nucleus attribution  5089
+autolink_nodes 5086 5087 multinuclear Sequence below 5089
+create-a-node-here really 40.63 99 { \n\nIn fact, throughout "Mancuso FBI," we don't get words or lines }
+create-a-node-here really 40.86 100 {-- we get speeches.}
+nextSentence really
+autolink_nodes 99 100 nucleus antithesis  5090
+#autolink_nodes 5080 5083 multinuclear List  5091
+#UNDID
+autolink_nodes 5076 5083 multinuclear List above 5091
+autolink_nodes 5080 5091 satelite evidence  5092
+autolink_nodes 5092 5090 satelite comment  5093
+nextSentence really
+nextSentence really
+create-a-node-here really 41.38 101 {\nWitnesses shout, scream, pontificate: }
+create-a-node-here really 41.138 102 {". . . a dream that the planet could be saved from itself and from the sadistic dumb creatures }
+create-a-node-here really 41.181 103 {who try to tear down every decent man }
+autolink_nodes 102 103 satelite-embedded elaboration-object-attribute-e  5094
+create-a-node-here really 41.208 104 {who raises his voice."}
+nextSentence really
+autolink_nodes 103 104 satelite-embedded elaboration-object-attribute-e  5095
+autolink_nodes 101 5094 nucleus attribution  5096
+create-a-node-here really 43.62 105 { \n\nAnd Mancuso himself is investigating at the top of his lungs: }
+create-a-node-here really 43.109 106 {"How the hell can you live with yourself?"}
+nextSentence really
+#autolink_nodes 105 106 nucleus attribution  5097
+#UNDID
+create-a-node-here really 43.142 107 { he erupts at a politician. }
+autolink_nodes 106 107 satelite attribution  5097
+create-a-node-here really 43.173 108 {"You twist people's trust.}
+nextSentence really
+create-a-node-here really 44.44 109 {\nYou built your career on prejudice and hate.}
+nextSentence really
+autolink_nodes 108 109 multinuclear List  5098
+create-a-node-here really 45.23 110 {\nThe scars will be here }
+create-a-node-here really 45.57 111 {years after the polls close."}
+nextSentence really
+autolink_nodes 110 111 satelite temporal-after  5099
+autolink_nodes 5098 5099 multinuclear List below 5099
+autolink_nodes 5097 5098 multinuclear List  5100
+autolink_nodes 105 5100 nucleus attribution  5101
+autolink_nodes 5096 5101 multinuclear List  5102
+create-a-node-here really 47.57 112 { \n\nIn each show, Mancuso gets to unleash similar harangues: }
+create-a-node-here really 47.98 113 {"Where the hell are they gonna live }
+create-a-node-here really 47.167 114 {when people like you turn the world into a big toxic waste dump?}
+nextSentence really
+autolink_nodes 113 114 satelite circumstance  5103
+#create-a-node-here really 48.31 115 {\nYou're the real criminal here .}
+#nextSentence really
+#autolink_nodes 5103 115 satelite elaboration-additional  5104
+#UNDID
+#UNDID
+#UNDID
+nextSentence really
+nextSentence really
+create-a-node-here really 48.36 115 {\nYou're the real criminal here . . . }
+create-a-node-here really 48.79 116 {and what you did wasn't just a murder }
+create-a-node-here really 48.120 117 {-- it was a crime against humanity."}
+nextSentence really
+autolink_nodes 116 117 nucleus antithesis  5104
+autolink_nodes 115 5104 multinuclear List  5105
+autolink_nodes 5103 5105 multinuclear List  5106
+disconnect_node 116 modify
+autolink_nodes 117 116 satelite analogy  5107
+autolink_nodes 112 5106 satelite example  5108
+autolink_nodes 5101 5108 multinuclear List  5109
+create-a-node-here really 50.53 118 { \n\nAnd, at least once a show, someone delivers the line }
+create-a-node-here really 50.81 119 {"Get off that soapbox."}
+nextSentence really
+autolink_nodes 118 119 nucleus attribution  5110
+create-a-node-here really 50.105 120 { Now that's advice }
+create-a-node-here really 50.143 121 {the writers should take to heart.}
+nextSentence really
+autolink_nodes 120 121 satelite-embedded elaboration-object-attribute-e  5111
+autolink_nodes 5110 5111 satelite comment  5112
+autolink_nodes 5102 5112 multinuclear List below 5112
+autolink_nodes 5093 5102 satelite example  5113
+autolink_nodes 5075 5113 satelite elaboration-additional  5114
+create-a-node-here really 51.101 122 {\nThey have a series with a good character, some interesting, even occasionally surprising plot lines, }
+create-a-node-here really 51.129 123 {and they're ruining it.}
+nextSentence really
+autolink_nodes 122 123 multinuclear Contrast  5115
+autolink_nodes 5113 5115 satelite evaluation-s  5116
+create-a-node-here really 53.5 124 { \n\nWhy, }
+create-a-node-here really 53.41 125 {when a key witness disappears, }
+create-a-node-here really 53.80 126 {does Mancuso trash her apartment, }
+autolink_nodes 125 126 nucleus circumstance  5117
+autolink_nodes 124 5117 multinuclear Same-Unit  5118
+create-a-node-here really 53.106 127 {tearing down drapes, }
+create-a-node-here really 53.126 128 {smashing walls?}
+nextSentence really
+autolink_nodes 127 128 multinuclear List  5119
+autolink_nodes 5118 5119 satelite manner  5120
+create-a-node-here really 54.51 129 {\nIt's a bizarre and totally inappropriate reaction, }
+create-a-node-here really 54.92 130 {all to add more pizzazz to a script }
+autolink_nodes 129 130 satelite purpose  5121
+create-a-node-here really 54.134 131 {that's already overdosing on pizzazz.}
+nextSentence really
+autolink_nodes 130 131 satelite-embedded elaboration-object-attribute-e  5122
+autolink_nodes 5115 5120 satelite rhetorical-question  5123
+autolink_nodes 5120 5121 satelite comment  5124
+create-a-node-here really 55.16 132 {\nThat's not plot.}
+nextSentence really
+create-a-node-here really 56.21 133 {\nThat's not character.}
+nextSentence really
+autolink_nodes 132 133 multinuclear List  5125
+create-a-node-here really 57.24 134 {\nThat's hyperventilating.}
+nextSentence really
+autolink_nodes 5125 134 multinuclear Contrast above 5126
+autolink_nodes 5121 5126 multinuclear List  5127
+create-a-node-here really 59.53 135 { \n\nThere is a scene at the end of the first week's show }
+create-a-node-here really 59.136 136 {where Mancuso attends the unveiling of the memorial to his dead partner David.}
+nextSentence really
+autolink_nodes 135 136 satelite-embedded elaboration-object-attribute-e  5128
+create-a-node-here really 60.26 137 {\nAsked to say a few words, }
+create-a-node-here really 60.72 138 {he pulls out his crumpled piece of paper }
+create-a-node-here really 60.96 139 {and tries to talk, }
+autolink_nodes 138 139 multinuclear Sequence  5129
+#autolink_nodes 137 5129 satelite-embedded result-e  5130
+#UNDID
+autolink_nodes 137 5129 nucleus-embedded result-e  5130
+create-a-node-here really 60.124 140 {but he's too choked up }
+create-a-node-here really 61.0 141 {to get the words out.\n}
+autolink_nodes 140 141 nucleus circumstance  5131
+disconnect_node 137 modify
+autolink_nodes 5129 137 satelite circumstance  5132
+autolink_nodes 5130 5131 nucleus antithesis  5133
+create-a-node-here really 61.52 142 {He bangs on the piece of paper in frustration, }
+create-a-node-here really 61.68 143 {then turns }
+create-a-node-here really 61.88 144 {and walks away.}
+nextSentence really
+autolink_nodes 143 144 multinuclear Sequence  5134
+autolink_nodes 142 5134 multinuclear Sequence  5135
+autolink_nodes 5133 5135 multinuclear Consequence  5136
+create-a-node-here really 62.57 145 {\nIt was a profoundly moving moment for series television, }
+create-a-node-here really 62.114 146 {and Robert Loggia's acting resonated in the silence.}
+nextSentence really
+autolink_nodes 145 146 multinuclear List  5137
+#autolink_nodes 5136 5137 nucleus evaluation-n  5138
+#UNDID
+autolink_nodes 5128 5136 nucleus circumstance  5138
+autolink_nodes 5138 5137 nucleus evaluation-n  5139
+create-a-node-here really 64.69 147 { \n\nThere's a pretty good program inside all the noise of "Mancuso FBI." }
+create-a-node-here really 64.145 148 {If the show's creators could just let themselves be quiet for a little,}
+create-a-node-here really 64.175 149 { they might just hear it.}
+nextSentence really
+autolink_nodes 148 149 nucleus condition  5140
+autolink_nodes 147 5140 satelite elaboration-additional  5141
+#autolink_nodes 5137 5141 satelite elaboration-additional above 5141
+#UNDID
+autolink_nodes 5137 5141 satelite elaboration-additional below 5142
+autolink_nodes 5114 5139 multinuclear Topic-Drift  5143
+disconnect_node 5141 disconnect
+#autolink_nodes 5114 5141 satelite interpretation-s  5144
+#UNDID
+autolink_nodes 5143 5141 satelite interpretation-s  5144
+disconnect_node 5141 modify
+autolink_nodes 5143 5141 satelite summary-s  5145
+#disconnect_node 5014 disconnect
+#disconnect_node 5013 disconnect
+#UNDID
+#UNDID
+disconnect_node 5045 modify
+autolink_nodes 5040 5045 satelite elaboration-general-specific  5146
+disconnect_node 5091 modify
+autolink_nodes 5080 5091 satelite example below 5147
+#disconnect_node 5089 disconnect
+#UNDID
+disconnect_node 5090 disconnect
+disconnect_node 5083 disconnect
+disconnect_node 5086 disconnect
+disconnect_node 5112 disconnect
+disconnect_node 5108 disconnect
+disconnect_node 5102 disconnect
+#disconnect_node 5101 disconnect
+#UNDID
+autolink_nodes 5076 5078 multinuclear List below 5147
+#autolink_nodes 5076 5086 multinuclear List below 5147
+#UNDID
+disconnect_node 5077 disconnect
+autolink_nodes 82 5077 multinuclear List  5148
+autolink_nodes 5076 5086 multinuclear List below 5148
+autolink_nodes 5090 5102 satelite example  5149
+autolink_nodes 5076 5149 multinuclear List below 5149
+autolink_nodes 5076 5108 multinuclear List below 5149
+autolink_nodes 5076 5112 multinuclear List below 5149
+disconnect_node 5123 modify
+autolink_nodes 5147 5123 satelite interpretation-s  5150

@@ -1,0 +1,58 @@
+nextSentence really
+create-a-node-here really 2.16 1 {\nDana Corp. said }
+nextSentence really
+nextSentence really
+create-a-node-here really 2.146 2 {its third-quarter net income fell 27% to $29.6 million, or 72 cents a share, from $40.7 million, or $1 a share, a year earlier.}
+nextSentence really
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 3.53 3 {\nSales dropped 4% to $1.12 billion from $1.17 billion.}
+nextSentence really
+autolink_nodes 5001 3 satelite elaboration-additional  5002
+create-a-node-here really 5.13 4 { \n\nThe company, }
+create-a-node-here really 5.89 5 {which supplies transmissions and other drive-train parts to auto makers, }
+autolink_nodes 4 5 satelite elaboration-object-attribute  5003
+create-a-node-here really 5.97 6 {said }
+autolink_nodes 5003 6 multinuclear Same-Unit  5004
+create-a-node-here really 5.194 7 {about half the earnings drop came from the "virtual collapse" of the Venezuelan auto industry.}
+nextSentence really
+autolink_nodes 5004 7 nucleus attribution  5005
+autolink_nodes 5002 5005 satelite reason  5006
+create-a-node-here really 6.45 8 {\nThe Venezuelan currency plummeted this year, }
+autolink_nodes 5005 8 satelite cause  5007
+create-a-node-here really 6.115 9 {making it difficult for auto makers there to afford imported parts.}
+nextSentence really
+autolink_nodes 8 9 satelite elaboration-object-attribute  5008
+create-a-node-here really 7.15 10 {\nDana also said }
+autolink_nodes 5008 10 multinuclear List  5009
+create-a-node-here really 7.96 11 {it was hurt by slumping U.S. truck sales and by a strike at a parts supplier.}
+nextSentence really
+autolink_nodes 10 11 nucleus attribution  5010
+create-a-node-here really 9.13 12 { \n\nThe company, }
+create-a-node-here really 9.40 13 {based in Toledo, Ohio, }
+autolink_nodes 12 13 satelite elaboration-object-attribute  5011
+collapsed_nodes {5002}
+autolink_nodes 5006 5011 satelite background  5012
+collapsed_nodes {}
+create-a-node-here really 9.53 14 {had said }
+autolink_nodes 5011 14 multinuclear Same-Unit  5013
+create-a-node-here really 9.98 15 {it expected reduced third-quarter profit.}
+nextSentence really
+autolink_nodes 5013 15 nucleus attribution  5014
+create-a-node-here really 10.65 16 {\nMary Anne Sudol, an analyst at Fitch Investors in New York, said }
+autolink_nodes 5012 16 satelite evaluation-s  5015
+create-a-node-here really 10.144 17 {automotive suppliers were reporting lower profit almost "across the board."}
+nextSentence really
+autolink_nodes 16 17 nucleus attribution  5016
+create-a-node-here really 12.45 18 { \n\nSouthwood J. Morcott, Dana's president, said }
+autolink_nodes 5016 18 multinuclear List  5017
+#create-a-node-here really 12.74 19 {the company's decision to}
+#UNDID
+create-a-node-here really 12.72 19 {the company's decision }
+autolink_nodes 18 19 nucleus attribution  5018
+create-a-node-here really 12.122 20 {to approve its normal fourth-quarter dividend }
+autolink_nodes 19 20 satelite elaboration-object-attribute below 5019
+create-a-node-here really 12.161 21 {indicated its underlying strength. }
+autolink_nodes 5019 21 multinuclear Same-Unit  5020
+collapsed_nodes {5015}
+nextSentence really
+collapsed_nodes {}

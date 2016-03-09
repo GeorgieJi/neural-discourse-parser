@@ -1,0 +1,135 @@
+nextSentence really
+create-a-node-here really 2.17 1 {\nTandy Corp. said }
+create-a-node-here really 2.59 2 {it won't join U.S. Memories, the group }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.136 3 {that seeks to battle the Japanese in the market for computer memory chips.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e below 5002
+create-a-node-here really 4.55 4 { \n\nTandy's decision is a second setback for U.S. Memories.}
+nextSentence really
+create-a-node-here really 5.37 5 {\nLast month, Apple Computer Inc. said }
+create-a-node-here really 5.77 6 {that it wouldn't invest in the group.}
+nextSentence really
+autolink_nodes 5 6 nucleus attribution  5003
+create-a-node-here really 6.11 7 {\nApple said }
+create-a-node-here really 6.93 8 {that its money would be better spent in areas such as research and development.}
+nextSentence really
+autolink_nodes 7 8 nucleus attribution  5004
+autolink_nodes 5003 5004 satelite reason  5005
+autolink_nodes 5001 4 satelite elaboration-additional  5006
+autolink_nodes 5006 5005 multinuclear Inverted-Sequence  5007
+create-a-node-here really 8.61 9 { \n\nU.S. Memories is seeking major investors to back its attempt }
+create-a-node-here really 8.145 10 {to crack the $10 billion market for dynamic random access memory chips, a market }
+#autolink_nodes 9 10 satelite-embedded elaboration-additional-e  5008
+#UNDID
+autolink_nodes 9 10 satelite-embedded elaboration-object-attribute-e  5008
+create-a-node-here really 9.0 11 {dominated by the Japanese.\n}
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5009
+create-a-node-here really 9.49 12 {Those chips were in dire shortage last year, }
+create-a-node-here really 9.90 13 {hurting many U.S. computer companies }
+autolink_nodes 12 13 satelite consequence-s  5010
+create-a-node-here really 9.147 14 {that couldn't get sufficient Japanese-supplied chips.}
+nextSentence really
+autolink_nodes 13 14 satelite-embedded elaboration-object-attribute-e  5011
+create-a-node-here really 11.11 15 { \n\nTandy said }
+create-a-node-here really 11.104 16 {its experience during the shortage didn't merit the $5 million to $50 million investment }
+create-a-node-here really 11.152 17 {U.S. Memories is seeking from each investor.}
+nextSentence really
+autolink_nodes 16 17 satelite-embedded elaboration-object-attribute-e  5012
+autolink_nodes 15 5012 nucleus attribution  5013
+autolink_nodes 5008 5010 satelite elaboration-additional  5014
+autolink_nodes 5007 5014 satelite circumstance  5015
+autolink_nodes 5015 5013 satelite reason  5016
+create-a-node-here really 11.203 18 { "At this time, we elected not to get involved }
+create-a-node-here really 11.293 19 {because we have been able to satisfy our need {for DRAMs} from the market as a rule," }
+autolink_nodes 18 19 satelite reason  5017
+create-a-node-here really 11.347 20 {said Ed Juge, Tandy's director of market planning.}
+nextSentence really
+autolink_nodes 5017 20 satelite attribution  5018
+autolink_nodes 5013 5018 satelite explanation-argumentative  5019
+create-a-node-here really 13.44 21 { \n\nSanford Kane, U.S. Memories president, said }
+create-a-node-here really 13.82 22 {the decision was "disappointing," }
+create-a-node-here really 13.129 23 {but doesn't presage U.S. Memories' failure.}
+nextSentence really
+autolink_nodes 22 23 nucleus antithesis  5020
+autolink_nodes 21 5020 nucleus attribution  5021
+autolink_nodes 5016 5021 satelite evaluation-s  5022
+create-a-node-here really 13.167 24 { "I would like to have had them," }
+create-a-node-here really 13.179 25 {he said.}
+nextSentence really
+autolink_nodes 24 25 satelite attribution  5023
+create-a-node-here really 14.42 26 {\nBut "they weren't on my list of companies }
+create-a-node-here really 14.84 27 {who were critical to be a part of it."}
+nextSentence really
+autolink_nodes 26 27 satelite-embedded elaboration-object-attribute-e  5024
+autolink_nodes 5023 5024 nucleus antithesis  5025
+#autolink_nodes 5021 5025 satelite elaboration-additional  5026
+#UNDID
+create-a-node-here really 16.81 28 { \n\nMr. Kane became president and chief executive officer of U.S. Memories last June,}
+create-a-node-here really 16.144 29 { when the group was formed by seven electronics companies: }
+autolink_nodes 28 29 satelite temporal-same-time  5026
+create-a-node-here really 16.324 30 {Advanced Micro Devices Inc., Digital Equipment Corp.; Hewlett-Packard Co.; Intel Corp.; International Business Machines Corp.; LSI Logic Corp. and National Semiconductor Corp. }
+autolink_nodes 29 30 satelite-embedded elaboration-set-member-e  5027
+autolink_nodes 5021 5025 satelite elaboration-additional  5028
+autolink_nodes 5028 5026 satelite background  5029
+create-a-node-here really 18.14 31 {\n\nMr. Kane said }
+disconnect_node 5026 disconnect
+autolink_nodes 5022 5026 satelite elaboration-additional  5030
+create-a-node-here really 18.110 32 {he expects two or three major corporations to announce their participation in U.S. Memories }
+create-a-node-here really 19.0 33 {soon after the group finishes a business plan, probably late this week.\n}
+autolink_nodes 32 33 satelite temporal-after  5031
+autolink_nodes 31 5031 nucleus attribution  5032
+create-a-node-here really 19.36 34 {U.S. Memories needs a catalyst, }
+create-a-node-here really 19.49 35 {he said, }
+autolink_nodes 34 35 satelite attribution  5033
+create-a-node-here really 19.79 36 {to inspire others to join.}
+nextSentence really
+autolink_nodes 5033 36 satelite-embedded elaboration-object-attribute-e  5034
+create-a-node-here really 21.56 37 { \n\nBut so far, most potential participants haven't decided.}
+nextSentence really
+autolink_nodes 5034 37 nucleus antithesis  5035
+create-a-node-here really 22.27 38 {\nSun Microsystems Inc. said }
+create-a-node-here really 22.76 39 {it's still actively evaluating U.S. Memories }
+create-a-node-here really 22.149 40 {and plans to meet with U.S. Memories representatives later this week.}
+nextSentence really
+autolink_nodes 39 40 multinuclear Sequence  5036
+autolink_nodes 38 5036 nucleus attribution  5037
+create-a-node-here really 24.40 41 { \n\nAmerican Telephone & Telegraph Co. said }
+create-a-node-here really 24.95 42 {it was waiting to see U.S. Memories' business plan.}
+nextSentence really
+autolink_nodes 41 42 nucleus attribution  5038
+autolink_nodes 5037 5038 multinuclear List  5039
+create-a-node-here really 25.47 43 {\nPersonal-computer maker AST Research Inc. said }
+create-a-node-here really 25.86 44 {it is still studying the situation.}
+nextSentence really
+autolink_nodes 43 44 nucleus attribution  5040
+#autolink_nodes 5039 5040 multinuclear List below 5040
+#UNDID
+autolink_nodes 5039 5040 multinuclear List below 5040
+create-a-node-here really 27.41 45 { \n\nA Compaq Computer Corp. spokeswoman said }
+create-a-node-here really 27.90 46 {that the company hasn't made a decision yet, }
+create-a-node-here really 27.142 47 {although "it isn't under active consideration." }
+#autolink_nodes 46 47 satelite attribution  5041
+#autolink_nodes 45 5041 nucleus attribution  5042
+#UNDID
+#UNDID
+autolink_nodes 46 47 satelite concession  5041
+autolink_nodes 45 5041 nucleus attribution  5042
+autolink_nodes 5039 5042 multinuclear List below 5042
+autolink_nodes 5035 5039 satelite elaboration-general-specific  5043
+collapsed_nodes {5030}
+collapsed_nodes {}
+disconnect_node 5026 disconnect
+autolink_nodes 5028 5026 satelite elaboration-additional  5044
+autolink_nodes 5044 5032 satelite elaboration-additional  5045
+disconnect_node 5032 disconnect
+disconnect_node 5034 disconnect
+autolink_nodes 5032 5034 satelite interpretation-s  5046
+disconnect_node 5034 modify
+autolink_nodes 5032 5034 satelite comment  5047
+autolink_nodes 5047 5043 multinuclear Contrast  5048
+autolink_nodes 5022 5048 multinuclear Topic-Drift  5049
+collapsed_nodes {5049}
+collapsed_nodes {}
+disconnect_node 5048 disconnect
+autolink_nodes 5044 5048 satelite elaboration-general-specific  5050

@@ -1,0 +1,267 @@
+nextSentence really
+create-a-node-here really 2.21 1 {\nThe real estate slump}
+create-a-node-here really 2.92 2 { that's pushing down the price of New York office space and housing }
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+create-a-node-here really 2.150 3 {is also affecting the city's retail real estate market.}
+nextSentence really
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+create-a-node-here really 4.51 4 { \n\nIn Manhattan, once-desirable store sites sit vacant}
+autolink_nodes 5002 4 satelite elaboration-additional  5003
+create-a-node-here really 4.105 5 { and newly constructed space has been slow to fill.}
+nextSentence really
+autolink_nodes 4 5 multinuclear List  5004
+change_rel 5004 explanation-argumentative
+create-a-node-here really 5.31 6 {\nRetail real estate brokers say }
+autolink_nodes 5004 6 satelite elaboration-additional  5005
+create-a-node-here really 5.71 7 {tenants are reluctant to sign leases }
+autolink_nodes 6 7 nucleus attribution  5006
+create-a-node-here really 5.166 8 {because of uncertainty about the local economy, turmoil in their own industries and a belief}
+autolink_nodes 7 8 multinuclear Cause-Result  5007
+create-a-node-here really 5.205 9 { that rents have not yet hit bottom.}
+nextSentence really
+autolink_nodes 8 9 satelite-embedded elaboration-object-attribute-e  5008
+create-a-node-here really 7.54 10 { \n\n"There is an unbelievable amount of space available," }
+autolink_nodes 5005 10 satelite elaboration-additional  5009
+create-a-node-here really 8.0 11 {says Faith Consolo, senior vice president at Garrick-Aug Associates Store Leasing Inc.\n}
+autolink_nodes 10 11 satelite attribution  5010
+collapsed_nodes {5005}
+create-a-node-here really 8.90 12 {There are about 2,000 stores for rent, up from a more typical range of 1,200 to 1,500.}
+nextSentence really
+collapsed_nodes {}
+autolink_nodes 5010 12 satelite elaboration-additional  5011
+collapsed_nodes {5006}
+collapsed_nodes {5006 5005}
+collapsed_nodes {}
+create-a-node-here really 8.130 13 { "This further confuses retailers," }
+autolink_nodes 12 13 satelite elaboration-additional  5012
+create-a-node-here really 8.143 14 {she says.}
+nextSentence really
+autolink_nodes 13 14 satelite attribution  5013
+create-a-node-here really 8.161 15 { "They wonder }
+autolink_nodes 5013 15 satelite elaboration-additional  5014
+create-a-node-here really 8.190 16 {should they sign a lease }
+autolink_nodes 15 16 nucleus attribution  5015
+create-a-node-here really 8.226 17 {if prices are still coming down?}
+nextSentence really
+autolink_nodes 16 17 satelite condition below 5016
+#create-a-node-here really 9.39 18 {\nIs this the wrong time to open a store?}
+#nextSentence really
+#autolink_nodes 5016 18 multinuclear List  5017
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 9.22 18 {\nIs this the wrong time}
+autolink_nodes 5016 18 multinuclear List  5017
+create-a-node-here really 10.0 19 { to open a store?\n}
+autolink_nodes 18 19 satelite-embedded elaboration-object-attribute-e  5018
+create-a-node-here really 10.47 20 {Who is going to be in the space next door?"}
+nextSentence really
+autolink_nodes 5017 20 multinuclear List below 5018
+collapsed_nodes {5015}
+collapsed_nodes {5015 5012}
+create-a-node-here really 12.13 21 { \n\nIn addition, }
+autolink_nodes 5011 21 satelite elaboration-additional  5019
+create-a-node-here really 12.34 22 {Ms. Consolo says,}
+autolink_nodes 21 22 satelite attribution  5020
+create-a-node-here really 12.82 23 { tenants usually can negotiate to pay rents }
+autolink_nodes 5020 23 multinuclear Same-Unit  5021
+create-a-node-here really 12.156 24 {that are about one-quarter lower than landlords' initial asking price.}
+nextSentence really
+autolink_nodes 23 24 satelite-embedded elaboration-object-attribute-e  5022
+collapsed_nodes {5015 5012 5019}
+collapsed_nodes {5015 5012 5019 5009}
+collapsed_nodes {5015 5012 5019 5009 5002}
+create-a-node-here really 14.157 25 { \n\nA handful of hot retail locations, such as the 57th Street and Madison and Fifth Avenue areas, have been able to sustain what many see as astronomical rents.}
+nextSentence really
+autolink_nodes 5003 25 satelite elaboration-additional  5023
+create-a-node-here really 15.60 26 {\nAnd, in some neighborhoods, rents have merely hit a plateau.}
+nextSentence really
+autolink_nodes 25 26 satelite elaboration-additional  5024
+create-a-node-here really 16.93 27 {\nBut on average, Manhattan retail rents have dropped 10% to 15% in the past six months alone, }
+autolink_nodes 5024 27 nucleus antithesis  5025
+create-a-node-here really 16.109 28 {experts say.}
+nextSentence really
+autolink_nodes 27 28 satelite attribution below 5026
+create-a-node-here really 17.60 29 {\nThat follows a more subtle decline in the prior six months, }
+autolink_nodes 5026 29 satelite elaboration-additional below 5027
+create-a-node-here really 17.116 30 {after Manhattan rents had run up rapidly since 1986.}
+nextSentence really
+autolink_nodes 29 30 satelite circumstance  5028
+collapsed_nodes {5015 5012 5019 5009 5002 5025}
+create-a-node-here really 19.17 31 { \n\nThe same factors }
+autolink_nodes 5023 31 satelite elaboration-additional  5029
+create-a-node-here really 19.54 32 {limiting demand for office space }
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5030
+create-a-node-here really 19.82 33 {have affected retailing.}
+nextSentence really
+autolink_nodes 5030 33 multinuclear Same-Unit  5031
+create-a-node-here really 19.121 34 { "As businesses contract or depart,}
+autolink_nodes 5031 34 satelite explanation-argumentative  5032
+create-a-node-here really 19.150 35 { the number of employees }
+autolink_nodes 34 35 nucleus circumstance  5033
+create-a-node-here really 19.183 36 {who might use retail services}
+autolink_nodes 35 36 satelite-embedded elaboration-object-attribute-e below 5034
+create-a-node-here really 19.198 37 { shrinks," }
+autolink_nodes 5034 37 multinuclear Same-Unit  5035
+create-a-node-here really 20.0 38 {says Edward A. Friedman, senior vice president of Helmsley Spear Inc. \n}
+autolink_nodes 5033 38 satelite attribution  5036
+create-a-node-here really 21.8 39 {\nHe says }
+autolink_nodes 5036 39 satelite elaboration-additional  5037
+create-a-node-here really 21.31 40 {financial problems }
+autolink_nodes 39 40 nucleus attribution  5038
+create-a-node-here really 21.85 41 {plaguing electronics, fur and furniture companies }
+autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e below 5039
+create-a-node-here really 21.137 42 {-- key categories in the local retail economy --}
+#autolink_nodes 41 42 satelite elaboration-additional  5040
+#UNDID
+autolink_nodes 41 42 satelite-embedded elaboration-additional-e  5040
+create-a-node-here really 21.175 43 { have further deflated the market.}
+autolink_nodes 5039 43 multinuclear Same-Unit  5041
+create-a-node-here really 22.48 44 {\nHardest hit are what he calls "secondary" sites }
+autolink_nodes 5038 44 satelite elaboration-additional  5042
+create-a-node-here really 22.96 45 {that primarily serve neighborhood residents.}
+nextSentence really
+autolink_nodes 44 45 satelite-embedded elaboration-object-attribute-e  5043
+create-a-node-here really 23.20 46 {\nIn these locations, }
+autolink_nodes 5043 46 satelite elaboration-additional  5044
+create-a-node-here really 23.43 47 {Mr. Friedman says, }
+autolink_nodes 46 47 satelite-embedded attribution-e  5045
+collapsed_nodes {5015 5012 5019 5009 5002 5025 5003}
+collapsed_nodes {}
+disconnect_node 22 disconnect
+autolink_nodes 21 22 satelite-embedded attribution-e  5046
+collapsed_nodes {5003}
+collapsed_nodes {5003 5037}
+collapsed_nodes {5003}
+create-a-node-here really 23.100 48 {"Retailers are increasingly cautious about expanding }
+autolink_nodes 5045 48 multinuclear Same-Unit  5047
+create-a-node-here really 23.135 49 {and rents have remained steady }
+autolink_nodes 5047 49 multinuclear List above 5048
+create-a-node-here really 23.171 50 {or in some cases have declined."}
+nextSentence really
+autolink_nodes 49 50 multinuclear Otherwise  5049
+create-a-node-here really 23.212 51 { Weakness in the restaurant industry,}
+collapsed_nodes {5003 5044}
+autolink_nodes 5042 51 satelite elaboration-additional  5050
+create-a-node-here really 23.254 52 { which is leaving retail space vacant,}
+autolink_nodes 51 52 satelite-embedded elaboration-additional-e  5051
+create-a-node-here really 23.297 53 { exacerbates the problem for landlords.}
+nextSentence really
+autolink_nodes 5051 53 multinuclear Same-Unit  5052
+create-a-node-here really 25.63 54 { \n\nIt is also no comfort to landlords and small New York retailers}
+autolink_nodes 5052 54 satelite elaboration-additional  5053
+create-a-node-here really 25.112 55 { when the future of larger department stores,}
+autolink_nodes 54 55 satelite circumstance  5054
+create-a-node-here really 25.151 56 { which anchor retail neighborhoods,}
+autolink_nodes 55 56 satelite-embedded elaboration-additional-e  5055
+create-a-node-here really 25.169 57 { are in doubt.}
+nextSentence really
+autolink_nodes 5055 57 multinuclear Same-Unit  5056
+create-a-node-here really 26.90 58 {\nHooker Corp., parent of Bonwit Teller and B. Altman's, is mired in bankruptcy proceedings }
+autolink_nodes 5054 58 satelite example  5057
+create-a-node-here really 26.153 59 {and Bloomingdale's is for sale by its owner, Campeau Corp. }
+autolink_nodes 58 59 multinuclear List  5058
+collapsed_nodes {5003 5044 5053}
+collapsed_nodes {}
+collapsed_nodes {5037}
+collapsed_nodes {5037 5031}
+create-a-node-here really 28.49 60 {\n\nThe trend toward lower rents may seem surprising }
+autolink_nodes 5032 60 satelite comment  5059
+create-a-node-here really 28.159 61 {given that some communities in New York are bemoaning the loss of favorite local businesses to high rents.}
+nextSentence really
+autolink_nodes 60 61 satelite circumstance  5060
+create-a-node-here really 29.5 62 {\nBut, }
+autolink_nodes 5060 62 nucleus antithesis  5061
+create-a-node-here really 29.38 63 {despite the recent softening,}
+create-a-node-here really 29.145 64 { for many of these retailers there's still been too big a jump from the rental rates of the late 1970s,}
+autolink_nodes 63 64 nucleus concession  5062
+autolink_nodes 62 5062 multinuclear Same-Unit  5063
+create-a-node-here really 29.180 65 { when their leases were signed.}
+nextSentence really
+autolink_nodes 64 65 satelite temporal-same-time below 5064
+collapsed_nodes {5037 5031 5059}
+collapsed_nodes {5037 5031 5059 5025}
+collapsed_nodes {5037 5031 5059 5025 5021}
+collapsed_nodes {5037 5031 5059 5025 5021 5015}
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012}
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019}
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019 5009}
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019 5009 5023}
+create-a-node-here really 31.72 66 { \n\nCertainly, the recent drop in prices doesn't mean Manhattan comes cheap.}
+nextSentence really
+autolink_nodes 5029 66 multinuclear Topic-Drift  5065
+create-a-node-here really 32.79 67 {\nNew York retail rents still run well above the going rate in other U.S. cities.}
+nextSentence really
+autolink_nodes 66 67 satelite elaboration-set-member  5066
+create-a-node-here really 33.94 68 {\nMadison and Fifth Avenues and East 57th Street can command rents of up to $500 a square foot, }
+autolink_nodes 67 68 satelite explanation-argumentative  5067
+create-a-node-here really 33.123 69 {and $250 is not uncommon.}
+nextSentence really
+autolink_nodes 68 69 multinuclear List  5068
+create-a-node-here really 34.71 70 {\nThe thriving 34th Street area offers rents of about $100 a square foot,}
+autolink_nodes 5068 70 satelite elaboration-additional  5069
+create-a-node-here really 34.131 71 { as do up-and-coming locations along lower Fifth Avenue.}
+nextSentence really
+autolink_nodes 70 71 multinuclear List  5070
+create-a-node-here really 35.117 72 {\nBy contrast, rentals in the best retail locations in Boston, San Francisco and Chicago rarely top $100 a square foot.}
+nextSentence really
+autolink_nodes 5067 72 multinuclear Contrast  5071
+create-a-node-here really 36.88 73 {\nAnd rents on Beverly Hills' Rodeo Drive generally don't exceed about $125 a square foot.}
+nextSentence really
+autolink_nodes 72 73 multinuclear List  5072
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019 5009 5023 5066}
+create-a-node-here really 38.33 74 { \n\nThe New York Stock Exchange said }
+autolink_nodes 5065 74 multinuclear Topic-Shift above 5073
+create-a-node-here really 38.81 75 {two securities will begin trading this week.}
+nextSentence really
+autolink_nodes 74 75 nucleus attribution  5074
+nextSentence really
+create-a-node-here really 40.82 76 { \n\nPrecision Castparts Corp., Portland, Ore., will begin trading with the symbol PCP.}
+nextSentence really
+autolink_nodes 75 76 satelite elaboration-set-member below 5075
+create-a-node-here really 41.29 77 {\nIt makes investment castings }
+autolink_nodes 76 77 satelite elaboration-additional  5076
+create-a-node-here really 41.65 78 {and has traded over-the-counter.}
+nextSentence really
+autolink_nodes 77 78 multinuclear List  5077
+create-a-node-here really 43.124 79 { \n\nRoyal Bank of Scotland Group PLC, an Edinburgh, Scotland, financial services company, will list American depositary shares, }
+autolink_nodes 5076 79 multinuclear List  5078
+create-a-node-here really 43.159 80 {representing preferred shares, }
+autolink_nodes 79 80 satelite-embedded elaboration-additional-e  5079
+create-a-node-here really 43.185 81 {with the symbol RBSPr.}
+nextSentence really
+autolink_nodes 5079 81 multinuclear Same-Unit  5080
+create-a-node-here really 44.70 82 {\nIt will continue to trade on the International Stock Exchange, London.}
+nextSentence really
+autolink_nodes 5080 82 satelite elaboration-additional  5081
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019 5009 5023 5066 5078}
+create-a-node-here really 46.59 83 { \n\nThe American Stock Exchange listed shares of two companies.}
+nextSentence really
+autolink_nodes 5074 83 multinuclear List  5082
+create-a-node-here really 48.122 84 { \n\nAIM Telephones Inc., a Parsippany, N.J., telecommunications equipment supply company, started trading with the symbol AIM.}
+nextSentence really
+autolink_nodes 83 84 satelite elaboration-set-member  5083
+create-a-node-here really 49.31 85 {\nIt had traded over-the-counter.}
+nextSentence really
+autolink_nodes 84 85 satelite elaboration-additional  5084
+create-a-node-here really 51.69 86 { \n\nColumbia Laboratories Inc., Miami, began trading with the symbol COB.}
+nextSentence really
+autolink_nodes 5084 86 multinuclear List  5085
+create-a-node-here really 52.54 87 {\nThe pharmaceuticals maker had traded over-the-counter.}
+nextSentence really
+autolink_nodes 86 87 satelite elaboration-additional  5086
+create-a-node-here really 54.94 88 { \n\nThe National Market System of the Nasdaq over-the-counter market listed shares of one company.}
+nextSentence really
+autolink_nodes 5082 88 multinuclear List below 5086
+create-a-node-here really 56.105 89 { \n\nEmployee Benefit Plans Inc., a Minneapolis health-care services company, was listed with the symbol EBPI.}
+nextSentence really
+autolink_nodes 88 89 satelite elaboration-additional  5087
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019 5009 5023 5066 5078 5065}
+collapsed_nodes {5037 5031 5059 5025 5021 5015 5012 5019 5009 5023 5066 5078 5065 5073}
+collapsed_nodes {}
+disconnect_node 63 disconnect
+autolink_nodes 5064 63 satelite-embedded concession-e  5088
+collapsed_nodes {5029}
+collapsed_nodes {5029 5065}
+collapsed_nodes {5029 5065 5073}
+collapsed_nodes {}

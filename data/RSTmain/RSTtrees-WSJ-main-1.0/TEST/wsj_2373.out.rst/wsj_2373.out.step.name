@@ -1,0 +1,83 @@
+nextSentence really
+create-a-node-here really 2.54 1 {\nIn response to your overly optimistic, outdated piece }
+create-a-node-here really 2.88 2 {on how long unemployment lasts }
+create-a-node-here really 2.119 3 {(People Patterns, Sept. 20):}
+create-a-node-here really 4.52 4 { \n\nI am in the communications field, above entry level.}
+nextSentence really
+create-a-node-here really 5.30 5 {\nI was laid off in August 1988,}
+create-a-node-here really 5.107 6 { and after a thorough and exhausting job search, was hired in August 1989.}
+nextSentence really
+create-a-node-here really 6.33 7 {\nMy unemployment insurance ran out}
+create-a-node-here really 6.58 8 { before I found a job;}
+create-a-node-here really 6.109 9 { I found cutbacks and layoffs in many companies.}
+nextSentence really
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+autolink_nodes 5001 3 satelite attribution  5002
+autolink_nodes 4 5 multinuclear Inverted-Sequence  5003
+#autolink_nodes 5 6 satelite temporal-after  5004
+#UNDID
+autolink_nodes 5 6 multinuclear Sequence  5004
+autolink_nodes 5004 7 multinuclear Sequence below 5004
+autolink_nodes 7 8 satelite temporal-before  5005
+autolink_nodes 5004 9 satelite elaboration-additional  5006
+create-a-node-here really 8.15 10 { \n\nThe statistics }
+create-a-node-here really 8.59 11 {quoted by the "new" Census Bureau report}
+create-a-node-here really 8.92 12 { (garnered from 1984 to 1986)}
+create-a-node-here really 8.199 13 { are out of date, certainly as an average for the Northeast, and possibly for the rest of the country. }
+create-a-node-here really 10.8 14 {\n\nI think }
+create-a-node-here really 10.100 15 {what bothered me most about the piece was that there seemed to be an underlying attitude}
+create-a-node-here really 10.126 16 { to tell your readers }
+create-a-node-here really 10.141 17 {all is well}
+create-a-node-here really 10.175 18 { -- if you're getting laid off}
+create-a-node-here really 10.193 19 { don't worry, }
+create-a-node-here really 10.201 20 {and }
+create-a-node-here really 10.226 21 {if you're unemployed,}
+create-a-node-here really 10.254 22 { it's a seller's market.}
+nextSentence really
+create-a-node-here really 12.14 23 { \n\nTo top it off,}
+create-a-node-here really 12.42 24 { you captioned the graph}
+create-a-node-here really 12.114 25 { showing the average number of months in a job search as "Time Off."}
+nextSentence really
+create-a-node-here really 12.135 26 { Are you kidding?}
+nextSentence really
+create-a-node-here really 13.65 27 {\nLooking for a job was one of the most anxious periods of my life }
+create-a-node-here really 13.95 28 {-- and is for most people.}
+nextSentence really
+create-a-node-here really 14.41 29 {\nYour paper needs a serious reality check.}
+nextSentence really
+create-a-node-here really 16.11 30 { \n\nReva Levin }
+create-a-node-here really 18.16 31 {\n\nCambridge, Mass.}
+nextSentence really
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5007
+autolink_nodes 11 12 multinuclear List  5008
+autolink_nodes 5007 13 multinuclear Same-Unit  5009
+autolink_nodes 14 15 nucleus attribution  5010
+autolink_nodes 15 16 satelite-embedded elaboration-object-attribute-e below 5011
+autolink_nodes 16 17 satelite elaboration-additional  5012
+#autolink_nodes 18 19 satelite condition  5013
+#UNDID
+autolink_nodes 18 19 nucleus condition  5013
+autolink_nodes 20 21 nucleus elaboration-additional  5014
+autolink_nodes 21 22 nucleus condition  5015
+autolink_nodes 5013 5014 multinuclear List  5016
+autolink_nodes 5012 5016 satelite example  5017
+autolink_nodes 5009 5010 multinuclear List above 5018
+autolink_nodes 23 24 nucleus elaboration-additional  5019
+autolink_nodes 24 25 satelite-embedded elaboration-object-attribute-e below 5020
+collapsed_nodes {5010}
+#autolink_nodes 5018 5019 multinuclear List below 5020
+#UNDID
+autolink_nodes 5018 5019 multinuclear List below 5020
+autolink_nodes 27 28 multinuclear List  5021
+autolink_nodes 26 5021 nucleus rhetorical-question  5022
+autolink_nodes 5022 29 satelite comment  5023
+autolink_nodes 30 31 multinuclear List  5024
+collapsed_nodes {5010 5009}
+autolink_nodes 5003 5018 satelite elaboration-additional  5025
+autolink_nodes 5002 5025 satelite question-answer-s  5026
+collapsed_nodes {5010 5009 5002}
+autolink_nodes 5026 5023 satelite comment  5027
+autolink_nodes 5027 5027 schema Text  5027
+autolink_nodes 5024 5024 schema Author  5027
+autolink_nodes 5027 5024 multinuclear TextualOrganization  5028
+collapsed_nodes {}

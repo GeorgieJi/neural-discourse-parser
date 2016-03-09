@@ -1,0 +1,41 @@
+this takscheck is used to check the process of task and problems 
+
+1. 
+
+we will implement the neural discourse parser step by step. The discourse parser usually contains three main componement : discourse segmenter , discourse relation classifier , discourse structure builder .
+
+the first componement is the discourse segmenter , the segmenter needs to split the sentence into serval non-overlap part. we consider this task as sequence labeling. More specifically , we will labeling every word in given sentence using : B , E , C tags. which means (B)egin of EDU, (E)nd of EDU, (C)ontinueious of EDU respectively.
+
+we employ a simple GRU neural network to do it . GRU(gated recurrent unit) is a simplified version of LSTM (long short term memory) rnn , which has been proved effective in small dataset due to its simple framework and fewer parameters than LSTM.
+
+another framework we can choose will be : bidirectional RNN, LSTM, vanilla RNN and Bi-GRUs
+
+Step 1 : preprocess 
+
+preprocess needs to convert the sentence into word index sequence;
+
+Task 1 >collect training corpus :
+extract training data from RST corpus 
+[Done]
+
+Task 2 >tokenize and sentence_tokenize?
+and lowercase 
+[Done]
+
+Task 3 >build word vocabulary and word mapping
+in this step, we need to limit the size of vocabulary, which is vatal to the training time and size of parameter.
+
+input x : [['CBS','Inc.','is','cutting',...],['CBS','insisted','the',...]]
+x[0] : ['CBS','Inc.','is'];
+l[0] : ['B','C','E']
+[Done]
+
+need 'sent_start' 'sent_end' mark?
+reference to sequence labeling task : no need special mark
+
+then we need to build vocabulary for most k frequent words
+
+Task 4 >Test on 1 example labeling
+x[0]
+l[0] 
+the initial neural network should predict 3 classes with uniform distribution (1/3,1/3,1/3)

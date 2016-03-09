@@ -1,0 +1,17 @@
+nextSentence really
+create-a-node-here really 2.49 1 {\nAnnualized interest rates on certain investments }
+create-a-node-here really 3.0 2 {as reported by the Federal Reserve Board on a weekly-average basis: \n}
+autolink_nodes 1 2 satelite manner  5001
+create-a-node-here really 4.18 3 {\na-Discounted rate.}
+nextSentence really
+autolink_nodes 5001 3 satelite elaboration-set-member  5002
+create-a-node-here really 4.29 4 { b-Week }
+autolink_nodes 3 4 multinuclear List  5003
+create-a-node-here really 4.97 5 {ended Wednesday, October 18, 1989 and Wednesday October 11, 1989.}
+nextSentence really
+autolink_nodes 4 5 satelite elaboration-object-attribute  5004
+create-a-node-here really 4.111 6 { c-Yields, }
+autolink_nodes 5003 6 multinuclear List below 5004
+create-a-node-here really 4.145 7 {adjusted for constant maturity.}
+nextSentence really
+autolink_nodes 6 7 satelite elaboration-object-attribute  5005

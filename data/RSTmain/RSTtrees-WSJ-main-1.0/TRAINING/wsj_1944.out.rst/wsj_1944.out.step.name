@@ -1,0 +1,193 @@
+nextSentence really
+create-a-node-here really 2.74 1 {\nMutual-fund czar John M. Templeton has put his money where his moniker is,}
+create-a-node-here really 2.151 2 { pouring $1.4 million into one of his own funds, the Templeton Value Fund.}
+nextSentence really
+autolink_nodes 1 2 satelite elaboration-general-specific  5001
+create-a-node-here really 4.53 3 { \n\nMr. Templeton owns shares in several of the 33 funds }
+create-a-node-here really 4.79 4 {that his firm manages, }
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5002
+create-a-node-here really 4.139 5 {but only in three of the 10 available to U.S. investors, }
+autolink_nodes 5002 5 multinuclear Same-Unit  5003
+create-a-node-here really 4.207 6 {according to filings with the Securities and Exchange Commission.}
+nextSentence really
+autolink_nodes 5003 6 satelite attribution  5004
+create-a-node-here really 5.85 7 {\nThose are Templeton Global Income, Templeton Emerging Markets and now the Value Fund.}
+nextSentence really
+autolink_nodes 5004 7 satelite elaboration-set-member  5005
+create-a-node-here really 7.42 8 { \n\nWhy did he add the Value Fund to the list?}
+nextSentence really
+create-a-node-here really 8.56 9 {\nBecause he's very bullish on the emerging growth stocks }
+create-a-node-here really 8.94 10 {that make up the fund's portfolio, }
+create-a-node-here really 8.143 11 {Mr. Templeton said from his Bahamas hideaway.}
+nextSentence really
+autolink_nodes 9 10 satelite-embedded elaboration-object-attribute-e  5006
+autolink_nodes 7 8 satelite elaboration-object-attribute-e  5007
+autolink_nodes 5006 11 satelite attribution  5008
+disconnect_node 8 disconnect
+autolink_nodes 8 5008 multinuclear Question-Answer  5009
+autolink_nodes 5007 5009 satelite explanation-argumentative  5010
+create-a-node-here really 10.67 12 { \n\n"Emerging growth stocks haven't been popular in America for years, }
+create-a-node-here really 10.96 13 {they've been neglected," }
+autolink_nodes 12 13 satelite restatement  5011
+create-a-node-here really 10.108 14 {he said,}
+#autolink_nodes 5011 14 satelite-embedded attribution-e  5012
+#UNDID
+autolink_nodes 5011 14 satelite attribution  5012
+create-a-node-here really 10.165 15 { and their prices often trail the market as a whole. }
+autolink_nodes 5012 15 satelite consequence-s  5013
+autolink_nodes 5001 5005 satelite background  5014
+autolink_nodes 5008 5013 satelite explanation-argumentative  5015
+create-a-node-here really 12.118 16 {\n\nMr. Templeton's 147,300-share purchase in the closed-end fund came before the U.S. stock market's plunge last Friday, }
+create-a-node-here really 12.159 17 {but still proved slightly profitable.}
+nextSentence really
+autolink_nodes 16 17 nucleus concession  5016
+autolink_nodes 5014 5016 satelite consequence-s  5017
+create-a-node-here really 14.92 18 { \n\nMr. Templeton bought his shares in several separate purchases between Aug. 30 and Sept. 28, }
+autolink_nodes 5017 18 satelite means  5018
+create-a-node-here really 14.130 19 {according to reports with the SEC.}
+nextSentence really
+autolink_nodes 18 19 satelite attribution  5019
+nextSentence really
+create-a-node-here really 15.26 20 {\nHe bought at share prices }
+create-a-node-here really 16.0 21 {ranging from $9.375 to $9.625.\n}
+autolink_nodes 20 21 satelite-embedded elaboration-object-attribute-e  5020
+autolink_nodes 5019 5020 satelite elaboration-general-specific  5021
+nextSentence really
+create-a-node-here really 16.100 22 {The fund closed yesterday in New York Stock Exchange composite trading at $9.625, up 12.5 cents.}
+nextSentence really
+autolink_nodes 5018 22 satelite consequence-s  5022
+create-a-node-here really 18.75 23 { \n\nIn addition, Mr. Templeton received a dividend of 22 cents a share Oct. 5. }
+autolink_nodes 5022 23 satelite elaboration-additional  5023
+create-a-node-here really 20.11 24 {\n\nRIVER RUN: }
+autolink_nodes 24 24 schema Title  5023
+nextSentence really
+create-a-node-here really 20.196 25 {A senior vice president and a vice president at James River Corp. sold the majority of their shares in the Richmond, Va., paper-products concern in late August and early September, }
+create-a-node-here really 20.208 26 {reports }
+create-a-node-here really 20.231 27 {filed with the SEC }
+autolink_nodes 26 27 satelite-embedded elaboration-object-attribute-e  5024
+create-a-node-here really 20.240 28 {show.}
+nextSentence really
+autolink_nodes 5024 28 multinuclear Same-Unit  5025
+autolink_nodes 25 5025 satelite attribution  5026
+nextSentence really
+nextSentence really
+create-a-node-here really 22.16 29 { \n\nThe executives, }
+create-a-node-here really 22.58 30 {who got $30.88 a share for the stock, }
+#autolink_nodes 29 30 satelite-embedded elaboration-additional-e  5027
+#UNDID
+#autolink_nodes 29 30 satelite-embedded elaboration-object-attribute-e  5027
+#UNDID
+autolink_nodes 29 30 satelite-embedded elaboration-additional-e  5027
+create-a-node-here really 23.0 31 {showed good timing.\n}
+autolink_nodes 5027 31 multinuclear Same-Unit  5028
+autolink_nodes 5026 5028 satelite comment  5029
+nextSentence really
+create-a-node-here really 23.90 32 {In Big Board trading yesterday, James River shares closed at $28.375, down 12.5 cents.}
+nextSentence really
+autolink_nodes 5028 32 satelite explanation-argumentative  5030
+create-a-node-here really 25.120 33 { \n\nOn Sept. 6, Robert Joseph Sherry, the firm's senior vice president of employee and public relations, sold 4,000 shares, }
+create-a-node-here really 25.173 34 {leaving himself with 1,062 shares of James River.}
+nextSentence really
+autolink_nodes 33 34 satelite consequence-s  5031
+create-a-node-here really 26.41 35 {\nIncluding a sale of stock last February, }
+create-a-node-here really 26.108 36 {Mr. Sherry has sold 88% of his stake in the company this year, }
+autolink_nodes 35 36 nucleus elaboration-part-whole  5032
+create-a-node-here really 26.137 37 {according to SEC filings.}
+nextSentence really
+autolink_nodes 5032 37 satelite attribution  5033
+autolink_nodes 5031 5033 satelite restatement  5034
+create-a-node-here really 27.31 38 {\nMr. Sherry declined to comment }
+create-a-node-here really 27.62 39 {when asked about the sales.}
+nextSentence really
+#autolink_nodes 38 39 satelite question-answer-n  5035
+#autolink_nodes 38 39 multinuclear question-answer-n  5036
+#UNDID
+#UNDID
+autolink_nodes 38 39 satelite question-answer-n  5035
+autolink_nodes 5034 5035 satelite elaboration-additional  5036
+create-a-node-here really 30.0 40 { \n\nJames A. Toney, a vice president, sold 1,500 shares Aug. 28.\n}
+create-a-node-here really 30.31 41 {He still has 1,143 shares, }
+create-a-node-here really 30.58 42 {according to SEC files.}
+nextSentence really
+autolink_nodes 41 42 satelite attribution  5037
+#autolink_nodes 40 5037 nucleus elaboration-part-whole  5038
+#UNDID
+autolink_nodes 40 5037 nucleus temporal-after  5038
+create-a-node-here really 31.36 43 {\nMr. Toney also declined to comment. }
+autolink_nodes 5038 43 satelite elaboration-additional  5039
+autolink_nodes 5036 5039 multinuclear List  5040
+autolink_nodes 5029 5040 satelite elaboration-general-specific  5041
+autolink_nodes 5041 5041 schema Text  5041
+autolink_nodes 24 5041 multinuclear TextualOrganization  5042
+autolink_nodes 5023 5042 multinuclear Topic-Shift  5043
+create-a-node-here really 33.22 44 {\n\nINTEREST-RATE PLAYER: }
+autolink_nodes 44 44 schema Title  5043
+create-a-node-here really 33.135 45 {Cincinnati Gas & Electric Co. tops the companies portion of the accompanying Insider Trading table this week.}
+nextSentence really
+create-a-node-here really 34.96 46 {\nThree of the utility's directors have at least doubled their holdings in the company since July.}
+nextSentence really
+autolink_nodes 45 46 satelite result  5044
+create-a-node-here really 36.41 47 { \n\nThe largest purchase was by Dudley Taft, }
+create-a-node-here really 36.82 48 {who bought 4,400 shares for $125,075.}
+nextSentence really
+autolink_nodes 47 48 satelite-embedded elaboration-additional-e  5045
+create-a-node-here really 37.10 49 {\nMr. Taft, }
+create-a-node-here really 37.62 50 {who is also president of Taft Broadcasting Co., }
+autolink_nodes 49 50 satelite-embedded elaboration-additional-e  5046
+create-a-node-here really 37.71 51 {said }
+autolink_nodes 5046 51 multinuclear Same-Unit  5047
+create-a-node-here really 37.96 52 {he bought the shares }
+autolink_nodes 5047 52 nucleus attribution  5048
+create-a-node-here really 37.183 53 {because he keeps a utility account at the brokerage firm of Salomon Brothers Inc., }
+autolink_nodes 52 53 satelite reason below 5049
+create-a-node-here really 37.233 54 {which had recommended the stock as a good buy.}
+nextSentence really
+autolink_nodes 53 54 satelite-embedded elaboration-additional-e  5050
+create-a-node-here really 38.27 55 {\nSalomon Brothers confirmed }
+create-a-node-here really 38.101 56 {that it has had a buy recommendation on the stock for about two years.}
+nextSentence really
+#create-a-node-here really 40.105 57 { \n\n"Cincinnati Gas & Electric is in good shape," Mr. Taft said, and utilities are "a good investment because interest rates are going down."\n}
+#UNDID
+autolink_nodes 55 56 nucleus attribution  5051
+autolink_nodes 54 5051 satelite evidence  5052
+autolink_nodes 5045 5048 satelite elaboration-additional  5053
+create-a-node-here really 40.46 57 { \n\n"Cincinnati Gas & Electric is in good shape," }
+create-a-node-here really 40.65 58 {Mr. Taft said, }
+autolink_nodes 57 58 satelite attribution  5054
+showText really
+create-a-node-here really 40.106 59 {and utilities are "a good investment }
+create-a-node-here really 40.150 60 {because interest rates are going down." }
+autolink_nodes 59 60 satelite consequence-n  5055
+autolink_nodes 5054 5055 multinuclear List  5056
+autolink_nodes 5053 5056 satelite comment  5057
+create-a-node-here really 43.0 61 {\n\nMr. Taft paid an average of $28.43 for each share.\n}
+autolink_nodes 5057 61 satelite elaboration-general-specific  5058
+create-a-node-here really 43.76 62 {The stock closed yesterday on the Big Board at $28.75, down 12.5 cents. }
+autolink_nodes 5058 62 satelite consequence-s  5059
+create-a-node-here really 45.122 63 {\n\nThe two other directors bought 1,000 and 1,900 shares, respectively, at prices between $28.15 a share and $28.75 a share, }
+create-a-node-here really 46.0 64 {filings with the SEC show.\n}
+autolink_nodes 63 64 satelite attribution  5060
+create-a-node-here really 47.0 65 {The two couldn't be reached for comment.\n}
+autolink_nodes 5060 65 satelite elaboration-additional  5061
+autolink_nodes 5059 5061 multinuclear List  5062
+#autolink_nodes 46 5062 satelite elaboration-set-member  5063
+#UNDID
+autolink_nodes 46 5062 satelite elaboration-general-specific  5063
+create-a-node-here really 47.29 66 {A company spokesman said }
+create-a-node-here really 47.79 67 {he couldn't explain their sudden bullishness. }
+autolink_nodes 66 67 nucleus attribution  5064
+#create-a-node-here really 47.129 68 {"I don't know of any news or anything unusual }
+#create-a-node-here really 47.149 69 {happening here,"}
+#UNDID
+#UNDID
+create-a-node-here really 47.146 68 {"I don't know of any news or anything unusual happening here," }
+create-a-node-here really 47.200 69 {said Bruce Stoecklin, director of media services. }
+autolink_nodes 68 69 satelite attribution  5065
+autolink_nodes 5064 5065 satelite restatement  5066
+autolink_nodes 5063 5066 satelite interpretation-s  5067
+autolink_nodes 5044 5044 schema Text  5067
+autolink_nodes 44 5044 multinuclear TextualOrganization  5068
+create-a-node-here really 49.53 70 {\n\nPeter Pae in Pittsburgh contributed to this article. }
+autolink_nodes 70 70 schema Author  5068
+autolink_nodes 5068 70 multinuclear TextualOrganization below 5068
+autolink_nodes 5043 5068 multinuclear Topic-Shift below 5068

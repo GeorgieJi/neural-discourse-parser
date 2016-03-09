@@ -1,0 +1,148 @@
+nextSentence really
+create-a-node-here really 2.35 1 {\nInterprovincial Pipe Line Co. said }
+create-a-node-here really 2.101 2 {it will delay a proposed two-step, 830 million Canadian-dollar }
+autolink_nodes 1 2 nucleus attribution  5001
+nextSentence really
+create-a-node-here really 2.122 3 {(US$705.6 million)}
+autolink_nodes 2 3 satelite-embedded restatement-e below 5002
+create-a-node-here really 2.150 4 { expansion of its system }
+autolink_nodes 5002 4 multinuclear Same-Unit  5003
+create-a-node-here really 2.203 5 {because Canada's output of crude oil is shrinking.}
+nextSentence really
+autolink_nodes 5003 5 satelite reason below 5004
+create-a-node-here really 4.107 6 { \n\nInterprovincial, Canada's biggest oil pipeline operator and a major transporter of crude to the U.S., said }
+autolink_nodes 5001 6 satelite explanation-argumentative  5005
+create-a-node-here really 4.146 7 {revised industry forecasts indicate }
+autolink_nodes 6 7 nucleus attribution  5006
+create-a-node-here really 4.261 8 {that Canadian oil output will total about 1.64 million barrels a day by 1991, 8% lower than a previous estimate.}
+nextSentence really
+autolink_nodes 7 8 nucleus attribution  5007
+create-a-node-here really 5.124 9 {\nCanadian crude production averaged about 1.69 million barrels a day during 1989's first half, about 1% below the 1988 level.}
+nextSentence really
+autolink_nodes 5006 9 satelite elaboration-additional  5008
+create-a-node-here really 7.34 10 { \n\n"The capability of existing fields}
+autolink_nodes 5008 10 satelite elaboration-additional  5009
+create-a-node-here really 7.53 11 { to deliver oil}
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5010
+create-a-node-here really 7.72 12 { is dropping," }
+autolink_nodes 5010 12 multinuclear Same-Unit  5011
+create-a-node-here really 7.132 13 {and oil exploration activity is also down dramatically, }
+autolink_nodes 5011 13 multinuclear List above 5012
+create-a-node-here really 7.191 14 {as many producers shift their emphasis to natural gas, }
+autolink_nodes 5012 14 satelite circumstance  5013
+create-a-node-here really 7.322 15 {said Ronald Watkins, vice president for government and industry relations with Interprovincial's parent, Interhome Energy Inc. }
+autolink_nodes 5013 15 satelite attribution  5014
+create-a-node-here really 7.343 16 {Mr. Watkins said }
+autolink_nodes 5014 16 satelite elaboration-additional  5015
+create-a-node-here really 7.413 17 {volume on Interprovincial's system is down about 2% since January }
+autolink_nodes 16 17 nucleus attribution  5016
+create-a-node-here really 7.450 18 {and is expected to fall further, }
+autolink_nodes 17 18 multinuclear List  5017
+create-a-node-here really 7.511 19 {making expansion unnecessary until perhaps the mid-1990s.}
+nextSentence really
+autolink_nodes 5017 19 multinuclear Cause-Result above 5018
+create-a-node-here really 9.63 20 { \n\n"There has been a swing of the pendulum back to the gas side," }
+autolink_nodes 5016 20 satelite elaboration-additional  5019
+create-a-node-here really 9.75 21 {he said.}
+nextSentence really
+autolink_nodes 20 21 satelite attribution  5020
+collapsed_nodes {5019}
+collapsed_nodes {5019 5014}
+collapsed_nodes {5019 5014 5001}
+create-a-node-here really 11.43 22 { \n\nMany of Canada's oil and gas producers say }
+autolink_nodes 5005 22 satelite evaluation-s  5021
+create-a-node-here really 11.85 23 {the outlook for natural gas is better }
+autolink_nodes 22 23 nucleus attribution  5022
+create-a-node-here really 11.109 24 {than it is for oil, }
+autolink_nodes 23 24 multinuclear Comparison  5023
+create-a-node-here really 11.184 25 {and have shifted their exploration and development budgets accordingly.}
+nextSentence really
+autolink_nodes 5022 25 multinuclear List  5024
+create-a-node-here really 12.74 26 {\nThe number of active drilling rigs in Canada is down 30% from a year ago, }
+autolink_nodes 25 26 satelite explanation-argumentative  5025
+create-a-node-here really 12.190 27 {and the number of completed oil wells is "down more than that, due to the increasing focus on gas exploration," }
+autolink_nodes 26 27 multinuclear List  5026
+create-a-node-here really 12.312 28 {said Robert Feick, manager of crude oil with Calgary's Independent Petroleum Association of Canada, an industry group.}
+nextSentence really
+autolink_nodes 5026 28 satelite attribution  5027
+create-a-node-here really 14.17 29 { \n\nMr. Watkins said }
+autolink_nodes 5024 29 satelite interpretation-s  5028
+create-a-node-here really 14.150 30 {the main reason for the production decline is shrinking output of light crude from mature, conventional fields in western Canada.}
+nextSentence really
+autolink_nodes 29 30 nucleus attribution  5029
+create-a-node-here really 15.49 31 {\nInterprovincial transports about 75% of all crude}
+autolink_nodes 5029 31 satelite elaboration-additional  5030
+create-a-node-here really 15.81 32 { produced in western Canada,}
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5031
+create-a-node-here really 15.159 33 { and almost 60% of Interprovincial's total volume consists of light crude.}
+nextSentence really
+autolink_nodes 5031 33 multinuclear List  5032
+create-a-node-here really 17.27 34 { \n\nNearly all of the crude oil}
+autolink_nodes 5030 34 satelite circumstance  5033
+create-a-node-here really 17.64 35 { that Canada exports to the U.S. }
+autolink_nodes 34 35 satelite-embedded elaboration-object-attribute-e  5034
+create-a-node-here really 17.111 36 {is transported on Interprovincial's system,}
+autolink_nodes 5034 36 multinuclear Same-Unit  5035
+create-a-node-here really 17.212 37 { whose main line runs from Edmonton to major U.S. and Canadian cities in the Great Lakes region, }
+autolink_nodes 36 37 satelite-embedded elaboration-part-whole-e  5036
+create-a-node-here really 17.265 38 {including Chicago, Buffalo, Toronto and Montreal.}
+nextSentence really
+autolink_nodes 37 38 satelite-embedded elaboration-part-whole-e  5037
+create-a-node-here really 19.116 39 { \n\nCanada's current oil exports to the U.S. total about 600,000 barrels a day, or about 9.1% of net U.S. crude imports,}
+autolink_nodes 5035 39 satelite elaboration-additional  5038
+create-a-node-here really 19.213 40 { said John Lichtblau, president of the New York-based Petroleum Industry Research Foundation.}
+nextSentence really
+autolink_nodes 39 40 satelite attribution  5039
+create-a-node-here really 20.106 41 {\nThat ranks Canada as the fourth-largest source of imported crude, behind Saudi Arabia, Nigeria and Mexico.}
+nextSentence really
+autolink_nodes 5039 41 satelite interpretation-s  5040
+create-a-node-here really 22.19 42 { \n\nMr. Lichtblau said }
+autolink_nodes 5040 42 satelite elaboration-additional  5041
+create-a-node-here really 22.56 43 {Canada's declining crude output, }
+autolink_nodes 42 43 nucleus attribution  5042
+create-a-node-here really 22.115 44 {combined with the fast-shrinking output of U.S. crude, }
+autolink_nodes 43 44 satelite-embedded elaboration-additional-e below 5043
+change_rel 44 circumstance-e
+create-a-node-here really 22.204 45 {will help intensify U.S. reliance on oil from overseas, particularly the Middle East.}
+nextSentence really
+autolink_nodes 5043 45 multinuclear Same-Unit  5044
+create-a-node-here really 22.243 46 { "It's very much a growing concern.}
+nextSentence really
+autolink_nodes 5042 46 satelite evaluation-s  5045
+create-a-node-here really 23.34 47 {\nBut when something is inevitable, }
+autolink_nodes 46 47 multinuclear Contrast  5046
+create-a-node-here really 23.66 48 {you learn to live with it," }
+autolink_nodes 47 48 nucleus condition  5047
+create-a-node-here really 23.78 49 {he said.}
+nextSentence really
+autolink_nodes 5046 49 satelite attribution  5048
+create-a-node-here really 25.23 50 { \n\nMr. Lichtblau stressed }
+autolink_nodes 5048 50 satelite elaboration-additional  5049
+create-a-node-here really 25.150 51 {that the delay of Interprovincial's proposed expansion won't by itself increase U.S. dependence on offshore crude, however,}
+autolink_nodes 50 51 nucleus attribution  5050
+create-a-node-here really 25.229 52 { since Canadian imports are limited in any case by Canada's falling output.}
+nextSentence really
+autolink_nodes 51 52 satelite rhetorical-question below 5051
+change_rel 52 result
+collapsed_nodes {5019 5014 5001 5049}
+collapsed_nodes {5019 5014 5001 5049 5041}
+collapsed_nodes {5019 5014 5001 5049 5041 5038}
+collapsed_nodes {5019 5014 5001 5049 5041 5038 5033}
+collapsed_nodes {5019 5014 5001 5049 5041 5038 5033 5028}
+create-a-node-here really 27.48 53 { \n\nUnder terms of its proposed two-step expansion, }
+autolink_nodes 5021 53 satelite circumstance  5052
+create-a-node-here really 27.98 54 {which would have required regulatory approval,}
+autolink_nodes 53 54 satelite-embedded elaboration-additional-e  5053
+create-a-node-here really 27.194 55 { Interprovincial intended to add 200,000 barrels a day of additional capacity to its system,}
+autolink_nodes 5053 55 multinuclear Same-Unit  5054
+create-a-node-here really 27.241 56 { beginning with a modest expansion by 1991.}
+nextSentence really
+autolink_nodes 5054 56 satelite manner  5055
+create-a-node-here really 28.66 57 {\nThe system currently has a capacity of 1.55 million barrels a day.}
+nextSentence really
+autolink_nodes 5055 57 satelite elaboration-additional  5056
+collapsed_nodes {5019 5014 5001 5049 5041 5038 5033 5028 5052}
+collapsed_nodes {}
+change_rel 47 contingency
+collapsed_nodes {5052}
+collapsed_nodes {}

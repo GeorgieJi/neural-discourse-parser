@@ -1,0 +1,74 @@
+nextSentence really
+create-a-node-here really 2.54 1 {\nThe fiscal 1989 budget deficit figure came out Friday.}
+nextSentence really
+create-a-node-here really 3.21 2 {\nIt was down a little.}
+nextSentence really
+create-a-node-here really 4.67 3 {\nThe next time you hear a Member of Congress moan about the deficit,}
+create-a-node-here really 4.105 4 { consider what Congress did Friday.}
+nextSentence really
+create-a-node-here really 5.95 5 {\nThe Senate, 84-6, voted to increase to $124,000 the ceiling on insured mortgages from the FHA, }
+create-a-node-here really 5.149 6 {which lost $4.2 billion in loan defaults last year.}
+nextSentence really
+create-a-node-here really 7.57 7 { \n\nThen, by voice vote, the Senate voted a pork-barrel bill,}
+create-a-node-here really 7.93 8 { approved Thursday by the House, }
+create-a-node-here really 7.131 9 {for domestic military construction.}
+nextSentence really
+create-a-node-here really 8.63 10 {\nCompare the Bush request to what the Senators gave themselves: }
+create-a-node-here really 10.68 11 {\n\nFor construction in West Virginia, Mr. Bush requested $4.5 million; }
+nextSentence really
+create-a-node-here really 10.121 12 {Congress gave Senator Byrd's state $21.5 million.}
+nextSentence really
+create-a-node-here really 11.57 13 {\nSenator Byrd is chairman of the Appropriations Committee.}
+nextSentence really
+autolink_nodes 1 2 satelite elaboration-additional  5001
+#autolink_nodes 3 4 multinuclear OTHER-multinuc  5002
+#UNDID
+#autolink_nodes 3 4 multinuclear Comment-Topic  5002
+#UNDID
+autolink_nodes 3 4 nucleus contingency  5002
+autolink_nodes 5 6 satelite elaboration-additional  5003
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5004
+autolink_nodes 5004 9 multinuclear Same-Unit  5005
+autolink_nodes 5003 5005 multinuclear Sequence  5006
+create-a-node-here really 13.0 14 {\nFor Iowa, a $1.8 million request became $12 million for Senator Grassley, ranking minority member of a military construction subcommittee.\n}
+nextSentence really
+nextSentence really
+create-a-node-here really 13.152 15 {Rep. Jamie Whitten of Mississippi and chairman of House Appropriations turned a $20 million Bush request for his state into a $49.7 million bequest.}
+nextSentence really
+create-a-node-here really 14.101 16 {\nSenator Sasser of Tennessee is chairman of the Appropriations subcommittee on military construction; }
+create-a-node-here really 14.176 17 {Mr. Bush's $87 million request for Tennessee increased to $109 million.}
+nextSentence really
+create-a-node-here really 15.12 18 {\nIn a remark }
+create-a-node-here really 15.60 19 {someone should remember this time next year,}
+create-a-node-here really 15.86 20 { Senator Sasser said, }
+create-a-node-here really 15.99 21 {"I think }
+create-a-node-here really 15.181 22 {we've seen the peak of military construction spending for many years to come."}
+nextSentence really
+create-a-node-here really 17.33 23 { \n\nTell us about spending restraint.}
+nextSentence really
+create-a-node-here really 18.31 24 {\nTell us about the HUD scandals.}
+nextSentence really
+create-a-node-here really 19.82 25 {\nTell us what measure, short of house arrest, will get this Congress under control.}
+nextSentence really
+autolink_nodes 11 12 multinuclear Contrast  5007
+autolink_nodes 5007 13 satelite elaboration-additional  5008
+autolink_nodes 5008 14 multinuclear List  5009
+autolink_nodes 5009 15 multinuclear List below 5009
+autolink_nodes 5009 16 multinuclear List below 5009
+autolink_nodes 16 17 satelite circumstance  5010
+autolink_nodes 10 5009 satelite example  5011
+autolink_nodes 18 19 satelite-embedded elaboration-object-attribute-e  5012
+autolink_nodes 5012 20 multinuclear Same-Unit  5013
+autolink_nodes 5013 21 nucleus attribution  5014
+autolink_nodes 5014 22 nucleus attribution  5015
+autolink_nodes 23 24 multinuclear List  5016
+autolink_nodes 5016 25 multinuclear List below 5016
+autolink_nodes 5001 5002 multinuclear Topic-Drift  5017
+autolink_nodes 5002 5006 satelite elaboration-additional  5018
+autolink_nodes 5006 5011 satelite elaboration-additional  5019
+autolink_nodes 5009 5015 satelite comment  5020
+collapsed_nodes {5017}
+autolink_nodes 5017 5016 satelite comment  5021
+collapsed_nodes {}
+collapsed_nodes {5021}
+collapsed_nodes {}

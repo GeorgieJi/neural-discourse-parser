@@ -1,0 +1,31 @@
+nextSentence really
+create-a-node-here really 2.127 1 {\nEmployees of the Globe and Mail, a Thomson Corp. newspaper in Toronto, voted to accept a tentative contract agreement Saturday,}
+create-a-node-here really 2.175 2 { averting a strike at Canada's leading daily.}
+nextSentence really
+create-a-node-here really 4.59 3 { \n\nUnder the terms of the three-year contract, similar to one }
+create-a-node-here really 4.133 4 {reached at Torstar Corp. 's Toronto Star newspaper earlier this month, }
+create-a-node-here really 4.261 5 {the 500 Globe and Mail workers will see a raise of 8% in the contract's first year and 7% in each of the following two years.}
+nextSentence really
+create-a-node-here really 6.81 6 { \n\nLorne Slotnick, vice chairman of the Southern Ontario Newspaper Guild, the union }
+create-a-node-here really 6.109 7 {representing the workers,}
+create-a-node-here really 6.118 8 { said }
+create-a-node-here really 6.186 9 {Thomson made significant concessions in the final round of talks.}
+nextSentence really
+create-a-node-here really 7.112 10 {\nIn addition to wage increases, the union negotiated improved vacation plans, benefit packages and pension plans,}
+create-a-node-here really 7.135 11 { Mr. Slotnick said.}
+nextSentence really
+create-a-node-here really 9.8 12 { \n\nHe said }
+create-a-node-here really 9.81 13 {more than 70% of the bargaining unit voted in favor of the agreement.}
+nextSentence really
+autolink_nodes 1 2 satelite consequence-s  5001
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5002
+autolink_nodes 5002 5 nucleus circumstance  5003
+autolink_nodes 5001 5003 satelite elaboration-additional  5004
+autolink_nodes 6 7 nucleus-embedded elaboration-object-attribute-e  5005
+autolink_nodes 5005 8 multinuclear Same-Unit  5006
+autolink_nodes 5006 9 nucleus attribution  5007
+autolink_nodes 5003 5007 satelite elaboration-additional  5008
+autolink_nodes 10 11 satelite attribution  5009
+autolink_nodes 12 13 nucleus attribution  5010
+autolink_nodes 5009 5010 satelite elaboration-additional  5011
+autolink_nodes 5007 5011 satelite elaboration-additional  5012

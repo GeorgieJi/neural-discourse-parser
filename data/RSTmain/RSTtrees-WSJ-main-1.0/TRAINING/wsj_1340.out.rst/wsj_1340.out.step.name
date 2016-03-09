@@ -1,0 +1,46 @@
+nextSentence really
+create-a-node-here really 2.29 1 {\nBankers Trust New York Corp.,}
+create-a-node-here really 2.45 2 { as expected,}
+nextSentence really
+create-a-node-here really 2.115 3 { reported a third-quarter loss of $1.42 billion, or $17.39 a share,}
+create-a-node-here really 2.212 4 { following its $1.6 billion boost in reserves for losses on loans to less-developed countries.}
+nextSentence really
+autolink_nodes 1 2 satelite comment  5001
+autolink_nodes 3 5001 multinuclear Same-Unit  5002
+autolink_nodes 5002 4 satelite circumstance  5003
+nextSentence really
+create-a-node-here really 4.98 5 { \n\nThe loss compares with net income of $162.1 million, or $2.01 a share, in the year-earlier period.}
+nextSentence really
+create-a-node-here really 5.67 6 {\nInterest income rose 29% to about $1.35 billion from $1.05 billion.}
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 6.99 7 {\nThe New York bank holding company's assets at Sept. 30 climbed to $59.4 billion from $57.9 billion.}
+nextSentence really
+autolink_nodes 5003 5 satelite comparison  5004
+autolink_nodes 5004 6 satelite elaboration-additional  5005
+autolink_nodes 5005 7 satelite elaboration-additional  5006
+create-a-node-here really 8.45 8 { \n\nExcluding the increase in loan-loss reserves,}
+create-a-node-here really 8.68 9 { Bankers Trust said }
+create-a-node-here really 8.137 10 {third-quarter net income would have increased 11% to $180 million.}
+nextSentence really
+autolink_nodes 8 9 satelite attribution  5007
+autolink_nodes 10 5007 satelite circumstance  5008
+autolink_nodes 5006 5008 satelite elaboration-additional  5009
+create-a-node-here really 9.46 11 {\nA number of major banks have posted big losses}
+create-a-node-here really 9.95 12 { after sharply increasing loan-loss reserves.}
+nextSentence really
+autolink_nodes 11 12 satelite result  5010
+create-a-node-here really 10.76 13 {\nMost of the loans in question are to Third World countries in South America.}
+nextSentence really
+autolink_nodes 5010 13 satelite elaboration-additional  5011
+collapsed_nodes {5008}
+autolink_nodes 5009 5011 satelite explanation-argumentative  5012
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 12.96 14 { \n\nIn New York Stock Exchange composite trading yesterday, Bankers Trust fell 12.5 cents to $50.50.}
+autolink_nodes 5012 14 satelite consequence-s  5013
+collapsed_nodes {}
+disconnect_node 2 modify
+autolink_nodes 1 2 satelite-embedded comment-e  5014

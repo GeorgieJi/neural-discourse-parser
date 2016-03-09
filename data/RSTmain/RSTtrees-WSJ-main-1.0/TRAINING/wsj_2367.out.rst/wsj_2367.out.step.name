@@ -1,0 +1,153 @@
+nextSentence really
+create-a-node-here really 2.39 1 {\nThis small Dallas suburb's got trouble.}
+nextSentence really
+create-a-node-here really 3.25 2 {\nTrouble with a capital T }
+create-a-node-here really 3.51 3 {and that rhymes with P }
+create-a-node-here really 3.79 4 {and that stands for pool.}
+#nextSentence really
+#autolink_nodes 2 3 multinuclear List  5001
+#UNDID
+#UNDID
+autolink_nodes 2 3 multinuclear List  5001
+autolink_nodes 3 4 nucleus restatement  5002
+autolink_nodes 1 5001 satelite elaboration-additional  5003
+create-a-node-here really 6.122 5 { \n\nMore than 30 years ago, Prof.\nHarold Hill, the con man in Meredith Willson's "The Music Man," warned the citizens of River City, Iowa, against the game.}
+nextSentence really
+autolink_nodes 5003 5 multinuclear Analogy  5004
+create-a-node-here really 7.163 6 {\nNow kindred spirits on Addison's town council have barred the town's fanciest hotel, the Grand Kempinski, from installing three free pool tables in its new lounge.}
+nextSentence really
+autolink_nodes 5004 6 satelite circumstance  5005
+disconnect_node 5 disconnect
+autolink_nodes 5003 5 satelite analogy below 5006
+create-a-node-here really 9.55 7 { \n\nMayor Lynn Spruill and two members of the council said }
+create-a-node-here really 9.102 8 {they were worried about setting a precedent }
+create-a-node-here really 9.162 9 {that would permit pool halls along Addison's main street.}
+nextSentence really
+autolink_nodes 8 9 satelite-embedded elaboration-object-attribute-e  5007
+autolink_nodes 7 5007 nucleus attribution  5008
+autolink_nodes 6 5008 satelite reason  5009
+create-a-node-here really 10.32 10 {\nAnd the mayor, in an admonition }
+create-a-node-here really 11.8 11 {that bears a rhythmic resemblance to Prof.\nHill's, }
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5010
+create-a-node-here really 11.19 12 {warned }
+autolink_nodes 5010 12 multinuclear Same-Unit  5011
+create-a-node-here really 11.55 13 {that "alcohol leads to betting, }
+autolink_nodes 5011 13 nucleus attribution  5012
+create-a-node-here really 11.82 14 {which leads to fights."}
+nextSentence really
+autolink_nodes 13 14 multinuclear Sequence  5013
+autolink_nodes 5008 5012 satelite elaboration-additional  5014
+create-a-node-here really 13.52 15 { \n\nThe council's action is yet another blow to a sport }
+#create-a-node-here really 13.76 16 {that its fans claim }
+#autolink_nodes 15 16 satelite-embedded elaboration-object-attribute-e  5015
+#UNDID
+#UNDID
+create-a-node-here really 13.60 16 {that}
+create-a-node-here really 13.80 17 { its fans claim }
+autolink_nodes 16 17 satelite-embedded attribution-e  5015
+create-a-node-here really 13.122 18 {has been maligned unjustly for years. }
+autolink_nodes 5015 18 multinuclear Same-Unit  5016
+autolink_nodes 15 5016 satelite-embedded elaboration-object-attribute-e  5017
+create-a-node-here really 13.181 19 {"Obviously they're not in touch with what's going on," }
+create-a-node-here really 13.262 20 {says Tom Manske, vice president of the National Pocket Billiards Association.}
+nextSentence really
+autolink_nodes 19 20 satelite attribution  5018
+autolink_nodes 5014 5017 satelite interpretation-s  5019
+create-a-node-here really 14.37 21 {\nPool is hot in New York and Chicago, }
+create-a-node-here really 14.53 22 {he insists, }
+autolink_nodes 21 22 satelite attribution  5020
+create-a-node-here really 14.112 23 {where "upscale, suit-and-tie places" are adding tables.}
+nextSentence really
+autolink_nodes 5020 23 satelite-embedded elaboration-additional-e  5021
+autolink_nodes 5018 5021 satelite elaboration-additional  5022
+create-a-node-here really 15.41 24 {\nWith today's tougher drunk driving laws, }
+create-a-node-here really 15.54 25 {he adds, }
+autolink_nodes 24 25 satelite-embedded attribution-e  5023
+create-a-node-here really 15.107 26 {"people don't want to just sit around and drink."}
+nextSentence really
+autolink_nodes 5023 26 multinuclear Same-Unit  5024
+autolink_nodes 5021 5024 satelite elaboration-additional  5025
+disconnect_node 5025 modify
+autolink_nodes 5018 5025 satelite explanation-argumentative  5026
+create-a-node-here really 17.63 27 { \n\nBesides, rowdy behavior seems unlikely at the Grand Kempinski, }
+create-a-node-here really 17.99 28 {where rooms average $200 a night}
+create-a-node-here really 17.150 29 { and the cheap mixed drinks go for $3.50 a pop.}
+nextSentence really
+autolink_nodes 28 29 multinuclear List  5027
+autolink_nodes 27 5027 satelite-embedded elaboration-additional-e  5028
+autolink_nodes 5026 5028 satelite elaboration-additional  5029
+#create-a-node-here really 18.0 30 {\n}
+#UNDID
+create-a-node-here really 18.94 30 {\nAt the lounge, manager Elizabeth Dyer won't admit patrons in jeans, T-shirts or tennis shoes. }
+autolink_nodes 5028 30 satelite elaboration-additional  5030
+create-a-node-here really 20.65 31 {\n\nBut a majority of the Addison council didn't buy those arguments.}
+nextSentence really
+autolink_nodes 5029 31 multinuclear Contrast  5031
+create-a-node-here really 21.18 32 {\nIntroducing pool, }
+create-a-node-here really 21.57 33 {argued Councilwoman Riley Reinker, }
+create-a-node-here really 21.81 34 {would be "dangerous.}
+nextSentence really
+autolink_nodes 32 33 satelite-embedded attribution-e  5032
+autolink_nodes 5032 34 multinuclear Same-Unit  5033
+autolink_nodes 31 5033 satelite elaboration-additional  5034
+create-a-node-here really 22.30 35 {\nIt would open a can of worms."}
+nextSentence really
+autolink_nodes 5033 35 satelite elaboration-additional  5035
+create-a-node-here really 24.48 36 { \n\nAddison is no stranger to cans of worms, either.}
+nextSentence really
+autolink_nodes 35 36 satelite elaboration-additional  5036
+create-a-node-here really 25.54 37 {\nAfter its previous mayor committed suicide last year, }
+create-a-node-here really 25.85 38 {an investigation disclosed }
+create-a-node-here really 25.148 39 {that town officials regularly voted on their own projects, }
+create-a-node-here really 25.193 40 {gave special favors to developer friends }
+create-a-node-here really 25.255 41 {and dipped into the town's coffers for trips and retreats.}
+nextSentence really
+#autolink_nodes 39 40 multinuclear List  5037
+#UNDID
+autolink_nodes 39 40 multinuclear List  5037
+autolink_nodes 5037 41 multinuclear List below 5037
+autolink_nodes 38 5037 nucleus attribution  5038
+autolink_nodes 37 5038 nucleus circumstance  5039
+create-a-node-here really 27.44 42 { \n\nThe revelations embarrassed town officials, }
+create-a-node-here really 27.69 43 {although they argued }
+create-a-node-here really 27.109 44 {that the problems weren't as severe }
+create-a-node-here really 27.136 45 {as the media suggested.}
+autolink_nodes 44 45 satelite comparison  5040
+autolink_nodes 43 5040 nucleus attribution  5041
+autolink_nodes 42 5041 satelite antithesis  5042
+create-a-node-here really 28.24 46 {\nNow comes the pool flap.}
+nextSentence really
+autolink_nodes 5039 5042 nucleus result  5043
+autolink_nodes 5043 46 multinuclear Sequence  5044
+autolink_nodes 5034 5044 satelite reason  5045
+autolink_nodes 5005 5031 satelite elaboration-additional  5046
+create-a-node-here really 30.9 47 { \n\n"I think }
+create-a-node-here really 30.33 48 {there's some people }
+autolink_nodes 47 48 nucleus attribution  5047
+create-a-node-here really 30.81 49 {worried about something pretty ridiculous," }
+autolink_nodes 48 49 satelite-embedded elaboration-object-attribute-e below 5048
+create-a-node-here really 30.112 50 {Councilman John Nolan says.}
+nextSentence really
+autolink_nodes 5047 50 satelite attribution  5049
+create-a-node-here really 30.128 51 { "I thought }
+#create-a-node-here really 30.177 52 {this was all taken care of in `The Music Man.}
+#nextSentence really
+#autolink_nodes 51 52 nucleus attribution  5050
+#autolink_nodes 5049 5050 satelite elaboration-additional  5051
+#autolink_nodes 5045 5051 satelite comment  5052
+#disconnect_node 30 modify
+#autolink_nodes 5028 30 satelite enablement  5053
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 31.0 52 {this was all taken care of in `The Music Man. '" \n}
+nextSentence really
+autolink_nodes 51 52 nucleus attribution  5050
+autolink_nodes 5049 5050 satelite elaboration-additional  5051
+autolink_nodes 5045 5051 satelite comment  5052
+disconnect_node 30 modify
+autolink_nodes 5028 30 satelite enablement  5053

@@ -1,0 +1,72 @@
+nextSentence really
+create-a-node-here really 2.35 1 {\nLeaseway Transportation Corp. said }
+nextSentence really
+create-a-node-here really 2.108 2 {it will restructure $192.5 million of certain subordinated debentures }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.163 3 {to reduce its debt obligations and interest expense.}
+nextSentence really
+autolink_nodes 2 3 satelite purpose below 5002
+nextSentence really
+create-a-node-here really 4.148 4 { \n\nThe 13.25% subordinated debentures due 2002 were issued in August 1987 as part of the $690 million financing for a leveraged buy-out of the company.}
+nextSentence really
+create-a-node-here really 5.88 5 {\nLeaseway provides transportation services for manufacturers, distributors and retailers.}
+nextSentence really
+autolink_nodes 5001 4 satelite elaboration-general-specific  5003
+autolink_nodes 5003 5 satelite elaboration-additional  5004
+create-a-node-here really 7.14 6 { \n\nLeaseway said }
+create-a-node-here really 7.82 7 {it has begun discussions with certain institutional debt holders }
+autolink_nodes 6 7 nucleus attribution  5005
+create-a-node-here really 7.139 8 {to review the proposed private placement transaction, }
+autolink_nodes 7 8 satelite purpose below 5006
+create-a-node-here really 7.232 9 {which would exchange the debt for new subordinated debt instruments and equity securities.}
+nextSentence really
+autolink_nodes 8 9 satelite-embedded elaboration-additional-e  5007
+autolink_nodes 5004 5005 satelite enablement  5008
+create-a-node-here really 9.78 10 { \n\nSpecific terms are subject to review and a final agreement with debt holders, }
+create-a-node-here really 9.99 11 {the company said.}
+nextSentence really
+autolink_nodes 10 11 satelite attribution  5009
+create-a-node-here really 10.128 12 {\nBut the proposed transaction calls for an exchange of the debt for new debentures of lower face value and reduced cash interest.}
+nextSentence really
+create-a-node-here really 11.68 13 {\nAlso, debt holders would be offered an equity position in Leaseway, }
+create-a-node-here really 11.141 14 {which in total would represent a controlling interest in the company.}
+nextSentence really
+autolink_nodes 13 14 satelite-embedded elaboration-additional-e  5010
+autolink_nodes 12 5010 multinuclear List  5011
+autolink_nodes 5009 5011 nucleus concession  5012
+create-a-node-here really 13.62 15 { \n\nDrexel Burnham Lambert Inc. is the adviser on the transaction.}
+nextSentence really
+autolink_nodes 5012 15 satelite elaboration-additional  5013
+autolink_nodes 5005 5013 satelite elaboration-additional  5014
+#create-a-node-here really 15.31 16 { \n\nCompany officials said Leaseway}
+#create-a-node-here really 15.120 17 { fulfilled payment requirements of its debt obligations since the leveraged buy-out, }
+#autolink_nodes 16 17 nucleus attribution  5015
+#create-a-node-here really 15.206 18 {but "our performance since the {buy-out} makes it imperative to implement actions }
+#create-a-node-here really 15.251 19 {that will further improve our cash flow."}
+#nextSentence really
+#autolink_nodes 18 19 satelite-embedded elaboration-object-attribute-e  5016
+#disconnect_node 5014 modify
+#autolink_nodes 5004 5014 satelite means  5017
+#autolink_nodes 5015 5016 nucleus concession  5018
+#autolink_nodes 5017 5018 satelite explanation-argumentative  5019
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 15.23 16 { \n\nCompany officials said }
+create-a-node-here really 15.120 17 {Leaseway fulfilled payment requirements of its debt obligations since the leveraged buy-out, }
+autolink_nodes 16 17 nucleus attribution  5015
+create-a-node-here really 15.206 18 {but "our performance since the {buy-out} makes it imperative to implement actions }
+create-a-node-here really 15.252 19 {that will further improve our cash flow." }
+autolink_nodes 18 19 satelite-embedded elaboration-object-attribute-e  5016
+autolink_nodes 17 5016 nucleus concession  5017
+autolink_nodes 5008 5015 satelite explanation-argumentative  5018
+disconnect_node 5014 modify
+autolink_nodes 5004 5014 satelite means below 5019

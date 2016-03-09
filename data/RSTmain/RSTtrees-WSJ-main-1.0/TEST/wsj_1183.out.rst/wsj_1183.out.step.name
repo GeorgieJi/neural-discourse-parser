@@ -1,0 +1,36 @@
+nextSentence really
+create-a-node-here really 2.34 1 {\nALBERTA ENERGY Co., Calgary, said }
+create-a-node-here really 2.104 2 {it filed a preliminary prospectus for an offering of common shares.}
+nextSentence really
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 3.47 3 {\nThe natural resources development concern said }
+#create-a-node-here really 3.149 4 {proceeds will be used to repay long-term debt, which stood at 598 million Canadian dollars (US$510.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 3.72 4 {proceeds will be used }
+autolink_nodes 3 4 nucleus attribution  5002
+create-a-node-here really 3.100 5 {to repay long-term debt, }
+autolink_nodes 4 5 satelite purpose below 5003
+create-a-node-here really 3.147 6 {which stood at 598 million Canadian dollars }
+autolink_nodes 5 6 satelite-embedded elaboration-additional-e  5004
+create-a-node-here really 3.169 7 {(US$510.6 million) }
+#autolink_nodes 6 7 satelite-embedded means-e  5005
+#UNDID
+autolink_nodes 6 7 satelite-embedded restatement-e  5005
+create-a-node-here really 3.191 8 {at the end of 1988.}
+nextSentence really
+autolink_nodes 5005 8 multinuclear Same-Unit  5006
+autolink_nodes 5001 5002 satelite elaboration-additional  5007
+create-a-node-here really 4.85 9 {\nThe company plans to raise between C$75 million and C$100 million from the offering, }
+create-a-node-here really 4.175 10 {according to a spokeswoman at Richardson Greenshields of Canada Ltd., lead underwriter.}
+nextSentence really
+autolink_nodes 9 10 satelite attribution  5008
+autolink_nodes 5007 5008 satelite evaluation-s  5009
+create-a-node-here really 5.45 11 {\nThe shares will be priced in early November, }
+create-a-node-here really 5.58 12 {she said.}
+nextSentence really
+autolink_nodes 11 12 satelite attribution  5010
+#autolink_nodes 5008 5010 satelite elaboration-additional  5011
+#UNDID
+autolink_nodes 5008 5010 satelite elaboration-additional  5011

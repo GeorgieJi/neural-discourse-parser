@@ -1,0 +1,172 @@
+nextSentence really
+create-a-node-here really 2.58 1 {\nPROGRAM TRADING is being curbed by more securities firms, }
+create-a-node-here really 2.132 2 {but big institutional investors are expected to continue the practice, }
+autolink_nodes 1 2 multinuclear Contrast  5001
+create-a-node-here really 2.168 3 {further roiling the stock market.}
+nextSentence really
+autolink_nodes 5001 3 satelite consequence-s  5002
+create-a-node-here really 3.21 4 {\nBowing to criticism, }
+autolink_nodes 5002 4 satelite example  5003
+create-a-node-here really 3.155 5 {Bear Stearns, Morgan Stanley and Oppenheimer joined PaineWebber in suspending stock-index arbitrage trading for their own accounts.}
+nextSentence really
+create-a-node-here really 4.92 6 {\nStill, stock-index funds are expected to continue launching big programs through the market.}
+nextSentence really
+autolink_nodes 5 6 multinuclear Contrast  5004
+disconnect_node 6 disconnect
+autolink_nodes 4 5 nucleus result  5005
+autolink_nodes 5005 6 multinuclear Contrast  5006
+create-a-node-here really 6.39 7 { \n\nSeveral Big Board firms are organizing }
+create-a-node-here really 6.106 8 {to complain about program trading and the exchange's role in it.}
+nextSentence really
+autolink_nodes 7 8 satelite purpose  5007
+create-a-node-here really 7.34 9 {\nThe effort is being led by Contel.}
+nextSentence really
+autolink_nodes 5007 9 satelite elaboration-additional  5008
+autolink_nodes 5003 5008 satelite elaboration-additional  5009
+create-a-node-here really 9.70 10 { \n\nPersonal spending rose 0.2% in September, the smallest gain in a year.}
+nextSentence really
+autolink_nodes 5009 10 satelite topic-drift  5010
+create-a-node-here really 10.59 11 {\nThe slowdown raises questions about the economy's strength }
+autolink_nodes 10 11 satelite elaboration-additional  5011
+create-a-node-here really 10.124 12 {because spending fueled much of the third-quarter GNP growth.}
+nextSentence really
+autolink_nodes 11 12 satelite reason  5012
+change_rel 5012 interpretation-s
+create-a-node-here really 11.41 13 {\nMeanwhile, personal income edged up 0.3%.}
+nextSentence really
+autolink_nodes 5011 13 satelite temporal-same-time  5013
+create-a-node-here really 13.69 14 { \n\nFactory owners are buying new machinery at a healthy rate this fall, }
+autolink_nodes 5013 14 multinuclear List  5014
+create-a-node-here really 13.97 15 {machine-tool makers say.}
+nextSentence really
+autolink_nodes 14 15 satelite attribution  5015
+create-a-node-here really 14.76 16 {\nBut weak car sales raise questions about future demand from the auto sector.}
+nextSentence really
+autolink_nodes 5015 16 satelite interpretation-s  5016
+create-a-node-here really 16.65 17 { \n\nSouthern's Gulf Power unit may plead guilty this week to charges }
+autolink_nodes 5014 17 multinuclear List below 5016
+create-a-node-here really 16.141 18 {it illegally steered company money to politicians through third parties.}
+nextSentence really
+autolink_nodes 17 18 satelite-embedded elaboration-object-attribute-e  5017
+create-a-node-here really 17.109 19 {\nThe tentative pact would resolve part of a broad investigation of the Atlanta-based company in the past year.}
+nextSentence really
+autolink_nodes 5017 19 satelite interpretation-s  5018
+create-a-node-here really 19.52 20 { \n\nLIN Broadcasting and BellSouth sweetened their plan }
+autolink_nodes 5014 20 multinuclear List below 5018
+create-a-node-here really 19.92 21 {to merge cellular phone operations, }
+autolink_nodes 20 21 satelite-embedded elaboration-object-attribute-e  5019
+create-a-node-here really 19.146 22 {offering LIN holders a special $42-a-share payout.}
+nextSentence really
+autolink_nodes 5019 22 satelite means  5020
+create-a-node-here really 20.54 23 {\nBut the new pact will force huge debt on the new firm }
+autolink_nodes 5020 23 satelite antithesis  5021
+create-a-node-here really 20.117 24 {and could still fail to thwart rival suitor McCaw Cellular.}
+nextSentence really
+autolink_nodes 23 24 multinuclear List  5022
+nextSentence really
+create-a-node-here really 22.58 25 { \n\nUnisys posted a $648.2 million loss for the third quarter }
+autolink_nodes 5014 25 multinuclear List below 5022
+create-a-node-here really 22.151 26 {as it moved quickly to take write-offs for various problems and prepare for a turnaround.}
+nextSentence really
+autolink_nodes 25 26 satelite temporal-same-time  5023
+create-a-node-here really 23.25 27 {\nBut some analysts wonder }
+autolink_nodes 5023 27 satelite antithesis  5024
+create-a-node-here really 23.61 28 {how strong the recovery will be.}
+nextSentence really
+autolink_nodes 27 28 satelite-embedded elaboration-object-attribute-e  5025
+create-a-node-here really 25.77 29 { \n\nRJR Nabisco agreed to sell three candy businesses to Nestle for $370 million.}
+nextSentence really
+autolink_nodes 5014 29 multinuclear List below 5025
+create-a-node-here really 26.95 30 {\nThe accord helps RJR pay off debt and boosts Nestle's 7% share of the U.S. candy market to 12%.}
+nextSentence really
+autolink_nodes 29 30 satelite interpretation-s  5026
+create-a-node-here really 28.59 31 { \n\nGM and Ford are expected to go head to head in the markets }
+autolink_nodes 5014 31 multinuclear List below 5026
+create-a-node-here really 28.100 32 {to buy up rival 15% stakes in Jaguar.}
+nextSentence really
+autolink_nodes 31 32 satelite purpose  5027
+create-a-node-here really 29.13 33 {\nGM confirmed }
+create-a-node-here really 29.56 34 {it received U.S. antitrust clearance to}
+autolink_nodes 33 34 nucleus attribution  5028
+create-a-node-here really 29.79 35 { boost its holding.}
+nextSentence really
+autolink_nodes 34 35 satelite purpose below 5029
+autolink_nodes 5027 5028 satelite elaboration-part-whole  5030
+#change_rel 5028 
+#UNDID
+change_rel 5028 elaboration-additional
+create-a-node-here really 32.0 36 { \n\nSansui Electric agreed to sell a 51% stake to Polly Peck of Britain for $110 million.\n}
+#autolink_nodes 5014 36 multinuclear List below 5030
+#UNDID
+autolink_nodes 5014 36 multinuclear List below 5030
+create-a-node-here really 32.11 37 {Still, }
+create-a-node-here really 32.29 38 {analysts said }
+create-a-node-here really 32.60 39 {the accord doesn't suggest }
+create-a-node-here really 32.110 40 {Japan is opening up to more foreign takeovers.}
+nextSentence really
+autolink_nodes 36 40 satelite interpretation-s  5031
+#autolink_nodes 37 39 multinuclear Same-Unit  5032
+#autolink_nodes 38 5032 nucleus attribution  5033
+#UNDID
+#UNDID
+#autolink_nodes 39 38 satelite attribution  5032
+#autolink_nodes 39 37 multinuclear Same-Unit  5033
+#UNDID
+#UNDID
+autolink_nodes 37 38 satelite attribution  5032
+autolink_nodes 5032 39 multinuclear Same-Unit  5033
+disconnect_node 40 disconnect
+autolink_nodes 5033 40 nucleus attribution-n  5034
+autolink_nodes 36 5034 satelite interpretation-s  5035
+create-a-node-here really 34.53 41 { \n\nKellogg suspended work on a $1 billion cereal plant, }
+autolink_nodes 5014 41 multinuclear List below 5035
+create-a-node-here really 34.111 42 {indicating a pessimistic outlook by the cereal maker, }
+autolink_nodes 41 42 satelite interpretation-s  5036
+create-a-node-here really 35.0 43 {which has been losing market share. \n}
+autolink_nodes 42 43 satelite-embedded elaboration-object-attribute-e  5037
+create-a-node-here really 36.137 44 {\nInsurers could see claims totaling nearly $1 billion from the San Francisco earthquake, far less than the $4 billion from Hurricane Hugo.}
+nextSentence really
+autolink_nodes 5014 44 multinuclear List below 5037
+create-a-node-here really 38.41 45 { \n\nNashua strengthened its poison-pill plan }
+autolink_nodes 5014 45 multinuclear List below 5037
+create-a-node-here really 38.62 46 {after announcing }
+autolink_nodes 45 46 satelite temporal-after  5038
+create-a-node-here really 38.143 47 {a Dutch firm is seeking to buy up to 25% of the New Hampshire copier company.}
+nextSentence really
+autolink_nodes 46 47 nucleus attribution  5039
+create-a-node-here really 40.132 48 { \n\nMobil is cutting back its U.S. oil and gas exploration and production group by up to 15% as part of a restructuring of the business.}
+nextSentence really
+autolink_nodes 5014 48 multinuclear List below 5039
+create-a-node-here really 43.0 49 { \n\nMarkets --- \n}
+autolink_nodes 5014 49 multinuclear List below 5039
+create-a-node-here really 44.8 50 {\nStocks: }
+autolink_nodes 49 50 satelite elaboration-set-member  5040
+create-a-node-here really 44.38 51 {Volume 170,330,000 shares.}
+nextSentence really
+autolink_nodes 50 51 satelite elaboration-additional  5041
+nextSentence really
+nextSentence really
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 45.103 52 {\nDow Jones industrials 2596.72, off 17.01; transportation 1190.43, off 14.76; utilities 215.86, up 0.19.}
+nextSentence really
+autolink_nodes 51 52 satelite elaboration-general-specific  5042
+create-a-node-here really 47.7 53 { \n\nBonds: }
+autolink_nodes 5041 53 multinuclear List  5043
+showText really
+showText really
+create-a-node-here really 48.0 54 {Shearson Lehman Hutton Treasury index 3406.31, off \n}
+autolink_nodes 53 54 satelite elaboration-additional  5044
+create-a-node-here really 49.13 55 {\nCommodities: }
+autolink_nodes 5043 55 multinuclear List below 5044
+create-a-node-here really 50.0 56 {Dow Jones futures index 129.49, up 0.27; spot index 130.80, off 0.24. \n}
+autolink_nodes 55 56 satelite elaboration-additional  5045
+create-a-node-here really 51.8 57 {\nDollar: }
+autolink_nodes 5043 57 multinuclear List below 5045
+create-a-node-here really 52.0 58 {141.65 yen, off 0.45; 1.8300 marks, off 0.0100. \n}
+nextSentence really
+autolink_nodes 57 58 satelite elaboration-additional  5046
+collapsed_nodes {5010}
+nextSentence really
+collapsed_nodes {}

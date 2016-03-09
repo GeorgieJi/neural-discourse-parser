@@ -1,0 +1,72 @@
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 2.17 1 {\nNikon Corp. said }
+create-a-node-here really 2.84 2 {unconsolidated pretax profit increased 70% to 12.12 billion yen }
+create-a-node-here really 2.102 3 {($85.3 million)}
+create-a-node-here really 2.123 4 { in the first half}
+create-a-node-here really 2.142 5 { ended Sept. 30,}
+create-a-node-here really 2.179 6 { from 7.12 billion yen a year ago.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded restatement-e  5001
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5002
+autolink_nodes 5002 5001 multinuclear Same-Unit  5003
+autolink_nodes 5003 6 multinuclear Same-Unit below 5003
+autolink_nodes 1 5003 nucleus attribution  5004
+create-a-node-here really 4.28 7 { \n\nThe Tokyo camera maker said }
+nextSentence really
+create-a-node-here really 4.142 8 {net income more than doubled to 5.85 billion yen, or 16.08 a share, from 2.63 billion yen, or 7.24 yen a share.}
+nextSentence really
+autolink_nodes 7 8 nucleus attribution  5005
+autolink_nodes 5004 5005 multinuclear List  5006
+create-a-node-here really 6.11 9 { \n\nNikon said }
+create-a-node-here really 6.25 10 {sales rose }
+create-a-node-here really 6.93 11 {despite the adverse effect of Japan's unpopular consumption tax,}
+create-a-node-here really 6.118 12 { introduced in April.}
+nextSentence really
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e  5007
+autolink_nodes 10 5007 satelite concession  5008
+autolink_nodes 9 5008 nucleus attribution  5009
+create-a-node-here really 7.71 13 {\nIncreasing personal spending and capital investment are fueling growth,}
+create-a-node-here really 7.93 14 { the company said.}
+nextSentence really
+autolink_nodes 13 14 satelite attribution  5010
+autolink_nodes 5009 5010 satelite explanation-argumentative  5011
+create-a-node-here really 8.54 15 {\nRising export sales also contributed to strong growth,}
+create-a-node-here really 8.71 16 { Nikon added.}
+nextSentence really
+autolink_nodes 15 16 satelite attribution  5012
+autolink_nodes 5010 5012 satelite elaboration-additional  5013
+autolink_nodes 5011 5006 satelite consequence-s  5014
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 10.69 17 { \n\nTotal sales gained 20% to 122.36 billion yen from 102.01 billion yen.}
+nextSentence really
+nextSentence really
+create-a-node-here really 11.75 18 {\nExports made up 46.2% of the latest year's total, up from 39.8% a year ago.}
+nextSentence really
+autolink_nodes 17 18 satelite elaboration-set-member  5015
+nextSentence really
+nextSentence really
+create-a-node-here really 13.40 19 { \n\nCamera sales showed the strongest gains,}
+#create-a-node-here really 13.77 20 { rising 37% to 50.59 billion yen.}
+#autolink_nodes 19 20 satelite-embedded elaboration-object-attribute-e  5016
+#UNDID
+#UNDID
+create-a-node-here really 13.77 20 { rising 37% to 50.59 billion yen.}
+autolink_nodes 19 20 satelite elaboration-additional  5016
+autolink_nodes 18 5016 satelite example  5017
+autolink_nodes 5014 5015 satelite elaboration-general-specific  5018
+create-a-node-here really 15.34 21 { \n\nNikon forecast sales for the year }
+create-a-node-here really 15.53 22 {ending March 31}
+create-a-node-here really 15.92 23 { will rise 9.6% to 240 billion yen.}
+autolink_nodes 21 22 satelite-embedded elaboration-object-attribute-e  5019
+autolink_nodes 5019 23 multinuclear Same-Unit  5020
+create-a-node-here really 16.60 24 {\nPretax profit is expected to increase 18% to 22 billion yen }
+nextSentence really
+create-a-node-here really 16.123 25 {and net income is expected to rise 53% to 10.5 billion yen.}
+nextSentence really
+autolink_nodes 24 25 multinuclear List  5021
+autolink_nodes 5020 5021 satelite consequence-s  5022
+autolink_nodes 5022 5018 satelite background  5023

@@ -1,0 +1,177 @@
+nextSentence really
+create-a-node-here really 2.108 1 {\nGeneral Motors Corp. and Ford Motor Co. are now going head to head in the markets for shares of Jaguar PLC, }
+create-a-node-here really 2.171 2 {as GM got early clearance from the Federal Trade Commission }
+autolink_nodes 1 2 satelite circumstance  5001
+create-a-node-here really 2.225 3 {to boost its stake in the British luxury car maker.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e  5002
+create-a-node-here really 4.20 4 { \n\nGM confirmed Friday }
+create-a-node-here really 4.96 5 {that it received permission late Thursday from U.S. antitrust regulators }
+autolink_nodes 4 5 nucleus attribution  5003
+create-a-node-here really 4.158 6 {to increase its Jaguar holdings past the $15 million level.}
+nextSentence really
+autolink_nodes 5 6 satelite-embedded elaboration-object-attribute-e below 5004
+create-a-node-here really 5.48 7 {\nFord got a similar go-ahead earlier in October, }
+autolink_nodes 5003 7 multinuclear Inverted-Sequence  5005
+create-a-node-here really 5.83 8 {and on Friday, Jaguar announced }
+autolink_nodes 5005 8 multinuclear Sequence above 5006
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 5.203 9 {that the No. 2 U.S. auto maker had raised its stake to 13.2%, or 24.2 million shares, from 12.4% earlier in the week.}
+nextSentence really
+autolink_nodes 8 9 nucleus attribution  5007
+create-a-node-here really 7.58 10 { \n\nA spokesman for GM, the No. 1 auto maker, declined to say }
+create-a-node-here really 7.103 11 {how many Jaguar shares that company owns.}
+nextSentence really
+autolink_nodes 10 11 nucleus attribution-n  5008
+autolink_nodes 5007 5008 satelite antithesis  5009
+autolink_nodes 5001 5006 satelite elaboration-additional  5010
+create-a-node-here really 8.88 12 {\nIn late trading Friday, Jaguar shares bucked the downward tide in London's stock market }
+create-a-node-here really 8.125 13 {and rose five pence to 725 pence }
+nextSentence really
+create-a-node-here really 8.138 14 {($11.44).}
+nextSentence really
+#autolink_nodes 13 14 satelite-embedded temporal-after-e  5011
+#UNDID
+autolink_nodes 13 14 satelite-embedded restatement-e  5011
+autolink_nodes 12 5011 multinuclear Temporal-Same-Time  5012
+create-a-node-here really 10.0 15 {\nTrading volume was a moderately heavy 3.1 million shares.\n}
+autolink_nodes 5012 15 multinuclear Temporal-Same-Time above 5013
+disconnect_node 15 modify
+autolink_nodes 5012 15 multinuclear Consequence above 5014
+#create-a-node-here really 10.143 16 {In the U.S., Jaguar's American depositary receipts were among the most active issues Friday in national over-the-counter trading where they}
+#UNDID
+#create-a-node-here really 10.139 16 {In the U.S., Jaguar's American depositary receipts were among the most active issues Friday in national over-the-counter trading where }
+#nextSentence really
+#nextSentence really
+#create-a-node-here really 10.186 17 {they closed at $11.625 each, up 62.5 cents.}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 10.133 16 {In the U.S., Jaguar's American depositary receipts were among the most active issues Friday in national over-the-counter trading }
+nextSentence really
+nextSentence really
+create-a-node-here really 10.186 17 {where they closed at $11.625 each, up 62.5 cents.}
+nextSentence really
+disconnect_node 15 modify
+autolink_nodes 5012 15 satelite consequence-s  5015
+autolink_nodes 16 17 satelite-embedded elaboration-additional-e  5016
+autolink_nodes 5015 5016 multinuclear Temporal-Same-Time  5017
+autolink_nodes 5010 5017 satelite consequence-s  5018
+create-a-node-here really 12.16 18 { \n\nAnalysts expect }
+create-a-node-here really 12.100 19 {that the two U.S. auto giants will move quickly to buy up 15% stakes in Jaguar, }
+autolink_nodes 18 19 nucleus attribution  5019
+create-a-node-here really 12.172 20 {setting up a potential bidding war for the prestigious Jaguar brand.}
+nextSentence really
+autolink_nodes 19 20 satelite consequence-s below 5020
+autolink_nodes 5018 5019 satelite interpretation-s  5021
+create-a-node-here really 14.108 21 { \n\nBritish government restrictions prevent any single shareholder from going beyond 15% before the end of 1990 }
+create-a-node-here really 14.142 22 {without government permission.}
+nextSentence really
+autolink_nodes 21 22 satelite contingency  5022
+create-a-node-here really 15.24 23 {\nThe British government, }
+create-a-node-here really 15.59 24 {which owned Jaguar until 1984, }
+autolink_nodes 23 24 satelite-embedded elaboration-additional-e  5023
+create-a-node-here really 15.119 25 {still holds a controlling "golden share" in the company.}
+nextSentence really
+autolink_nodes 5023 25 multinuclear Same-Unit  5024
+autolink_nodes 5022 5024 satelite elaboration-additional  5025
+create-a-node-here really 17.85 26 { \n\nWith the golden share as protection, Jaguar officials have rebuffed Ford's overtures,}
+create-a-node-here really 17.137 27 { and moved instead to forge an alliance with GM.}
+nextSentence really
+autolink_nodes 26 27 multinuclear Contrast  5026
+autolink_nodes 5025 5026 nucleus circumstance  5027
+create-a-node-here really 17.174 28 { Jaguar officials have indicated }
+create-a-node-here really 17.236 29 {they are close to wrapping up a friendly alliance with GM }
+autolink_nodes 28 29 nucleus attribution  5028
+create-a-node-here really 17.283 30 {that would preserve Jaguar's independence, }
+autolink_nodes 29 30 satelite-embedded elaboration-object-attribute-e below 5029
+create-a-node-here really 17.318 31 {but no deal has been announced.}
+nextSentence really
+autolink_nodes 5028 31 satelite antithesis  5030
+create-a-node-here really 18.34 32 {\nFord, on the other hand, has said }
+create-a-node-here really 18.77 33 {it's willing to bid for all of Jaguar, }
+autolink_nodes 32 33 nucleus attribution  5031
+create-a-node-here really 18.137 34 {despite the objections of Jaguar chairman Sir John Egan.}
+nextSentence really
+autolink_nodes 33 34 satelite concession below 5032
+create-a-node-here really 19.47 35 {\nAnalysts continued to speculate late last week }
+create-a-node-here really 19.88 36 {that Ford may try to force the issue }
+autolink_nodes 35 36 nucleus attribution  5033
+create-a-node-here really 19.139 37 {by calling for a special shareholder's meeting }
+autolink_nodes 36 37 satelite means below 5034
+create-a-node-here really 19.154 38 {and urging }
+autolink_nodes 37 38 multinuclear List  5035
+create-a-node-here really 19.264 39 {that the government and Jaguar holders remove the barriers to a full bidding contest before December 1990.}
+nextSentence really
+autolink_nodes 38 39 nucleus attribution  5036
+disconnect_node 5036 modify
+autolink_nodes 37 5036 multinuclear Sequence  5037
+create-a-node-here really 20.47 40 {\nBut a Ford spokeswoman in Dearborn said Friday }
+create-a-node-here really 20.99 41 {the company hasn't requested such a meeting yet.}
+nextSentence really
+#autolink_nodes 40 41 nucleus attribution  5038
+#UNDID
+autolink_nodes 40 41 nucleus attribution  5038
+autolink_nodes 5033 5038 satelite antithesis  5039
+create-a-node-here really 22.43 42 { \n\nIndividuals close to the situation believe }
+create-a-node-here really 22.106 43 {Ford officials will seek a meeting this week with Sir John }
+autolink_nodes 42 43 nucleus attribution  5040
+create-a-node-here really 23.0 44 {to outline their proposal for a full bid.\n}
+autolink_nodes 43 44 satelite-embedded elaboration-object-attribute-e below 5041
+autolink_nodes 5039 5040 multinuclear List  5042
+create-a-node-here really 23.65 45 {Any discussions with Ford could postpone the Jaguar-GM deal, }
+create-a-node-here really 23.117 46 {headed for completion within the next two weeks.}
+nextSentence really
+autolink_nodes 45 46 satelite-embedded elaboration-additional-e  5043
+autolink_nodes 5031 5042 satelite hypothetical  5044
+create-a-node-here really 24.61 47 {\nThe GM agreement is expected to retain Jaguar's independence }
+create-a-node-here really 24.178 48 {by involving an eventual 30% stake for the U.S. auto giant as well as joint manufacturing and marketing ventures.}
+nextSentence really
+autolink_nodes 47 48 satelite means  5045
+autolink_nodes 5043 5045 satelite elaboration-additional  5046
+autolink_nodes 5044 5046 satelite interpretation-s  5047
+autolink_nodes 5030 5047 multinuclear Contrast  5048
+create-a-node-here really 26.70 49 { \n\nJaguar and GM hope to win Jaguar shareholders approval for the accord }
+create-a-node-here really 26.108 50 {partly by structuring it in a way }
+autolink_nodes 49 50 satelite means  5049
+create-a-node-here really 26.151 51 {that wouldn't preclude a full Ford bid }
+create-a-node-here really 26.185 52 {once the golden share expires.}
+nextSentence really
+autolink_nodes 51 52 satelite temporal-after  5050
+#autolink_nodes 50 5050 satelite elaboration-object-attribute  5051
+#UNDID
+autolink_nodes 50 5050 satelite-embedded elaboration-object-attribute-e  5051
+create-a-node-here really 26.280 53 { "There's either a minority {stake} package capable of getting Jaguar shareholder approval }
+create-a-node-here really 26.301 54 {or there isn't," }
+autolink_nodes 53 54 multinuclear Disjunction  5052
+create-a-node-here really 26.340 55 {said one knowledgeable individual. }
+autolink_nodes 5052 55 satelite attribution  5053
+create-a-node-here really 26.361 56 {"If there isn't, }
+create-a-node-here really 26.414 57 {{the deal} won't be put forward" to shareholders.}
+nextSentence really
+autolink_nodes 56 57 nucleus condition  5054
+autolink_nodes 5053 5054 satelite consequence-s  5055
+autolink_nodes 5049 5055 satelite explanation-argumentative  5056
+autolink_nodes 5048 5056 satelite elaboration-additional  5057
+create-a-node-here really 28.80 58 { \n\nUnion sentiment also could influence shareholder reaction to a Jaguar-GM accord.}
+nextSentence really
+create-a-node-here really 29.156 59 {\nGM's U.K. unit holds crucial talks today with union officials about its consideration of an Ellesmere Port site for its first major engine plant in Britain.}
+nextSentence really
+autolink_nodes 58 59 satelite elaboration-additional  5058
+create-a-node-here really 30.37 60 {\nOne auto-industry union leader said, }
+create-a-node-here really 30.111 61 {"If they try to build it somewhere else {in Europe} besides the U.K., }
+create-a-node-here really 30.188 62 {they are going to be in big trouble" with unionists over any Jaguar deal.}
+nextSentence really
+autolink_nodes 61 62 nucleus condition  5059
+autolink_nodes 60 5059 nucleus attribution  5060
+autolink_nodes 5058 5060 satelite interpretation-s  5061
+disconnect_node 5060 modify
+autolink_nodes 5058 5060 satelite example  5062
+autolink_nodes 5027 5057 satelite summary-n  5063
+autolink_nodes 5063 5062 satelite elaboration-additional  5064
+autolink_nodes 5021 5064 satelite evidence  5065

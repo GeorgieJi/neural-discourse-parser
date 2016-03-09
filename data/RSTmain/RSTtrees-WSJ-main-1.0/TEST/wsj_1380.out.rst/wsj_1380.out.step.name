@@ -1,0 +1,68 @@
+nextSentence really
+create-a-node-here really 2.143 1 {\nProgram trading on the New York Stock Exchange in September rose to its highest recorded level as a percentage of total monthly trading volume.}
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 4.140 2 { \n\nSeptember program trading amounted to 13.8% of average daily New York Stock Exchange volume of 151.8 million shares, the largest percentage }
+create-a-node-here really 4.208 3 {since the exchange began making such figures public in July 1988.}
+nextSentence really
+autolink_nodes 2 3 satelite temporal-after  5001
+autolink_nodes 1 5001 satelite elaboration-general-specific  5002
+nextSentence really
+create-a-node-here really 6.112 4 { \n\nA daily average of 20.9 million shares traded in program strategies in September, the second-highest level ever.}
+nextSentence really
+autolink_nodes 5001 4 satelite elaboration-additional  5003
+create-a-node-here really 7.36 5 {\nThe highest level was in June 1989, }
+nextSentence really
+create-a-node-here really 7.112 6 {when a daily average of 22.1 million shares traded in program strategies.}
+nextSentence really
+autolink_nodes 5 6 satelite temporal-same-time  5004
+autolink_nodes 4 5004 multinuclear Comparison  5005
+nextSentence really
+create-a-node-here really 8.103 7 {\nAverage daily trading volume in June of 180.3 million shares was considerably higher than in September.}
+nextSentence really
+autolink_nodes 5005 7 satelite evaluation-s  5006
+nextSentence really
+create-a-node-here really 9.66 8 {\nProgram trading amounted to 12.3% of average daily volume in June.}
+nextSentence really
+autolink_nodes 5003 8 satelite comparison  5007
+create-a-node-here really 11.19 9 { \n\nThe Big Board says }
+create-a-node-here really 11.72 10 {program trading describes a variety of strategies }
+create-a-node-here really 11.140 11 {involving the purchase or sale of a basket of 15 or more stocks.}
+nextSentence really
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5008
+autolink_nodes 9 5008 nucleus attribution  5009
+create-a-node-here really 12.58 12 {\nThe most controversial of these is stock-index arbitrage, }
+create-a-node-here really 12.109 13 {in which traders buy or sell baskets of stocks }
+create-a-node-here really 12.183 14 {and offset the position with an opposite trade in stock-index futures }
+autolink_nodes 13 14 multinuclear List  5010
+create-a-node-here really 12.206 15 {to lock in profits.}
+nextSentence really
+autolink_nodes 5010 15 satelite purpose  5011
+autolink_nodes 12 5011 satelite-embedded elaboration-additional-e  5012
+autolink_nodes 5009 5012 satelite example  5013
+create-a-node-here really 13.52 16 {\nIt's the most controversial form of program trading }
+create-a-node-here really 13.118 17 {because it can create abrupt price swings in the stock market.}
+nextSentence really
+autolink_nodes 16 17 satelite explanation-argumentative  5014
+autolink_nodes 5012 5014 satelite restatement  5015
+create-a-node-here really 15.63 18 { \n\nSalomon Brothers Inc. was the top program trader in September, }
+autolink_nodes 5002 5013 satelite definition  5016
+create-a-node-here really 15.170 19 {but most of the firm's activity involved portfolio trading strategies other than stock-index arbitrage.}
+nextSentence really
+autolink_nodes 18 19 multinuclear Contrast  5017
+nextSentence really
+create-a-node-here really 16.72 20 {\nOverall, Salomon reported program trading volume of 75.2 million shares.}
+nextSentence really
+autolink_nodes 5017 20 satelite elaboration-additional  5018
+nextSentence really
+nextSentence really
+create-a-node-here really 19.0 21 { \n\nThe top stock-index arbitrage firm last month was Morgan Stanley & Co.\n}
+autolink_nodes 5018 21 multinuclear List  5019
+create-a-node-here really 19.127 22 {Of Morgan Stanley's 66.8 million shares in program trades for the month, 53.1 million were in stock-index arbitrage trades.}
+nextSentence really
+autolink_nodes 21 22 satelite explanation-argumentative  5020
+create-a-node-here really 21.136 23 { \n\nBehind second-place Morgan Stanley were Kidder, Peabody & Co., Goldman, Sachs & Co. and CS First Boston Inc. 's First Boston Corp. unit.}
+nextSentence really
+autolink_nodes 5020 23 multinuclear Comparison  5021
+autolink_nodes 5016 5019 satelite elaboration-general-specific  5022

@@ -1,0 +1,35 @@
+nextSentence really
+create-a-node-here really 2.27 1 {\nCMS Enhancements Inc. said }
+create-a-node-here really 2.43 2 {it estimates }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.99 3 {that sales and earnings for the fiscal first quarter }
+#autolink_nodes 2 3 nucleus attribution  5002
+#UNDID
+autolink_nodes 2 3 nucleus attribution  5002
+create-a-node-here really 2.117 4 {ended Sept. 30 }
+autolink_nodes 3 4 satelite-embedded elaboration-additional-e below 5003
+create-a-node-here really 2.163 5 {fell somewhat from the year-earlier period.}
+nextSentence really
+autolink_nodes 5003 5 multinuclear Same-Unit  5004
+nextSentence really
+create-a-node-here really 4.98 6 { \n\nJim Farooquee, chief executive officer of the Tustin, Calif., computer accessories supplier, said }
+autolink_nodes 5001 6 satelite elaboration-additional  5005
+create-a-node-here really 4.149 7 {he was "comfortable" with analysts' expectations}
+autolink_nodes 6 7 nucleus attribution  5006
+create-a-node-here really 4.247 8 { that CMS would earn between six cents and eight cents a share on revenue of about $42 million.}
+nextSentence really
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e below 5007
+create-a-node-here really 6.96 9 { \n\nA year earlier, CMS posted profit of $1.1 million, or 13 cents a share, on sales of $48 million.}
+nextSentence really
+autolink_nodes 5005 9 satelite circumstance  5008
+create-a-node-here really 7.49 10 {\nThis time, there are 30% more shares outstanding.}
+nextSentence really
+autolink_nodes 9 10 nucleus background  5009
+create-a-node-here really 9.110 11 { \n\nMr. Farooquee attributed the decline to an industrywide softening of demand for computer enhancement products.}
+nextSentence really
+autolink_nodes 5009 11 satelite interpretation-s  5010
+collapsed_nodes {}
+collapsed_nodes {5008}
+collapsed_nodes {}
+collapsed_nodes {5008}
+collapsed_nodes {}

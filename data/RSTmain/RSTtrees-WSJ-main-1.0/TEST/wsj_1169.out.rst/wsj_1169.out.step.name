@@ -1,0 +1,61 @@
+nextSentence really
+nextSentence really
+create-a-node-here really 3.9 1 {\nMurata Mfg.\nCo. said }
+create-a-node-here really 3.55 2 {it is establishing a subsidiary in Britain }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 3.84 3 {to produce electric parts,}
+autolink_nodes 2 3 satelite purpose below 5002
+create-a-node-here really 3.117 4 { including ceramic condensers.}
+nextSentence really
+#autolink_nodes 3 4 satelite-embedded example-e  5003
+#UNDID
+autolink_nodes 3 4 satelite-embedded example-e  5003
+create-a-node-here really 5.43 5 { \n\nThe Tokyo maker of ceramic capacitors said }
+autolink_nodes 5001 5 satelite elaboration-additional  5004
+create-a-node-here really 6.0 6 {it purchased a plant in Plymouth.\n}
+autolink_nodes 5 6 nucleus attribution  5005
+create-a-node-here really 6.74 7 {The company didn't disclose a purchase price or capitalization figures.}
+nextSentence really
+autolink_nodes 5005 7 satelite elaboration-additional  5006
+create-a-node-here really 7.22 8 {\nMurata said, however, }
+autolink_nodes 7 8 nucleus concession  5007
+create-a-node-here really 7.62 9 {it will invest about 1.4 billion yen }
+autolink_nodes 8 9 nucleus attribution  5008
+nextSentence really
+create-a-node-here really 7.80 10 {($9.9 million) }
+autolink_nodes 9 10 satelite-embedded restatement-e below 5009
+create-a-node-here really 7.103 11 {in the new company.}
+nextSentence really
+autolink_nodes 5009 11 multinuclear Same-Unit  5010
+create-a-node-here really 8.39 12 {\nProduction is slated to begin in April.}
+nextSentence really
+#autolink_nodes 5006 12 satelite elaboration-additional  5011
+#create-a-node-here really 10.13 13 { \n\nThe company, }
+#UNDID
+#UNDID
+collapsed_nodes {5006}
+autolink_nodes 5004 12 satelite elaboration-additional  5011
+create-a-node-here really 10.13 13 { \n\nThe company, }
+autolink_nodes 5011 13 satelite elaboration-additional  5012
+nextSentence really
+create-a-node-here really 11.15 14 {which has a European foothold, Murata Europe Management G.m.b.\nH. in Germany, }
+autolink_nodes 13 14 satelite elaboration-additional  5013
+create-a-node-here really 11.23 15 {said}
+autolink_nodes 5013 15 multinuclear Same-Unit  5014
+create-a-node-here really 11.188 16 { the latest venture is designed to meet demand for electric parts in European Community countries ahead of the creation of the unified market by the end of 1992.}
+nextSentence really
+autolink_nodes 15 16 nucleus attribution  5015
+create-a-node-here really 13.76 17 { \n\nMurata expects sales at the unit of about 1.5 billion yen in the first year.}
+nextSentence really
+autolink_nodes 5014 17 satelite elaboration-additional  5016
+collapsed_nodes {}
+disconnect_node 14 disconnect
+autolink_nodes 13 14 satelite-embedded elaboration-additional-e  5017
+disconnect_node 5015 disconnect
+disconnect_node 15 disconnect
+autolink_nodes 5017 15 multinuclear Same-Unit  5018
+disconnect_node 17 disconnect
+autolink_nodes 5018 16 nucleus attribution  5019
+autolink_nodes 5019 17 satelite elaboration-additional  5020
+collapsed_nodes {5012}
+collapsed_nodes {}

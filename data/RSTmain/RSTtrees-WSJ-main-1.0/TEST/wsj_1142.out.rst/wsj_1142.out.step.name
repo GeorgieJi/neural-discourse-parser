@@ -1,0 +1,388 @@
+nextSentence really
+create-a-node-here really 2.81 1 {\nThe Nasdaq over-the-counter market didn't fully recover from a selling stampede, }
+create-a-node-here really 2.105 2 {and closed down 1.2%.}
+nextSentence really
+create-a-node-here really 4.120 3 { \n\nThe effects on the market of the mostly computer-driven sell-off among exchange-listed stocks irked many market makers, }
+create-a-node-here really 4.220 4 {who watched the Nasdaq Composite Index tumble in sympathy with the Dow Jones Industrial Average, }
+create-a-node-here really 4.279 5 {and then saw it get left behind in the subsequent rally.}
+nextSentence really
+create-a-node-here really 6.51 6 { \n\nAfter plummeting 1.8% at one point during the day, }
+#showText really
+#showText really
+#create-a-node-here really 7.0 7 {the composite rebounded a little, but finished down 5.52, at 461.70.\n}
+#create-a-node-here really 7.81 8 {In contrast, the industrial average recovered almost completely from its skid }
+#create-a-node-here really 8.0 9 {and closed down 0.1%.\n}
+#create-a-node-here really 8.69 10 {The New York Stock Exchange Composite was 0.4% lower for the day. }
+#create-a-node-here really 10.84 11 {\n\nAs usual, the over-the-counter market's biggest technology stocks were hardest hit. }
+#create-a-node-here really 12.10 12 {\n\nMicrosoft,}
+#create-a-node-here really 12.61 13 { battered by profit taking in recent sessions, }
+#create-a-node-here really 12.84 14 {sank as much as 4; }
+#create-a-node-here really 12.159 15 {but it finished at 80 7/8, down 2 1/4 on volume of one million shares. }
+#create-a-node-here really 15.0 16 {\n\nMCI Communications, the most active issue, finished down 5/8 to 42 1/8.\n}
+#create-a-node-here really 16.0 17 {MCI traded as low as 41 3/8 during the session.\n}
+#create-a-node-here really 16.41 18 {Other active stocks included Jaguar, }
+#create-a-node-here really 17.0 19 {whose American depositary receipts added 1/8 to 11 1/4.\n}
+#create-a-node-here really 17.43 20 {Apple Computer improved 7/8 to 47 5/8; }
+#create-a-node-here really 17.76 21 {Intel slipped 1/4 to 33 1/4, }
+#create-a-node-here really 17.128 22 {and Valley National Corp. was up 1/8 to 15 1/8. }
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#create-a-node-here really 6.122 7 {the composite rebounded a little, but finished down 5.52, at 461.70.}
+#nextSentence really
+#create-a-node-here really 7.78 8 {\nIn contrast, the industrial average recovered almost completely from its skid }
+#create-a-node-here really 7.102 9 {and closed down 0.1%.}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 6.88 7 {the composite rebounded a little, }
+create-a-node-here really 6.125 8 {but finished down 5.52, at 461.70.}
+nextSentence really
+create-a-node-here really 7.78 9 {\nIn contrast, the industrial average recovered almost completely from its skid }
+create-a-node-here really 7.102 10 {and closed down 0.1%.}
+nextSentence really
+create-a-node-here really 8.65 11 {\nThe New York Stock Exchange Composite was 0.4% lower for the day.}
+nextSentence really
+create-a-node-here really 10.83 12 { \n\nAs usual, the over-the-counter market's biggest technology stocks were hardest hit.}
+nextSentence really
+create-a-node-here really 12.11 13 { \n\nMicrosoft, }
+nextSentence really
+create-a-node-here really 12.61 14 {battered by profit taking in recent sessions, }
+create-a-node-here really 12.84 15 {sank as much as 4; }
+create-a-node-here really 12.159 16 {but it finished at 80 7/8, down 2 1/4 on volume of one million shares. }
+create-a-node-here really 14.71 17 {\n\nMCI Communications, the most active issue, finished down 5/8 to 42 1/8.}
+nextSentence really
+create-a-node-here really 15.47 18 {\nMCI traded as low as 41 3/8 during the session.}
+nextSentence really
+create-a-node-here really 16.37 19 {\nOther active stocks included Jaguar, }
+create-a-node-here really 16.96 20 {whose American depositary receipts added 1/8 to 11 1/4.}
+nextSentence really
+create-a-node-here really 17.39 21 {\nApple Computer improved 7/8 to 47 5/8; }
+create-a-node-here really 17.72 22 {Intel slipped 1/4 to 33 1/4, }
+create-a-node-here really 17.123 23 {and Valley National Corp. was up 1/8 to 15 1/8.}
+nextSentence really
+create-a-node-here really 19.54 24 { \n\n"The market started with several strikes against it," }
+create-a-node-here really 19.135 25 {said Peter DaPuzzo, head of retail equity trading at Shearson Lehman Hutton, }
+create-a-node-here really 19.157 26 {referring to news }
+create-a-node-here really 19.230 27 {that the labor-management buy-out of UAL Corp. continued to unravel, }
+create-a-node-here really 19.246 28 {and reports }
+create-a-node-here really 19.294 29 {that the junk-bond market is disintegrating.}
+nextSentence really
+create-a-node-here really 21.119 30 { \n\nBut the computer-guided selling in response to those developments dealt a serious blow to the over-the-counter market, }
+create-a-node-here really 21.140 31 {Mr. DaPuzzo said.}
+nextSentence really
+create-a-node-here really 23.121 32 { \n\nEven though the over-the-counter market usually doesn't fall by as much as listed stocks during program-selling blitzes, }
+create-a-node-here really 23.134 33 {he said, }
+create-a-node-here really 23.169 34 {"when the market does recover, }
+create-a-node-here really 23.192 35 {the damage is done }
+create-a-node-here really 23.247 36 {and it leaves Nasdaq down more than the Big Board."}
+nextSentence really
+create-a-node-here really 25.28 37 { \n\nMr. DaPuzzo also complained }
+create-a-node-here really 25.122 38 {that the sharp swings in stock prices lately is scaring away retail and foreign investors.}
+nextSentence really
+create-a-node-here really 26.79 39 {\nWhile Shearson doesn't do computer-guided program trading for its own account, }
+create-a-node-here really 26.124 40 {the firm does execute orders for clients }
+create-a-node-here really 26.173 41 {involved in the buying and selling of shares }
+create-a-node-here really 26.221 42 {tied to movements in certain stock indexes, }
+create-a-node-here really 26.250 43 {Mr. DaPuzzo acknowledged.}
+nextSentence really
+create-a-node-here really 28.71 44 { \n\nThe volatility inherent in program trading troubled other traders, too.}
+nextSentence really
+create-a-node-here really 29.26 45 {\nThey don't like the risks }
+create-a-node-here really 29.56 46 {they are forced to assume }
+create-a-node-here really 29.93 47 {when prices swing so drastically.}
+nextSentence really
+create-a-node-here really 30.62 48 {\nMarket makers are supposed to keep supplies of stocks on hand }
+create-a-node-here really 30.94 49 {to maintain orderly trading }
+create-a-node-here really 30.120 50 {when imbalances occur.}
+nextSentence really
+create-a-node-here really 31.24 51 {\nThat means that on days }
+create-a-node-here really 31.53 52 {when prices are tumbling }
+create-a-node-here really 31.76 53 {and sellers abound }
+create-a-node-here really 31.128 54 {they must be willing to buy shares from sellers }
+create-a-node-here really 31.154 55 {when no one else will.}
+nextSentence really
+create-a-node-here really 32.62 56 {\nIn such an environment, a market maker can absorb huge losses.}
+nextSentence really
+create-a-node-here really 34.42 57 { \n\nBut the recent volatility in stock prices }
+create-a-node-here really 34.76 58 {caused by the program trading }
+create-a-node-here really 34.143 59 {has made some market makers less willing to soak up the stocks }
+create-a-node-here really 34.165 60 {that are for sale.}
+nextSentence really
+create-a-node-here really 35.22 61 {\nThe market makers say }
+create-a-node-here really 35.83 62 {they aren't comfortable carrying big positions in stocks }
+create-a-node-here really 35.108 63 {because they realize }
+create-a-node-here really 35.138 64 {prices can tumble quickly.}
+nextSentence really
+autolink_nodes 2 1 multinuclear List  5001
+autolink_nodes 4 5 multinuclear Sequence  5002
+autolink_nodes 3 5002 satelite-embedded elaboration-additional-e  5003
+autolink_nodes 7 6 satelite temporal-after  5004
+autolink_nodes 8 5004 multinuclear Sequence  5005
+autolink_nodes 9 10 multinuclear Sequence  5006
+autolink_nodes 5006 5005 multinuclear List above 5007
+#autolink_nodes 5003 5007 satelite elaboration-general-specific  5008
+#UNDID
+disconnect_node 8 disconnect
+autolink_nodes 5004 8 multinuclear Contrast  5008
+autolink_nodes 5007 11 satelite comparison  5009
+autolink_nodes 5003 5009 satelite elaboration-general-specific  5010
+collapsed_nodes {5009}
+autolink_nodes 13 14 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 15 5011 multinuclear Same-Unit  5012
+#autolink_nodes 15 16 multinuclear Contrast  5013
+#UNDID
+#autolink_nodes 5012 16 satelite concession  5013
+#UNDID
+#autolink_nodes 5012 16 satelite concession  5013
+#UNDID
+#autolink_nodes 5012 16 multinuclear Contrast above 5013
+#UNDID
+autolink_nodes 5012 16 satelite consequence-s  5013
+autolink_nodes 19 20 satelite-embedded elaboration-additional-e  5014
+#autolink_nodes 17 18 satelite elaboration-general-specific  5015
+#UNDID
+autolink_nodes 17 18 satelite elaboration-additional  5015
+autolink_nodes 5015 5013 multinuclear List  5016
+autolink_nodes 5016 5014 multinuclear List below 5016
+collapsed_nodes {5009 5015}
+collapsed_nodes {5009 5015 5014}
+autolink_nodes 5016 21 multinuclear List below 5016
+autolink_nodes 5016 22 multinuclear List below 5016
+autolink_nodes 5016 23 multinuclear List below 5016
+autolink_nodes 24 25 satelite attribution  5017
+autolink_nodes 12 5016 satelite example  5018
+collapsed_nodes {5009 5015 5014 5016}
+autolink_nodes 28 29 satelite-embedded elaboration-object-attribute-e  5019
+autolink_nodes 26 27 satelite-embedded elaboration-object-attribute-e  5020
+autolink_nodes 5020 5019 multinuclear Same-Unit  5021
+autolink_nodes 5017 5021 satelite means  5022
+autolink_nodes 30 31 satelite attribution  5023
+autolink_nodes 32 33 satelite-embedded attribution-e  5024
+autolink_nodes 35 34 satelite circumstance  5025
+autolink_nodes 5025 5024 satelite concession  5026
+autolink_nodes 35 36 multinuclear List  5027
+autolink_nodes 38 37 satelite attribution  5028
+autolink_nodes 40 39 satelite comparison  5029
+autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e below 5030
+autolink_nodes 41 42 satelite-embedded elaboration-object-attribute-e  5031
+autolink_nodes 5029 43 satelite attribution  5032
+autolink_nodes 46 47 satelite circumstance  5033
+autolink_nodes 45 5033 satelite-embedded elaboration-object-attribute-e  5034
+autolink_nodes 48 49 satelite purpose  5035
+autolink_nodes 5035 50 satelite circumstance  5036
+autolink_nodes 52 53 multinuclear List  5037
+autolink_nodes 51 5037 satelite-embedded elaboration-object-attribute-e  5038
+#autolink_nodes 54 5038 multinuclear Same-Unit  5039
+#UNDID
+autolink_nodes 5038 54 multinuclear Same-Unit  5039
+autolink_nodes 5039 55 satelite circumstance  5040
+autolink_nodes 57 58 satelite-embedded elaboration-object-attribute-e  5041
+autolink_nodes 59 5041 multinuclear Same-Unit  5042
+autolink_nodes 59 60 satelite-embedded elaboration-object-attribute-e  5043
+autolink_nodes 62 61 satelite attribution  5044
+autolink_nodes 64 63 satelite attribution  5045
+autolink_nodes 5044 5045 satelite reason  5046
+#autolink_nodes 5023 5022 satelite circumstance  5047
+#UNDID
+autolink_nodes 5023 5022 satelite circumstance  5047
+disconnect_node 34 disconnect
+autolink_nodes 5027 34 satelite condition below 5048
+collapsed_nodes {5009 5015 5014 5016 5022}
+collapsed_nodes {5009 5015 5014 5016}
+disconnect_node 5022 disconnect
+autolink_nodes 5023 5022 multinuclear Cause-Result  5049
+autolink_nodes 5023 5026 satelite interpretation-s  5050
+collapsed_nodes {5009 5015 5014 5016 5026}
+autolink_nodes 5028 5032 satelite reason  5051
+collapsed_nodes {5009 5015 5014 5016 5026 5032}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022}
+autolink_nodes 5051 5049 multinuclear List  5052
+autolink_nodes 56 5040 multinuclear List  5053
+autolink_nodes 5036 5053 satelite interpretation-s  5054
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5053}
+autolink_nodes 5042 5046 satelite reason  5055
+create-a-node-here really 37.61 65 { \n\nThe situation makes it harder to buy and sell shares quickly,}
+create-a-node-here really 38.0 66 { exacerbating the rise and fall in stock prices during program-dominated trading.\n}
+create-a-node-here really 38.95 67 {Groused Robert Antolini, head of over-the-counter trading at Donaldson, Lufkin & Jenrette: }
+create-a-node-here really 38.148 68 {"It's making it tough for traders to make money."}
+nextSentence really
+create-a-node-here really 38.161 69 { He said }
+create-a-node-here really 38.198 70 {that when sell programs kick in, }
+create-a-node-here really 38.223 71 {many traders believe }
+create-a-node-here really 38.276 72 {that "there's no sense in sticking your nose out }
+create-a-node-here really 38.313 73 {because you're an instant loser."}
+nextSentence really
+autolink_nodes 65 66 satelite consequence-s  5056
+#autolink_nodes 68 67 satelite attribution  5057
+#UNDID
+autolink_nodes 71 70 satelite circumstance  5057
+autolink_nodes 71 72 nucleus attribution  5058
+autolink_nodes 5057 73 satelite reason  5059
+autolink_nodes 69 5059 nucleus attribution  5060
+autolink_nodes 68 67 satelite attribution  5061
+autolink_nodes 5061 5060 satelite result  5062
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5053}
+#autolink_nodes 5055 5054 satelite background  5063
+#UNDID
+autolink_nodes 5055 5054 satelite background  5063
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5053 5054}
+autolink_nodes 5056 5063 multinuclear Cause-Result  5064
+autolink_nodes 5064 5062 satelite elaboration-additional  5065
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5053 5054 5062}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5053 5054 5062}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053}
+autolink_nodes 44 5034 satelite reason  5066
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063}
+autolink_nodes 5034 5065 satelite explanation-argumentative  5067
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065}
+#autolink_nodes 5052 5066 multinuclear Inverted-Sequence above 5068
+#UNDID
+autolink_nodes 5052 5066 multinuclear List above 5068
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067}
+autolink_nodes 5018 5068 satelite interpretation-s  5069
+create-a-node-here really 41.0 74 { \n\nKinder-Care Learning Centers added 1/4 to 4 7/8 on 461,200 shares.\n}
+create-a-node-here really 41.24 75 {Lodestar Group said }
+create-a-node-here really 41.119 76 {it will make a $6-a-share offer for the remaining Kinder-Care Learning Center common stock }
+create-a-node-here really 41.260 77 {if it acquires a majority of the company's shares in a pending rights offering by Kinder-Care Learning Center's parent, Kinder-Care Inc. }
+create-a-node-here really 41.341 78 {Shares of KinderCare Inc. closed at 3 1/2, also up 1/4, on volume of 700,000.}
+nextSentence really
+create-a-node-here really 43.38 79 { \n\nOhio Casualty dropped 2 1/8 to 49 1/2.}
+nextSentence really
+create-a-node-here really 44.94 80 {\nThe company posted third-quarter earnings of 95 cents a share, down from $1.26 a year earlier.}
+nextSentence really
+create-a-node-here really 45.22 81 {\nThe company estimated }
+create-a-node-here really 45.124 82 {that losses from Hurricane Hugo reduced net income by 32 cents a share in the most recent quarter.}
+nextSentence really
+create-a-node-here really 47.17 83 { \n\nThe company said }
+create-a-node-here really 47.99 84 {losses from the Oct. 17 earthquake in California haven't yet been determined, }
+create-a-node-here really 47.191 85 {but that it provides earthquake coverage to about 1,400 properties in the stricken area.}
+nextSentence really
+create-a-node-here really 48.65 86 {\nAny quake-related losses will be reported in the fourth quarter, }
+create-a-node-here really 48.86 87 {the company said.}
+nextSentence really
+create-a-node-here really 50.44 88 { \n\nNorth Atlantic Industries jumped 1 to 5 3/4.}
+nextSentence really
+create-a-node-here really 51.101 89 {\nThe electronics-instruments maker is to be acquired by Asset Management Associates for $7.25 a share.}
+nextSentence really
+create-a-node-here really 53.40 90 { \n\nLIN Broadcasting slid 1 3/8 to 108 3/4, }
+create-a-node-here really 53.136 91 {despite reporting third-quarter net of 46 cents a share, up from 39 cents the previous year.}
+nextSentence really
+create-a-node-here really 54.17 92 {\nThe company said }
+create-a-node-here really 54.114 93 {the latest quarter included about $3.4 million in special legal and financial advisory costs }
+create-a-node-here really 54.217 94 {related to McCaw Cellular Communications' bid for the company and LIN's merger pact with BellSouth.}
+nextSentence really
+create-a-node-here really 55.26 95 {\nMcCaw was unchanged at 40.}
+nextSentence really
+create-a-node-here really 57.137 96 { \n\nXL/Datacomp slid 2 1/4 to 16 1/2 amid continuing concerns about the company's contract negotiations with International Business Machines.}
+nextSentence really
+create-a-node-here really 58.55 97 {\nIBM is reviewing its entire business-partners program, }
+create-a-node-here really 58.104 98 {and XL/Datacomp confirmed earlier this month }
+create-a-node-here really 58.214 99 {that it was in talks with the company about possible modifications to its current IBM-remarketer contract.}
+nextSentence really
+create-a-node-here really 59.58 100 {\nRemarketers make modifications to IBM's computer hardware }
+create-a-node-here really 59.87 101 {and resell the products.}
+nextSentence really
+create-a-node-here really 61.42 102 { \n\nOmni Capital Group surged 1 3/4 to 16 1/4.}
+nextSentence really
+create-a-node-here really 62.17 103 {\nThe company said }
+create-a-node-here really 62.79 104 {net rose to 38 cents a share in its fiscal-first quarter }
+create-a-node-here really 62.100 105 {ended Sept. 30, }
+create-a-node-here really 62.139 106 {from 35 cents a shares a year ago.}
+nextSentence really
+autolink_nodes 76 75 satelite attribution  5070
+autolink_nodes 5070 77 satelite condition  5071
+autolink_nodes 5071 74 satelite background  5072
+disconnect_node 74 disconnect
+autolink_nodes 5071 74 multinuclear List  5073
+autolink_nodes 82 81 satelite attribution  5074
+autolink_nodes 84 83 satelite attribution  5075
+autolink_nodes 84 85 satelite circumstance below 5076
+autolink_nodes 86 87 satelite attribution  5077
+autolink_nodes 80 5074 satelite result  5078
+autolink_nodes 5077 5075 satelite enablement  5079
+autolink_nodes 5079 5078 multinuclear Comparison  5080
+autolink_nodes 79 5080 satelite evidence  5081
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080}
+disconnect_node 74 disconnect
+autolink_nodes 5071 74 multinuclear List  5082
+autolink_nodes 78 5082 satelite evidence  5083
+autolink_nodes 88 89 satelite evidence  5084
+disconnect_node 89 disconnect
+autolink_nodes 88 89 satelite result  5085
+disconnect_node 5080 disconnect
+autolink_nodes 79 5080 satelite result  5086
+disconnect_node 5082 disconnect
+autolink_nodes 78 5082 satelite result  5087
+autolink_nodes 90 91 satelite concession  5088
+autolink_nodes 93 94 satelite elaboration-object-attribute  5089
+autolink_nodes 94 95 satelite elaboration-additional  5090
+autolink_nodes 5089 92 satelite attribution  5091
+autolink_nodes 5088 5091 satelite result  5092
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091}
+autolink_nodes 99 98 satelite attribution  5093
+autolink_nodes 5093 97 multinuclear List  5094
+autolink_nodes 100 101 multinuclear Sequence  5095
+autolink_nodes 99 5095 satelite definition below 5096
+#autolink_nodes 96 5094 satelite restatement  5097
+#UNDID
+#autolink_nodes 96 5094 satelite reason  5097
+#UNDID
+autolink_nodes 96 5094 satelite result  5097
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094}
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082}
+autolink_nodes 104 105 satelite-embedded elaboration-additional-e  5098
+autolink_nodes 5098 106 multinuclear Same-Unit  5099
+autolink_nodes 5099 103 satelite attribution  5100
+autolink_nodes 102 5100 satelite elaboration-additional  5101
+collapsed_nodes {5009 5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100}
+autolink_nodes 5086 5087 multinuclear List  5102
+autolink_nodes 5102 5085 multinuclear List below 5102
+autolink_nodes 5102 5092 multinuclear List below 5102
+autolink_nodes 5102 5097 multinuclear List below 5102
+autolink_nodes 5102 5101 multinuclear List below 5102
+disconnect_node 5068 disconnect
+collapsed_nodes {5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100}
+autolink_nodes 5009 5018 satelite elaboration-additional  5103
+collapsed_nodes {5015 5014 5016 5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5103}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016}
+autolink_nodes 5018 5068 satelite result  5104
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103}
+disconnect_node 5103 disconnect
+autolink_nodes 5003 5103 satelite elaboration-additional  5105
+disconnect_node 5103 disconnect
+autolink_nodes 5003 5001 multinuclear Cause-Result  5106
+autolink_nodes 5106 5103 satelite elaboration-additional  5107
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103 5087}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103 5087 5086}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103 5087 5086 5085}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103 5087 5086 5085 5101}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103 5087 5086 5085 5101 5097}
+collapsed_nodes {5026 5032 5022 5062 5053 5054 5063 5065 5051 5067 5080 5091 5094 5082 5100 5016 5068 5103 5087 5086 5085 5101 5097 5088}
+autolink_nodes 5107 5102 satelite elaboration-general-specific  5108
+collapsed_nodes {}

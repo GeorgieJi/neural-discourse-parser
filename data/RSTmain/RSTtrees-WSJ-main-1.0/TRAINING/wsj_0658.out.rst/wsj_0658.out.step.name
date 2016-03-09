@@ -1,0 +1,63 @@
+nextSentence really
+create-a-node-here really 2.22 1 {\nPresidio Oil Co. said }
+create-a-node-here really 2.57 2 {it signed a definitive agreement}
+create-a-node-here really 2.129 3 { to acquire Gulf Canada Resources Ltd. 's U.S. unit for $163 million.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e  5001
+autolink_nodes 1 5001 nucleus attribution  5002
+create-a-node-here really 4.45 4 { \n\nPresidio, a Denver oil and gas concern, said }
+create-a-node-here really 4.118 5 {it will acquire the properties and operations of Home Petroleum Corp.,}
+create-a-node-here really 4.270 6 { which includes two regional gas-gathering systems and proved reserves of about nine million barrels of oil and 72 billion cubic feet of natural gas.}
+nextSentence really
+autolink_nodes 5 6 satelite-embedded elaboration-additional-e  5003
+autolink_nodes 4 5003 nucleus attribution  5004
+create-a-node-here really 6.14 7 { \n\nPresidio said }
+create-a-node-here really 6.111 8 {the properties are generally situated in Wyoming, North Dakota, Texas, Oklahoma and Louisiana.}
+nextSentence really
+autolink_nodes 7 8 nucleus attribution  5005
+autolink_nodes 5004 5005 satelite elaboration-additional  5006
+autolink_nodes 5002 5006 satelite elaboration-general-specific  5007
+create-a-node-here really 8.27 9 { \n\nGulf Canada, Calgary, said }
+create-a-node-here really 8.66 10 {the transaction is part of its plan }
+create-a-node-here really 8.99 11 {to sell non-strategic assets }
+create-a-node-here really 8.175 12 {and focus operations on Canada, Indonesia and other international areas.}
+nextSentence really
+autolink_nodes 11 12 multinuclear List  5008
+autolink_nodes 10 5008 satelite-embedded elaboration-object-attribute-e  5009
+autolink_nodes 9 5009 nucleus attribution  5010
+create-a-node-here really 10.28 13 { \n\nA spokesman for Gulf Canada,}
+create-a-node-here really 10.84 14 { which is controlled by Toronto's Reichmann family, }
+create-a-node-here really 10.93 15 {said }
+create-a-node-here really 10.157 16 {the properties account for about 6% of the company's assets }
+create-a-node-here really 10.239 17 {and produce about 5,000 barrels of oil and 35 million cubic feet of gas a day.}
+nextSentence really
+autolink_nodes 16 17 multinuclear List  5011
+autolink_nodes 15 5011 nucleus attribution  5012
+autolink_nodes 13 14 satelite-embedded elaboration-additional-e  5013
+#autolink_nodes 15 5013 multinuclear Same-Unit  5014
+#UNDID
+autolink_nodes 15 5013 multinuclear Same-Unit  5014
+autolink_nodes 5010 5012 satelite elaboration-additional  5015
+create-a-node-here really 11.8 18 {\nHe said }
+create-a-node-here really 11.102 19 {Gulf Canada will likely report an extraordinary gain from the sale in the fourth quarter, }
+create-a-node-here really 11.148 20 {but he wouldn't offer a specific estimate.}
+autolink_nodes 18 19 nucleus attribution  5016
+autolink_nodes 5016 20 satelite antithesis  5017
+collapsed_nodes {5012}
+autolink_nodes 5007 5015 satelite elaboration-additional  5018
+#autolink_nodes 5015 5017 satelite elaboration-additional  5019
+#UNDID
+collapsed_nodes {5012 5015}
+collapsed_nodes {5012 5015 5006}
+autolink_nodes 5018 5017 satelite evaluation-s  5019
+create-a-node-here really 13.48 21 { \n\nThe transaction is expected to close by Nov. 30.}
+nextSentence really
+autolink_nodes 5019 21 satelite elaboration-additional  5020
+collapsed_nodes {5006}
+disconnect_node 5017 disconnect
+disconnect_node 21 disconnect
+autolink_nodes 5012 5017 satelite evaluation-s  5021
+collapsed_nodes {5006 5015}
+autolink_nodes 5018 21 satelite elaboration-additional  5022
+collapsed_nodes {5015}
+collapsed_nodes {}

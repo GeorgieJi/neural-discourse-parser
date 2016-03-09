@@ -1,0 +1,246 @@
+nextSentence really
+create-a-node-here really 2.92 1 {\nRJR Nabisco Inc. is disbanding its division responsible for buying network advertising time,}
+create-a-node-here really 2.178 2 { just a month after moving 11 of the group's 14 employees to New York from Atlanta.}
+nextSentence really
+autolink_nodes 1 2 satelite temporal-after  5001
+create-a-node-here really 4.58 3 { \n\nA spokesman for the New York-based food and tobacco giant,}
+create-a-node-here really 4.162 4 { taken private earlier this year in a $25 billion leveraged buy-out by Kohlberg Kravis Roberts & Co.,}
+create-a-node-here really 4.175 5 { confirmed}
+create-a-node-here really 4.235 6 { that it is shutting down the RJR Nabisco Broadcast unit,}
+create-a-node-here really 4.282 7 { and dismissing its 14 employees, in a move }
+create-a-node-here really 4.299 8 {to save money.}
+nextSentence really
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5002
+autolink_nodes 6 5002 multinuclear List  5003
+autolink_nodes 5 5003 nucleus attribution  5004
+autolink_nodes 3 4 satelite-embedded elaboration-additional-e  5005
+#autolink_nodes 5 5005 multinuclear Same-Unit  5006
+#UNDID
+autolink_nodes 5004 5005 multinuclear Same-Unit  5006
+create-a-node-here really 5.19 9 {\nThe spokesman said }
+create-a-node-here really 5.137 10 {RJR is discussing its network-buying plans with its two main advertising firms, FCB/Leber Katz and McCann Erickson.}
+autolink_nodes 9 10 nucleus attribution  5007
+create-a-node-here really 7.47 11 { \n\n"We found with the size of our media purchases }
+create-a-node-here really 7.126 12 {that an ad agency could do just as good a job at significantly lower cost,"}
+create-a-node-here really 7.150 13 { said the spokesman,}
+create-a-node-here really 7.179 14 { who declined to specify }
+create-a-node-here really 7.230 15 {how much RJR spends on network television time.}
+nextSentence really
+#autolink_nodes 14 15 nucleus attribution-n  5008
+#autolink_nodes 13 5008 nucleus attribution  5009
+#UNDID
+#UNDID
+autolink_nodes 13 14 satelite-embedded elaboration-object-attribute-e  5008
+autolink_nodes 14 15 nucleus attribution  5009
+autolink_nodes 11 12 nucleus attribution  5010
+autolink_nodes 5010 5008 satelite attribution  5011
+autolink_nodes 5007 5011 satelite elaboration-general-specific  5012
+create-a-node-here really 8.39 16 {\nAn executive close to the company said }
+create-a-node-here really 8.157 17 {RJR is spending about $140 million on network television time this year, down from roughly $200 million last year.}
+autolink_nodes 16 17 nucleus attribution  5013
+disconnect_node 5011 modify
+autolink_nodes 5007 5011 satelite elaboration-additional  5014
+autolink_nodes 5011 5013 satelite elaboration-additional  5015
+create-a-node-here really 10.19 18 { \n\nThe spokesman said }
+autolink_nodes 5006 5014 satelite elaboration-additional  5016
+create-a-node-here really 10.67 19 {the broadcast unit will be disbanded Dec. 1,}
+create-a-node-here really 10.154 20 { and the move won't affect RJR's print, radio and spot-television buying practices.}
+nextSentence really
+autolink_nodes 19 20 multinuclear List  5017
+autolink_nodes 18 5017 nucleus attribution  5018
+disconnect_node 5015 disconnect
+autolink_nodes 5016 5015 satelite elaboration-additional  5019
+collapsed_nodes {5015}
+collapsed_nodes {5015 5007}
+autolink_nodes 5019 5018 satelite elaboration-additional  5020
+create-a-node-here really 12.64 21 { \n\nThe broadcast group had been based in New York until a year ago,}
+create-a-node-here really 12.167 22 { when RJR's previous management moved it to Atlanta, the company's headquarters before this summer.}
+nextSentence really
+create-a-node-here really 13.33 23 {\nOne employee with the group said }
+create-a-node-here really 13.103 24 {RJR moved 11 employees of the group back to New York in September }
+create-a-node-here really 13.151 25 {because "there was supposed to be a future."}
+nextSentence really
+autolink_nodes 21 22 nucleus temporal-after  5021
+#autolink_nodes 24 25 satelite reason  5022
+#autolink_nodes 23 5022 nucleus attribution  5023
+#autolink_nodes 5023 5021 multinuclear Sequence  5024
+#create-a-node-here really 13.164 26 { He said }
+#create-a-node-here really 13.243 27 {the company hired three more buyers for the unit within the past two weeks,}
+#create-a-node-here really 13.296 28 { wooing them from jobs with advertising agencies.}
+#nextSentence really
+#autolink_nodes 27 28 satelite-embedded elaboration-additional-e  5025
+#UNDID
+#autolink_nodes 27 28 satelite elaboration-additional  5025
+#autolink_nodes 26 5025 nucleus attribution  5026
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#autolink_nodes 24 25 satelite reason  5022
+#UNDID
+autolink_nodes 24 25 satelite reason  5022
+autolink_nodes 23 5022 nucleus attribution  5023
+autolink_nodes 5021 5023 multinuclear Sequence  5024
+create-a-node-here really 13.164 26 { He said }
+create-a-node-here really 13.243 27 {the company hired three more buyers for the unit within the past two weeks,}
+create-a-node-here really 13.296 28 { wooing them from jobs with advertising agencies.}
+autolink_nodes 27 28 satelite elaboration-additional  5025
+autolink_nodes 26 5025 nucleus attribution  5026
+autolink_nodes 5023 5026 satelite elaboration-additional  5027
+create-a-node-here really 15.23 29 { \n\nThe RJR spokesman said }
+create-a-node-here really 15.85 30 {the company moved the 11 employees to New York last month }
+#create-a-node-here really 15.190 31 {because the group had then been in the midst of purchasing ad time for the networks' upcoming season.}
+#nextSentence really
+#autolink_nodes 30 31 satelite reason  5028
+#autolink_nodes 29 5028 nucleus attribution  5029
+#autolink_nodes 5027 5029 satelite elaboration-additional  5030
+#create-a-node-here really 15.264 32 { "The studies {on closing the unit} couldn't be completed until now," }
+#create-a-node-here really 15.276 33 {he said.}
+#nextSentence really
+#autolink_nodes 32 33 satelite attribution  5031
+#disconnect_node 5030 disconnect
+#autolink_nodes 5021 5030 nucleus temporal-after  5032
+#disconnect_node 5026 disconnect
+#autolink_nodes 5023 5026 satelite evidence below 5033
+#autolink_nodes 5031 5032 satelite concession  5034
+#collapsed_nodes {5015 5007 5018}
+#collapsed_nodes {5015 5007 5018 5032}
+#autolink_nodes 5020 5034 satelite elaboration-additional  5035
+#create-a-node-here really 17.84 34 { \n\nThe group's president, Peter Chrisanthopoulos, wasn't in his office Friday afternoon}
+#create-a-node-here really 17.100 35 { to comment.}
+#nextSentence really
+#autolink_nodes 34 35 satelite elaboration-additional  5036
+#collapsed_nodes {5015 5007 5018 5032 5034}
+#autolink_nodes 5035 5036 satelite elaboration-additional  5037
+#autolink_nodes 5037 5001 satelite summary-s  5038
+#collapsed_nodes {5015 5007 5018}
+#disconnect_node 5021 modify
+#autolink_nodes 5030 5021 multinuclear Sequence  5039
+#collapsed_nodes {5015 5018}
+#collapsed_nodes {5018}
+#disconnect_node 5013 disconnect
+#UNDID
+#disconnect_node 5015 modify
+#autolink_nodes 5016 5015 satelite explanation-argumentative below 5040
+#collapsed_nodes {5018 5007}
+#collapsed_nodes {5018 5007 5015}
+#collapsed_nodes {5007 5015}
+#collapsed_nodes {5007 5015 5018}
+#disconnect_node 5034 disconnect
+#disconnect_node 5036 disconnect
+#disconnect_node 5039 disconnect
+#collapsed_nodes {5007 5015 5018}
+#collapsed_nodes {5007 5015 5018 5030}
+#autolink_nodes 5039 5031 multinuclear Contrast above 5041
+#collapsed_nodes {5007 5015 5018 5030 5039}
+#autolink_nodes 5020 5041 satelite background below 5042
+#collapsed_nodes {5007 5015 5018 5030 5039 5041}
+#autolink_nodes 5038 5036 satelite elaboration-additional  5043
+#disconnect_node 5036 disconnect
+#autolink_nodes 5042 5036 satelite elaboration-additional below 5044
+#collapsed_nodes {5015 5018 5030 5039 5041}
+#collapsed_nodes {5018 5030 5039 5041}
+#collapsed_nodes {5030 5039 5041}
+#collapsed_nodes {}
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 15.133 31 {because the group had then been in the midst}
+create-a-node-here really 15.194 32 { of purchasing ad time for the networks' upcoming season.}
+nextSentence really
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5028
+autolink_nodes 30 5028 satelite reason  5029
+autolink_nodes 29 5029 nucleus attribution  5030
+change_rel 5026 evidence
+autolink_nodes 5027 5030 satelite elaboration-additional  5031
+#create-a-node-here really 15.267 33 { "The studies {on closing the unit} couldn't be completed until now,"}
+#create-a-node-here really 15.280 34 { he said.}
+#nextSentence really
+#autolink_nodes 33 34 satelite attribution  5032
+#collapsed_nodes {5015 5007 5030}
+#autolink_nodes 5032 5024 multinuclear Contrast  5033
+#collapsed_nodes {5015 5007 5030 5018}
+#collapsed_nodes {5015 5007 5030 5018 5024}
+#autolink_nodes 5020 5033 satelite circumstance  5034
+#UNDID
+#autolink_nodes 5020 5033 satelite background  5034
+#create-a-node-here really 17.85 35 { \n\nThe group's president, Peter Chrisanthopoulos, wasn't in his office Friday afternoon }
+#create-a-node-here really 17.100 36 {to comment.}
+#autolink_nodes 35 36 satelite purpose  5035
+#collapsed_nodes {5015 5007 5030 5018 5024 5033}
+#autolink_nodes 5034 5035 satelite elaboration-additional  5036
+#autolink_nodes 5036 5001 nucleus summary-n  5037
+#collapsed_nodes {5015 5030 5018 5024 5033}
+#collapsed_nodes {5030 5018 5024 5033}
+#collapsed_nodes {5030 5024 5033}
+#collapsed_nodes {}
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 15.212 33 { "The studies }
+create-a-node-here really 15.237 34 {{on closing the unit}}
+create-a-node-here really 15.275 35 { couldn't be completed until now,"}
+create-a-node-here really 15.288 36 { he said.}
+autolink_nodes 33 34 satelite-embedded elaboration-object-attribute-e  5032
+autolink_nodes 35 5032 multinuclear Same-Unit  5033
+autolink_nodes 5033 36 satelite attribution  5034
+collapsed_nodes {5015 5007 5031}
+autolink_nodes 5034 5024 multinuclear Contrast  5035
+collapsed_nodes {5015 5007 5031 5018}
+autolink_nodes 5020 5035 satelite background  5036
+create-a-node-here really 17.85 37 { \n\nThe group's president, Peter Chrisanthopoulos, wasn't in his office Friday afternoon }
+create-a-node-here really 17.100 38 {to comment.}
+nextSentence really
+autolink_nodes 37 38 satelite purpose  5037
+collapsed_nodes {5015 5007 5031 5018 5035}
+autolink_nodes 5036 5037 satelite elaboration-additional  5038
+autolink_nodes 5001 5038 satelite summary-n  5039
+collapsed_nodes {5015 5031 5018 5035}
+collapsed_nodes {5031 5018 5035}
+collapsed_nodes {5031 5035}
+collapsed_nodes {}
+disconnect_node 14 modify
+autolink_nodes 15 14 satelite attribution-n  5040

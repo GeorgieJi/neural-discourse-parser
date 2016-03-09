@@ -1,0 +1,268 @@
+nextSentence really
+create-a-node-here really 2.55 1 {\nMedieval philosophers used to hold the sensible belief }
+create-a-node-here really 2.111 2 {that it was more perfect to exist than not to exist, }
+#autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+#UNDID
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+create-a-node-here really 2.181 3 {and that to exist as a matter of necessity was most perfect of all.}
+nextSentence really
+#autolink_nodes 5001 3 multinuclear List  5002
+#UNDID
+autolink_nodes 2 3 multinuclear List  5002
+create-a-node-here really 3.56 4 {\nNow, only God exists as a matter of absolute necessity; }
+autolink_nodes 3 4 satelite elaboration-object-attribute  5003
+create-a-node-here really 4.0 5 {it is built into His nature.\n}
+autolink_nodes 4 5 satelite restatement  5004
+create-a-node-here really 4.125 6 {But since the time of Darwin, we humans could at least claim a sort of natural necessity for the existence of our species.}
+nextSentence really
+autolink_nodes 5001 6 satelite elaboration-additional  5005
+create-a-node-here really 5.90 7 {\nAren't we, after all, the inevitable culmination of that stately pageant called evolution?}
+nextSentence really
+autolink_nodes 6 7 satelite elaboration-object-attribute  5006
+change_rel 7 topic-shift
+change_rel 7 reason
+create-a-node-here really 6.103 8 {\nIf mutation and natural selection slowly but surely give rise to more and more advanced forms of life, }
+create-a-node-here really 6.140 9 {then it was only a matter of eons }
+autolink_nodes 8 9 nucleus condition  5007
+create-a-node-here really 6.166 10 {before splendid beings }
+autolink_nodes 9 10 satelite temporal-before below 5008
+create-a-node-here really 6.216 11 {endowed with reason, self-awareness and taste }
+autolink_nodes 10 11 satelite-embedded elaboration-object-attribute-e  5009
+create-a-node-here really 6.245 12 {shimmered onto the scene.}
+nextSentence really
+autolink_nodes 5009 12 multinuclear Same-Unit  5010
+autolink_nodes 5006 5007 satelite explanation-argumentative  5011
+create-a-node-here really 8.34 13 { \n\nNow along comes Stephen Jay Gould }
+autolink_nodes 5005 13 nucleus summary-s  5012
+create-a-node-here really 8.71 14 {to dash this flattering illusion.}
+nextSentence really
+autolink_nodes 13 14 satelite purpose below 5013
+create-a-node-here really 9.43 15 {\nHis credentials are excellent for the task.}
+nextSentence really
+autolink_nodes 5013 15 satelite elaboration-additional below 5014
+create-a-node-here really 10.177 16 {\nStar lecturer at Harvard, author of numerous popular books on science, and scourge of the creationist lobby, Mr. Gould is perhaps the world's most eminent evolutionary theorist.}
+nextSentence really
+autolink_nodes 15 16 satelite elaboration-object-attribute  5015
+create-a-node-here really 11.43 17 {\nYet he puts quite a twist on the old story }
+autolink_nodes 16 17 multinuclear Contrast  5016
+create-a-node-here really 11.71 18 {handed down from Darwin.}
+nextSentence really
+autolink_nodes 17 18 satelite-embedded elaboration-object-attribute-e  5017
+create-a-node-here really 12.116 19 {\nFor him, natural history is anything but a gradual, predictable march from primordial slime to human consciousness; }
+autolink_nodes 5017 19 satelite elaboration-additional  5018
+create-a-node-here really 12.154 20 {it is a careening, chaotic affair }
+#autolink_nodes 19 20 satelite antithesis  5019
+#UNDID
+autolink_nodes 19 20 satelite antithesis  5019
+create-a-node-here really 13.0 21 {in which the emergence of a featherless biped was a one-in-a-million shot. \n}
+autolink_nodes 20 21 satelite elaboration-object-attribute  5020
+create-a-node-here really 14.20 22 {\nIn "Wonderful Life: }
+autolink_nodes 5012 22 satelite elaboration-additional  5021
+create-a-node-here really 14.69 23 {The Burgess Shale and the Nature of History" }
+autolink_nodes 22 23 satelite elaboration-object-attribute  5022
+nextSentence really
+create-a-node-here really 14.102 24 {(Norton, 326 pages, $19.95), }
+#autolink_nodes 5022 24 satelite-embedded elaboration-object-attribute-e  5023
+#UNDID
+autolink_nodes 5022 24 satelite-embedded elaboration-object-attribute-e  5023
+create-a-node-here really 14.182 25 {Mr. Gould makes his case for "the awesome improbability of human evolution."}
+nextSentence really
+autolink_nodes 5023 25 multinuclear Same-Unit  5024
+create-a-node-here really 14.288 26 { The argument turns on the discovery in 1909 of an amazing fossil quarry high in the Canadian Rockies }
+autolink_nodes 5024 26 satelite background  5025
+create-a-node-here really 14.317 27 {called the Burgess Shale.}
+nextSentence really
+autolink_nodes 26 27 satelite-embedded elaboration-object-attribute-e  5026
+create-a-node-here really 15.91 28 {\nHere, in an area smaller than a city block, lay buried traces of countless weird creatures }
+autolink_nodes 5026 28 satelite elaboration-additional  5027
+create-a-node-here really 15.147 29 {that had frolicked more than 500 million years ago -}
+autolink_nodes 28 29 satelite-embedded elaboration-object-attribute-e  5028
+create-a-node-here really 15.163 30 {- creatures }
+autolink_nodes 5028 30 satelite elaboration-object-attribute  5029
+create-a-node-here really 15.255 31 {whose anatomical variety far exceeded what can be found in all the world's oceans today.}
+nextSentence really
+autolink_nodes 30 31 satelite-embedded elaboration-object-attribute-e  5030
+create-a-node-here really 17.61 32 { \n\nSuch an embarrassment of riches was inconceivable to the man }
+autolink_nodes 5021 32 satelite elaboration-additional  5031
+create-a-node-here really 17.129 33 {who discovered the Burgess Shale, one Charles Doolittle Walcott.}
+nextSentence really
+autolink_nodes 32 33 satelite-embedded elaboration-additional-e  5032
+create-a-node-here really 18.46 34 {\nThe received Darwinian wisdom of the day said }
+autolink_nodes 5032 34 satelite elaboration-additional  5033
+change_rel 33 elaboration-object-attribute-e
+create-a-node-here really 18.63 35 {that animals }
+autolink_nodes 34 35 nucleus attribution  5034
+create-a-node-here really 18.86 36 {living so long ago }
+autolink_nodes 35 36 multinuclear Same-Unit  5035
+disconnect_node 36 disconnect
+autolink_nodes 35 36 satelite temporal-before below 5036
+create-a-node-here really 18.116 37 {must be simple in design, }
+autolink_nodes 5036 37 multinuclear Same-Unit  5037
+change_rel 36 elaboration-object-attribute
+disconnect_node 36 disconnect
+autolink_nodes 35 36 satelite-embedded elaboration-object-attribute-e  5038
+create-a-node-here really 18.175 38 {limited in scope and ancestral to contemporary species.}
+nextSentence really
+autolink_nodes 37 38 multinuclear List  5039
+create-a-node-here really 19.118 39 {\nAccordingly, the hidebound traditionalist reconstructed hypothetical organisms from the Burgess fossils in such a way }
+autolink_nodes 5037 39 satelite concession below 5040
+create-a-node-here really 19.177 40 {that they could be shoehorned into familiar categories.}
+nextSentence really
+autolink_nodes 39 40 satelite elaboration-object-attribute  5041
+create-a-node-here really 22.107 41 { \n\nIt was not until the early 1970s that Cambridge Prof.\nHarry Whittington and two sharp graduate students began to publish a reinterpretation of the Burgess Shale.}
+nextSentence really
+autolink_nodes 5031 41 satelite antithesis  5042
+create-a-node-here really 23.28 42 {\nBy making clever inferences }
+create-a-node-here really 23.130 43 {about how the squashed and distorted fossil remains corresponded to three-dimensional structures, }
+autolink_nodes 42 43 satelite-embedded elaboration-object-attribute-e  5043
+autolink_nodes 41 5043 satelite elaboration-additional  5044
+create-a-node-here really 23.247 44 {this trio was able to piece together a series of wondrous beasties quite unlike anything currently on the planet.}
+nextSentence really
+autolink_nodes 5043 44 multinuclear Same-Unit  5045
+create-a-node-here really 24.36 45 {\nOne was so fantastic in appearance, }
+autolink_nodes 44 45 satelite-embedded elaboration-object-attribute-e  5046
+create-a-node-here really 24.67 46 {it was dubbed Hallucigenia.}
+nextSentence really
+autolink_nodes 45 46 satelite reason  5047
+change_rel 46 cause
+create-a-node-here really 26.85 47 { \n\nWould that Mr. Gould's minute descriptions of these creatures was always so colorful.}
+nextSentence really
+autolink_nodes 5044 47 satelite elaboration-additional  5048
+create-a-node-here really 27.137 48 {\nA good deal of the book is boring, particularly the endless allusions to high and pop culture and the frequent jokes festooning the text.}
+nextSentence really
+autolink_nodes 47 48 satelite antithesis  5049
+create-a-node-here really 28.138 49 {\nThese turns do not provide sufficient relief from sentences like, "Most modern chelicerates have six uniramous appendages on the prosoma."}
+nextSentence really
+autolink_nodes 5049 49 satelite example  5050
+create-a-node-here really 30.27 50 { \n\nInterest picks up, though, }
+autolink_nodes 5042 50 satelite elaboration-general-specific  5051
+create-a-node-here really 30.136 51 {when Mr. Gould gets around to discussing the meaning of the Burgess oddities for the theory of evolution.}
+nextSentence really
+autolink_nodes 50 51 satelite temporal-same-time  5052
+create-a-node-here really 31.119 52 {\nNot long after the appearance of life, evidently, there was an explosive proliferation in the number of animal designs }
+autolink_nodes 5052 52 satelite elaboration-additional  5053
+create-a-node-here really 31.141 53 {seen on the earth.}
+nextSentence really
+autolink_nodes 52 53 satelite-embedded elaboration-object-attribute-e  5054
+create-a-node-here really 32.94 54 {\nThe vast majority of them, however, were wiped out by a succession of environmental upheavals }
+autolink_nodes 5054 54 satelite concession  5055
+create-a-node-here really 32.136 55 {that were too sudden and catastrophic }
+autolink_nodes 54 55 satelite-embedded elaboration-object-attribute-e  5056
+create-a-node-here really 32.193 56 {for the normal rules of natural selection to operate.}
+nextSentence really
+autolink_nodes 55 56 satelite circumstance  5057
+create-a-node-here really 33.55 57 {\nConsequently, the winnowing process was like a lottery }
+autolink_nodes 5056 57 satelite comment  5058
+create-a-node-here really 33.96 58 {"in which each group {held} a ticket }
+autolink_nodes 57 58 satelite elaboration-object-attribute  5059
+create-a-node-here really 33.137 59 {unrelated to its anatomical virtues."}
+nextSentence really
+autolink_nodes 58 59 satelite-embedded elaboration-object-attribute-e  5060
+create-a-node-here really 33.178 60 { So much for survival of the fittest.}
+nextSentence really
+autolink_nodes 5059 60 satelite comment  5061
+create-a-node-here really 35.29 61 { \n\nSo much, too, for the notion }
+autolink_nodes 60 61 multinuclear List  5062
+create-a-node-here really 35.84 62 {that we humans triumphed in the Darwinian struggle }
+#autolink_nodes 61 62 satelite-embedded elaboration-object-attribute-e  5063
+#UNDID
+autolink_nodes 61 62 satelite-embedded elaboration-object-attribute-e  5063
+create-a-node-here really 36.0 63 {by evolving big brains.\n}
+autolink_nodes 62 63 satelite cause  5064
+create-a-node-here really 36.77 64 {Our mammalian forerunners lucked out through the extraterrestrial impact }
+autolink_nodes 5063 64 satelite antithesis  5065
+create-a-node-here really 36.107 65 {that did in the dinosaurs }
+autolink_nodes 64 65 satelite-embedded elaboration-object-attribute-e  5066
+create-a-node-here really 36.146 66 {because they were small, not smart.}
+nextSentence really
+autolink_nodes 5066 66 satelite cause  5067
+create-a-node-here really 37.43 67 {\nIf anyone has difficulty imagining a world }
+create-a-node-here really 37.92 68 {in which history went merrily on without us, }
+#autolink_nodes 67 68 nucleus condition  5068
+#UNDID
+#autolink_nodes 67 68 satelite-embedded elaboration-object-attribute-e  5068
+#UNDID
+autolink_nodes 67 68 satelite-embedded elaboration-object-attribute-e  5068
+create-a-node-here really 38.0 69 {Mr. Gould sketches several.\n}
+autolink_nodes 5068 69 nucleus condition  5069
+autolink_nodes 5067 5069 satelite hypothetical  5070
+create-a-node-here really 38.47 70 {In one, birds are the dominant carnivores; }
+autolink_nodes 69 70 satelite hypothetical below 5071
+change_rel 70 example
+create-a-node-here really 38.100 71 {in another the seas abound with "little penises."}
+nextSentence really
+autolink_nodes 70 71 multinuclear List  5072
+create-a-node-here really 40.46 72 { \n\nBack when the Burgess fauna were flourishing, }
+autolink_nodes 71 72 satelite elaboration-object-attribute  5073
+create-a-node-here really 40.60 73 {it seems, }
+autolink_nodes 72 73 nucleus temporal-same-time  5074
+create-a-node-here really 40.143 74 {human evolutionary hopes hung on the survival of a little worm with a backbone }
+autolink_nodes 73 74 satelite comment below 5075
+create-a-node-here really 40.161 75 {called Pikaia.}
+nextSentence really
+autolink_nodes 74 75 satelite-embedded elaboration-object-attribute-e  5076
+disconnect_node 5076 disconnect
+autolink_nodes 73 5076 nucleus comment  5077
+create-a-node-here really 41.41 76 {\nMr. Gould finds this oddly exhilarating; }
+autolink_nodes 5074 76 satelite comment  5078
+create-a-node-here really 41.167 77 {like an existentialist of old, he views our contingency as "a source of both freedom and consequent moral responsibility."}
+nextSentence really
+autolink_nodes 76 77 satelite elaboration-additional  5079
+create-a-node-here really 41.208 78 { I, by contrast, cannot help feeling }
+autolink_nodes 5079 78 multinuclear Contrast  5080
+create-a-node-here really 41.286 79 {that if some other curiosity from the Burgess Shale had survived instead, }
+autolink_nodes 78 79 satelite elaboration-additional  5081
+create-a-node-here really 41.392 80 {beings at once wiser and less boorish than Homo sapiens might have eventually gained earthly dominion.}
+nextSentence really
+autolink_nodes 79 80 nucleus condition  5082
+create-a-node-here really 42.55 81 {\nBut even if no conscious life had evolved here at all, }
+autolink_nodes 5080 81 satelite interpretation-s  5083
+create-a-node-here really 42.88 82 {the universe is a big place, }
+#autolink_nodes 81 82 satelite condition  5084
+#UNDID
+#autolink_nodes 81 82 nucleus condition  5084
+#create-a-node-here really 42.124 83 {and given the right conditions, }
+#create-a-node-here really 43.0 84 {sympathetic to creating some form of life.\n}
+#autolink_nodes 84 83 satelite concession  5085
+#UNDID
+#UNDID
+#create-a-node-here really 43.0 84 {sympathetic to creating some form of life.\n}
+#UNDID
+#UNDID
+#UNDID
+#create-a-node-here really 42.124 83 {and given the right conditions, }
+#UNDID
+autolink_nodes 81 82 nucleus condition  5084
+change_rel 81 hypothetical
+create-a-node-here really 42.124 83 {and given the right conditions, }
+autolink_nodes 82 83 satelite condition below 5085
+create-a-node-here really 43.0 84 {sympathetic to creating some form of life.\n}
+autolink_nodes 5085 84 multinuclear List  5086
+disconnect_node 83 disconnect
+autolink_nodes 84 83 satelite condition  5087
+create-a-node-here really 43.93 85 {Surely at some other cosmic address a Gouldoid creature would have risen out of the ooze }
+autolink_nodes 5084 85 satelite consequence-n  5088
+create-a-node-here really 43.113 86 {to explain why, }
+autolink_nodes 85 86 satelite purpose  5089
+create-a-node-here really 43.145 87 {paleontologically speaking, }
+autolink_nodes 86 87 satelite-embedded elaboration-object-attribute-e  5090
+create-a-node-here really 43.183 88 {"it is, indeed, a wonderful life."}
+nextSentence really
+autolink_nodes 5090 88 satelite reason  5091
+#change_rel 87 
+#UNDID
+#disconnect_node 87 modify
+#autolink_nodes 86 87 satelite-embedded manner-e  5092
+#UNDID
+#UNDID
+disconnect_node 87 modify
+autolink_nodes 86 87 satelite-embedded manner-e  5092
+create-a-node-here really 46.0 89 { \n\nMr. Holt is a columnist for the Literary Review in London. \n}
+nextSentence really
+collapsed_nodes {}
+autolink_nodes 89 89 schema Footnote  5092
+autolink_nodes 5051 89 schema Text  5092
+collapsed_nodes {5051}
+autolink_nodes 5051 89 multinuclear TextualOrganization  5093
+collapsed_nodes {5042 5093}
+collapsed_nodes {}

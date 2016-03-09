@@ -1,0 +1,142 @@
+nextSentence really
+create-a-node-here really 2.29 1 {\nCall it the "we're too broke }
+create-a-node-here really 2.42 2 {to fight" }
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+create-a-node-here really 2.53 3 {defense.}
+nextSentence really
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+create-a-node-here really 4.101 4 { \n\nLawyers for dozens of insolvent savings and loan associations are trying a new tack in their efforts }
+autolink_nodes 5002 4 satelite elaboration-additional  5003
+create-a-node-here really 4.120 5 {to defuse suits }
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5004
+create-a-node-here really 4.168 6 {filed by borrowers, developers and creditors.}
+nextSentence really
+autolink_nodes 5 6 satelite-embedded elaboration-object-attribute-e  5005
+create-a-node-here really 6.27 7 { \n\nThe thrifts' lawyers claim }
+autolink_nodes 5003 7 satelite elaboration-additional  5006
+create-a-node-here really 6.46 8 {that the suits, }
+autolink_nodes 7 8 nucleus attribution  5007
+create-a-node-here really 6.88 9 {numbering 700 to 1,000 in Texas alone, }
+autolink_nodes 8 9 satelite-embedded elaboration-object-attribute-e below 5008
+create-a-node-here really 6.119 10 {should be dismissed as moot }
+autolink_nodes 5008 10 multinuclear Same-Unit  5009
+create-a-node-here really 6.219 11 {because neither the S&Ls nor the extinct Federal Savings and Loan Insurance Corp. has the money }
+autolink_nodes 5009 11 satelite reason below 5010
+create-a-node-here really 6.240 12 {to pay judgments.}
+nextSentence really
+autolink_nodes 11 12 satelite-embedded elaboration-object-attribute-e  5011
+create-a-node-here really 8.56 13 { \n\nThough the argument may have a common-sense ring to it, }
+autolink_nodes 5007 13 satelite concession  5012
+create-a-node-here really 8.137 14 {even the S&L lawyers concede there's little precedent to back their position.}
+nextSentence really
+autolink_nodes 5012 14 satelite antithesis  5013
+create-a-node-here really 10.46 15 { \n\nStill, one federal appeals court has signaled }
+create-a-node-here really 10.88 16 {it's willing to entertain the notion, }
+autolink_nodes 15 16 nucleus attribution  5014
+create-a-node-here really 10.169 17 {and the lawyers have renewed their arguments in Texas and eight other states }
+autolink_nodes 16 17 multinuclear Cause-Result  5015
+disconnect_node 15 modify
+autolink_nodes 16 15 satelite attribution  5016
+disconnect_node 14 modify
+autolink_nodes 5015 14 satelite antithesis  5017
+disconnect_node 13 modify
+autolink_nodes 5017 13 satelite concession  5018
+autolink_nodes 5007 5018 satelite enablement  5019
+create-a-node-here really 10.220 18 {where the defense is permitted under state law.}
+nextSentence really
+autolink_nodes 17 18 satelite elaboration-object-attribute  5020
+create-a-node-here really 12.94 19 { \n\nThe dismissal of the pending suits could go a long way toward clearing court dockets in Texas }
+autolink_nodes 5018 19 satelite evaluation-s  5021
+create-a-node-here really 12.144 20 {and reducing the FSLIC's massive legal bills, }
+autolink_nodes 19 20 multinuclear List  5022
+create-a-node-here really 12.183 21 {which topped $73 million last year.}
+nextSentence really
+autolink_nodes 20 21 satelite elaboration-additional  5023
+create-a-node-here really 14.85 22 { \n\nThe S&L lawyers were encouraged last month by an appellate-court ruling in two cases }
+autolink_nodes 5006 22 satelite explanation-argumentative  5024
+create-a-node-here really 14.197 23 {brought against defunct Sunbelt Savings & Loan Association of Dallas by the developers of the Valley Ranch, }
+autolink_nodes 22 23 satelite elaboration-object-attribute  5025
+create-a-node-here really 14.272 24 {best known as the training center for the Dallas Cowboys football team.}
+nextSentence really
+autolink_nodes 23 24 satelite-embedded elaboration-additional-e  5026
+create-a-node-here really 15.32 25 {\nSunbelt foreclosed on the ranch.}
+nextSentence really
+autolink_nodes 5025 25 satelite result  5027
+create-a-node-here really 17.72 26 { \n\nSunbelt and the FSLIC argued to the Fifth U.S. Circuit Court of Appeals }
+autolink_nodes 25 26 satelite elaboration-general-specific  5028
+create-a-node-here really 17.113 27 {"that there will never be any assets }
+autolink_nodes 26 27 nucleus attribution  5029
+create-a-node-here really 17.174 28 {with which to satisfy a judgment against Sunbelt Savings }
+autolink_nodes 27 28 satelite elaboration-object-attribute below 5030
+create-a-node-here really 17.225 29 {nor any means to collect from any other party, }
+autolink_nodes 28 29 multinuclear Disjunction  5031
+create-a-node-here really 17.246 30 {including FSLIC."}
+nextSentence really
+autolink_nodes 29 30 satelite example  5032
+create-a-node-here really 19.11 31 { \n\n"If true," }
+autolink_nodes 5029 31 satelite result  5033
+create-a-node-here really 19.32 32 {the court wrote, }
+#autolink_nodes 31 32 satelite attribution-n  5034
+#UNDID
+autolink_nodes 31 32 satelite attribution  5034
+create-a-node-here really 19.118 33 {"this contention would justify dismissal of these actions on prudential grounds." }
+autolink_nodes 31 33 nucleus condition  5035
+create-a-node-here really 19.141 34 {But the court said }
+#autolink_nodes 5035 34 satelite attribution below 5036
+#UNDID
+autolink_nodes 5034 34 satelite explanation-argumentative  5036
+create-a-node-here really 19.212 35 {it lacked enough financial information about Sunbelt and the FSLIC }
+autolink_nodes 34 35 nucleus attribution  5037
+create-a-node-here really 19.276 36 {and sent the cases back to federal district court in Dallas.}
+nextSentence really
+autolink_nodes 35 36 multinuclear List  5038
+create-a-node-here really 21.44 37 { \n\nCharles Haworth, a lawyer for Sunbelt, says }
+autolink_nodes 5037 37 satelite elaboration-additional  5039
+create-a-node-here really 21.83 38 {he plans to file a brief this week }
+autolink_nodes 37 38 nucleus attribution  5040
+create-a-node-here really 21.135 39 {urging the district judge to dismiss the suits, }
+autolink_nodes 38 39 satelite-embedded elaboration-object-attribute-e below 5041
+create-a-node-here really 21.209 40 {because Sunbelt's liabilities exceeded its assets by about $2 billion }
+autolink_nodes 5041 40 satelite reason below 5042
+create-a-node-here really 21.262 41 {when federal regulators closed it in August 1988.}
+nextSentence really
+autolink_nodes 40 41 satelite temporal-same-time  5043
+create-a-node-here really 23.39 42 { \n\n"This institution is just brain dead," }
+autolink_nodes 5040 42 satelite comment  5044
+create-a-node-here really 23.131 43 {says Mr. Haworth, a partner in the Dallas office of Andrews & Kurth, a Houston law firm.}
+nextSentence really
+autolink_nodes 42 43 satelite attribution  5045
+create-a-node-here really 25.122 44 { \n\nBut a lawyer for Triland Investment Group, the developer of Valley Ranch, dismisses such arguments as a "defense du jour."}
+nextSentence really
+#autolink_nodes 5044 44 satelite antithesis  5046
+#UNDID
+autolink_nodes 5044 44 satelite antithesis  5046
+create-a-node-here really 25.167 45 { Attorney Richard Jackson of Dallas says }
+autolink_nodes 44 45 satelite elaboration-additional  5047
+create-a-node-here really 25.250 46 {a judgment for Triland could be satisfied in ways other than a monetary award, }
+autolink_nodes 45 46 nucleus attribution  5048
+create-a-node-here really 26.0 47 {including the reversal of Sunbelt's foreclosure on Valley Ranch. \n}
+autolink_nodes 46 47 satelite example below 5049
+create-a-node-here really 27.47 48 {\n"We're asking the court for a number of things }
+autolink_nodes 5048 48 satelite elaboration-additional  5050
+create-a-node-here really 27.64 49 {he can grant }
+autolink_nodes 48 49 satelite-embedded elaboration-object-attribute-e  5051
+create-a-node-here really 27.107 50 {in addition to the thrill of victory," }
+#autolink_nodes 49 50 satelite concession  5052
+#UNDID
+autolink_nodes 5051 50 satelite concession  5052
+create-a-node-here really 27.119 51 {he says.}
+nextSentence really
+autolink_nodes 5052 51 satelite attribution  5053
+create-a-node-here really 27.185 52 { "We'd take the Valley Ranch free and clear as a booby prize."}
+nextSentence really
+autolink_nodes 5053 52 satelite restatement  5054
+nextSentence really
+collapsed_nodes {5024}
+nextSentence really
+nextSentence really
+collapsed_nodes {}
+disconnect_node 32 modify
+autolink_nodes 31 32 satelite attribution-n  5055
+disconnect_node 32 modify
+autolink_nodes 31 32 satelite attribution  5056

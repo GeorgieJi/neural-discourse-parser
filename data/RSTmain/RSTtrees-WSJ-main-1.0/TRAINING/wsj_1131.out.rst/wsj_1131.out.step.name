@@ -1,0 +1,540 @@
+nextSentence really
+create-a-node-here really 2.21 1 {\nFew people are aware }
+create-a-node-here really 2.79 2 {that the federal government lends almost as much money }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.96 3 {as it borrows.}
+nextSentence really
+autolink_nodes 2 3 multinuclear Comparison  5002
+create-a-node-here really 3.19 4 {\nFrom 1980 to 1988, }
+create-a-node-here really 3.75 5 {while federal budget deficits totaled $1.41 trillion,}
+autolink_nodes 4 5 satelite circumstance  5003
+create-a-node-here really 3.196 6 { the government issued $394 billion of new direct loans and an additional $756 billion of new primary loan guarantees.}
+nextSentence really
+autolink_nodes 5003 6 multinuclear Same-Unit  5004
+create-a-node-here really 4.115 7 {\nThese figures omit secondary guarantees, deposit insurance, and the activities of Government-Sponsored Enterprises }
+create-a-node-here really 4.152 8 {(a huge concern in its own right, }
+#autolink_nodes 7 8 satelite-embedded elaboration-additional-e  5005
+#UNDID
+#autolink_nodes 7 8 satelite-embedded elaboration-additional-e  5005
+#UNDID
+autolink_nodes 7 8 satelite-embedded elaboration-additional-e  5005
+create-a-node-here really 4.188 9 {as detailed on this page May 3). }
+autolink_nodes 8 9 satelite attribution  5006
+create-a-node-here really 6.50 10 {\n\nFederal credit programs date back to the New Deal,}
+autolink_nodes 5004 5005 satelite elaboration-general-specific  5007
+create-a-node-here really 6.96 11 { and were meant to break even financially.}
+nextSentence really
+autolink_nodes 10 11 multinuclear List  5008
+autolink_nodes 5007 5008 multinuclear List  5009
+create-a-node-here really 7.128 12 {\nSince the 1950s, federal lending has experienced extraordinary growth in credit volume, subsidy rates, and policy applications, }
+autolink_nodes 5009 12 multinuclear List below 5009
+create-a-node-here really 7.241 13 {spurred on by the growth of government in general and budget gimmicks and deceptive management in particular.}
+nextSentence really
+autolink_nodes 12 13 satelite-embedded elaboration-additional-e  5010
+create-a-node-here really 8.16 14 {\nAs we will see, }
+create-a-node-here really 8.91 15 {many of these obligations don't show up as part of the federal deficit.}
+nextSentence really
+autolink_nodes 14 15 nucleus attribution  5011
+create-a-node-here really 10.27 16 { \n\nBut recent events indicate }
+autolink_nodes 5011 16 nucleus concession  5012
+create-a-node-here really 10.69 17 {that federal credit is out of control.}
+nextSentence really
+autolink_nodes 16 17 nucleus attribution  5013
+autolink_nodes 5010 5012 satelite elaboration-additional  5014
+create-a-node-here really 11.48 18 {\nStudent loan defaults remain high at about 12%, }
+create-a-node-here really 11.126 19 {and the program has been rocked by allegations of fraud and mismanagement.}
+nextSentence really
+autolink_nodes 18 19 multinuclear List  5015
+create-a-node-here really 12.28 20 {\nFarmers Home Administration }
+create-a-node-here really 12.38 21 {(FmHA)}
+#autolink_nodes 20 21 satelite-embedded restatement-e  5016
+#UNDID
+autolink_nodes 20 21 satelite-embedded restatement-e  5016
+create-a-node-here really 12.94 22 { loans have turned into de facto giveaway programs; }
+autolink_nodes 5016 22 multinuclear Same-Unit  5017
+create-a-node-here really 13.0 23 {losses over the next three years are expected to exceed $20 billion.\n}
+autolink_nodes 5017 23 multinuclear List above 5018
+autolink_nodes 5018 5015 multinuclear List above 5019
+create-a-node-here really 13.89 24 {Defaults on Veterans Affairs loan guarantees have quadrupled in the past eight years.}
+nextSentence really
+autolink_nodes 5019 24 multinuclear List below 5019
+create-a-node-here really 15.51 25 { \n\nLast month, the General Accounting Office reported }
+create-a-node-here really 15.138 26 {that defaults in Federal Housing Administration guarantees were five times as high }
+autolink_nodes 25 26 nucleus attribution  5020
+create-a-node-here really 15.167 27 {as previously estimated, }
+autolink_nodes 26 27 multinuclear Comparison  5021
+create-a-node-here really 15.220 28 {and that FHA's equity fell to minus $2.9 billion.}
+nextSentence really
+autolink_nodes 5021 28 multinuclear List above 5022
+create-a-node-here really 16.42 29 {\nGAO's findings are particularly troubling }
+create-a-node-here really 16.112 30 {because the FHA has about $300 billion in obligations outstanding }
+create-a-node-here really 16.202 31 {and had previously been considered one of the most financially secure credit programs.}
+nextSentence really
+autolink_nodes 30 31 multinuclear List  5023
+autolink_nodes 29 5023 nucleus cause  5024
+create-a-node-here really 18.33 32 { \n\nScores of other credit programs, }
+create-a-node-here really 18.133 33 {subsidizing agriculture, small business, exporters, defense, energy, transportation and others, }
+#autolink_nodes 32 33 satelite-embedded elaboration-additional-e  5025
+#UNDID
+autolink_nodes 32 33 satelite-embedded elaboration-object-attribute-e  5025
+create-a-node-here really 19.0 34 {are less visible but in no better shape.\n}
+autolink_nodes 5025 34 multinuclear Same-Unit  5026
+autolink_nodes 5023 5026 multinuclear Contrast above 5027
+autolink_nodes 5020 5024 satelite evaluation-s  5028
+create-a-node-here really 19.49 35 {If the programs continue their present path, }
+autolink_nodes 5024 35 satelite elaboration-additional  5029
+create-a-node-here really 19.101 36 {the potential government losses are staggering: }
+autolink_nodes 35 36 nucleus contingency  5030
+create-a-node-here really 19.175 37 {The federal government holds $222 billion in direct loans outstanding }
+create-a-node-here really 19.238 38 {and backs an additional $550 billion in primary guarantees.}
+nextSentence really
+autolink_nodes 37 38 multinuclear List  5031
+create-a-node-here really 19.316 39 { (Secondary guarantees of pools of FHA- and VA-backed loans by the agency }
+create-a-node-here really 19.340 40 {known as Ginnie Mae }
+#autolink_nodes 39 40 satelite-embedded elaboration-additional-e  5032
+#UNDID
+autolink_nodes 39 40 satelite-embedded elaboration-object-attribute-e  5032
+create-a-node-here really 19.376 41 {currently exceed $330 billion.) }
+autolink_nodes 5032 41 multinuclear Same-Unit  5033
+autolink_nodes 5031 5033 satelite elaboration-additional  5034
+autolink_nodes 5030 5034 satelite explanation-argumentative  5035
+create-a-node-here really 21.57 42 {\n\nAlthough external events have contributed to the morass, }
+create-a-node-here really 21.145 43 {the principal causes of the current crisis are internal and generic to all programs.}
+nextSentence really
+autolink_nodes 42 43 nucleus antithesis  5036
+autolink_nodes 5034 5036 satelite interpretation-s  5037
+create-a-node-here really 22.20 44 {\nTo reduce the risks }
+create-a-node-here really 22.70 45 {while still retaining the legitimate benefits }
+create-a-node-here really 22.102 46 {these programs can provide, }
+autolink_nodes 45 46 satelite-embedded elaboration-object-attribute-e  5038
+autolink_nodes 44 5038 nucleus concession  5039
+create-a-node-here really 23.0 47 {credit policy must: \n}
+autolink_nodes 5039 47 nucleus purpose  5040
+create-a-node-here really 25.11 48 {\n1.\nUse credit }
+create-a-node-here really 25.59 49 {to improve the operation of capital markets,}
+autolink_nodes 48 49 satelite purpose  5041
+create-a-node-here really 25.89 50 { not to provide subsidies.}
+nextSentence really
+autolink_nodes 49 50 multinuclear List  5042
+create-a-node-here really 27.32 51 { \n\nThere is a fundamental conflict }
+create-a-node-here really 27.64 52 {between providing a subsidy }
+autolink_nodes 51 52 satelite-embedded elaboration-object-attribute-e  5043
+create-a-node-here really 27.118 53 {and maintaining the integrity of a credit program.}
+nextSentence really
+autolink_nodes 52 53 multinuclear List  5044
+create-a-node-here really 28.45 54 {\nIf the program is meant to provide a subsidy,}
+create-a-node-here really 28.96 55 { collecting the debt defeats the original goal.}
+nextSentence really
+autolink_nodes 54 55 nucleus contingency  5045
+create-a-node-here really 29.112 56 {\nThus, subsidized loans tend to turn into giveaway programs, with increasing subsidy and default rates over time.}
+nextSentence really
+autolink_nodes 5045 56 nucleus circumstance  5046
+create-a-node-here really 30.23 57 {\nTo avoid this problem, }
+create-a-node-here really 30.58 58 {government should issue credit }
+autolink_nodes 57 58 nucleus purpose  5047
+create-a-node-here really 30.107 59 {only if it intends to use every legal method }
+autolink_nodes 5047 59 satelite contingency  5048
+create-a-node-here really 30.122 60 {to collect.}
+nextSentence really
+autolink_nodes 59 60 satelite-embedded elaboration-object-attribute-e  5049
+autolink_nodes 5048 5046 multinuclear Problem-Solution  5050
+create-a-node-here really 32.54 61 { \n\nIn contrast, credit programs can be appropriate tools }
+create-a-node-here really 32.102 62 {to improve the operation of capital markets.}
+nextSentence really
+autolink_nodes 61 62 satelite-embedded elaboration-object-attribute-e  5051
+autolink_nodes 5050 5051 multinuclear Contrast above 5052
+autolink_nodes 5042 5043 satelite interpretation-s  5053
+collapsed_nodes {}
+collapsed_nodes {5041}
+collapsed_nodes {5041}
+autolink_nodes 5041 5052 satelite explanation-argumentative  5054
+autolink_nodes 5001 5009 satelite background  5055
+autolink_nodes 5012 5019 satelite example  5056
+autolink_nodes 5019 5028 multinuclear List below 5056
+create-a-node-here really 33.117 63 {\nFor example, legal restrictions on interstate banking once inhibited the supply of credit to the agricultural sector.}
+nextSentence really
+create-a-node-here really 34.25 64 {\nFarm lending was enacted }
+create-a-node-here really 34.53 65 {to correct this problem }
+autolink_nodes 64 65 satelite purpose  5057
+create-a-node-here really 34.104 66 {by providing a reliable flow of lendable funds.}
+nextSentence really
+autolink_nodes 65 66 satelite means  5058
+autolink_nodes 5057 63 multinuclear Problem-Solution  5059
+create-a-node-here really 35.89 67 {\nHowever, this in no way justifies the huge government subsidies and losses on such loans.}
+nextSentence really
+autolink_nodes 5059 67 nucleus evaluation-n  5060
+create-a-node-here really 37.61 68 { \n\nCredit policy should separate these two competing objectives }
+create-a-node-here really 37.87 69 {and eliminate aspects }
+autolink_nodes 68 69 multinuclear List  5061
+create-a-node-here really 37.116 70 {that provide the subsidy.}
+nextSentence really
+autolink_nodes 69 70 satelite-embedded elaboration-object-attribute-e  5062
+#autolink_nodes 67 5061 satelite explanation-argumentative above 5062
+#UNDID
+#autolink_nodes 67 5061 satelite explanation-argumentative below 5063
+#UNDID
+#autolink_nodes 5060 5061 satelite explanation-argumentative  5063
+#UNDID
+#autolink_nodes 67 5061 satelite explanation-argumentative above 5062
+#UNDID
+autolink_nodes 67 5061 satelite explanation-argumentative below 5063
+collapsed_nodes {5041 5054}
+collapsed_nodes {5041 5054}
+collapsed_nodes {}
+create-a-node-here really 38.99 71 {\nFor example, student loans currently attempt to subsidize college attendance and mitigate problems }
+create-a-node-here really 38.123 72 {created by the fact }
+autolink_nodes 71 72 satelite-embedded elaboration-object-attribute-e  5064
+create-a-node-here really 39.0 73 {that students' future earnings are not accepted as collateral.\n}
+autolink_nodes 72 73 satelite-embedded elaboration-object-attribute-e  5065
+create-a-node-here really 39.64 74 {The program provides highly subsidized loans to any student }
+create-a-node-here really 39.117 75 {whose family earns less than a particular amount.}
+nextSentence really
+autolink_nodes 74 75 satelite-embedded elaboration-general-specific-e  5066
+create-a-node-here really 40.87 76 {\nHigh default rates, a low interest rate, and government coverage of all interest costs }
+create-a-node-here really 40.122 77 {while the student is in school }
+autolink_nodes 76 77 satelite circumstance  5067
+create-a-node-here really 40.160 78 {make program costs extremely high.}
+nextSentence really
+autolink_nodes 5067 78 multinuclear Same-Unit  5068
+autolink_nodes 5066 5068 multinuclear List  5069
+create-a-node-here really 41.9 79 {\nFamilies }
+create-a-node-here really 41.38 80 {that do not need the loan}
+autolink_nodes 79 80 satelite-embedded elaboration-object-attribute-e  5070
+create-a-node-here really 41.58 81 { can make money }
+#autolink_nodes 79 81 multinuclear Same-Unit  5071
+#create-a-node-here really 41.101 82 {simply by putting the loan in the bank }
+#create-a-node-here really 41.124 83 {and paying it back }
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 5070 81 multinuclear Same-Unit  5071
+create-a-node-here really 41.100 82 {simply by putting the loan in the bank}
+autolink_nodes 5071 82 satelite means  5072
+create-a-node-here really 41.124 83 { and paying it back }
+autolink_nodes 82 83 multinuclear List  5073
+create-a-node-here really 41.156 84 {when the student graduates. }
+#autolink_nodes 83 84 satelite temporal-after  5074
+#UNDID
+autolink_nodes 83 84 satelite circumstance  5074
+autolink_nodes 5069 5072 multinuclear List below 5074
+autolink_nodes 5064 5069 satelite elaboration-additional  5075
+create-a-node-here really 43.36 85 {\n\nIn contrast, a student loan program }
+create-a-node-here really 43.101 86 {that was meant solely to correct capital-market imperfections}
+autolink_nodes 85 86 satelite-embedded elaboration-object-attribute-e  5076
+create-a-node-here really 43.141 87 { would allow loans for any student, }
+#autolink_nodes 85 87 multinuclear Same-Unit  5077
+#UNDID
+autolink_nodes 5076 87 multinuclear Same-Unit  5077
+create-a-node-here really 43.173 88 {regardless of family income,}
+autolink_nodes 87 88 satelite concession  5078
+create-a-node-here really 43.209 89 { at market or near-market rates.}
+nextSentence really
+autolink_nodes 5078 89 multinuclear Same-Unit  5079
+create-a-node-here really 44.33 90 {\nWhile the student was in school, }
+create-a-node-here really 44.87 91 {interest costs would either be paid by the student}
+autolink_nodes 90 91 nucleus circumstance  5080
+create-a-node-here really 44.121 92 { or added to the loan balance.}
+nextSentence really
+autolink_nodes 91 92 multinuclear Otherwise  5081
+create-a-node-here really 45.14 93 {\nThis program, }
+autolink_nodes 5080 93 multinuclear List  5082
+create-a-node-here really 45.63 94 {combined with cash grants to needy students, }
+#autolink_nodes 93 94 satelite-embedded elaboration-general-specific-e  5083
+#UNDID
+autolink_nodes 93 94 satelite circumstance  5083
+create-a-node-here really 45.94 95 {would reduce program costs }
+autolink_nodes 5083 95 multinuclear Same-Unit  5084
+create-a-node-here really 45.159 96 {and much more effectively target the intended beneficiaries. }
+autolink_nodes 95 96 multinuclear List  5085
+autolink_nodes 5077 5082 satelite elaboration-additional  5086
+autolink_nodes 5075 5086 multinuclear Contrast  5087
+autolink_nodes 5061 5087 satelite example  5088
+autolink_nodes 5040 5054 multinuclear Problem-Solution  5089
+collapsed_nodes {5055}
+autolink_nodes 5055 5089 multinuclear Problem-Solution  5090
+collapsed_nodes {5001 5042}
+collapsed_nodes {5001 5042 5050}
+collapsed_nodes {5001 5042 5050 5039}
+collapsed_nodes {5001 5042 5050 5039 5089}
+collapsed_nodes {5001 5042 5050 5039 5089 5057}
+collapsed_nodes {5001 5042 5050 5039 5089 5057 5061}
+collapsed_nodes {5001 5057 5061}
+autolink_nodes 5052 5060 satelite example  5091
+collapsed_nodes {5001 5057 5061 5041}
+collapsed_nodes {5001 5057 5061 5041 5054}
+collapsed_nodes {5001}
+collapsed_nodes {5001 5054}
+create-a-node-here really 48.26 97 {\n\n2.\nProvide better incentives.}
+nextSentence really
+collapsed_nodes {5001 5054 5039}
+autolink_nodes 5054 97 multinuclear List  5092
+create-a-node-here really 50.45 98 { \n\nGiven the structure of most credit programs, }
+create-a-node-here really 50.105 99 {it is surprising that default rates are not even higher.}
+nextSentence really
+autolink_nodes 98 99 nucleus circumstance  5093
+create-a-node-here really 51.35 100 {\nGuarantee rates are typically 100%,}
+create-a-node-here really 51.69 101 { giving lenders little reason}
+autolink_nodes 100 101 nucleus circumstance  5094
+create-a-node-here really 51.105 102 { to screen customers carefully.}
+nextSentence really
+autolink_nodes 101 102 satelite-embedded elaboration-object-attribute-e below 5095
+create-a-node-here really 52.32 103 {\nReducing those rates moderately }
+create-a-node-here really 52.50 104 {(say, to 75%)}
+autolink_nodes 103 104 satelite-embedded definition-e  5096
+create-a-node-here really 52.112 105 { would still provide substantial assistance to borrowers.}
+nextSentence really
+autolink_nodes 5096 105 multinuclear Same-Unit  5097
+create-a-node-here really 53.75 106 {\nBut it would also encourage lenders to choose more creditworthy customers, }
+autolink_nodes 5097 106 multinuclear Contrast above 5098
+create-a-node-here really 53.123 107 {and go a long way toward reducing defaults.}
+nextSentence really
+autolink_nodes 106 107 multinuclear List  5099
+autolink_nodes 5098 5094 multinuclear Problem-Solution above 5100
+autolink_nodes 5093 5100 satelite example  5101
+autolink_nodes 97 5101 satelite explanation-argumentative  5102
+create-a-node-here really 54.74 108 {\nFor example, the Small Business Administration has had reasonable success }
+autolink_nodes 5099 108 satelite example  5103
+create-a-node-here really 54.164 109 {in reducing both guarantee rates and default rates in its Preferred Lenders' Program.}
+nextSentence really
+autolink_nodes 108 109 satelite-embedded elaboration-object-attribute-e  5104
+create-a-node-here really 56.41 110 { \n\nBorrowers' incentives are equally skewed.}
+nextSentence really
+autolink_nodes 5102 110 satelite evaluation-s  5105
+create-a-node-here really 57.40 111 {\nSince the government has a dismal record}
+create-a-node-here really 57.70 112 { of collecting bad debts,}
+autolink_nodes 111 112 satelite-embedded elaboration-object-attribute-e  5106
+create-a-node-here really 57.132 113 { the costs to the borrower of defaulting are usually low.}
+nextSentence really
+#create-a-node-here really 58.50 114 {\nIn addition, it is often possible to obtain a new }
+#UNDID
+autolink_nodes 5106 113 nucleus explanation-argumentative  5107
+#create-a-node-here really 59.143 114 {\nIn addition, it is often possible to obtain a new government loan even if existing debts are not paid off.\nSimple policy prescriptions in this case would be to improve debt collection (taking the gloves off contracted collection agencies) and to deny}
+#create-a-node-here really 59.174 115 { new credit to defaulters.}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 58.66 114 {\nIn addition, it is often possible to obtain a new government loan }
+autolink_nodes 5107 114 multinuclear List  5108
+create-a-node-here really 59.0 115 {even if existing debts are not paid off.\n}
+autolink_nodes 114 115 satelite concession  5109
+#create-a-node-here really 59.174 116 {Simple policy prescriptions in this case would be to improve debt collection (taking the gloves off contracted collection agencies) and to deny new credit to defaulters.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 59.82 116 {Simple policy prescriptions in this case would be to improve debt collection }
+autolink_nodes 5108 116 multinuclear Problem-Solution above 5110
+create-a-node-here really 59.142 117 {(taking the gloves off contracted collection agencies) }
+autolink_nodes 116 117 satelite cause  5111
+create-a-node-here really 59.184 118 {and to deny new credit to defaulters.}
+nextSentence really
+autolink_nodes 5111 118 multinuclear List  5112
+collapsed_nodes {5001 5054 5039 5108}
+autolink_nodes 110 5110 satelite evidence  5113
+#create-a-node-here really 60.137 119 {\nThese provisions would be difficult to enforce for a program intended to provide a subsidy, but would be reasonable and effective devices}
+#UNDID
+create-a-node-here really 60.61 119 {\nThese provisions would be difficult to enforce for a program }
+autolink_nodes 5112 119 satelite elaboration-additional  5114
+create-a-node-here really 60.96 120 {intended to provide a subsidy,}
+autolink_nodes 119 120 satelite-embedded elaboration-object-attribute-e  5115
+create-a-node-here really 60.161 121 { but would be reasonable and effective devices for programs }
+#create-a-node-here really 63.63 122 {that attempt to offset market imperfections. \n\n3.\nRecord the true costs of credit programs in the federal budget.}
+#nextSentence really
+#UNDID
+#UNDID
+autolink_nodes 5115 121 multinuclear Contrast  5116
+create-a-node-here really 60.211 122 {that attempt to offset market imperfections. }
+autolink_nodes 121 122 satelite-embedded elaboration-object-attribute-e  5117
+collapsed_nodes {5001 5054 5039 5108 5110}
+collapsed_nodes {5001 5054 5039 5108 5110 5098}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105}
+create-a-node-here really 63.63 123 {\n\n3.\nRecord the true costs of credit programs in the federal budget.}
+nextSentence really
+autolink_nodes 5092 123 multinuclear List below 5117
+create-a-node-here really 65.36 124 { \n\nSince the budget measures cash flow,}
+#create-a-node-here really 65.151 125 { a new $1 direct loan is treated as a $1 expenditure, even though at least part of the loan will be paid back.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 65.95 125 { a new $1 direct loan is treated as a $1 expenditure, }
+autolink_nodes 124 125 nucleus circumstance  5118
+create-a-node-here really 66.0 126 {even though at least part of the loan will be paid back.\n}
+autolink_nodes 125 126 satelite concession below 5119
+create-a-node-here really 66.41 127 {Loan guarantees don't appear at all }
+autolink_nodes 5118 127 multinuclear List  5120
+create-a-node-here really 66.75 128 {until the borrower defaults, }
+autolink_nodes 127 128 satelite circumstance  5121
+create-a-node-here really 66.124 129 {so new guarantees do not raise the deficit, }
+autolink_nodes 5121 129 multinuclear Cause-Result  5122
+create-a-node-here really 66.191 130 {even though they create future liabilities for the government.}
+nextSentence really
+autolink_nodes 129 130 satelite concession  5123
+#create-a-node-here really 67.137 131 {\nBy converting an expenditure or loan to a guarantee, the government can ensure the same flow of resources and reduce the current deficit.}
+#nextSentence really
+#UNDID
+#UNDID
+#create-a-node-here really 68.133 131 {\nBy converting an expenditure or loan to a guarantee, the government can ensure the same flow of resources and reduce the current deficit.\nPredictably, guarantees outstanding have risen by $130 billion since 1985, while direct loans outstanding have fallen by $30 billion.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 67.52 131 {\nBy converting an expenditure or loan to a guarantee,}
+create-a-node-here really 67.110 132 { the government can ensure the same flow of resources}
+autolink_nodes 131 132 nucleus means  5124
+create-a-node-here really 68.0 133 { and reduce the current deficit.\n}
+autolink_nodes 132 133 multinuclear List  5125
+autolink_nodes 5120 5124 multinuclear Problem-Solution above 5126
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120}
+autolink_nodes 123 5126 satelite explanation-argumentative  5127
+create-a-node-here really 68.80 134 {Predictably, guarantees outstanding have risen by $130 billion since 1985, }
+create-a-node-here really 68.143 135 {while direct loans outstanding have fallen by $30 billion.}
+nextSentence really
+autolink_nodes 134 135 multinuclear List  5128
+autolink_nodes 5127 5128 satelite background  5129
+create-a-node-here really 70.99 136 { \n\nThe true budgetary cost of a credit subsidy is the discounted value of the net costs to government.}
+nextSentence really
+create-a-node-here really 71.31 137 {\nThis figure could be estimated }
+create-a-node-here really 71.53 138 {using techniques }
+create-a-node-here really 71.86 139 {employed by private lenders }
+autolink_nodes 138 139 satelite-embedded elaboration-object-attribute-e  5130
+autolink_nodes 137 5130 satelite means  5131
+create-a-node-here really 71.111 140 {to forecast losses, }
+autolink_nodes 139 140 satelite purpose  5132
+create-a-node-here really 71.130 141 {or determined }
+autolink_nodes 5131 141 multinuclear Otherwise  5133
+#create-a-node-here really 71.171 142 {by selling loans to private owners (}
+#autolink_nodes 141 142 satelite means  5134
+#UNDID
+#UNDID
+#create-a-node-here really 71.171 142 {by selling loans to private owners (}
+#autolink_nodes 141 142 satelite means  5134
+#create-a-node-here really 72.0 143 {without federal guarantees).\n}
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 71.170 142 {by selling loans to private owners }
+autolink_nodes 141 142 satelite means  5134
+create-a-node-here really 72.0 143 {(without federal guarantees).\n}
+autolink_nodes 142 143 satelite elaboration-additional  5135
+autolink_nodes 136 5133 satelite elaboration-additional  5136
+create-a-node-here really 72.35 144 {Neither technique is perfect, }
+#autolink_nodes 5133 144 satelite concession  5137
+#UNDID
+autolink_nodes 5133 144 satelite evaluation-s  5137
+create-a-node-here really 72.85 145 {but both are better than the current system, }
+autolink_nodes 144 145 nucleus concession  5138
+create-a-node-here really 72.150 146 {which misstates the costs of new credit programs by amounts }
+autolink_nodes 5138 146 satelite-embedded elaboration-additional-e  5139
+create-a-node-here really 72.179 147 {that vary substantially }
+autolink_nodes 146 147 satelite-embedded elaboration-additional-e  5140
+create-a-node-here really 72.223 148 {and average about $20 billion annually,}
+autolink_nodes 147 148 multinuclear List  5141
+create-a-node-here really 72.274 149 { according to the Congressional Budget Office.}
+nextSentence really
+autolink_nodes 5140 149 satelite attribution  5142
+create-a-node-here really 73.9 150 {\nA budget }
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133}
+autolink_nodes 5136 150 multinuclear List  5143
+create-a-node-here really 73.55 151 {that reflected the real costs of lending }
+autolink_nodes 150 151 satelite-embedded elaboration-object-attribute-e  5144
+create-a-node-here really 73.87 152 {would eliminate incentives }
+autolink_nodes 5144 152 multinuclear Same-Unit  5145
+create-a-node-here really 73.145 153 {to convert spending or lending programs to guarantees}
+autolink_nodes 152 153 satelite-embedded elaboration-object-attribute-e  5146
+create-a-node-here really 73.180 154 { and would let taxpayers know }
+autolink_nodes 5146 154 multinuclear List  5147
+create-a-node-here really 73.221 155 {what Congress is committing them to.}
+nextSentence really
+autolink_nodes 154 155 nucleus attribution  5148
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145}
+autolink_nodes 5128 5143 satelite elaboration-additional  5149
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149 5129}
+create-a-node-here really 76.56 156 { \n\n4.\nImpose standard accounting and administrative practices.}
+nextSentence really
+autolink_nodes 5092 156 multinuclear List below 5149
+create-a-node-here really 78.52 157 { \n\nCreative accounting is a hallmark of federal credit.}
+nextSentence really
+create-a-node-here really 79.36 158 {\nMany agencies roll over their debt, }
+autolink_nodes 157 158 satelite explanation-argumentative  5150
+create-a-node-here really 79.69 159 {paying off delinquent loans }
+autolink_nodes 158 159 satelite means  5151
+create-a-node-here really 79.96 160 {by issuing new loans, }
+autolink_nodes 159 160 satelite means  5152
+create-a-node-here really 79.159 161 {or converting defaulted loan guarantees into direct loans.}
+nextSentence really
+autolink_nodes 5152 161 multinuclear Otherwise  5153
+create-a-node-here really 80.54 162 {\nIn any case, they avoid having to write off the loans.}
+nextSentence really
+autolink_nodes 5151 162 satelite summary-s  5154
+create-a-node-here really 81.49 163 {\nSome agencies simply keep bad loans on the books;}
+autolink_nodes 5154 163 multinuclear List  5155
+create-a-node-here really 81.137 164 { as late as 1987, the Export-Import Bank held in its portfolio at face value loans }
+autolink_nodes 163 164 satelite example  5156
+create-a-node-here really 81.168 165 {made to Cuba in the 1950s.}
+nextSentence really
+#autolink_nodes 164 165 satelite-embedded elaboration-additional-e  5157
+#UNDID
+autolink_nodes 164 165 satelite-embedded elaboration-object-attribute-e  5157
+create-a-node-here really 83.0 166 {\nMore seriously, FmHA has carried several billion dollars of defaulted loans at face value.\n}
+autolink_nodes 5157 166 multinuclear List  5158
+create-a-node-here really 83.103 167 {Until GAO's recent audit, FHA books had not been subject to a complete external audit in 15 years.}
+nextSentence really
+autolink_nodes 166 167 satelite circumstance  5159
+create-a-node-here really 85.87 168 { \n\nThe administration of federal credit should closely parallel private lending practices,}
+autolink_nodes 156 5150 satelite explanation-argumentative  5160
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149 5129 5155}
+autolink_nodes 5160 168 satelite evaluation-s  5161
+create-a-node-here really 85.169 169 { including the development of a loan loss reserve and regular outside audits.}
+nextSentence really
+autolink_nodes 168 169 satelite-embedded elaboration-part-whole-e  5162
+create-a-node-here really 86.95 170 {\nEstablishing these practices would permit earlier identification of emerging financial crises, }
+create-a-node-here really 86.166 171 {provide better information for loan sales and budgeting decisions,}
+autolink_nodes 170 171 multinuclear List  5163
+create-a-node-here really 86.189 172 { and reduce fraud.}
+nextSentence really
+autolink_nodes 5163 172 multinuclear List below 5163
+autolink_nodes 169 5163 satelite enablement  5164
+create-a-node-here really 88.48 173 { \n\nGovernment lending was not intended to be a way }
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149 5129 5155 5162}
+autolink_nodes 5161 173 satelite comment  5165
+create-a-node-here really 88.84 174 {to obfuscate spending figures, }
+autolink_nodes 173 174 satelite-embedded elaboration-object-attribute-e  5166
+create-a-node-here really 88.114 175 {hide fraudulent activity,}
+autolink_nodes 174 175 multinuclear List  5167
+create-a-node-here really 88.147 176 { or provide large subsidies.}
+nextSentence really
+autolink_nodes 5167 176 multinuclear List below 5167
+create-a-node-here really 89.11 177 {\nThe reforms}
+autolink_nodes 5166 177 multinuclear List  5168
+create-a-node-here really 89.33 178 { described above }
+autolink_nodes 177 178 satelite-embedded elaboration-object-attribute-e  5169
+create-a-node-here really 89.146 179 {would provide a more limited, but clearer, safer and ultimately more useful role for government as a lender.}
+nextSentence really
+autolink_nodes 5169 179 multinuclear Same-Unit  5170
+create-a-node-here really 90.21 180 {\nWithout such reforms,}
+autolink_nodes 5170 180 satelite evaluation-s  5171
+create-a-node-here really 90.114 181 { credit programs will continue to be a large-scale, high-risk proposition for taxpayers.}
+nextSentence really
+autolink_nodes 180 181 nucleus circumstance  5172
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149 5129 5155 5162 5168}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149 5129 5155 5162 5168 5092}
+collapsed_nodes {5001 5054 5039 5108 5110 5098 5101 5105 5120 5139 5134 5133 5145 5149 5129 5155 5162 5168 5092 5090}
+create-a-node-here really 92.56 182 { \n\nMr. Gale is an assistant professor of economics at UCLA.}
+nextSentence really
+autolink_nodes 5090 182 multinuclear TextualOrganization above 5173
+change_constit 182 Author
+change_constit 5090 Text
+collapsed_nodes {5055 5089 5173}
+collapsed_nodes {}
+change_rel 50 Contrast
+collapsed_nodes {5090}
+collapsed_nodes {}
+disconnect_node 5163 disconnect
+autolink_nodes 5162 5163 multinuclear Enablement  5174
+disconnect_node 5163 disconnect
+autolink_nodes 5162 5163 nucleus enablement  5175
+collapsed_nodes {5090}
+collapsed_nodes {}

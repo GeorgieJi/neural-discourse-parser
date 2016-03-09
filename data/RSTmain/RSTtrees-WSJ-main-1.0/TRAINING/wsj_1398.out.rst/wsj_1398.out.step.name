@@ -1,0 +1,100 @@
+nextSentence really
+create-a-node-here really 2.26 1 {\nWith a Twist of the Wrist }
+create-a-node-here really 8.22 2 {\n\nBoys with tops, and Frisbee tossers, \n\nAnd P.R. types with bees in their bonnet, \n\nHave a goal in common,}
+create-a-node-here really 10.28 3 { all of them try \n\nTo put the right spin on it.}
+nextSentence really
+create-a-node-here really 12.20 4 { \n\n-- George O. Ludcke.}
+nextSentence really
+create-a-node-here really 14.9 5 { \n\nNet Gain }
+create-a-node-here really 16.31 6 {\n\nInvestment letters now abound, }
+create-a-node-here really 18.28 7 {\n\nI really like to read them; }
+create-a-node-here really 20.20 8 {\n\nIf I peruse enough, }
+create-a-node-here really 20.34 9 {I've found }
+create-a-node-here really 22.18 10 {\n\nI've no time left }
+create-a-node-here really 22.35 11 {to heed them!}
+nextSentence really
+create-a-node-here really 24.17 12 { \n\n-- Bern Sharfman.}
+nextSentence really
+create-a-node-here really 26.12 13 { \n\nDaffynition }
+create-a-node-here really 28.15 14 {\n\nTV evangelist: }
+create-a-node-here really 28.31 15 {salesparson.}
+nextSentence really
+create-a-node-here really 30.26 16 { \n\n-- Marguerite Whitley May.}
+nextSentence really
+autolink_nodes 2 3 satelite reason  5001
+#change_constit 5001 Title
+#UNDID
+change_constit 1 Title
+change_constit 4 Signature-Block
+#change_constit 5001 Text
+#UNDID
+change_constit 4 Author
+change_constit 1 SectionTitle
+#change_constit 5001 SectionText
+#UNDID
+change_constit 1 SectionTitle
+change_constit 5001 SectionText
+#autolink_nodes 5001 1 multinuclear TextualOrganization  5002
+#UNDID
+change_constit 5001 SectionText
+change_constit 1 SectionTitle
+#autolink_nodes 5001 1 multinuclear TextualOrganization  5002
+#change_constit 5001 Author
+#UNDID
+#UNDID
+change_constit 5001 SectionTitle
+change_constit 1 SectionText
+change_constit 4 Author
+autolink_nodes 5001 1 multinuclear TextualOrganization  5002
+#autolink_nodes 4 5002 multinuclear TextualOrganization  5003
+#UNDID
+autolink_nodes 4 5002 multinuclear TextualOrganization  5003
+#autolink_nodes 10 9 satelite attribution  5004
+#autolink_nodes 5004 11 satelite-embedded purpose-e  5005
+#UNDID
+#UNDID
+autolink_nodes 10 11 satelite-embedded purpose-e  5004
+autolink_nodes 5004 9 satelite attribution  5005
+autolink_nodes 5005 8 satelite condition  5006
+autolink_nodes 7 6 multinuclear List  5007
+autolink_nodes 5006 5007 multinuclear Cause-Result  5008
+#change_constit 5 SectionText
+#UNDID
+change_constit 5 SectionTitle
+change_constit 5008 SectionText
+change_constit 12 Author
+#autolink_nodes 5008 5 multinuclear Cause-Result below 5008
+#UNDID
+change_constit 5 SectionTitle
+change_constit 5008 SectionTitle
+#autolink_nodes 5008 5 multinuclear Cause-Result below 5008
+#UNDID
+change_constit 5008 SectionText
+change_constit 5 SectionText
+autolink_nodes 5 5008 multinuclear TextualOrganization  5009
+change_constit 12 Author
+autolink_nodes 12 5009 multinuclear TextualOrganization  5010
+#autolink_nodes 15 14 satelite definition  5011
+#UNDID
+#autolink_nodes 15 14 satelite definition  5011
+#UNDID
+autolink_nodes 14 15 satelite definition  5011
+change_constit 13 SectionTitle
+#change_constit 5011 SectionTitle
+#UNDID
+change_constit 13 SectionTitle
+change_constit 5011 SectionText
+change_constit 16 Author
+#autolink_nodes 5011 13 multinuclear TextualOrganization  5012
+#UNDID
+change_constit 13 SectionTitle
+change_constit 5011 SectionText
+change_constit 16 Author
+autolink_nodes 5011 13 multinuclear TextualOrganization  5012
+autolink_nodes 16 5012 multinuclear TextualOrganization  5013
+disconnect_node 3 disconnect
+autolink_nodes 2 3 satelite elaboration-additional  5014
+autolink_nodes 5010 5003 multinuclear TextualOrganization above 5015
+collapsed_nodes {5010}
+autolink_nodes 5015 5013 multinuclear TextualOrganization below 5015
+collapsed_nodes {}

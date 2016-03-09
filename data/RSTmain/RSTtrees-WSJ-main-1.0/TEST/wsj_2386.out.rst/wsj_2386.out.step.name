@@ -1,0 +1,363 @@
+nextSentence really
+create-a-node-here really 2.86 1 {\nSmall investors matched their big institutional brethren in anxiety over the weekend, }
+create-a-node-here really 2.143 2 {but most seemed to be taking a philosophical approach }
+autolink_nodes 1 2 nucleus antithesis  5001
+create-a-node-here really 2.155 3 {and said }
+create-a-node-here really 2.228 4 {they were resigned to riding out the latest storm in the stock market.}
+nextSentence really
+autolink_nodes 3 4 nucleus attribution  5002
+autolink_nodes 2 5002 satelite evidence below 5003
+create-a-node-here really 4.38 5 { \n\n"I'm not losing faith in the market," }
+create-a-node-here really 4.81 6 {said Boston lawyer Christopher Sullivan }
+autolink_nodes 5 6 satelite attribution  5004
+create-a-node-here really 4.161 7 {as he watched the market plunge on a big screen in front of a brokerage firm.}
+nextSentence really
+autolink_nodes 5004 7 satelite circumstance  5005
+autolink_nodes 5001 5005 satelite example  5006
+create-a-node-here really 5.41 8 {\nBut he's not so sure about everyone else.}
+nextSentence really
+autolink_nodes 5005 8 satelite elaboration-additional  5007
+create-a-node-here really 7.9 9 { \n\n"I think }
+create-a-node-here really 7.74 10 {on Monday the small (investors) are going to panic and sell," }
+autolink_nodes 9 10 nucleus attribution  5008
+create-a-node-here really 7.102 11 {predicted Mr. Sullivan, }
+autolink_nodes 5008 11 satelite attribution  5009
+create-a-node-here really 7.194 12 {whose investments include AMR Corp. 's American Airlines unit and several mutual funds. }
+autolink_nodes 11 12 satelite-embedded elaboration-additional-e  5010
+create-a-node-here really 7.211 13 {"And I think }
+nextSentence really
+nextSentence really
+nextSentence really
+create-a-node-here really 7.263 14 {institutions are going to come in and buy . . . }
+autolink_nodes 13 14 nucleus attribution  5011
+autolink_nodes 5009 5011 multinuclear Contrast  5012
+autolink_nodes 8 5012 satelite reason  5013
+create-a-node-here really 7.288 15 {I'm going to hold on.}
+nextSentence really
+create-a-node-here really 8.14 16 {\nIf I sell now,}
+create-a-node-here really 8.41 17 { I'll take a big loss."}
+nextSentence really
+#autolink_nodes 16 17 nucleus condition  5014
+#UNDID
+#autolink_nodes 16 17 nucleus consequence-n  5014
+#UNDID
+autolink_nodes 16 17 nucleus condition  5014
+autolink_nodes 15 5014 satelite reason  5015
+disconnect_node 5012 modify
+autolink_nodes 8 5012 satelite interpretation-s  5016
+autolink_nodes 5007 5015 satelite elaboration-additional  5017
+create-a-node-here really 10.25 18 { \n\nSome evinced an optimism }
+create-a-node-here really 10.52 19 {that had been rewarded }
+autolink_nodes 18 19 satelite-embedded elaboration-object-attribute-e  5018
+create-a-node-here really 10.97 20 {when they didn't flee the market in 1987.}
+autolink_nodes 19 20 satelite circumstance  5019
+create-a-node-here really 10.113 21 { "Oh, I bet }
+create-a-node-here really 10.151 22 {it'll be up 50 points on Monday," }
+autolink_nodes 21 22 nucleus attribution  5020
+create-a-node-here really 10.221 23 {said Lucy Crump, a 78-year-old retired housewife in Lexington, Ky.}
+nextSentence really
+disconnect_node 5002 modify
+autolink_nodes 2 5002 multinuclear List  5021
+create-a-node-here really 11.16 24 {\nMrs. Crump said }
+create-a-node-here really 11.94 25 {her Ashwood Investment Club's portfolio lost about one-third of its value }
+autolink_nodes 24 25 nucleus attribution  5022
+create-a-node-here really 11.132 26 {following the Black Monday crash, }
+autolink_nodes 25 26 satelite circumstance below 5023
+create-a-node-here really 11.165 27 {"but no one got discouraged, }
+create-a-node-here really 11.193 28 {and we gained that back }
+autolink_nodes 27 28 multinuclear List  5024
+create-a-node-here really 11.210 29 {-- and more."}
+nextSentence really
+autolink_nodes 28 29 satelite attribution  5025
+autolink_nodes 5023 5024 multinuclear Contrast  5026
+autolink_nodes 5020 23 satelite attribution  5027
+autolink_nodes 5027 5022 satelite explanation-argumentative  5028
+autolink_nodes 5018 5028 satelite example  5029
+#disconnect_node 1 modify
+#autolink_nodes 1 1 multinuclear Contrast  5030
+#UNDID
+#autolink_nodes 1 1 multinuclear Contrast  5030
+#UNDID
+#autolink_nodes 1 1 multinuclear Contrast  5030
+#UNDID
+#UNDID
+autolink_nodes 5017 5029 multinuclear List  5030
+create-a-node-here really 14.0 30 { \n\nAt the annual congress of the National Association of Investors Corp. at the Hyatt Regency hotel in Minneapolis, the scene was calm.\n}
+create-a-node-here really 14.23 31 {Some 500 investors }
+create-a-node-here really 14.76 32 {representing investor clubs from around the U.S. }
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5031
+create-a-node-here really 14.95 33 {were attending }
+autolink_nodes 5031 33 multinuclear Same-Unit  5032
+create-a-node-here really 14.139 34 {when the market started to slide Friday.}
+nextSentence really
+autolink_nodes 5032 34 multinuclear Temporal-Same-Time above 5033
+create-a-node-here really 15.59 35 {\nBut Robert Showalter, an official of the association, said }
+create-a-node-here really 15.142 36 {no special bulletins or emergency meetings of the investors' clubs are planned.}
+nextSentence really
+#autolink_nodes 35 36 satelite attribution  5034
+#UNDID
+autolink_nodes 35 36 nucleus attribution  5034
+#autolink_nodes 5033 5034 multinuclear Contrast above 5035
+#UNDID
+autolink_nodes 5033 5034 nucleus concession  5035
+create-a-node-here really 17.43 37 { \n\nIn fact, some of the association's members }
+create-a-node-here really 17.87 38 {-- long-term, buy-and-hold investors -- }
+autolink_nodes 37 38 satelite-embedded elaboration-general-specific-e  5036
+create-a-node-here really 17.120 39 {welcomed the drop in prices. }
+autolink_nodes 5036 39 multinuclear Same-Unit  5037
+create-a-node-here really 17.159 40 {"We hope to take advantage of it," }
+create-a-node-here really 17.223 41 {said John Snyder, a member of a Los Angeles investors' club.}
+nextSentence really
+autolink_nodes 40 41 satelite attribution  5038
+autolink_nodes 5037 5038 satelite elaboration-additional  5039
+autolink_nodes 5035 5039 satelite elaboration-additional  5040
+create-a-node-here really 18.27 42 {\nHe has four stocks in mind }
+create-a-node-here really 18.38 43 {to buy }
+autolink_nodes 42 43 satelite-embedded elaboration-object-attribute-e  5041
+create-a-node-here really 18.74 44 {if the prices drop to the level }
+create-a-node-here really 18.87 45 {he wants.}
+nextSentence really
+autolink_nodes 44 45 satelite-embedded elaboration-object-attribute-e  5042
+autolink_nodes 43 5042 satelite condition  5043
+autolink_nodes 5038 5041 satelite elaboration-general-specific  5044
+autolink_nodes 30 5040 satelite summary-n  5045
+autolink_nodes 5030 5045 multinuclear List below 5045
+create-a-node-here really 19.45 46 {\nNot everyone is reacting so calmly, however, }
+create-a-node-here really 19.175 47 {and many wonder about the long-term implications of what is widely viewed as the cause of Friday's slide, reluctance by banks }
+create-a-node-here really 19.254 48 {to provide financing for a buy-out of UAL Corp., parent of United Airlines.}
+nextSentence really
+autolink_nodes 47 48 satelite-embedded elaboration-object-attribute-e  5046
+autolink_nodes 46 5046 multinuclear List  5047
+nextSentence really
+create-a-node-here really 21.53 49 { \n\nMarc Perkins, a Tampa, Fla., investment banker, said }
+create-a-node-here really 21.113 50 {the market drop is one of "a tremendous number of signs }
+autolink_nodes 49 50 nucleus attribution  5048
+create-a-node-here really 21.159 51 {that the leveraged take-out era is ending.}
+nextSentence really
+autolink_nodes 50 51 satelite-embedded elaboration-object-attribute-e below 5049
+create-a-node-here really 22.20 52 {\nThere's no question }
+create-a-node-here really 22.84 53 {that there's a general distaste for leverage among lenders."}
+nextSentence really
+autolink_nodes 52 53 satelite-embedded elaboration-object-attribute-e  5050
+autolink_nodes 5048 5050 satelite elaboration-additional  5051
+create-a-node-here really 22.120 54 { Mr. Perkins believes, however, }
+create-a-node-here really 22.160 55 {that the market could be stabilized }
+autolink_nodes 54 55 nucleus attribution  5052
+create-a-node-here really 22.266 56 {if California investor Marvin Davis steps back in to the United bidding with an offer of $275 a share.}
+nextSentence really
+autolink_nodes 55 56 satelite condition below 5053
+autolink_nodes 5051 5052 multinuclear Contrast  5054
+autolink_nodes 5047 5054 satelite example  5055
+create-a-node-here really 24.52 57 { \n\nSara Albert, a 34-year-old Dallas law student, says }
+create-a-node-here really 24.130 58 {she's generally skittish about the stock market and the takeover activity }
+autolink_nodes 57 58 nucleus attribution  5056
+create-a-node-here really 24.156 59 {that seems to fuel it.}
+nextSentence really
+autolink_nodes 58 59 satelite-embedded elaboration-object-attribute-e below 5057
+create-a-node-here really 24.182 60 { "I have this feeling }
+create-a-node-here really 24.212 61 {that it's built on sand," }
+create-a-node-here really 24.226 62 {she says, }
+autolink_nodes 60 61 satelite-embedded elaboration-object-attribute-e  5058
+autolink_nodes 5058 62 satelite attribution  5059
+create-a-node-here really 24.252 63 {that the market rises }
+create-a-node-here really 24.290 64 {"but there's no foundation to it."}
+nextSentence really
+autolink_nodes 63 64 multinuclear Contrast  5060
+#autolink_nodes 5058 5060 multinuclear List  5061
+#UNDID
+#autolink_nodes 5059 5060 satelite elaboration-additional  5061
+#UNDID
+autolink_nodes 5059 5060 satelite restatement  5061
+autolink_nodes 5056 5061 satelite elaboration-additional  5062
+create-a-node-here really 24.388 65 { She and her husband pulled most of their investments out of the market after the 1987 crash, }
+create-a-node-here really 24.434 66 {although she still owns some Texaco stock.}
+autolink_nodes 65 66 satelite concession  5063
+autolink_nodes 5062 5063 satelite evidence  5064
+create-a-node-here really 25.44 67 {\nPartly because of concern about the economy }
+create-a-node-here really 25.114 68 {and partly because she recently quit her job as a legal assistant }
+autolink_nodes 67 68 multinuclear List  5065
+create-a-node-here really 25.135 69 {to go to school, }
+autolink_nodes 68 69 satelite purpose  5066
+#create-a-node-here really 25.148 70 {"I think }
+#UNDID
+create-a-node-here really 25.162 70 {"I think at this point }
+create-a-node-here really 25.199 71 {we want to be a lot more liquid."}
+nextSentence really
+autolink_nodes 70 71 nucleus attribution  5067
+autolink_nodes 5065 5067 nucleus consequence-n  5068
+autolink_nodes 5064 5068 satelite preference  5069
+autolink_nodes 5054 5069 multinuclear List above 5070
+create-a-node-here really 27.14 72 { \n\nOthers wonder }
+create-a-node-here really 27.77 73 {how many more of these shocks the small investor can stand.}
+nextSentence really
+autolink_nodes 72 73 nucleus attribution  5071
+create-a-node-here really 27.98 74 { "We all assumed }
+create-a-node-here really 27.136 75 {October '87 was a one-time shot," }
+autolink_nodes 74 75 nucleus attribution  5072
+create-a-node-here really 27.184 76 {said San Francisco attorney David Greenberg.}
+nextSentence really
+autolink_nodes 5072 76 satelite attribution  5073
+create-a-node-here really 27.213 77 { "We told the little guy }
+create-a-node-here really 27.258 78 {it could only happen once in a lifetime, }
+create-a-node-here really 27.275 79 {come on back.}
+nextSentence really
+autolink_nodes 78 79 multinuclear Sequence  5074
+autolink_nodes 77 5074 nucleus attribution  5075
+create-a-node-here really 28.26 80 {\nNow it's happening again."}
+nextSentence really
+autolink_nodes 5075 80 multinuclear Contrast  5076
+create-a-node-here really 28.80 81 { Mr. Greenberg got out just before the 1987 crash }
+create-a-node-here really 28.120 82 {and, to his regret, never went back }
+create-a-node-here really 28.150 83 {even as the market soared.}
+nextSentence really
+autolink_nodes 82 83 satelite circumstance  5077
+autolink_nodes 81 5077 multinuclear List  5078
+autolink_nodes 5073 5076 satelite elaboration-additional  5079
+autolink_nodes 5045 5055 multinuclear Contrast  5080
+#autolink_nodes 5071 5079 satelite elaboration-additional  5081
+#UNDID
+autolink_nodes 5071 5079 satelite example  5081
+autolink_nodes 5079 5078 satelite elaboration-additional  5082
+create-a-node-here really 29.31 84 {\nThis time he's ready to buy in }
+create-a-node-here really 29.63 85 {"when the panic wears off." }
+autolink_nodes 84 85 satelite circumstance  5083
+#autolink_nodes 5078 5083 multinuclear List below 5083
+#UNDID
+autolink_nodes 5078 5083 multinuclear Contrast above 5084
+create-a-node-here really 29.83 86 {Still, he adds: }
+create-a-node-here really 29.139 87 {"We can't have this kind of thing happen very often.}
+nextSentence really
+autolink_nodes 86 87 nucleus attribution  5085
+create-a-node-here really 30.37 88 {\nWhen the little guy gets frightened, }
+create-a-node-here really 30.65 89 {the big guys hurt badly.}
+nextSentence really
+autolink_nodes 88 89 multinuclear Proportion  5086
+autolink_nodes 5085 5086 satelite explanation-argumentative  5087
+autolink_nodes 5082 5087 satelite comment  5088
+create-a-node-here really 31.28 90 {\nMerrill Lynch can't survive }
+#create-a-node-here really 31.54 91 {without the little guy}
+#UNDID
+create-a-node-here really 32.0 91 {without the little guy." \n}
+autolink_nodes 90 91 satelite contingency  5089
+disconnect_node 5087 disconnect
+autolink_nodes 5083 5087 multinuclear Contrast  5090
+autolink_nodes 5082 5089 satelite interpretation-s  5091
+autolink_nodes 5055 5081 multinuclear List  5092
+disconnect_node 5080 disconnect
+disconnect_node 5092 disconnect
+autolink_nodes 5030 5045 multinuclear List below 5092
+disconnect_node 5070 disconnect
+disconnect_node 5069 disconnect
+disconnect_node 5081 disconnect
+#disconnect_node 5046 disconnect
+#UNDID
+autolink_nodes 5047 5054 satelite example  5093
+autolink_nodes 5054 5069 multinuclear List above 5094
+autolink_nodes 5006 5093 multinuclear Contrast  5095
+create-a-node-here really 33.50 92 {\nSmall investors have tiptoed back into the market }
+create-a-node-here really 33.78 93 {following Black Monday, }
+autolink_nodes 92 93 satelite temporal-after  5096
+create-a-node-here really 33.114 94 {but mostly through mutual funds.}
+nextSentence really
+autolink_nodes 5096 94 satelite means  5097
+create-a-node-here really 34.81 95 {\nDiscount brokerage customers "have been in the market somewhat but not whole hog }
+create-a-node-here really 34.116 96 {like they were two years ago," }
+autolink_nodes 95 96 satelite comparison  5098
+create-a-node-here really 34.198 97 {says Leslie Quick Jr., chairman of the Quick & Reilly discount brokerage firm.}
+nextSentence really
+autolink_nodes 5098 97 satelite attribution  5099
+create-a-node-here really 35.70 98 {\nHugo Quackenbush, senior vice president at Charles Scwhab Corp., says }
+create-a-node-here really 35.145 99 {Schwab customers "have been neutral to cautious recently about stocks."}
+nextSentence really
+autolink_nodes 98 99 nucleus attribution  5100
+autolink_nodes 5099 5100 multinuclear List  5101
+create-a-node-here really 35.210 100 { Individual investors are still angry about program trading, }
+create-a-node-here really 35.236 101 {Mr. Quackenbush says.}
+nextSentence really
+autolink_nodes 100 101 satelite attribution  5102
+autolink_nodes 5101 5102 satelite explanation-argumentative  5103
+create-a-node-here really 37.58 102 { \n\nAvner Arbel, a Cornell University finance professor, says }
+create-a-node-here really 37.135 103 {government regulators will have to more closely control program trading }
+create-a-node-here really 37.191 104 {to "win back the confidence of the small investor."}
+nextSentence really
+autolink_nodes 103 104 satelite purpose  5104
+autolink_nodes 102 5104 nucleus attribution  5105
+autolink_nodes 5097 5103 satelite elaboration-additional  5106
+autolink_nodes 5106 5105 multinuclear Problem-Solution  5107
+create-a-node-here really 39.73 105 { \n\nBut it's not only the stock market that has some small investors worried.}
+nextSentence really
+create-a-node-here really 40.78 106 {\nAlan Helfman, general sales manager of a Chrysler dealership in Houston, said }
+create-a-node-here really 40.136 107 {he and his mother have some joint stock investments, }
+autolink_nodes 106 107 nucleus attribution  5108
+create-a-node-here really 40.184 108 {but the overall economy is his chief worry.}
+nextSentence really
+#autolink_nodes 5108 108 nucleus concession  5109
+#UNDID
+autolink_nodes 107 108 nucleus concession  5109
+create-a-node-here really 42.44 109 { \n\n"These high rollers took a big bath today," }
+create-a-node-here really 42.74 110 {he said in his showroom, }
+autolink_nodes 109 110 satelite attribution  5110
+create-a-node-here really 42.180 111 {which is within a few miles of the multi-million dollar homes of some of Houston's richest citizens. }
+autolink_nodes 110 111 satelite-embedded elaboration-additional-e  5111
+create-a-node-here really 42.205 112 {"And I can tell you }
+create-a-node-here really 42.261 113 {that a high roller isn't going to come in tomorrow }
+create-a-node-here really 42.301 114 {and buy a Chrysler TC by Maserati."}
+nextSentence really
+autolink_nodes 113 114 multinuclear List  5112
+autolink_nodes 112 5112 nucleus attribution  5113
+autolink_nodes 5110 5113 satelite evaluation-s  5114
+autolink_nodes 5108 5114 satelite elaboration-additional  5115
+autolink_nodes 105 5115 satelite example  5116
+autolink_nodes 5081 5107 satelite elaboration-additional  5117
+autolink_nodes 5095 5117 multinuclear Topic-Drift above 5118
+autolink_nodes 5118 5116 multinuclear Topic-Drift below 5118
+create-a-node-here really 42.345 115 { And, finally, there were the gloaters.}
+nextSentence really
+create-a-node-here really 42.370 116 { "I got out in 1987.}
+nextSentence really
+create-a-node-here really 43.13 117 {\nEverything," }
+create-a-node-here really 43.74 118 {said Pascal Antori, an Akron, Ohio, plumbing contractor }
+autolink_nodes 116 117 satelite elaboration-additional  5119
+autolink_nodes 5119 118 satelite attribution  5120
+create-a-node-here really 43.104 119 {who was visiting Chicago }
+#create-a-node-here really 43.167 120 {and stopped by Fidelity Investments' LaSalle Street office}
+#UNDID
+create-a-node-here really 43.169 120 {and stopped by Fidelity Investments' LaSalle Street office. }
+autolink_nodes 119 120 multinuclear Temporal-Same-Time  5121
+autolink_nodes 118 5121 satelite-embedded elaboration-object-attribute-e  5122
+create-a-node-here really 43.193 121 {"I just stopped by }
+create-a-node-here really 43.205 122 {to see }
+autolink_nodes 121 122 satelite reason  5123
+#create-a-node-here really 43.219 123 {how much }
+#create-a-node-here really 43.241 124 {I would have lost}
+#UNDID
+#create-a-node-here really 43.243 124 {I would have lost."}
+#nextSentence really
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 43.238 123 {how much I would have lost."}
+nextSentence really
+autolink_nodes 122 123 nucleus attribution  5124
+autolink_nodes 5120 5123 satelite elaboration-additional  5125
+autolink_nodes 115 5125 satelite example  5126
+create-a-node-here really 45.34 124 { \n\nWould Mr. Antori ever get back in?}
+nextSentence really
+create-a-node-here really 45.57 125 { "Are you kidding!}
+nextSentence really
+create-a-node-here really 45.87 126 { When it comes to money: }
+create-a-node-here really 45.122 127 {Once bitten, 2,000 times shy."}
+nextSentence really
+autolink_nodes 126 127 nucleus circumstance  5127
+autolink_nodes 125 5127 multinuclear List  5128
+autolink_nodes 124 5128 multinuclear Question-Answer  5129
+autolink_nodes 5125 5129 satelite elaboration-additional  5130
+autolink_nodes 5118 5126 multinuclear Topic-Drift below 5130
+disconnect_node 5060 modify
+autolink_nodes 5059 5060 satelite analogy  5131
+disconnect_node 5016 modify
+autolink_nodes 5005 5016 satelite antithesis below 5132
+disconnect_node 29 modify
+autolink_nodes 28 29 satelite elaboration-additional  5133
+disconnect_node 79 modify
+autolink_nodes 78 79 satelite elaboration-general-specific below 5134

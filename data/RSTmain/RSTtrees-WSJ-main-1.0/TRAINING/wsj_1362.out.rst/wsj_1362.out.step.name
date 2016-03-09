@@ -1,0 +1,77 @@
+nextSentence really
+create-a-node-here really 2.18 1 {\nDetrex Corp. said }
+create-a-node-here really 2.31 2 {a reserve }
+create-a-node-here really 2.53 3 {it is establishing }
+create-a-node-here really 2.115 4 {to cover expected pollution cleanup costs at an Ohio plant }
+create-a-node-here really 2.171 5 {reduced its third-quarter net income by $1.9 million.}
+nextSentence really
+create-a-node-here really 4.8 6 { \n\nDetrex, }
+create-a-node-here really 4.57 7 {which has annual sales of about $100 million, }
+create-a-node-here really 4.76 8 {declined to say }
+create-a-node-here really 4.124 9 {if it would post a loss in the third quarter.}
+nextSentence really
+showText really
+create-a-node-here really 5.78 10 {\nThe Southfield, Mich.-based company earned $774,000 in the quarter last year. }
+create-a-node-here really 7.53 11 {\n\nDetrex is setting aside $3.1 million for the cleanup,}
+create-a-node-here really 7.67 12 { but said }
+create-a-node-here really 7.133 13 {the reserve reduced its quarterly income by only $1.9 million }
+create-a-node-here really 7.168 14 {because of tax considerations. }
+create-a-node-here really 9.35 15 {\n\nIn addition, the manufacturer said }
+create-a-node-here really 9.76 16 {it signed a consent decree with Ohio }
+create-a-node-here really 9.194 17 {to build a $1.4 million pollution-control facility at the Ashtabula chemical manufacturing plant by Aug. 1, 1990. }
+create-a-node-here really 11.12 18 {\n\nDetrex said }
+create-a-node-here really 11.51 19 {it is one of at least 17 companies }
+create-a-node-here really 11.103 20 {notified by the Environmental Protection Agency }
+create-a-node-here really 11.237 21 {that they may be potentially responsible for cleaning up the Fields Brook watershed near Detrex's Ashtabula plant at a total cost }
+create-a-node-here really 11.274 22 {the EPA estimates at $48 million }
+create-a-node-here really 11.290 23 {-- a figure }
+create-a-node-here really 11.306 24 {Detrex said }
+create-a-node-here really 11.333 25 {the companies dispute. }
+autolink_nodes 3 4 satelite-embedded purpose-e  5001
+autolink_nodes 2 5001 satelite-embedded elaboration-object-attribute-e  5002
+autolink_nodes 5 5002 multinuclear Same-Unit  5003
+autolink_nodes 5003 1 satelite attribution  5004
+autolink_nodes 6 7 satelite-embedded elaboration-additional-e  5005
+#autolink_nodes 8 9 nucleus attribution-n  5006
+#UNDID
+autolink_nodes 8 5005 multinuclear Same-Unit  5006
+autolink_nodes 9 5006 satelite attribution-n  5007
+autolink_nodes 12 13 nucleus attribution  5008
+autolink_nodes 11 5008 nucleus concession  5009
+autolink_nodes 13 14 satelite cause above 5009
+autolink_nodes 16 17 satelite-embedded purpose-e  5010
+autolink_nodes 5010 15 satelite attribution  5011
+autolink_nodes 20 21 nucleus attribution  5012
+autolink_nodes 19 5012 satelite-embedded elaboration-object-attribute-e  5013
+autolink_nodes 5013 18 satelite attribution  5014
+autolink_nodes 25 24 satelite attribution  5015
+autolink_nodes 23 5015 satelite-embedded elaboration-object-attribute-e  5016
+autolink_nodes 22 5016 satelite-embedded elaboration-additional-e  5017
+autolink_nodes 21 5017 satelite-embedded elaboration-object-attribute-e below 5018
+collapsed_nodes {5012}
+autolink_nodes 5011 5014 satelite reason  5019
+collapsed_nodes {5012 5014}
+autolink_nodes 10 5007 multinuclear List  5020
+collapsed_nodes {5012 5014 5007}
+#autolink_nodes 5019 5009 multinuclear List  5021
+#UNDID
+autolink_nodes 5009 5020 satelite background  5021
+#autolink_nodes 5021 5004 satelite elaboration-general-specific  5022
+#UNDID
+autolink_nodes 5004 5021 satelite elaboration-object-attribute  5022
+collapsed_nodes {5012 5014 5007 5021}
+autolink_nodes 5022 5019 satelite elaboration-additional  5023
+collapsed_nodes {5012 5014 5007 5021 5019}
+collapsed_nodes {5012 5014 5019}
+disconnect_node 5020 disconnect
+disconnect_node 11 disconnect
+autolink_nodes 5008 11 multinuclear Contrast  5024
+disconnect_node 5019 disconnect
+disconnect_node 5024 disconnect
+disconnect_node 10 disconnect
+autolink_nodes 5007 10 satelite comparison  5025
+collapsed_nodes {}
+autolink_nodes 5025 5024 satelite elaboration-additional  5026
+autolink_nodes 5026 5019 satelite elaboration-additional  5027
+autolink_nodes 5027 5004 nucleus summary-n  5028
+collapsed_nodes {}

@@ -1,0 +1,287 @@
+nextSentence really
+create-a-node-here really 2.10 1 {\nIn a sign }
+create-a-node-here really 2.68 2 {the stock slump hasn't quieted Europe's takeover fever,}
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+nextSentence really
+create-a-node-here really 3.26 3 { Cie.\nFinanciere de Paribas said}
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+nextSentence really
+create-a-node-here really 3.149 4 { it intends to bid for one of France's other large financial and industrial holding companies, Cie. de Navigation Mixte.}
+nextSentence really
+autolink_nodes 5002 4 nucleus attribution  5003
+create-a-node-here really 5.12 5 { \n\nParibas said}
+autolink_nodes 5003 5 satelite summary-n  5004
+create-a-node-here really 5.21 6 { that }
+autolink_nodes 5 6 nucleus attribution  5005
+create-a-node-here really 5.91 7 {once it receives the go-ahead from French stock market authorities,}
+nextSentence really
+nextSentence really
+create-a-node-here really 5.177 8 { it will offer to boost its Navigation Mixte stake to 66.7% from the current 18.7%.}
+nextSentence really
+autolink_nodes 7 8 nucleus circumstance  5006
+autolink_nodes 5005 5006 nucleus attribution  5007
+nextSentence really
+create-a-node-here really 6.76 9 {\nIts cash-or-shares bid values Navigation Mixte at about 22.82 billion francs}
+autolink_nodes 5007 9 satelite elaboration-additional  5008
+nextSentence really
+create-a-node-here really 6.96 10 { ($3.62 billion),}
+autolink_nodes 9 10 satelite-embedded restatement-e  5009
+#disconnect_node 10 disconnect
+#autolink_nodes 5009 10 satelite-embedded restatement-e  5010
+#UNDID
+#UNDID
+create-a-node-here really 6.162 11 { making this one of France's largest-ever attempted takeovers.}
+autolink_nodes 5009 11 satelite cause  5010
+create-a-node-here really 7.8 12 {\nThe cost}
+autolink_nodes 5010 12 satelite elaboration-additional  5011
+create-a-node-here really 7.48 13 { of buying the additional 48% stake }
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5012
+nextSentence really
+create-a-node-here really 7.82 14 {would be 10.95 billion francs }
+autolink_nodes 5012 14 multinuclear Same-Unit  5013
+nextSentence really
+create-a-node-here really 7.102 15 {($1.74 billion).}
+nextSentence really
+autolink_nodes 14 15 satelite-embedded restatement-e  5014
+create-a-node-here really 9.94 16 { \n\nThe move would greatly boost Paribas's stake in the insurance, transport and food businesses, }
+autolink_nodes 5008 16 satelite elaboration-additional  5015
+create-a-node-here really 9.131 17 {where Navigation Mixte is strong.}
+nextSentence really
+autolink_nodes 16 17 satelite-embedded elaboration-additional-e  5016
+create-a-node-here really 10.92 18 {\nIt also would make Paribas a major French ally of West Germany's Allianz AG insurance group.}
+nextSentence really
+autolink_nodes 5016 18 multinuclear List  5017
+create-a-node-here really 12.69 19 { \n\nAllianz holds a 50% stake in Navigation Mixte's insurance interests, }
+collapsed_nodes {5017}
+collapsed_nodes {5017 5013}
+autolink_nodes 5015 19 satelite background  5018
+create-a-node-here really 12.98 20 {acquired three weeks ago.}
+nextSentence really
+autolink_nodes 19 20 satelite-embedded elaboration-additional-e  5019
+create-a-node-here really 13.53 21 {\nThose include Rhin et Moselle Vie and Via Assurances.}
+nextSentence really
+autolink_nodes 5019 21 satelite example  5020
+create-a-node-here really 14.44 22 {\nLong considered a potential takeover target,}
+autolink_nodes 5020 22 satelite circumstance  5021
+create-a-node-here really 14.76 23 { Navigation Mixte had hoped }
+autolink_nodes 22 23 nucleus background  5022
+create-a-node-here really 14.123 24 {Allianz would help protect it from raiders.}
+nextSentence really
+autolink_nodes 23 24 nucleus attribution  5023
+create-a-node-here really 15.29 25 {\nThat idea may have backfired.}
+nextSentence really
+autolink_nodes 5022 25 nucleus concession  5024
+create-a-node-here really 16.39 26 {\nParibas is Allianz's main French bank, }
+autolink_nodes 25 26 satelite explanation-argumentative below 5025
+create-a-node-here really 16.75 27 {and the Munich-based group said }
+autolink_nodes 26 27 multinuclear List  5026
+create-a-node-here really 16.106 28 {it intends to stay neutral.}
+nextSentence really
+autolink_nodes 27 28 nucleus attribution  5027
+create-a-node-here really 17.22 29 {\nNavigation Mixte said }
+autolink_nodes 5026 29 satelite elaboration-additional  5028
+create-a-node-here really 17.55 30 {it wouldn't have any comment }
+autolink_nodes 29 30 nucleus attribution  5029
+create-a-node-here really 17.91 31 {until its board meets Wednesday.}
+nextSentence really
+autolink_nodes 30 31 satelite circumstance below 5030
+create-a-node-here really 19.56 32 { \n\nBut Navigation Mixte is loosely held and hard to defend.}
+nextSentence really
+autolink_nodes 5028 32 nucleus concession  5031
+create-a-node-here really 19.98 33 { "The defensive options are limited," }
+autolink_nodes 32 33 satelite explanation-argumentative below 5032
+create-a-node-here really 19.187 34 {says Philippe Braye, a partner in portfolio management concern France Finance Quatre.}
+nextSentence really
+autolink_nodes 33 34 satelite attribution  5033
+create-a-node-here really 19.224 35 { "Who would bid against Paribas?"}
+nextSentence really
+autolink_nodes 5033 35 satelite rhetorical-question  5034
+create-a-node-here really 21.29 36 { \n\nIf the Paribas bid succeeds, }
+collapsed_nodes {5017 5013 5031}
+collapsed_nodes {5017 5013 5031 5024}
+collapsed_nodes {5017 5013 5031 5024 5021}
+autolink_nodes 5018 36 satelite interpretation-s  5035
+create-a-node-here really 21.74 37 {it will be the second time in two months }
+autolink_nodes 36 37 nucleus condition  5036
+create-a-node-here really 21.150 38 {a big French investment banking group has snapped up an insurance group.}
+nextSentence really
+autolink_nodes 37 38 satelite-embedded elaboration-object-attribute-e below 5037
+nextSentence really
+create-a-node-here really 23.102 39 {\nLast month, Paribas's archrival, Cie.\nFinanciere de Suez, won a battle for Groupe Victoire, France's second-largest private-sector insurer, }
+autolink_nodes 5036 39 satelite circumstance  5038
+create-a-node-here really 23.176 40 {which itself had just acquired West Germany's Colonia Versicherung AG.}
+nextSentence really
+autolink_nodes 39 40 satelite-embedded elaboration-additional-e  5039
+create-a-node-here really 24.62 41 {\nThat complex bid was billed as France's largest takeover ever }
+autolink_nodes 5039 41 satelite elaboration-additional  5040
+create-a-node-here really 24.97 42 {(this one is slightly smaller).}
+nextSentence really
+autolink_nodes 41 42 satelite comparison  5041
+create-a-node-here really 25.117 43 {\nMoreover, Suez had just finished winning an even larger battle last year for control of Societe Generale de Belgique.}
+nextSentence really
+autolink_nodes 5040 43 satelite elaboration-additional  5042
+create-a-node-here really 27.18 44 { \n\nParibas officials,}
+autolink_nodes 5042 44 satelite elaboration-additional  5043
+create-a-node-here really 27.66 45 { once considered France's toughest bankers, }
+autolink_nodes 44 45 satelite-embedded elaboration-additional-e  5044
+create-a-node-here really 27.122 46 {felt abashed at Suez's success and its rapid growth.}
+nextSentence really
+autolink_nodes 5044 46 multinuclear Same-Unit  5045
+create-a-node-here really 28.27 47 {\nAlthough Paribas denies it,}
+autolink_nodes 5043 47 satelite elaboration-additional  5046
+create-a-node-here really 28.45 48 { analysts say }
+autolink_nodes 47 48 nucleus antithesis  5047
+create-a-node-here really 28.163 49 {the new bid in part simply reflects the continuing rivalry between France's two largest investment banking groups.}
+nextSentence really
+autolink_nodes 48 49 nucleus attribution  5048
+create-a-node-here really 30.61 50 { \n\nIt also reflects the broader pressure on companies in Europe }
+autolink_nodes 5047 50 multinuclear List  5049
+create-a-node-here really 30.75 51 {to keep up}
+autolink_nodes 50 51 satelite-embedded elaboration-object-attribute-e  5050
+create-a-node-here really 30.157 52 { as the European Community prepares to reduce internal trade barriers by 1992.}
+nextSentence really
+autolink_nodes 5050 52 satelite circumstance  5051
+create-a-node-here really 31.145 53 {\nAlthough Paribas Chairman Michel Francois-Poncet wouldn't rule out eventually selling all of Navigation Mixte's insurance operations to Allianz, }
+#autolink_nodes 5049 53 satelite elaboration-additional  5052
+#UNDID
+autolink_nodes 5049 53 satelite elaboration-additional  5052
+create-a-node-here really 31.175 54 {he stressed the potential }
+autolink_nodes 53 54 nucleus antithesis  5053
+create-a-node-here really 31.220 55 {for the two groups instead to cooperate. }
+autolink_nodes 54 55 satelite-embedded elaboration-object-attribute-e below 5054
+create-a-node-here really 33.22 56 {\n\nHe also told reporters}
+autolink_nodes 5053 56 satelite elaboration-additional  5055
+create-a-node-here really 33.79 57 { the acquisition would give Paribas fresh diversity, }
+autolink_nodes 56 57 nucleus attribution  5056
+create-a-node-here really 33.128 58 {bringing it properties in food and transport }
+autolink_nodes 57 58 satelite means below 5057
+create-a-node-here really 33.155 59 {where it has been weak.}
+nextSentence really
+autolink_nodes 58 59 satelite-embedded elaboration-additional-e  5058
+create-a-node-here really 34.131 60 {\nNavigation Mixte has investments in a sugar company, a food and canning concern, a bakery and bus and trucking firms, among others.}
+nextSentence really
+autolink_nodes 5056 60 satelite circumstance  5059
+create-a-node-here really 36.50 61 { \n\nAnd Navigation Mixte has a huge hidden attraction.}
+nextSentence really
+collapsed_nodes {5017 5013 5031 5024 5021 5059}
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049}
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049 5045}
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049 5045 5046}
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049 5045 5046 5018}
+autolink_nodes 5035 61 multinuclear Topic-Drift  5060
+create-a-node-here really 37.46 62 {\nPayment by Allianz for the insurance interests}
+autolink_nodes 61 62 satelite elaboration-general-specific  5061
+create-a-node-here really 37.70 63 { it has just bought }
+autolink_nodes 62 63 satelite-embedded elaboration-object-attribute-e  5062
+create-a-node-here really 37.154 64 {will help swell the French concern's treasury to an estimated 11 billion francs.}
+nextSentence really
+autolink_nodes 5062 64 multinuclear Same-Unit  5063
+create-a-node-here really 39.13 65 { \n\nParibas said }
+autolink_nodes 5061 65 satelite elaboration-additional  5064
+create-a-node-here really 39.78 66 {it will bid 1,850 francs a share for Navigation Mixte shares }
+autolink_nodes 65 66 nucleus attribution  5065
+#create-a-node-here really 39.150 67 {that qualify for a full yearly dividend, and 1,800 francs for those }
+#UNDID
+create-a-node-here really 39.123 67 {that qualify for a full yearly dividend, }
+autolink_nodes 66 67 satelite-embedded elaboration-object-attribute-e below 5066
+create-a-node-here really 39.154 68 {and 1,800 francs for those }
+autolink_nodes 5066 68 multinuclear Same-Unit  5067
+create-a-node-here really 39.174 69 {created July 1, }
+autolink_nodes 68 69 satelite-embedded elaboration-object-attribute-e  5068
+create-a-node-here really 40.0 70 {which are eligible for partial dividends.\n}
+autolink_nodes 5068 70 satelite-embedded elaboration-additional-e  5069
+create-a-node-here really 40.27 71 {Alternatively, it said }
+autolink_nodes 5065 71 multinuclear Otherwise  5070
+create-a-node-here really 40.152 72 {it would offer three Paribas shares, themselves eligible for dividends as of next Jan. 1, for one Navigation Mixte share.}
+nextSentence really
+autolink_nodes 71 72 nucleus attribution  5071
+create-a-node-here really 41.52 73 {\nParibas shares closed down 30 francs at 610 francs, }
+autolink_nodes 5070 73 satelite elaboration-additional  5072
+create-a-node-here really 41.114 74 {and Navigation Mixte shares were suspended at 1,800 francs}
+autolink_nodes 73 74 multinuclear List  5073
+create-a-node-here really 41.150 75 { pending the outcome of the bid.}
+nextSentence really
+autolink_nodes 74 75 satelite-embedded elaboration-additional-e  5074
+create-a-node-here really 43.13 76 { \n\nParibas said }
+autolink_nodes 5072 76 satelite elaboration-additional  5075
+create-a-node-here really 43.53 77 {it would publish details of its bid }
+autolink_nodes 76 77 nucleus attribution  5076
+create-a-node-here really 43.83 78 {once authorities clear it.}
+nextSentence really
+autolink_nodes 77 78 satelite circumstance below 5077
+create-a-node-here really 44.55 79 {\nThis is one of the first bids under new takeover rules }
+autolink_nodes 5076 79 satelite elaboration-additional  5078
+create-a-node-here really 44.138 80 {aimed at encouraging open bids instead of gradual accumulation of large stakes.}
+nextSentence really
+autolink_nodes 79 80 satelite-embedded elaboration-object-attribute-e  5079
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049 5045 5046 5018 5078}
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049 5045 5046 5018 5078 5075}
+create-a-node-here really 46.38 81 { \n\nSome financial sources said privately }
+autolink_nodes 5060 81 multinuclear Topic-Drift below 5079
+create-a-node-here really 46.65 82 {that Paribas blundered }
+autolink_nodes 81 82 nucleus attribution  5080
+create-a-node-here really 46.135 83 {in failing to move sooner for the insurance and industrial group, }
+autolink_nodes 82 83 satelite circumstance below 5081
+create-a-node-here really 46.147 84 {bidding }
+autolink_nodes 5081 84 satelite means below 5082
+create-a-node-here really 46.198 85 {only after speculation had pushed up the price.}
+nextSentence really
+autolink_nodes 84 85 satelite circumstance  5083
+create-a-node-here really 47.30 86 {\nMr. Francois-Poncet responded }
+autolink_nodes 5080 86 multinuclear Statement-Response  5084
+create-a-node-here really 47.98 87 {that his group initially intended to take only a minority stake,}
+autolink_nodes 86 87 nucleus attribution  5085
+create-a-node-here really 47.148 88 { striking an alliance with current management.}
+nextSentence really
+autolink_nodes 87 88 satelite purpose below 5086
+create-a-node-here really 48.100 89 {\nWhen notoriously independent-minded Navigation Mixte Chairman Marc Fournier rejected Paribas's offer}
+autolink_nodes 5085 89 satelite elaboration-additional  5087
+create-a-node-here really 48.153 90 { and began buying Paribas shares in retaliation, }
+autolink_nodes 89 90 multinuclear List  5088
+create-a-node-here really 48.183 91 {Mr. Francois-Poncet said, }
+autolink_nodes 5088 91 satelite attribution  5089
+#create-a-node-here really 48.222 92 {he felt obliged to bid for control.}
+#nextSentence really
+#autolink_nodes 5088 92 nucleus circumstance  5090
+#UNDID
+#autolink_nodes 91 92 nucleus attribution  5090
+#change_rel 5090 circumstance
+#UNDID
+#disconnect_node 5090 disconnect
+#disconnect_node 91 disconnect
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+create-a-node-here really 49.0 92 {he felt obliged to bid for control.\n}
+autolink_nodes 5089 92 nucleus circumstance  5090
+create-a-node-here really 49.22 93 {He told reporters }
+autolink_nodes 5090 93 satelite elaboration-additional  5091
+create-a-node-here really 49.45 94 {he had information }
+autolink_nodes 93 94 nucleus attribution  5092
+create-a-node-here really 49.146 95 {that Mr. Fournier was preparing to buy as much as 20% of Paribas, up from less than 5% currently.}
+nextSentence really
+autolink_nodes 94 95 satelite-embedded elaboration-object-attribute-e below 5093
+create-a-node-here really 51.44 96 { \n\nA bid against Paribas couldn't be ruled out.}
+nextSentence really
+autolink_nodes 5084 96 satelite elaboration-additional  5094
+create-a-node-here really 52.142 97 {\nFrance's second-largest government-owned insurance company, Assurances Generales de France, has been building its own Navigation Mixte stake, }
+autolink_nodes 96 97 satelite explanation-argumentative  5095
+create-a-node-here really 52.189 98 {currently thought to be between 8% and 10%.}
+nextSentence really
+autolink_nodes 97 98 satelite-embedded elaboration-additional-e  5096
+create-a-node-here really 53.14 99 {\nAnalysts said }
+autolink_nodes 5096 99 satelite explanation-argumentative  5097
+create-a-node-here really 53.35 100 {they don't think }
+autolink_nodes 99 100 nucleus attribution  5098
+create-a-node-here really 53.80 101 {it is contemplating a takeover, however,}
+#autolink_nodes 100 101 nucleus attribution  5099
+#UNDID
+autolink_nodes 100 101 nucleus attribution-n  5099
+create-a-node-here really 53.125 102 { and its officials couldn't be reached. }
+autolink_nodes 5099 102 multinuclear List  5100
+collapsed_nodes {5017 5013 5031 5024 5021 5059 5049 5045 5046 5018 5078 5075 5004}
+collapsed_nodes {}
+collapsed_nodes {5004}
+collapsed_nodes {}

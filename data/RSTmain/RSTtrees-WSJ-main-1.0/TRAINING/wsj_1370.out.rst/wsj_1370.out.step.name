@@ -1,0 +1,19 @@
+nextSentence really
+create-a-node-here really 2.24 1 {\nCray Research Inc. said }
+create-a-node-here really 2.146 2 {it sold one of its newest and largest computer systems, the Cray Y-MP/832, to the United Kingdom Meteorological Office.}
+nextSentence really
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 3.24 3 {\nThe system is the first }
+create-a-node-here really 3.112 4 {to be sold through the joint marketing agreement between Cray and Control Data Corp. }
+autolink_nodes 3 4 satelite-embedded elaboration-object-attribute-e  5002
+nextSentence really
+autolink_nodes 5001 5002 satelite elaboration-additional  5003
+create-a-node-here really 5.19 5 {\n\nThe supercomputer, }
+create-a-node-here really 5.53 6 {which lists for $18.5 million, }
+autolink_nodes 5 6 satelite-embedded elaboration-additional-e  5004
+create-a-node-here really 5.169 7 {will be installed in the first quarter of 1990 in the meteorological office's headquarters in Bracknell, England.}
+nextSentence really
+autolink_nodes 5004 7 multinuclear Same-Unit  5005
+#disconnect_node 5002 disconnect
+#UNDID
+autolink_nodes 5003 5005 satelite elaboration-general-specific  5006

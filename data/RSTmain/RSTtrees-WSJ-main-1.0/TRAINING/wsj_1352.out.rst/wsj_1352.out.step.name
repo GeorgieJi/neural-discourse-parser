@@ -1,0 +1,19 @@
+nextSentence really
+create-a-node-here really 2.27 1 {\nLDI Corp., Cleveland, said }
+create-a-node-here really 2.76 2 {it will offer $50 million in commercial paper }
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 2.114 3 {backed by lease-rental receivables.}
+nextSentence really
+autolink_nodes 2 3 satelite-embedded elaboration-object-attribute-e below 5002
+create-a-node-here really 3.26 4 {\nThe program matches funds }
+autolink_nodes 5001 4 satelite elaboration-general-specific  5003
+create-a-node-here really 3.108 5 {raised from the sale of the commercial paper with small to medium-sized leases.}
+nextSentence really
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5004
+create-a-node-here really 4.47 6 {\nLDI termed the paper "non-recourse financing," }
+autolink_nodes 5004 6 satelite elaboration-additional  5005
+create-a-node-here really 4.151 7 {meaning that investors would be repaid from the lease receivables, rather than directly by LDI Corp. }
+autolink_nodes 6 7 satelite-embedded elaboration-object-attribute-e  5006
+create-a-node-here really 4.241 8 {LDI leases and sells data-processing, telecommunications and other high-tech equipment.}
+nextSentence really
+autolink_nodes 5006 8 satelite elaboration-additional  5007

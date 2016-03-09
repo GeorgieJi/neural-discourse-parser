@@ -1,0 +1,363 @@
+nextSentence really
+create-a-node-here really 2.79 1 {\nPredicting the financial results of computer firms has been a tough job lately.}
+nextSentence really
+create-a-node-here really 4.118 2 { \n\nTake Microsoft Corp., the largest maker of personal computer software and generally considered an industry bellwether.}
+nextSentence really
+create-a-node-here really 5.60 3 {\nIn July, the company stunned Wall Street with the prediction}
+create-a-node-here really 5.162 4 { that growth in the personal computer business overall would be only 10% in 1990, a modest increase}
+create-a-node-here really 5.222 5 { when compared with the sizzling expansion of years past.}
+nextSentence really
+#autolink_nodes 4 5 satelite-embedded comparison-e  5001
+#UNDID
+autolink_nodes 4 5 satelite comparison  5001
+#autolink_nodes 3 5001 satelite-embedded elaboration-object-attribute-e  5002
+#UNDID
+autolink_nodes 3 5001 satelite-embedded elaboration-object-attribute-e  5002
+create-a-node-here really 7.9 6 { \n\nInvestors}
+create-a-node-here really 7.38 7 { -- taking this as a sign }
+create-a-node-here really 7.89 8 {that a broad industry slump was in the offing --}
+create-a-node-here really 7.100 9 { reacted}
+create-a-node-here really 7.135 10 { by selling the company's stock,}
+create-a-node-here really 7.166 11 { which lost $3.25 that day }
+create-a-node-here really 7.223 12 {to close at $52 in national over-the-counter trading.}
+autolink_nodes 11 12 satelite consequence-s  5003
+autolink_nodes 10 5003 satelite-embedded elaboration-object-attribute-e  5004
+autolink_nodes 9 5004 satelite means  5005
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5006
+#autolink_nodes 6 5006 satelite-embedded elaboration-object-attribute-e  5007
+#UNDID
+autolink_nodes 6 5006 satelite-embedded circumstance-e  5007
+autolink_nodes 5005 5007 multinuclear Same-Unit  5008
+autolink_nodes 5002 5008 satelite consequence-s  5009
+create-a-node-here really 9.37 13 { \n\nBut that was all of three months ago.}
+nextSentence really
+create-a-node-here really 11.26 14 { \n\nLast week, Microsoft said }
+create-a-node-here really 11.70 15 {it expects revenue for its first quarter}
+create-a-node-here really 11.89 16 { ended Sept. 30}
+nextSentence really
+create-a-node-here really 11.110 17 { to increase 34%.}
+collapsed_nodes {5008}
+autolink_nodes 5009 13 satelite elaboration-additional  5010
+autolink_nodes 15 16 satelite-embedded elaboration-object-attribute-e  5011
+autolink_nodes 5011 17 satelite-embedded elaboration-object-attribute-e  5012
+autolink_nodes 14 5012 nucleus attribution  5013
+create-a-node-here really 12.59 18 {\nThe announcement caused the company's stock to surge $6.50 }
+nextSentence really
+create-a-node-here really 12.90 19 {to close at $75.50 a share.}
+nextSentence really
+autolink_nodes 18 19 satelite consequence-s  5014
+autolink_nodes 5013 5014 satelite elaboration-additional  5015
+autolink_nodes 5015 5010 multinuclear Contrast  5016
+autolink_nodes 2 5016 satelite elaboration-additional  5017
+create-a-node-here really 14.65 20 { \n\nMicrosoft's surprising strength is one example of the difficulty }
+create-a-node-here really 14.86 21 {facing investors }
+create-a-node-here really 14.164 22 {looking for reassurances about the financial health of the computer firms.}
+nextSentence really
+autolink_nodes 20 21 satelite-embedded elaboration-object-attribute-e  5018
+autolink_nodes 21 22 satelite-embedded elaboration-object-attribute-e  5019
+create-a-node-here really 14.218 23 { "It's hard to know what to expect at this point,"}
+create-a-node-here really 14.280 24 { said Peter Rogers, an analyst at Robertson Stephens & Co.}
+autolink_nodes 23 24 satelite attribution  5020
+create-a-node-here really 14.324 25 { "The industry defies characterization."}
+nextSentence really
+autolink_nodes 5020 25 satelite elaboration-additional  5021
+autolink_nodes 5017 5018 satelite elaboration-additional  5022
+collapsed_nodes {5008 5016}
+autolink_nodes 1 5022 satelite elaboration-additional  5023
+disconnect_node 25 disconnect
+autolink_nodes 5020 25 satelite elaboration-additional  5024
+create-a-node-here really 16.14 26 { \n\nTo illustrate,}
+create-a-node-here really 16.35 27 { Mr. Rogers said }
+create-a-node-here really 16.76 28 {that of the 14 computer-related firms}
+create-a-node-here really 16.92 29 { he follows,}
+create-a-node-here really 16.209 30 { half will report for their most recent quarter earnings below last year's results, and half above those results.}
+nextSentence really
+disconnect_node 5022 modify
+autolink_nodes 1 5022 satelite example  5025
+autolink_nodes 28 29 satelite-embedded elaboration-object-attribute-e  5026
+#autolink_nodes 5026 30 satelite elaboration-set-member  5027
+#UNDID
+#autolink_nodes 5026 30 multinuclear Topic-Comment  5027
+#UNDID
+autolink_nodes 5026 30 multinuclear Topic-Comment  5027
+autolink_nodes 5027 27 satelite attribution  5028
+#autolink_nodes 5028 26 satelite manner  5029
+#UNDID
+autolink_nodes 5028 26 satelite purpose  5029
+autolink_nodes 5024 5029 satelite example  5030
+create-a-node-here really 18.21 31 { \n\nAmong those companies}
+create-a-node-here really 18.58 32 { expected to have a down quarter }
+create-a-node-here really 18.166 33 {are Hewlett-Packard Co., Amdahl Corp. and Sun Microsystems Inc., generally solid performers in the past.}
+autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5031
+autolink_nodes 33 5031 multinuclear Same-Unit  5032
+create-a-node-here really 19.87 34 {\nInternational Business Machines Corp. also is expected to report disappointing results.}
+nextSentence really
+#autolink_nodes 5032 34 satelite elaboration-additional  5033
+#UNDID
+autolink_nodes 5032 34 multinuclear List above 5033
+create-a-node-here really 20.96 35 {\nApple Computer Inc., meanwhile, is expected to show improved earnings for the period ended Sept.}
+autolink_nodes 5033 35 multinuclear Contrast above 5034
+autolink_nodes 30 5034 satelite elaboration-set-member  5035
+autolink_nodes 5025 5030 satelite elaboration-additional  5036
+create-a-node-here really 22.80 36 { \n\nAnother contradictory message comes from Businessland Inc., a computer retailer.}
+collapsed_nodes {5008 5016 5029}
+create-a-node-here really 23.30 37 {\nIn July, the company reported }
+create-a-node-here really 23.124 38 {that booming sales of new personal computers from Apple and IBM had resulted in net income}
+create-a-node-here really 23.170 39 { more than doubling for its fourth quarter}
+create-a-node-here really 23.226 40 { ended June 30 to $7.4 million, or 23 cents a share.}
+nextSentence really
+autolink_nodes 39 40 satelite-embedded elaboration-object-attribute-e  5037
+autolink_nodes 38 5037 satelite-embedded elaboration-object-attribute-e  5038
+autolink_nodes 37 5038 nucleus attribution  5039
+create-a-node-here really 25.50 41 { \n\nThis month, however, Businessland warned investors}
+create-a-node-here really 25.89 42 { that results for its first quarter}
+create-a-node-here really 25.108 43 { ended Sept. 30}
+create-a-node-here really 25.137 44 { hadn't met expectations.}
+nextSentence really
+autolink_nodes 42 43 satelite-embedded elaboration-object-attribute-e  5040
+autolink_nodes 44 5040 multinuclear Same-Unit  5041
+autolink_nodes 41 5041 nucleus attribution  5042
+create-a-node-here really 26.17 45 {\nThe company said }
+create-a-node-here really 26.122 46 {it expects earnings of 14 to 17 cents a share, down from 25 cents a share in the year-earlier period.}
+nextSentence really
+autolink_nodes 45 46 nucleus attribution  5043
+autolink_nodes 5042 5043 satelite elaboration-additional  5044
+autolink_nodes 5039 5044 multinuclear Contrast  5045
+autolink_nodes 36 5045 satelite elaboration-additional  5046
+collapsed_nodes {5008 5016 5029 5030}
+autolink_nodes 5036 5046 satelite example  5047
+collapsed_nodes {5008 5016 5029 5030 5045}
+collapsed_nodes {5008 5016 5045}
+collapsed_nodes {5008 5016 5045 5029}
+create-a-node-here really 28.36 47 { \n\nWhile the earnings picture confuses,}
+create-a-node-here really 28.55 48 { observers say }
+create-a-node-here really 28.75 49 {the major forces}
+create-a-node-here really 28.130 50 { expected to shape the industry in the coming year }
+create-a-node-here really 28.146 51 {are clearer.}
+nextSentence really
+autolink_nodes 49 50 satelite-embedded elaboration-object-attribute-e  5048
+autolink_nodes 51 5048 multinuclear Same-Unit  5049
+autolink_nodes 48 5049 nucleus attribution  5050
+autolink_nodes 5050 47 satelite antithesis  5051
+create-a-node-here really 30.46 52 { \n\nCompanies will continue to war over standards.}
+nextSentence really
+create-a-node-here really 31.78 53 {\nIn computer publishing, a battle over typefaces is hurting Adobe Systems Inc.,}
+create-a-node-here really 31.104 54 { which sells software }
+create-a-node-here really 31.132 55 {that controls the image }
+create-a-node-here really 31.170 56 {produced by printers and displays.}
+nextSentence really
+autolink_nodes 55 56 satelite-embedded elaboration-object-attribute-e  5052
+autolink_nodes 54 5052 satelite-embedded elaboration-object-attribute-e  5053
+#autolink_nodes 53 5053 satelite-embedded elaboration-additional-e  5054
+#disconnect_node 5053 modify
+#UNDID
+#disconnect_node 5053 modify
+#UNDID
+#disconnect_node 5053 disconnect
+#UNDID
+#UNDID
+autolink_nodes 53 5053 satelite-embedded elaboration-additional-e  5054
+create-a-node-here really 32.66 57 {\nUntil recently, Adobe had a lock on the market for image software,}
+create-a-node-here really 32.142 58 { but last month Apple, Adobe's biggest customer, and Microsoft rebelled.}
+#autolink_nodes 57 58 nucleus concession  5055
+#UNDID
+autolink_nodes 57 58 nucleus concession  5055
+create-a-node-here really 33.74 59 {\nNow the two firms are collaborating on an alternative to Adobe's approach,}
+create-a-node-here really 33.96 60 { and analysts say }
+create-a-node-here really 33.188 61 {they are likely to carry IBM, the biggest seller of personal computers, along with them.}
+nextSentence really
+autolink_nodes 60 61 nucleus attribution  5056
+autolink_nodes 5056 59 multinuclear List  5057
+autolink_nodes 5057 5055 satelite circumstance  5058
+autolink_nodes 5054 5058 satelite elaboration-additional  5059
+#disconnect_node 57 modify
+#autolink_nodes 58 57 satelite background  5060
+#UNDID
+#UNDID
+create-a-node-here really 35.69 62 { \n\nThe short-term outlook for Adobe's business, however, appears strong.}
+create-a-node-here really 36.55 63 {\nThe company is beginning to ship a new software program}
+create-a-node-here really 36.122 64 { that's being heralded as a boon for owners of low-end printers}
+create-a-node-here really 36.141 65 { sold by Apple.}
+nextSentence really
+autolink_nodes 64 65 satelite-embedded elaboration-object-attribute-e  5060
+autolink_nodes 63 5060 satelite-embedded elaboration-object-attribute-e  5061
+create-a-node-here really 37.66 66 {\nThe program is aimed at improving the quality of printed material.}
+nextSentence really
+autolink_nodes 5061 66 satelite elaboration-additional  5062
+create-a-node-here really 38.52 67 {\nJohn Warnock, Adobe's chief executive officer, said }
+nextSentence really
+create-a-node-here really 38.145 68 {the Mountain View, Calif., company has been receiving 1,000 calls a day about the product}
+create-a-node-here really 38.230 69 { since it was demonstrated at a computer publishing conference several weeks ago.}
+nextSentence really
+autolink_nodes 68 69 satelite circumstance  5063
+autolink_nodes 67 5063 nucleus attribution  5064
+autolink_nodes 5062 5064 satelite elaboration-additional  5065
+autolink_nodes 62 5065 satelite elaboration-additional  5066
+collapsed_nodes {5008 5016 5045 5029 5058}
+autolink_nodes 52 5059 satelite example  5067
+autolink_nodes 5059 5066 multinuclear Contrast  5068
+collapsed_nodes {5008 5016 5045 5029 5058 5068}
+create-a-node-here really 40.57 70 { \n\nMeanwhile, competition between various operating systems,}
+create-a-node-here really 40.110 71 { which control the basic functions of a computer,}
+create-a-node-here really 40.159 72 { spells trouble for software firms generally.}
+nextSentence really
+autolink_nodes 70 71 satelite-embedded elaboration-additional-e  5069
+autolink_nodes 72 5069 multinuclear Same-Unit  5070
+create-a-node-here really 40.188 73 { "It creates uncertainty }
+create-a-node-here really 40.222 74 {and usually slows down sales,"}
+create-a-node-here really 40.284 75 { said Russ Crabs, an analyst at Soundview Financial Group.}
+nextSentence really
+#autolink_nodes 73 74 satelite consequence-s  5071
+#UNDID
+autolink_nodes 73 74 multinuclear List  5071
+autolink_nodes 5071 75 satelite attribution  5072
+create-a-node-here really 42.15 76 { \n\nMr. Crabs said }
+create-a-node-here really 42.140 77 {this probably is behind the expected weak performance of Aldus Corp., maker of a widely used computer publishing program.}
+autolink_nodes 76 77 nucleus attribution  5073
+autolink_nodes 5072 5073 satelite example  5074
+nextSentence really
+create-a-node-here really 43.107 78 {\nHe expects Aldus to report earnings of 21 cents a share on revenues of $19.5 million for its third quarter,}
+nextSentence really
+create-a-node-here really 43.209 79 { compared with earnings of 30 cents a share on revenue of 20.4 million in the year-earlier period.}
+nextSentence really
+autolink_nodes 78 79 satelite comparison  5075
+autolink_nodes 5073 5075 satelite elaboration-additional  5076
+create-a-node-here really 44.48 80 {\nAldus officials couldn't be reached for comment.}
+nextSentence really
+autolink_nodes 5076 80 satelite elaboration-additional  5077
+collapsed_nodes {5008 5016 5045 5029 5058 5068 5077}
+autolink_nodes 5070 5074 satelite consequence-s  5078
+disconnect_node 5074 modify
+autolink_nodes 5070 5074 satelite elaboration-additional  5079
+collapsed_nodes {5008 5016 5045 5029 5058 5068 5077 5074}
+create-a-node-here really 46.85 81 { \n\nOn the other hand, the battle of the bus is expected to grow increasingly irrelevant.}
+nextSentence really
+create-a-node-here really 47.44 82 {\nA bus is the data highway within a computer.}
+nextSentence really
+autolink_nodes 81 82 satelite-embedded definition-e  5080
+create-a-node-here really 48.30 83 {\nIBM is backing one type of bus}
+create-a-node-here really 48.55 84 { called microchannel,}
+create-a-node-here really 48.105 85 { while the nine other leading computer makers,}
+create-a-node-here really 48.150 86 { including H-P and Compaq Computer Corp.,}
+create-a-node-here really 48.182 87 { have chosen another method.}
+nextSentence really
+autolink_nodes 83 84 satelite-embedded elaboration-additional-e  5081
+autolink_nodes 85 86 satelite-embedded elaboration-set-member-e  5082
+autolink_nodes 87 5082 multinuclear Same-Unit  5083
+autolink_nodes 5081 5083 multinuclear Contrast  5084
+create-a-node-here really 50.33 88 { \n\n"Users don't care about the bus,"}
+create-a-node-here really 50.92 89 { said Daniel Benton, an analyst at Goldman, Sachs & Co.}
+autolink_nodes 88 89 satelite attribution  5085
+create-a-node-here really 51.8 90 {\nHe said }
+create-a-node-here really 51.90 91 {Apple's family of Macintosh computers, for instance, uses four different buses}
+create-a-node-here really 51.122 92 { "and no one seems to mind."}
+nextSentence really
+autolink_nodes 91 92 satelite consequence-s  5086
+autolink_nodes 90 5086 nucleus attribution  5087
+autolink_nodes 5085 5087 satelite example  5088
+autolink_nodes 5088 5084 satelite antithesis  5089
+autolink_nodes 5080 5089 satelite elaboration-additional  5090
+collapsed_nodes {5008 5016 5045 5029 5058 5068 5077 5074 5089}
+#autolink_nodes 5079 5067 multinuclear List  5091
+#UNDID
+autolink_nodes 5079 5067 multinuclear List  5091
+autolink_nodes 5091 5090 multinuclear List below 5091
+autolink_nodes 5051 5091 satelite elaboration-additional  5092
+collapsed_nodes {5008 5016 5045 5029 5058 5068 5077 5074 5089 5091}
+autolink_nodes 5047 5092 satelite elaboration-additional  5093
+create-a-node-here really 53.47 93 { \n\nThe gap between winners and laggards will grow.}
+create-a-node-here really 54.98 94 {\nIn personal computers, Apple, Compaq and IBM are expected to tighten their hold on their business.}
+nextSentence really
+create-a-node-here really 55.65 95 {\nAt the same time, second-tier firms will continue to lose ground.}
+nextSentence really
+autolink_nodes 94 95 multinuclear Contrast  5094
+create-a-node-here really 57.82 96 { \n\nSome lagging competitors even may leave the personal computer business altogether.}
+nextSentence really
+autolink_nodes 95 96 satelite elaboration-additional  5095
+create-a-node-here really 58.56 97 {\nWyse Technology, for instance, is considered a candidate}
+create-a-node-here really 58.92 98 { to sell its troubled operation.}
+nextSentence really
+autolink_nodes 97 98 satelite-embedded elaboration-object-attribute-e  5096
+create-a-node-here really 58.116 99 { "Wyse has done well}
+create-a-node-here really 58.158 100 { establishing a distribution business,}
+create-a-node-here really 58.199 101 { but they haven't delivered products}
+create-a-node-here really 58.216 102 { that sell,"}
+create-a-node-here really 58.284 103 { said Kimball Brown, an analyst at Prudential-Bache Securities.}
+nextSentence really
+autolink_nodes 93 5094 satelite evidence  5097
+autolink_nodes 99 100 satelite manner  5098
+autolink_nodes 101 102 satelite-embedded elaboration-object-attribute-e  5099
+autolink_nodes 5099 5098 satelite antithesis  5100
+autolink_nodes 5100 103 satelite attribution  5101
+autolink_nodes 5096 5101 satelite elaboration-additional  5102
+create-a-node-here really 59.20 104 {\nMr. Brown estimates }
+create-a-node-here really 59.30 105 {Wyse,}
+create-a-node-here really 59.71 106 { whose terminals business is strong,}
+create-a-node-here really 59.131 107 { will report a loss of 12 cents a share for its quarter}
+create-a-node-here really 59.148 108 { ended Sept.}
+autolink_nodes 107 108 satelite-embedded elaboration-object-attribute-e  5103
+autolink_nodes 105 106 satelite-embedded elaboration-additional-e  5104
+#autolink_nodes 5103 5104 multinuclear Same-Unit  5105
+#UNDID
+autolink_nodes 5103 5104 multinuclear Same-Unit  5105
+autolink_nodes 104 5105 nucleus attribution  5106
+#autolink_nodes 5101 5106 satelite elaboration-additional  5107
+#UNDID
+autolink_nodes 5102 5106 satelite elaboration-additional  5107
+autolink_nodes 96 5107 satelite example  5108
+collapsed_nodes {5008 5016 5045 5029 5058 5068 5077 5074 5089 5091 5094}
+autolink_nodes 5093 5097 satelite elaboration-additional  5109
+create-a-node-here really 61.102 109 { \n\nPersonal-computer makers will continue to eat away at the business of more traditional computer firms.}
+create-a-node-here really 62.38 110 {\nEver-more powerful desk-top computers,}
+create-a-node-here really 62.104 111 { designed with one or more microprocessors as their "brains,"}
+create-a-node-here really 62.156 112 { are expected to increasingly take on functions}
+create-a-node-here really 62.221 113 { carried out by more expensive minicomputers and mainframes.}
+nextSentence really
+autolink_nodes 112 113 satelite-embedded elaboration-object-attribute-e  5110
+autolink_nodes 110 111 satelite-embedded elaboration-object-attribute-e  5111
+autolink_nodes 5110 5111 multinuclear Same-Unit  5112
+autolink_nodes 109 5112 satelite elaboration-additional  5113
+create-a-node-here really 64.10 114 { \n\n"The guys }
+create-a-node-here really 64.46 115 {that make traditional hardware }
+create-a-node-here really 64.112 116 {are really being obsoleted by microprocessor-based machines,"}
+create-a-node-here really 64.134 117 { said Mr. Benton.}
+nextSentence really
+autolink_nodes 114 115 satelite-embedded elaboration-object-attribute-e  5114
+autolink_nodes 116 5114 multinuclear Same-Unit  5115
+autolink_nodes 5115 117 satelite attribution  5116
+create-a-node-here really 66.26 118 { \n\nAs a result of this trend,}
+create-a-node-here really 66.169 119 { longtime powerhouses H-P, IBM and Digital Equipment Corp. are scrambling to counterattack with microprocessor-based systems of their own.}
+#nextSentence really
+#autolink_nodes 118 119 nucleus result  5117
+#UNDID
+#UNDID
+autolink_nodes 118 119 nucleus result  5117
+autolink_nodes 5116 5117 satelite elaboration-additional  5118
+create-a-node-here really 67.34 120 {\nBut they will have to act quickly.}
+nextSentence really
+autolink_nodes 5117 120 nucleus antithesis  5119
+create-a-node-here really 68.92 121 {\nMr. Benton expects Compaq to unveil a family of high-end personal computers later this year }
+create-a-node-here really 68.122 122 {that are powerful enough }
+create-a-node-here really 68.209 123 {to serve as the hub for communications within large networks of desk-top machines.}
+nextSentence really
+#autolink_nodes 122 123 nucleus enablement  5120
+#autolink_nodes 121 5120 satelite-embedded elaboration-object-attribute-e  5121
+#UNDID
+#UNDID
+autolink_nodes 122 123 satelite consequence-s  5120
+autolink_nodes 121 5120 satelite-embedded elaboration-object-attribute-e  5121
+autolink_nodes 120 5121 satelite reason below 5122
+create-a-node-here really 70.72 124 { \n\nA raft of new computer companies also has targeted this "server" market.}
+#autolink_nodes 5121 124 satelite elaboration-additional  5123
+#UNDID
+autolink_nodes 5119 124 satelite elaboration-additional  5123
+autolink_nodes 5113 5118 satelite elaboration-additional  5124
+autolink_nodes 5109 5124 satelite elaboration-additional  5125
+collapsed_nodes {5008 5016 5045 5058 5068 5077 5074 5089 5091 5094}
+collapsed_nodes {5008 5016 5058 5068 5077 5074 5089 5091 5094}
+collapsed_nodes {5008 5016 5094}
+collapsed_nodes {5008 5016}
+collapsed_nodes {}
+change_rel 5004 manner
+disconnect_node 5022 modify
+autolink_nodes 1 5022 satelite example below 5126

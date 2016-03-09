@@ -1,0 +1,70 @@
+nextSentence really
+create-a-node-here really 2.21 1 {\nA group of investors }
+create-a-node-here really 2.81 2 {led by Giant Group Ltd. and its chairman, Burt Sugarman, }
+create-a-node-here really 2.89 3 {said }
+create-a-node-here really 2.149 4 {it filed with federal antitrust regulators for clearance }
+create-a-node-here really 2.222 5 {to buy more than 50% of the stock of Rally's Inc., a fast-food company}
+create-a-node-here really 2.250 6 { based in Louisville, Ky.}
+nextSentence really
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+autolink_nodes 5001 3 multinuclear Same-Unit  5002
+autolink_nodes 5002 4 nucleus attribution  5003
+autolink_nodes 4 5 satelite purpose below 5004
+autolink_nodes 5 6 satelite elaboration-object-attribute  5005
+create-a-node-here really 5.0 7 { \n\nRally's operates and franchises about 160 fast-food restaurants throughout the U.S.\n}
+create-a-node-here really 5.47 8 {The company went public earlier this month, }
+create-a-node-here really 5.107 9 {offering 1,745,000 shares of common stock at $15 a share.}
+nextSentence really
+create-a-node-here really 6.51 10 {\nGiant has interests in cement making and newsprint.}
+nextSentence really
+autolink_nodes 5003 7 satelite elaboration-additional  5006
+#autolink_nodes 8 9 multinuclear List  5007
+#UNDID
+autolink_nodes 8 9 multinuclear Temporal-Same-Time  5007
+autolink_nodes 7 5007 satelite elaboration-additional  5008
+autolink_nodes 5008 10 satelite elaboration-additional  5009
+create-a-node-here really 8.125 11 { \n\nThe investor group includes Restaurant Investment Partnership, a California general partnership, and three Rally's directors:}
+create-a-node-here really 9.0 12 { Mr. Sugarman, James M. Trotter III and William E. Trotter II.\n}
+nextSentence really
+create-a-node-here really 9.99 13 {The group currently holds 3,027,330 Rally's shares, or 45.2% of its commmon shares outstanding.}
+nextSentence really
+create-a-node-here really 10.75 14 {\nGiant Group owned 22% of Rally's shares before the initial public offering.}
+nextSentence really
+create-a-node-here really 12.43 15 { \n\nA second group of three company directors, }
+create-a-node-here really 12.92 16 {aligned with Rally's founder James Patterson,}
+create-a-node-here really 12.144 17 { also is seeking control of the fast-food chain.}
+nextSentence really
+create-a-node-here really 13.81 18 {\nIt is estimated that the Patterson group controls more than 40% of Rally's stock.}
+nextSentence really
+create-a-node-here really 15.34 19 { \n\nRally officials weren't available }
+create-a-node-here really 15.64 20 {to comment late yesterday.}
+nextSentence really
+create-a-node-here really 17.13 21 { \n\nFor the year }
+create-a-node-here really 17.31 22 {ended July 2, }
+nextSentence really
+create-a-node-here really 17.122 23 {Rally had net income of $2.4 million, or 34 cents a share, on revenue of $52.9 million.}
+nextSentence really
+autolink_nodes 11 12 satelite elaboration-set-member  5010
+autolink_nodes 5010 13 satelite elaboration-additional  5011
+autolink_nodes 5011 14 satelite background  5012
+autolink_nodes 5009 5012 satelite elaboration-additional  5013
+autolink_nodes 15 16 satelite-embedded elaboration-object-attribute-e  5014
+autolink_nodes 5014 17 multinuclear Same-Unit  5015
+autolink_nodes 19 20 satelite consequence-s  5016
+autolink_nodes 5015 18 satelite elaboration-additional  5017
+autolink_nodes 5017 5016 satelite elaboration-additional  5018
+autolink_nodes 5012 5018 satelite elaboration-additional  5019
+autolink_nodes 21 22 satelite-embedded elaboration-object-attribute-e  5020
+autolink_nodes 5020 23 multinuclear Same-Unit  5021
+collapsed_nodes {5003}
+autolink_nodes 5006 5021 satelite elaboration-additional  5022
+collapsed_nodes {}
+change_rel 6 
+#disconnect_node 5005 disconnect
+#UNDID
+#disconnect_node 6 disconnect
+#autolink_nodes 5 6 satelite-embedded elaboration-object-attribute-e  5023
+#UNDID
+#UNDID
+disconnect_node 6 disconnect
+autolink_nodes 5 6 satelite-embedded elaboration-object-attribute-e  5023

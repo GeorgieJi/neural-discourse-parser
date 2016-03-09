@@ -1,0 +1,35 @@
+nextSentence really
+create-a-node-here really 2.27 1 {\nAEG AG and Siemens AG said }
+create-a-node-here really 2.124 2 {they will launch their previously announced joint venture for power semiconductors in January.}
+nextSentence really
+autolink_nodes 1 2 nucleus attribution  5001
+create-a-node-here really 4.46 3 { \n\nThe two West German electronics concerns said }
+create-a-node-here really 4.99 4 {they have set up European Power Semiconductor Co. }
+autolink_nodes 3 4 nucleus attribution  5002
+create-a-node-here really 4.141 5 {to merge their activities in the field.}
+nextSentence really
+autolink_nodes 4 5 satelite purpose below 5003
+create-a-node-here really 5.58 6 {\nAEG and Siemens each will hold a 50% stake in the venture.}
+nextSentence really
+autolink_nodes 5002 6 satelite elaboration-general-specific  5004
+nextSentence really
+#create-a-node-here really 7.65 7 { \n\nThe joint venture will have nominal capital of 50 million marks (}
+#create-a-node-here really 7.83 8 {$26.9 million) }
+#UNDID
+#UNDID
+create-a-node-here really 7.63 7 { \n\nThe joint venture will have nominal capital of 50 million marks}
+autolink_nodes 5004 7 satelite elaboration-additional  5005
+create-a-node-here really 7.82 8 { ($26.9 million)}
+autolink_nodes 7 8 satelite-embedded restatement-e  5006
+create-a-node-here really 7.104 9 { and 700 employees.}
+autolink_nodes 5006 9 multinuclear Same-Unit  5007
+create-a-node-here really 8.70 10 {\nIt will develop, produce and market high-performance electronic parts.}
+nextSentence really
+autolink_nodes 5005 10 satelite purpose  5008
+create-a-node-here really 10.52 11 { \n\nSiemens is West Germany's largest electronics group.}
+nextSentence really
+create-a-node-here really 11.78 12 {\nAEG is 80% owned by Daimler-Benz AG, the country's biggest industrial concern.}
+nextSentence really
+autolink_nodes 11 12 multinuclear List  5009
+autolink_nodes 5001 5008 satelite summary-n  5010
+autolink_nodes 5010 5009 satelite elaboration-additional  5011

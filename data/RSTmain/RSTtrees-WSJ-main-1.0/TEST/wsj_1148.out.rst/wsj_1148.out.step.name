@@ -1,0 +1,141 @@
+nextSentence really
+create-a-node-here really 2.106 1 {\nMobil Corp. is preparing to slash the size of its work force in the U.S., possibly as soon as next month, }
+create-a-node-here really 2.162 2 {say individuals familiar with the company's strategy.}
+nextSentence really
+autolink_nodes 1 2 satelite attribution  5001
+create-a-node-here really 4.34 3 { \n\nThe size of the cuts isn't known, }
+create-a-node-here really 4.105 4 {but they'll be centered in the exploration and production division, }
+autolink_nodes 3 4 nucleus antithesis  5002
+create-a-node-here really 4.209 5 {which is responsible for locating oil reserves, drilling wells and pumping crude oil and natural gas.}
+nextSentence really
+autolink_nodes 4 5 satelite-embedded elaboration-additional-e below 5003
+create-a-node-here really 6.36 6 { \n\nEmployees haven't yet been notified.}
+nextSentence really
+autolink_nodes 5001 5002 satelite elaboration-additional  5004
+autolink_nodes 5004 6 satelite elaboration-additional  5005
+create-a-node-here really 7.13 7 {\nSources said }
+create-a-node-here really 7.30 8 {that meetings }
+autolink_nodes 7 8 nucleus attribution  5006
+create-a-node-here really 7.65 9 {to discuss the staff reductions }
+autolink_nodes 8 9 satelite-embedded elaboration-object-attribute-e below 5007
+create-a-node-here really 7.142 10 {have been scheduled for Friday at Mobil offices in New Orleans and Denver.}
+nextSentence really
+#autolink_nodes 5007 10 multinuclear Same-Unit  5008
+#UNDID
+autolink_nodes 5007 10 multinuclear Same-Unit  5008
+autolink_nodes 5005 5006 satelite elaboration-additional  5009
+create-a-node-here really 9.47 11 { \n\nThis would be a second round of cuts by Mobil, }
+create-a-node-here really 10.0 12 {which along with other oil producers and refiners reduced its work force by 15% to 20% during the mid-1980s as part of an industrywide shakeout.\n}
+autolink_nodes 11 12 satelite-embedded elaboration-additional-e  5010
+create-a-node-here really 10.139 13 {Mobil's latest move could signal the beginning of further reductions by other oil companies in their domestic oil-producing operations.}
+nextSentence really
+disconnect_node 5002 modify
+autolink_nodes 5001 5002 satelite elaboration-general-specific below 5011
+disconnect_node 6 modify
+autolink_nodes 5011 6 satelite antithesis below 5012
+disconnect_node 5006 modify
+autolink_nodes 5012 5006 satelite temporal-after  5013
+autolink_nodes 5013 5010 satelite elaboration-additional  5014
+autolink_nodes 5014 13 satelite interpretation-s  5015
+disconnect_node 5010 disconnect
+autolink_nodes 13 5010 satelite explanation-argumentative  5016
+create-a-node-here really 12.117 14 { \n\nIn yesterday's third-quarter earnings report, the company alluded to a $40 million provision for restructuring costs }
+create-a-node-here really 12.174 15 {involving U.S. exploration and production operations.}
+nextSentence really
+autolink_nodes 14 15 satelite-embedded elaboration-object-attribute-e  5017
+create-a-node-here really 13.16 16 {\nThe report says }
+create-a-node-here really 13.83 17 {that "the restructuring will take place over a two-year period }
+autolink_nodes 16 17 nucleus attribution  5018
+create-a-node-here really 13.182 18 {and will principally involve the transfer and termination of employees in our U.S. operations."}
+nextSentence really
+autolink_nodes 17 18 multinuclear List  5019
+disconnect_node 5010 modify
+autolink_nodes 13 5010 satelite background  5020
+autolink_nodes 5017 5018 satelite elaboration-general-specific  5021
+create-a-node-here really 15.21 19 { \n\nA company spokesman, }
+create-a-node-here really 15.57 20 {reached at his home last night, }
+autolink_nodes 19 20 satelite-embedded elaboration-additional-e  5022
+create-a-node-here really 15.76 21 {would only say }
+create-a-node-here really 15.169 22 {that there will be a public announcement of the reduction program by the end of the week.}
+nextSentence really
+autolink_nodes 21 22 nucleus attribution  5023
+autolink_nodes 5022 5023 multinuclear Same-Unit  5024
+autolink_nodes 5021 5024 satelite comment  5025
+create-a-node-here really 17.20 23 { \n\nMost oil companies, }
+create-a-node-here really 17.40 24 {including Mobil,}
+autolink_nodes 23 24 satelite-embedded elaboration-set-member-e  5026
+create-a-node-here really 17.193 25 { have been reporting lower third-quarter earnings, largely as a result of lower earnings from chemicals as well as refining and marketing businesses.}
+nextSentence really
+autolink_nodes 5026 25 multinuclear Same-Unit  5027
+autolink_nodes 5025 5027 satelite circumstance  5028
+autolink_nodes 5015 5028 satelite explanation-argumentative  5029
+create-a-node-here really 19.47 26 { \n\nIndividuals familiar with Mobil's strategy say }
+create-a-node-here really 19.94 27 {that Mobil is reducing its U.S. work force }
+create-a-node-here really 19.131 28 {because of declining U.S. output.}
+nextSentence really
+autolink_nodes 27 28 satelite reason  5030
+autolink_nodes 26 5030 nucleus attribution  5031
+create-a-node-here really 20.22 29 {\nYesterday, Mobil said }
+create-a-node-here really 20.118 30 {domestic exploration and production operations had a $16 million loss in the third quarter, }
+autolink_nodes 29 30 nucleus attribution  5032
+create-a-node-here really 20.178 31 {while comparable foreign operations earned $234 million.}
+nextSentence really
+autolink_nodes 30 31 satelite comparison below 5033
+autolink_nodes 5031 5032 satelite evidence  5034
+autolink_nodes 5029 5034 satelite explanation-argumentative  5035
+create-a-node-here really 22.137 32 { \n\nIndustrywide, oil production in this country fell by 500,000 barrels a day to 7.7 million barrels in the first eight months of this year.}
+nextSentence really
+create-a-node-here really 23.82 33 {\nDaily output is expected to decline by at least another 500,000 barrels next year.}
+nextSentence really
+#autolink_nodes 32 33 satelite evaluation-s  5036
+#UNDID
+autolink_nodes 32 33 satelite evaluation-s  5036
+#autolink_nodes 5034 5036 multinuclear Comparison  5037
+#UNDID
+autolink_nodes 5032 5036 multinuclear Comparison  5037
+create-a-node-here really 25.36 34 { \n\nSome Mobil executives were dismayed }
+create-a-node-here really 25.109 35 {that a reference to the cutbacks was included in the earnings report }
+create-a-node-here really 26.0 36 {before workers were notified.\n}
+autolink_nodes 35 36 satelite temporal-before  5038
+autolink_nodes 34 5038 nucleus attribution-n  5039
+create-a-node-here really 26.29 37 {One Mobil executive said }
+create-a-node-here really 26.61 38 {that the $40 million charge }
+autolink_nodes 37 38 nucleus attribution  5040
+create-a-node-here really 26.87 39 {related to the action }
+autolink_nodes 38 39 satelite-embedded elaboration-object-attribute-e below 5041
+create-a-node-here really 26.101 40 {indicates }
+autolink_nodes 5041 40 multinuclear Same-Unit  5042
+create-a-node-here really 26.155 41 {"a substantial" number of people will be involved.}
+nextSentence really
+autolink_nodes 40 41 nucleus attribution  5043
+autolink_nodes 5035 5039 satelite elaboration-additional  5044
+autolink_nodes 5044 5040 satelite interpretation-s  5045
+create-a-node-here really 27.47 42 {\nSome will likely be offered severance packages }
+create-a-node-here really 27.107 43 {while others will be transferred to overseas operations.}
+nextSentence really
+#autolink_nodes 42 43 multinuclear List  5046
+#UNDID
+autolink_nodes 42 43 multinuclear Contrast  5046
+autolink_nodes 5045 5046 satelite enablement  5047
+#disconnect_node 40 disconnect
+#disconnect_node 41 disconnect
+#UNDID
+#UNDID
+disconnect_node 5043 disconnect
+disconnect_node 40 disconnect
+autolink_nodes 5041 40 multinuclear Same-Unit  5048
+autolink_nodes 5048 41 nucleus attribution  5049
+disconnect_node 5006 modify
+autolink_nodes 5012 5006 satelite elaboration-additional below 5050
+disconnect_node 5023 disconnect
+disconnect_node 21 disconnect
+autolink_nodes 5022 21 multinuclear Same-Unit  5051
+#autolink_nodes 21 22 nucleus attribution  5052
+#UNDID
+autolink_nodes 5051 22 nucleus attribution  5052
+disconnect_node 24 modify
+autolink_nodes 23 24 satelite-embedded elaboration-general-specific-e  5053
+disconnect_node 5046 modify
+autolink_nodes 5045 5046 satelite means  5054
+disconnect_node 43 modify
+autolink_nodes 42 43 multinuclear List  5055

@@ -1,0 +1,86 @@
+nextSentence really
+create-a-node-here really 2.9 1 {\nInvestors}
+create-a-node-here really 2.50 2 { who bought stock with borrowed money }
+autolink_nodes 1 2 satelite-embedded elaboration-object-attribute-e  5001
+create-a-node-here really 2.80 3 {-- that is, "on margin" -- }
+autolink_nodes 2 3 satelite restatement  5002
+create-a-node-here really 2.113 4 {may be more worried than most }
+autolink_nodes 5001 4 multinuclear Same-Unit  5003
+create-a-node-here really 2.147 5 {following Friday's market drop.}
+nextSentence really
+autolink_nodes 5003 5 satelite circumstance  5004
+create-a-node-here really 4.86 6 { \n\nThat's because their brokers can require them to sell some shares or put up more cash }
+autolink_nodes 5004 6 multinuclear Cause-Result  5005
+create-a-node-here really 4.114 7 {to enhance the collateral}
+autolink_nodes 6 7 satelite purpose  5006
+create-a-node-here really 4.138 8 { backing their loans.}
+nextSentence really
+autolink_nodes 7 8 satelite-embedded elaboration-object-attribute-e  5007
+create-a-node-here really 5.112 9 {\nIn October 1987, these margin calls were thought to have contributed to the downward spiral of the stock market.}
+nextSentence really
+autolink_nodes 5006 9 satelite elaboration-additional  5008
+collapsed_nodes {5004}
+collapsed_nodes {5004 5008}
+create-a-node-here really 7.32 10 { \n\nTypically, a margin call occurs }
+autolink_nodes 5005 10 satelite interpretation-s  5009
+create-a-node-here really 7.100 11 {when the price of a stock falls below 75% of its original value.}
+nextSentence really
+autolink_nodes 10 11 satelite circumstance  5010
+create-a-node-here really 8.46 12 {\nIf the investor doesn't put up the extra cash }
+autolink_nodes 5010 12 satelite elaboration-additional  5011
+create-a-node-here really 8.71 13 {to satisfy the call, }
+#autolink_nodes 12 13 satelite purpose  5012
+#UNDID
+create-a-node-here really 8.132 14 {the brokerage firm may begin liquidating the securities. }
+autolink_nodes 12 13 satelite purpose  5012
+autolink_nodes 5012 14 nucleus condition  5013
+create-a-node-here really 10.34 15 {\n\nBut some big brokerage firms said }
+autolink_nodes 5011 15 nucleus concession  5014
+create-a-node-here really 10.71 16 {they don't expect major problems }
+autolink_nodes 15 16 nucleus attribution  5015
+create-a-node-here really 10.103 17 {as a result of margin calls.}
+nextSentence really
+autolink_nodes 16 17 satelite result below 5016
+create-a-node-here really 11.73 18 {\nMargin calls since Friday "have been higher than usual, but reasonable," }
+autolink_nodes 5015 18 satelite elaboration-additional below 5017
+create-a-node-here really 11.126 19 {a spokesman for Shearson Lehman Hutton Inc. said.}
+nextSentence really
+autolink_nodes 18 19 satelite attribution  5018
+change_rel 5018 example
+create-a-node-here really 13.93 20 { \n\nMerrill Lynch & Co. officials "don't expect {margin calls} to be as big a factor as in 1987" }
+autolink_nodes 5017 20 multinuclear List  5019
+collapsed_nodes {5004 5008 5018}
+collapsed_nodes {5004 5008 5018 5015}
+collapsed_nodes {5004 5008}
+disconnect_node 20 disconnect
+collapsed_nodes {5004 5008 18}
+autolink_nodes 5018 20 multinuclear List  5020
+collapsed_nodes {5004 5008}
+collapsed_nodes {5004 5008 5018}
+create-a-node-here really 13.159 21 {because fewer individual investors are buying stock on margin,}
+autolink_nodes 20 21 satelite result  5021
+create-a-node-here really 13.181 22 { a spokesman said.}
+nextSentence really
+autolink_nodes 5021 22 satelite attribution  5022
+collapsed_nodes {5004 5008 5018 5022}
+create-a-node-here really 15.119 23 { \n\nHugo Quackenbush, senior vice president at Charles Schwab Corp., the San Francisco-based discount brokerage firm, said }
+autolink_nodes 5020 23 multinuclear List below 5022
+create-a-node-here really 15.202 24 {he didn't expect any immediate problems with margin calls for Schwab customers.}
+nextSentence really
+autolink_nodes 23 24 nucleus attribution  5023
+create-a-node-here really 16.8 25 {\nHe said }
+autolink_nodes 5023 25 satelite elaboration-additional  5024
+create-a-node-here really 16.53 26 {Schwab had increased margin requirements }
+autolink_nodes 25 26 nucleus attribution  5025
+create-a-node-here really 16.95 27 {"so customers have more of a cushion."}
+nextSentence really
+autolink_nodes 26 27 satelite reason below 5026
+create-a-node-here really 16.110 28 { He added: }
+autolink_nodes 5025 28 satelite elaboration-additional  5027
+create-a-node-here really 16.161 29 {"We learned a lesson in 1987 about volatility."}
+nextSentence really
+autolink_nodes 28 29 nucleus attribution  5028
+collapsed_nodes {5004 5008 5018 5022 5009}
+collapsed_nodes {}
+collapsed_nodes {5009}
+collapsed_nodes {}

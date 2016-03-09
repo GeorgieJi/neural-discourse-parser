@@ -1,0 +1,356 @@
+nextSentence really
+create-a-node-here really 2.7 1 {\nWanted:}
+create-a-node-here really 2.24 2 { An investment}
+create-a-node-here really 2.83 3 { that's as simple and secure as a certificate of deposit}
+create-a-node-here really 2.107 4 { but offers a return }
+create-a-node-here really 2.138 5 {worth getting excited about.}
+nextSentence really
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5001
+autolink_nodes 3 5001 multinuclear List  5002
+autolink_nodes 2 5002 satelite-embedded elaboration-object-attribute-e  5003
+autolink_nodes 1 5003 satelite elaboration-additional  5004
+create-a-node-here really 4.24 6 { \n\nWith $150 billion of CDs}
+create-a-node-here really 4.48 7 { maturing this month,}
+create-a-node-here really 4.139 8 { a lot of people have been scouring the financial landscape for just such an investment.}
+nextSentence really
+autolink_nodes 6 7 satelite-embedded elaboration-object-attribute-e  5005
+autolink_nodes 8 5005 satelite circumstance  5006
+create-a-node-here really 6.9 9 { \n\nIn April,}
+create-a-node-here really 6.48 10 { when many of them bought their CDs,}
+create-a-node-here really 6.103 11 { six-month certificates were yielding more than 9%;}
+create-a-node-here really 6.118 12 { investors }
+create-a-node-here really 6.137 13 {willing to look}
+create-a-node-here really 6.199 14 { could find double-digit yields at some banks and thrifts.}
+nextSentence really
+autolink_nodes 12 13 satelite-embedded elaboration-object-attribute-e  5007
+autolink_nodes 14 5007 multinuclear Same-Unit  5008
+autolink_nodes 9 10 satelite-embedded circumstance-e  5009
+autolink_nodes 11 5009 multinuclear Same-Unit  5010
+autolink_nodes 5008 5010 satelite circumstance  5011
+create-a-node-here really 7.69 15 {\nNow, the nationwide average yield on a six-month CD is just under 8%,}
+create-a-node-here really 7.108 16 { and 8.5% is about the best around.}
+nextSentence really
+autolink_nodes 15 16 satelite elaboration-additional  5012
+autolink_nodes 5012 5011 satelite antithesis  5013
+create-a-node-here really 9.13 17 { \n\nBut investors}
+create-a-node-here really 9.42 18 { looking for alternatives}
+create-a-node-here really 9.70 19 { aren't finding it easy.}
+nextSentence really
+autolink_nodes 17 18 satelite-embedded elaboration-object-attribute-e  5014
+autolink_nodes 19 5014 multinuclear Same-Unit  5015
+autolink_nodes 5015 5013 satelite background  5016
+#autolink_nodes 5016 5006 satelite circumstance  5017
+#UNDID
+autolink_nodes 5016 5006 satelite circumstance  5017
+create-a-node-here really 10.73 20 {\nYields on most fixed-income securities are lower than several months ago.}
+create-a-node-here really 11.84 21 {\nAnd the stock market's recent gyrations are a painful reminder of the dangers there.}
+nextSentence really
+autolink_nodes 20 21 multinuclear List  5018
+autolink_nodes 5017 5018 satelite explanation-argumentative  5019
+create-a-node-here really 13.88 22 { \n\n"If you're looking for a significantly higher yield with the same level of risk as a CD,}
+create-a-node-here really 13.122 23 { you're not going to find it,"}
+create-a-node-here really 13.177 24 { says Washington financial planner Dennis M. Gurtz.}
+nextSentence really
+autolink_nodes 23 22 satelite condition  5020
+autolink_nodes 5020 24 satelite attribution  5021
+autolink_nodes 5019 5021 satelite elaboration-additional  5022
+create-a-node-here really 15.37 25 { \n\nThere are, however, some alternatives}
+create-a-node-here really 15.89 26 { that income-oriented investors should consider,}
+create-a-node-here really 15.118 27 { investment advisers say.}
+nextSentence really
+autolink_nodes 25 26 satelite-embedded elaboration-object-attribute-e  5023
+autolink_nodes 5023 27 satelite attribution  5024
+autolink_nodes 5024 5022 satelite antithesis  5025
+create-a-node-here really 16.89 28 {\nShort-term municipal bonds, bond funds and tax-deferred annuities are some of the choices}
+create-a-node-here really 16.106 29 { they mention}
+create-a-node-here really 16.136 30 { -- and not just as a way }
+create-a-node-here really 16.163 31 {to get a higher return.}
+nextSentence really
+autolink_nodes 30 31 satelite-embedded elaboration-object-attribute-e  5026
+autolink_nodes 28 29 satelite-embedded elaboration-object-attribute-e  5027
+autolink_nodes 5027 5026 satelite elaboration-additional  5028
+autolink_nodes 5025 5028 satelite example  5029
+create-a-node-here really 18.14 32 { \n\nIn particular,}
+create-a-node-here really 18.32 33 { advisers say,}
+create-a-node-here really 18.77 34 { investors may want to look at securities}
+create-a-node-here really 18.102 35 { that reduce the risk}
+create-a-node-here really 18.149 36 { that CD holders are confronting right now,}
+create-a-node-here really 18.240 37 { of having to reinvest the proceeds of maturing short-term certificates at lower rates.}
+nextSentence really
+autolink_nodes 35 36 satelite-embedded elaboration-object-attribute-e  5030
+autolink_nodes 5030 37 satelite-embedded elaboration-object-attribute-e  5031
+autolink_nodes 34 5031 satelite-embedded elaboration-object-attribute-e  5032
+autolink_nodes 32 33 satelite-embedded attribution-e  5033
+autolink_nodes 5032 5033 multinuclear Same-Unit  5034
+create-a-node-here really 20.56 38 { \n\nA mix of CDs and other holdings may make the most sense.}
+nextSentence really
+autolink_nodes 5034 38 nucleus problem-solution-n  5035
+create-a-node-here really 20.85 39 { "People should remember }
+create-a-node-here really 20.122 40 {their money isn't all or nothing }
+create-a-node-here really 20.237 41 {-- they don't need to be shopping for the one interest-rate-type investment and putting all their money in it,"}
+create-a-node-here really 20.286 42 { says Bethesda, Md., adviser Karen Schaeffer.}
+nextSentence really
+#autolink_nodes 40 41 satelite-embedded elaboration-object-attribute-e  5036
+#UNDID
+autolink_nodes 40 41 satelite restatement  5036
+autolink_nodes 39 5036 nucleus attribution  5037
+autolink_nodes 42 5037 nucleus attribution  5038
+autolink_nodes 38 5038 satelite elaboration-additional below 5039
+autolink_nodes 5029 5035 satelite elaboration-additional  5040
+create-a-node-here really 22.42 43 { \n\nHere's a look at some of the alternatives:}
+create-a-node-here really 24.22 44 { \n\nSHORT-TERM MUNICIPALS:}
+create-a-node-here really 24.93 45 { Investors with a heavy tax load should take out their calculators.}
+create-a-node-here really 25.113 46 {\nYields on municipal bonds can be higher than after-tax yields on CDs for maturities of perhaps one to five years.}
+nextSentence really
+create-a-node-here really 26.72 47 {\nThat's because municipal-bond interest is exempt from federal income tax}
+create-a-node-here really 26.139 48 { -- and from state and local taxes too, for in-state investors.}
+nextSentence really
+#autolink_nodes 47 48 satelite-embedded elaboration-additional-e  5041
+#autolink_nodes 46 5041 satelite explanation-argumentative  5042
+#create-a-node-here really 28.15 49 { \n\nFor an investor}
+#create-a-node-here really 28.45 50 { paying tax at a 33% rate,}
+#create-a-node-here really 28.125 51 { a seemingly puny 6% yield on a one-year muni is equivalent to a taxable 9%.}
+#nextSentence really
+#create-a-node-here really 29.44 52 {\nRates approach 6.5% on five-year municipals.}
+#nextSentence really
+#autolink_nodes 51 52 satelite elaboration-additional  5043
+#autolink_nodes 49 50 satelite-embedded elaboration-object-attribute-e  5044
+#autolink_nodes 5043 5044 multinuclear Same-Unit  5045
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+#UNDID
+autolink_nodes 47 48 satelite elaboration-additional  5041
+autolink_nodes 46 5041 satelite explanation-argumentative  5042
+create-a-node-here really 28.15 49 { \n\nFor an investor}
+create-a-node-here really 28.45 50 { paying tax at a 33% rate,}
+create-a-node-here really 28.125 51 { a seemingly puny 6% yield on a one-year muni is equivalent to a taxable 9%.}
+autolink_nodes 49 50 satelite-embedded elaboration-object-attribute-e  5043
+autolink_nodes 51 5043 multinuclear Same-Unit  5044
+create-a-node-here really 29.44 52 {\nRates approach 6.5% on five-year municipals.}
+nextSentence really
+autolink_nodes 51 52 satelite comparison  5045
+autolink_nodes 5042 5044 satelite elaboration-additional  5046
+autolink_nodes 45 5046 satelite elaboration-additional  5047
+create-a-node-here really 31.74 53 { \n\nSome of the more cautious CD holders might like "pre-refunded" municipals.}
+nextSentence really
+create-a-node-here really 32.39 54 {\nThese securities get top credit ratings}
+create-a-node-here really 32.89 55 { because the issuers have put aside U.S. bonds}
+create-a-node-here really 32.111 56 { that will be sold}
+create-a-node-here really 32.134 57 { to pay off holders}
+create-a-node-here really 32.171 58 { when the municipals are retired.}
+nextSentence really
+autolink_nodes 57 58 satelite circumstance  5048
+autolink_nodes 56 5048 satelite purpose  5049
+autolink_nodes 55 5049 satelite-embedded elaboration-object-attribute-e  5050
+autolink_nodes 54 5050 satelite explanation-argumentative  5051
+autolink_nodes 53 5051 satelite elaboration-additional  5052
+create-a-node-here really 34.19 59 { \n\n"It's a no-brainer:}
+create-a-node-here really 34.70 60 { You don't have to worry about diversification;}
+create-a-node-here really 34.114 61 { you don't have to worry about quality,"}
+create-a-node-here really 34.229 62 { says Steven J. Hueglin, executive vice president of the New York bond firm of Gabriele, Hueglin & Cashman Inc.}
+autolink_nodes 60 61 multinuclear List  5053
+autolink_nodes 5053 62 satelite attribution  5054
+autolink_nodes 5053 59 nucleus elaboration-general-specific  5055
+autolink_nodes 5052 5054 satelite elaboration-additional  5056
+create-a-node-here really 36.49 63 { \n\nConsider a "laddered" bond portfolio, with issues}
+create-a-node-here really 36.92 64 { maturing in, say, 1992, 1993 and 1994,}
+create-a-node-here really 36.159 65 { advises Malcolm A. Makin, a Westerly, R.I., financial planner.}
+nextSentence really
+autolink_nodes 63 64 satelite-embedded elaboration-object-attribute-e  5057
+autolink_nodes 5057 65 satelite attribution  5058
+create-a-node-here really 37.78 66 {\nThe idea is to have money rolling over each year at prevailing interest rates.}
+nextSentence really
+autolink_nodes 5058 66 satelite elaboration-additional  5059
+autolink_nodes 5056 5059 satelite elaboration-additional  5060
+autolink_nodes 5060 5047 satelite background  5061
+autolink_nodes 44 5061 satelite elaboration-general-specific  5062
+collapsed_nodes {5061}
+create-a-node-here really 39.11 67 { \n\nBOND FUNDS:}
+create-a-node-here really 39.55 68 { Bond mutual funds offer diversification}
+create-a-node-here really 39.89 69 { and are easy to buy and sell.}
+nextSentence really
+autolink_nodes 68 69 multinuclear List  5063
+create-a-node-here really 40.49 70 {\nThat makes them a reasonable option for investors}
+create-a-node-here really 40.101 71 { who will accept some risk of price fluctuation }
+create-a-node-here really 40.127 72 {in order to make a bet}
+create-a-node-here really 40.190 73 { that interest rates will decline over the next year or so.}
+nextSentence really
+autolink_nodes 72 73 satelite-embedded elaboration-object-attribute-e  5064
+autolink_nodes 71 5064 satelite purpose  5065
+autolink_nodes 70 5065 satelite-embedded elaboration-object-attribute-e  5066
+autolink_nodes 5063 5066 satelite interpretation-s  5067
+create-a-node-here really 42.54 74 { \n\nBuyers can look forward to double-digit annual returns}
+create-a-node-here really 42.77 75 { if they are right.}
+nextSentence really
+autolink_nodes 74 75 satelite condition  5068
+create-a-node-here really 43.55 76 {\nBut they will have disappointing returns or even losses}
+create-a-node-here really 43.91 77 { if interest rates rise instead.}
+nextSentence really
+autolink_nodes 76 77 satelite condition  5069
+autolink_nodes 5068 5069 multinuclear Contrast  5070
+autolink_nodes 5066 5070 satelite elaboration-additional  5071
+create-a-node-here really 44.90 78 {\nBond resale prices, and thus fund share prices, move in the opposite direction from rates.}
+nextSentence really
+create-a-node-here really 45.30 79 {\nThe price movements get bigger}
+create-a-node-here really 45.79 80 { as the maturity of the securities lengthens.}
+nextSentence really
+autolink_nodes 79 80 satelite circumstance  5072
+autolink_nodes 78 5072 satelite elaboration-additional  5073
+create-a-node-here really 47.77 81 { \n\nConsider, for instance, two bond funds from Vanguard Group of Investment Cos.}
+nextSentence really
+create-a-node-here really 47.127 82 { that were both yielding 8.6% on a recent day.}
+nextSentence really
+autolink_nodes 81 82 satelite-embedded elaboration-object-attribute-e  5074
+nextSentence really
+create-a-node-here really 48.124 83 {\nThe Short Term Bond Fund, with an average maturity of 2 1/2 years, would deliver a total return for one year of about 10.6% }
+create-a-node-here really 48.162 84 {if rates drop one percentage point}
+create-a-node-here really 48.203 85 { and a one-year return of about 6.6% }
+create-a-node-here really 48.240 86 {if rates rise by the same amount.}
+nextSentence really
+#autolink_nodes 85 86 satelite-embedded condition-e  5075
+#UNDID
+autolink_nodes 85 86 satelite-embedded condition-e  5075
+autolink_nodes 83 84 satelite-embedded condition-e  5076
+autolink_nodes 5075 5076 multinuclear Same-Unit  5077
+create-a-node-here really 49.156 87 {\nBut, in the same circumstances, the returns would be a more extreme 14.6% and 2.6% for the Vanguard Bond Market Fund, with its 12 1/2-year average maturity.}
+nextSentence really
+autolink_nodes 5077 87 multinuclear Contrast above 5078
+autolink_nodes 5074 5078 satelite elaboration-additional  5079
+autolink_nodes 5073 5079 satelite example  5080
+create-a-node-here really 51.41 88 { \n\n"You get equity-like returns" from bonds }
+create-a-node-here really 51.73 89 {if you guess right on rates,}
+create-a-node-here really 51.126 90 { says James E. Wilson, a Columbia, S.C., planner.}
+nextSentence really
+autolink_nodes 88 89 satelite condition  5081
+autolink_nodes 5081 90 satelite attribution  5082
+create-a-node-here really 52.31 91 {\nIf interest rates don't change,}
+create-a-node-here really 52.114 92 { bond fund investors' returns will be about equal to the funds' current yields.}
+nextSentence really
+autolink_nodes 91 92 nucleus condition  5083
+autolink_nodes 5082 5083 satelite elaboration-additional  5084
+autolink_nodes 5080 5084 satelite elaboration-additional  5085
+autolink_nodes 5067 5085 satelite elaboration-additional  5086
+autolink_nodes 67 5086 satelite elaboration-general-specific  5087
+collapsed_nodes {5061 5086}
+create-a-node-here really 54.19 93 { \n\nDEFERRED ANNUITIES:}
+create-a-node-here really 54.162 94 { These insurance company contracts feature some of the same tax benefits and restrictions as non-deductible individual retirement accounts:}
+create-a-node-here really 54.199 95 { Investment gains are compounded }
+create-a-node-here really 54.227 96 {without tax consequences}
+create-a-node-here really 54.257 97 { until money is withdrawn,}
+create-a-node-here really 54.309 98 { but a 10% penalty tax is imposed on withdrawals}
+create-a-node-here really 54.337 99 { made before age 59 1/2.}
+nextSentence really
+autolink_nodes 98 99 satelite-embedded elaboration-object-attribute-e  5088
+#autolink_nodes 95 96 satelite-embedded circumstance-e  5089
+#UNDID
+autolink_nodes 95 96 satelite circumstance  5089
+autolink_nodes 5089 97 satelite temporal-before  5090
+autolink_nodes 5088 5090 multinuclear Contrast  5091
+autolink_nodes 94 5091 satelite elaboration-additional  5092
+create-a-node-here really 55.93 100 {\nAimed specifically at CD holders are so-called CD-type annuities, or certificates of annuity.}
+create-a-node-here really 56.63 101 {\nAn interest rate is guaranteed for between one and seven years,}
+create-a-node-here really 56.101 102 { after which holders get 30 days }
+create-a-node-here really 56.141 103 {to choose another guarantee period }
+create-a-node-here really 56.188 104 {or to switch to another insurer's contract}
+create-a-node-here really 56.223 105 { without the surrender charges}
+create-a-node-here really 56.258 106 { that are common to annuities.}
+nextSentence really
+autolink_nodes 105 106 satelite-embedded elaboration-object-attribute-e  5093
+autolink_nodes 103 104 multinuclear Disjunction  5094
+autolink_nodes 5094 5093 satelite circumstance  5095
+#autolink_nodes 102 5095 satelite purpose  5096
+#UNDID
+autolink_nodes 102 5095 satelite purpose  5096
+autolink_nodes 101 5096 satelite temporal-before  5097
+autolink_nodes 100 5097 satelite elaboration-additional  5098
+create-a-node-here really 58.39 107 { \n\nSome current rates exceed those on CDs.}
+create-a-node-here really 59.155 108 {\nFor instance, a CD-type annuity from North American Co. for Life & Health Insurance, Chicago, offers 8.8% interest for one year or a 9% rate for two years.}
+nextSentence really
+autolink_nodes 107 108 satelite example  5099
+autolink_nodes 5098 5099 satelite explanation-argumentative  5100
+autolink_nodes 5092 5100 satelite elaboration-additional  5101
+autolink_nodes 93 5101 satelite elaboration-general-specific  5102
+collapsed_nodes {5061 5086 5101}
+create-a-node-here really 61.42 109 { \n\nAnnuities are rarely a good idea at age 35}
+create-a-node-here really 61.87 110 { because of the withdrawal restrictions.}
+nextSentence really
+collapsed_nodes {5061 5086}
+autolink_nodes 109 110 satelite explanation-argumentative  5103
+create-a-node-here really 62.42 111 {\nBut at age 55, "they may be a great deal,"}
+create-a-node-here really 62.93 112 { says Mr. Wilson, the Columbia, S.C., planner.}
+nextSentence really
+autolink_nodes 111 112 satelite attribution  5104
+autolink_nodes 5104 5103 satelite antithesis  5105
+autolink_nodes 5101 5105 satelite elaboration-additional  5106
+collapsed_nodes {5061 5086 5106}
+create-a-node-here really 64.19 113 { \n\nMONEY MARKET FUNDS:}
+create-a-node-here really 64.38 114 { That's right,}
+create-a-node-here really 64.70 115 { money market mutual funds.}
+nextSentence really
+autolink_nodes 114 115 nucleus comment  5107
+create-a-node-here really 65.49 116 {\nThe conventional wisdom is to go into money funds}
+create-a-node-here really 65.76 117 { when rates are rising}
+create-a-node-here really 65.125 118 { and shift out at times such as the present,}
+create-a-node-here really 65.159 119 { when rates seem headed down.}
+nextSentence really
+autolink_nodes 118 119 satelite circumstance  5108
+autolink_nodes 116 117 satelite circumstance  5109
+autolink_nodes 5108 5109 multinuclear List  5110
+change_rel 5108 Contrast
+create-a-node-here really 66.99 120 {\nWith average maturities of a month or so, money funds offer fixed share prices and floating returns}
+#create-a-node-here really 66.157 121 { that track market interest rates, with a slight lag.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 66.138 121 { that track market interest rates,}
+create-a-node-here really 66.162 122 { with a slight lag.}
+autolink_nodes 120 121 satelite-embedded elaboration-object-attribute-e  5111
+autolink_nodes 122 5111 multinuclear Same-Unit  5112
+autolink_nodes 5110 5112 satelite elaboration-additional  5113
+create-a-node-here really 68.75 123 { \n\nStill, today's highest-yielding money funds may beat CDs over the next year}
+create-a-node-here really 68.100 124 { even if rates fall,}
+create-a-node-here really 68.182 125 { says Guy Witman, an editor of the Bond Market Advisor newsletter in Atlanta.}
+nextSentence really
+autolink_nodes 123 124 satelite concession  5114
+autolink_nodes 125 5114 nucleus attribution  5115
+autolink_nodes 5113 5115 satelite antithesis  5116
+create-a-node-here really 69.115 126 {\nThat's because top-yielding funds currently offer yields almost 1 1/2 percentage points above the average CD yield.}
+nextSentence really
+autolink_nodes 5115 126 satelite explanation-argumentative  5117
+create-a-node-here really 71.113 127 { \n\nMr. Witman likes the Dreyfus Worldwide Dollar Money Market Fund, with a seven-day compound yield just under 9.5%.}
+nextSentence really
+create-a-node-here really 72.83 128 {\nA new fund, its operating expenses are being temporarily subsidized by the sponsor.}
+nextSentence really
+autolink_nodes 127 128 satelite elaboration-additional  5118
+autolink_nodes 5116 5118 satelite elaboration-additional  5119
+create-a-node-here really 74.97 129 { \n\nTry combining a money fund and an intermediate-term bond fund as a low-risk bet on falling rates,}
+create-a-node-here really 74.183 130 { suggests Back Bay Advisors Inc., a mutual fund unit of New England Insurance Co.}
+autolink_nodes 129 130 satelite attribution  5120
+create-a-node-here really 75.27 131 {\nIf rates unexpectedly rise,}
+create-a-node-here really 75.142 132 { the increasing return on the money fund will partly offset the lower-than-expected return from the bond fund.}
+nextSentence really
+autolink_nodes 131 132 nucleus condition  5121
+autolink_nodes 5120 5121 satelite explanation-argumentative  5122
+autolink_nodes 5119 5122 satelite elaboration-additional  5123
+autolink_nodes 5107 5123 satelite elaboration-general-specific  5124
+autolink_nodes 113 5124 satelite elaboration-general-specific  5125
+autolink_nodes 5102 5125 multinuclear List  5126
+autolink_nodes 5126 5087 multinuclear List below 5126
+autolink_nodes 5126 5062 multinuclear List below 5126
+autolink_nodes 43 5126 satelite elaboration-set-member  5127
+autolink_nodes 5040 5127 satelite elaboration-additional  5128
+autolink_nodes 5004 5128 satelite summary-n  5129
+collapsed_nodes {5061 5086}
+collapsed_nodes {5061}
+collapsed_nodes {}
+change_rel 10 temporal-same-time-e
+disconnect_node 5003 modify
+autolink_nodes 1 5003 satelite elaboration-additional below 5130

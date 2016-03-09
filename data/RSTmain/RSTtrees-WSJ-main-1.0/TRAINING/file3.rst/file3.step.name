@@ -1,0 +1,687 @@
+nextSentence really
+create-a-node-here really 3.25 1 {\n   Toni Johnson pulls a tape measure across the front of what was once\na stately Victorian home.}
+nextSentence really
+create-a-node-here really 4.47 2 {\n   A deep trench now runs along its north wall,}
+create-a-node-here really 4.59 3 { exposed }
+create-a-node-here really 5.66 4 {when the house\nlurched two feet off its foundation during last week's earthquake.}
+nextSentence really
+autolink_nodes 3 4 satelite consequence-s  5001
+autolink_nodes 2 5001 satelite-embedded elaboration-object-attribute-e  5002
+create-a-node-here really 6.32 5 {\n   A side porch was ripped away.}
+nextSentence really
+create-a-node-here really 7.53 6 {\n   The chimney is a pile of bricks on the front lawn.}
+nextSentence really
+create-a-node-here really 9.5 7 {\n   The remainder of the house leans precariously against a sturdy oak\ntree.}
+nextSentence really
+autolink_nodes 6 7 multinuclear List  5003
+autolink_nodes 5003 5 multinuclear List below 5003
+autolink_nodes 5003 5002 multinuclear List below 5003
+autolink_nodes 1 5003 satelite elaboration-additional  5004
+create-a-node-here really 10.39 8 {\n   The petite, 29-year-old Ms. Johnson,}
+create-a-node-here really 10.76 9 { dressed in jeans and a sweatshirt}
+create-a-node-here really 11.47 10 {\nas she slogs through the steady afternoon rain,}
+create-a-node-here really 12.26 11 { is a claims adjuster with\nAetna Life &amp; Casualty.}
+nextSentence really
+autolink_nodes 9 10 satelite circumstance  5005
+autolink_nodes 8 5005 satelite-embedded elaboration-object-attribute-e  5006
+autolink_nodes 11 5006 multinuclear Same-Unit  5007
+create-a-node-here really 13.67 12 {\n   She has been on the move almost incessantly since last Thursday,}
+create-a-node-here really 13.98 13 { when an army of adjusters,}
+create-a-node-here really 13.130 14 { employed by major insurers,}
+create-a-node-here really 14.18 15 { invaded the\nSan Francisco area}
+create-a-node-here really 15.26 16 { to help policyholders sift through the rubble and restore\nsome order to their lives.}
+nextSentence really
+autolink_nodes 15 16 satelite purpose  5008
+autolink_nodes 13 14 satelite-embedded elaboration-additional-e  5009
+autolink_nodes 5009 5008 multinuclear Same-Unit  5010
+autolink_nodes 12 5010 satelite circumstance  5011
+autolink_nodes 5007 5011 satelite elaboration-additional  5012
+create-a-node-here really 17.27 17 {\n   Equipped with cellular telephones, laptop computers, calculators\nand a pack of blank checks,}
+create-a-node-here really 17.54 18 { they parcel out money }
+create-a-node-here really 18.31 19 {so their clients can\nfind temporary living quarters,}
+create-a-node-here really 18.45 20 { buy food,}
+create-a-node-here really 18.72 21 { replace lost clothing,}
+create-a-node-here really 19.21 22 { repair\nbroken water heaters,}
+create-a-node-here really 19.46 23 { and replaster walls.}
+nextSentence really
+autolink_nodes 22 23 multinuclear List  5013
+autolink_nodes 5013 21 multinuclear List below 5013
+autolink_nodes 5013 20 multinuclear List below 5013
+autolink_nodes 5013 19 multinuclear List below 5013
+autolink_nodes 18 5013 satelite purpose  5014
+autolink_nodes 5014 17 satelite circumstance  5015
+#autolink_nodes 5010 5015 satelite elaboration-general-specific  5016
+#UNDID
+autolink_nodes 5010 5015 satelite elaboration-additional  5016
+autolink_nodes 5004 5012 satelite elaboration-additional  5017
+collapsed_nodes {5016}
+create-a-node-here really 20.31 24 {\n   Some of the funds will used }
+create-a-node-here really 20.66 25 {to demolish unstable buildings }
+create-a-node-here really 21.30 26 {and clear\nsites for future construction.}
+collapsed_nodes {}
+autolink_nodes 25 26 multinuclear List  5018
+autolink_nodes 24 5018 satelite purpose  5019
+autolink_nodes 5015 5019 satelite elaboration-additional  5020
+create-a-node-here really 23.21 27 {\n  Many adjusters are authorized to write checks for amounts up to\n$100,000 on the spot.}
+nextSentence really
+create-a-node-here really 24.36 28 {\n  They don't flinch at writing them.}
+nextSentence really
+autolink_nodes 27 28 satelite elaboration-additional  5021
+create-a-node-here really 25.17 29 {\n  "That's my job }
+create-a-node-here really 26.4 30 {-- get {policyholders} what they're entitled\nto,"}
+create-a-node-here really 26.49 31 { says Bill Schaeffer, a claims supervisor}
+nextSentence really
+create-a-node-here really 27.29 32 { who flew in from Aetna\n's Bridgeport, Conn., office.}
+nextSentence really
+autolink_nodes 29 30 satelite-embedded elaboration-object-attribute-e  5022
+#autolink_nodes 31 32 satelite-embedded elaboration-object-attribute-e  5023
+#UNDID
+autolink_nodes 31 32 satelite-embedded elaboration-additional-e  5023
+autolink_nodes 5022 5023 satelite attribution  5024
+autolink_nodes 5021 5024 satelite example  5025
+collapsed_nodes {5019}
+autolink_nodes 5020 5025 satelite elaboration-additional  5026
+collapsed_nodes {5019 5012}
+collapsed_nodes {5019 5012 5003}
+create-a-node-here really 28.21 33 {\n  The Victorian house}
+create-a-node-here really 28.56 34 { that Ms. Johnson is inspecting}
+create-a-node-here really 29.25 35 { has been deemed\nunsafe by town officials.}
+autolink_nodes 33 34 satelite-embedded elaboration-object-attribute-e  5027
+autolink_nodes 35 5027 multinuclear Same-Unit  5028
+create-a-node-here really 30.25 36 {\n  But she asks a workman }
+create-a-node-here really 30.60 37 {toting the bricks from the lawn}
+create-a-node-here really 31.47 38 { to give\nher a boost through an open first-floor window.}
+nextSentence really
+autolink_nodes 36 37 satelite-embedded elaboration-additional-e  5029
+autolink_nodes 38 5029 multinuclear Same-Unit  5030
+create-a-node-here really 32.43 39 {\n  Once inside, she spends nearly four hours}
+create-a-node-here really 33.35 40 { measuring and diagramming\neach room in the 80-year-old house,}
+create-a-node-here really 33.69 41 { gathering enough information }
+create-a-node-here really 34.33 42 {to estimate\nwhat it would cost to rebuild it.}
+nextSentence really
+autolink_nodes 41 42 satelite purpose  5031
+autolink_nodes 39 40 satelite manner  5032
+disconnect_node 42 disconnect
+autolink_nodes 42 41 satelite enablement  5033
+autolink_nodes 5032 5033 satelite elaboration-additional  5034
+create-a-node-here really 35.57 43 {\n  She snaps photos of the buckled floors and the plaster }
+create-a-node-here really 36.27 44 {that has\nfallen away from the walls.}
+nextSentence really
+autolink_nodes 43 44 satelite-embedded elaboration-object-attribute-e  5035
+autolink_nodes 5034 5035 satelite elaboration-additional  5036
+#autolink_nodes 5036 5030 multinuclear List  5037
+#UNDID
+autolink_nodes 5036 5030 multinuclear Sequence  5037
+#autolink_nodes 5028 5037 satelite elaboration-additional  5038
+#UNDID
+autolink_nodes 5037 5028 satelite circumstance  5038
+create-a-node-here really 37.25 45 {\n  While she works inside,}
+create-a-node-here really 37.67 46 { a tenant returns with several friends}
+create-a-node-here really 38.34 47 {\nto collect furniture and clothing.}
+autolink_nodes 46 47 satelite purpose  5039
+autolink_nodes 5039 45 satelite temporal-same-time  5040
+create-a-node-here really 40.12 48 {\n  One of the friends sweeps broken dishes and shattered glass from\na countertop}
+create-a-node-here really 40.74 49 { and starts to pack what can be salvaged from the kitchen.}
+nextSentence really
+autolink_nodes 48 49 multinuclear List  5041
+create-a-node-here really 41.61 50 {\n  Others grab books, records, photo albums, sofas and chairs,}
+create-a-node-here really 42.32 51 {\nworking frantically in the fear }
+create-a-node-here really 43.6 52 {that an aftershock will jolt the house\nagain.}
+nextSentence really
+autolink_nodes 51 52 satelite-embedded elaboration-object-attribute-e  5042
+autolink_nodes 50 5042 satelite elaboration-additional  5043
+autolink_nodes 5043 5041 multinuclear List  5044
+autolink_nodes 5040 5044 satelite elaboration-additional  5045
+autolink_nodes 5038 5045 multinuclear Temporal-Same-Time  5046
+autolink_nodes 5017 5046 satelite elaboration-additional  5047
+collapsed_nodes {5019 5012 5003 5045}
+collapsed_nodes {5019 5012 5003 5045 5038}
+create-a-node-here really 45.7 53 {\n  The owners, William and Margie Hammack, are luckier than many\nothers.}
+nextSentence really
+create-a-node-here really 47.15 54 {\n  A few years ago, Mrs. Hammack insisted on buying earthquake insurance\nfor this house,}
+create-a-node-here really 47.61 55 { which had been converted into apartments.}
+nextSentence really
+#autolink_nodes 54 55 satelite-embedded elaboration-object-attribute-e  5048
+#UNDID
+autolink_nodes 54 55 satelite-embedded elaboration-additional-e  5048
+create-a-node-here really 49.20 56 {\n  Only about 20% of California home and business owners carried\nearthquake coverage.}
+autolink_nodes 5048 56 satelite concession  5049
+create-a-node-here really 51.13 57 {\n  The Hammacks' own home, also in Los Gatos, suffered comparatively\nminor damage.}
+nextSentence really
+autolink_nodes 5049 57 multinuclear List  5050
+autolink_nodes 53 5050 satelite explanation-argumentative  5051
+autolink_nodes 5047 5051 satelite elaboration-additional  5052
+collapsed_nodes {5019 5012 5003 5045 5038 5051}
+create-a-node-here really 52.14 58 {\n  Ms. Johnson,}
+create-a-node-here really 52.87 59 { who works out of Aetna's office in Walnut Creek, an East Bay suburb,}
+create-a-node-here really 52.138 60 { is awed by the earthquake's destructive force.}
+nextSentence really
+autolink_nodes 58 59 satelite-embedded elaboration-additional-e  5053
+autolink_nodes 60 5053 multinuclear Same-Unit  5054
+create-a-node-here really 53.47 61 {\n  "It really brings you down to a human level,"}
+create-a-node-here really 53.61 62 { she says.}
+nextSentence really
+autolink_nodes 61 62 satelite attribution  5055
+autolink_nodes 5054 5055 satelite elaboration-additional  5056
+create-a-node-here really 54.41 63 {\n  "It's hard to accept all the suffering }
+create-a-node-here really 54.70 64 {people are going through,}
+create-a-node-here really 54.91 65 { but you have to.}
+nextSentence really
+autolink_nodes 63 64 satelite-embedded elaboration-object-attribute-e  5057
+autolink_nodes 65 5057 multinuclear Contrast  5058
+create-a-node-here really 55.15 66 {\n  If you don't,}
+create-a-node-here really 55.43 67 { you can't do your job."}
+nextSentence really
+autolink_nodes 66 67 nucleus condition  5059
+#autolink_nodes 5058 5059 satelite interpretation-s  5060
+#UNDID
+autolink_nodes 5058 5059 nucleus evaluation-n  5060
+autolink_nodes 5056 5060 satelite elaboration-additional  5061
+autolink_nodes 5052 5061 satelite elaboration-additional  5062
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061}
+create-a-node-here really 56.64 68 {\n  For Aetna and other insurers, the San Francisco earthquake hit}
+create-a-node-here really 57.51 69 {\nwhen resources in the field already were stretched.}
+#autolink_nodes 68 69 satelite circumstance  5063
+#UNDID
+autolink_nodes 68 69 satelite circumstance  5063
+create-a-node-here really 58.63 70 {\n  Most companies still are trying to sort through the wreckage }
+create-a-node-here really 59.46 71 {caused\nby Hurricane Hugo in the Carolinas last month.}
+nextSentence really
+autolink_nodes 70 71 satelite-embedded elaboration-object-attribute-e  5064
+create-a-node-here really 60.8 72 {\n  Aetna,}
+create-a-node-here really 60.46 73 { which has nearly 3,000 adjusters,}
+create-a-node-here really 61.47 74 { had deployed about 750\nof them in Charlotte, Columbia, and Charleston.}
+nextSentence really
+#autolink_nodes 72 73 satelite-embedded elaboration-additional-e  5065
+#UNDID
+autolink_nodes 72 73 satelite-embedded elaboration-object-attribute-e  5065
+autolink_nodes 74 5065 multinuclear Same-Unit  5066
+create-a-node-here really 62.11 75 {\n  Adjusters}
+create-a-node-here really 62.54 76 { who had been working on the East Coast}
+create-a-node-here really 62.63 77 { say }
+create-a-node-here really 63.65 78 {the insurer\nwill still be processing claims from that storm through December.}
+autolink_nodes 75 76 satelite-embedded elaboration-object-attribute-e  5067
+autolink_nodes 5067 77 multinuclear Same-Unit  5068
+autolink_nodes 5068 78 nucleus attribution  5069
+autolink_nodes 5066 5069 satelite elaboration-additional  5070
+autolink_nodes 5064 5070 satelite example  5071
+autolink_nodes 5071 5063 satelite circumstance  5072
+disconnect_node 69 modify
+autolink_nodes 68 69 satelite temporal-same-time  5073
+create-a-node-here really 65.7 79 {\n  It could take six to nine months to handle the earthquake-related\nclaims.}
+nextSentence really
+autolink_nodes 5072 79 satelite hypothetical  5074
+create-a-node-here really 66.59 80 {\n  When the earthquake rocked northern California last week,}
+nextSentence really
+create-a-node-here really 68.56 81 { Aetna\nsenior claims executives from the San Francisco area were at the company\n's Hartford, Conn., headquarters for additional training}
+create-a-node-here really 69.19 82 { on how to handle\nmajor catastrophes,}
+create-a-node-here really 69.46 83 { including earthquakes.}
+nextSentence really
+autolink_nodes 82 83 satelite-embedded elaboration-set-member-e  5075
+autolink_nodes 81 5075 satelite-embedded elaboration-object-attribute-e  5076
+autolink_nodes 5076 80 satelite temporal-same-time  5077
+collapsed_nodes {5019 5012 5003 5045 5038 5051}
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061}
+autolink_nodes 5077 5074 satelite circumstance  5078
+create-a-node-here really 70.50 84 {\n  Since commercial airline flights were disrupted,}
+create-a-node-here really 71.13 85 { the company chartered\nthree planes }
+create-a-node-here really 71.63 86 {to fly these executives back to the West Coast}
+create-a-node-here really 72.62 87 { and bring along\nportable computers, cellular phones and some claims adjusters.}
+nextSentence really
+autolink_nodes 86 87 multinuclear List  5079
+autolink_nodes 85 5079 satelite purpose  5080
+autolink_nodes 5080 84 satelite reason  5081
+autolink_nodes 5078 5081 satelite elaboration-additional  5082
+create-a-node-here really 73.27 88 {\n  Because of the difficulty}
+create-a-node-here really 73.56 89 { of assessing the damages}
+create-a-node-here really 74.11 90 { caused by the\nearthquake,}
+create-a-node-here really 75.34 91 { Aetna pulled together a team of its most experienced claims\nadjusters from around the country.}
+nextSentence really
+autolink_nodes 89 90 satelite-embedded elaboration-object-attribute-e  5083
+autolink_nodes 88 5083 satelite-embedded elaboration-object-attribute-e  5084
+autolink_nodes 91 5084 satelite reason  5085
+create-a-node-here really 76.49 92 {\n  Even so, few had ever dealt with an earthquake.}
+nextSentence really
+autolink_nodes 5085 92 multinuclear Contrast  5086
+create-a-node-here really 78.36 93 {\n  Some adjusters, like Alan Singer of San Diego, had been working\nin Charleston for nearly four weeks.}
+nextSentence really
+create-a-node-here really 79.33 94 {\n  He returned home last Thursday,}
+create-a-node-here really 80.0 95 { packed a bag with fresh clothes\n}
+create-a-node-here really 80.49 96 {and reported for duty Friday in Walnut Creek.}
+nextSentence really
+autolink_nodes 95 96 multinuclear List  5087
+autolink_nodes 5087 94 multinuclear List below 5087
+autolink_nodes 5087 93 satelite temporal-after  5088
+autolink_nodes 5086 5088 satelite example  5089
+autolink_nodes 5082 5089 satelite elaboration-additional  5090
+create-a-node-here really 81.52 97 {\n  Offices were set up in San Francisco and San Jose.}
+nextSentence really
+autolink_nodes 5090 97 satelite elaboration-additional  5091
+create-a-node-here really 82.33 98 {\n  In a few instances, Aetna knew }
+create-a-node-here really 83.10 99 {it would probably be shelling out\nbig bucks,}
+create-a-node-here really 83.63 100 { even before a client called or faxed in a claim.}
+nextSentence really
+autolink_nodes 99 100 satelite temporal-before  5092
+autolink_nodes 98 5092 nucleus attribution  5093
+create-a-node-here really 84.56 101 {\n  For example, officials at Walnut Creek office learned }
+create-a-node-here really 85.43 102 {that the\nAmfac Hotel near the San Francisco airport,}
+create-a-node-here really 85.75 103 { which is insured by Aetna,}
+create-a-node-here really 85.98 104 { was badly damaged}
+create-a-node-here really 85.148 105 { when they saw it on network television news.}
+nextSentence really
+#autolink_nodes 104 105 satelite temporal-same-time  5094
+#UNDID
+#autolink_nodes 104 105 multinuclear Temporal-Same-Time  5094
+#UNDID
+autolink_nodes 102 103 satelite-embedded elaboration-object-attribute-e  5094
+autolink_nodes 104 5094 multinuclear Same-Unit  5095
+autolink_nodes 101 5095 nucleus attribution  5096
+autolink_nodes 105 5096 multinuclear Temporal-Same-Time  5097
+autolink_nodes 5093 5097 satelite example  5098
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089}
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081}
+autolink_nodes 5091 5098 satelite elaboration-additional  5099
+create-a-node-here really 86.13 106 {\n  "The secret}
+create-a-node-here really 86.44 107 { to being a good adjuster }
+create-a-node-here really 86.62 108 {is counting,"}
+create-a-node-here really 87.44 109 { says Gerardo\nRodriguez, an Aetna adjuster from Santa Ana.}
+autolink_nodes 106 107 satelite-embedded elaboration-object-attribute-e  5100
+autolink_nodes 108 5100 multinuclear Same-Unit  5101
+autolink_nodes 5101 109 satelite attribution  5102
+create-a-node-here really 88.33 110 {\n  "You have to count everything."}
+nextSentence really
+create-a-node-here really 89.108 111 {\n  Adjusters must count the number of bathrooms, balconies, fireplaces, chimneys, microwaves and dishwashers.}
+nextSentence really
+autolink_nodes 110 111 satelite elaboration-general-specific  5103
+create-a-node-here really 91.48 112 {\n  But they must also assign a price to each of these items as well\nas to floors, wallcoverings, roofing and siding,}
+create-a-node-here really 92.18 113 { to come up with a total\nvalue for a house.}
+nextSentence really
+#autolink_nodes 112 113 satelite purpose  5104
+#UNDID
+autolink_nodes 112 113 nucleus enablement  5104
+autolink_nodes 5102 5103 satelite elaboration-additional  5105
+autolink_nodes 5103 5104 satelite elaboration-additional  5106
+create-a-node-here really 93.13 114 {\n  To do that,}
+create-a-node-here really 95.16 115 { they must think in terms of sheetrock by the square\nfoot, carpeting by the square yard, wallpaper by the roll, molding by\nthe linear foot.}
+disconnect_node 5104 disconnect
+disconnect_node 112 disconnect
+autolink_nodes 112 113 satelite purpose  5107
+#autolink_nodes 5103 5107 satelite elaboration-additional  5108
+#UNDID
+autolink_nodes 5103 5107 satelite elaboration-additional  5108
+autolink_nodes 115 114 satelite purpose  5109
+autolink_nodes 5107 5109 satelite elaboration-additional  5110
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098}
+autolink_nodes 5099 5105 satelite elaboration-additional  5111
+create-a-node-here really 96.128 116 {\n  Using a calculator and a unit-price guide for such jobs as painting, plumbing and roofing in each major region of the country,}
+create-a-node-here really 98.4 117 { adjusters\ncan figure out the value of a home in today's market and what it would\ncost}
+create-a-node-here really 98.24 118 { to rebuild it.}
+nextSentence really
+autolink_nodes 117 118 satelite-embedded elaboration-object-attribute-e  5112
+autolink_nodes 5112 116 satelite circumstance  5113
+create-a-node-here really 99.44 119 {\n  Sometimes repairs are out of the question.}
+nextSentence really
+create-a-node-here really 101.22 120 {\n  When Aetna adjuster Bill Schaeffer visited a retired couple in\nOakland last Thursday,}
+create-a-node-here really 101.66 121 { he found them living in a mobile home }
+create-a-node-here really 102.20 122 {parked in\nfront of their yard.}
+nextSentence really
+autolink_nodes 121 122 satelite-embedded elaboration-object-attribute-e  5114
+autolink_nodes 5114 120 satelite circumstance  5115
+create-a-node-here really 103.19 123 {\n  The house itself,}
+create-a-node-here really 104.40 124 { located about 50 yards from the collapsed section\nof double-decker highway Interstate 880,}
+create-a-node-here really 105.14 125 { was pushed about four feet off\nits foundation}
+create-a-node-here really 105.57 126 { and then collapsed into its basement.}
+nextSentence really
+autolink_nodes 125 126 multinuclear Sequence  5116
+autolink_nodes 123 124 satelite-embedded elaboration-additional-e  5117
+autolink_nodes 5117 5116 multinuclear Same-Unit  5118
+autolink_nodes 5115 5118 satelite elaboration-additional  5119
+create-a-node-here really 107.12 127 {\n  The next day, Mr. Schaeffer presented the couple with a check\nfor $151,000}
+create-a-node-here really 107.73 128 { to help them build a new home in the same neighborhood.}
+nextSentence really
+autolink_nodes 127 128 satelite purpose  5120
+create-a-node-here really 108.45 129 {\n  He also is working with a real-estate agent}
+create-a-node-here really 109.9 130 { to help find them an\napartment}
+create-a-node-here really 109.23 131 { to rent }
+create-a-node-here really 109.60 132 {while their home is being built.}
+nextSentence really
+autolink_nodes 130 131 satelite-embedded elaboration-object-attribute-e  5121
+#autolink_nodes 5121 132 satelite temporal-same-time  5122
+#UNDID
+autolink_nodes 131 132 satelite temporal-same-time  5122
+autolink_nodes 129 5121 satelite purpose  5123
+autolink_nodes 5120 5123 satelite elaboration-additional  5124
+#autolink_nodes 5119 5124 satelite elaboration-additional  5125
+#UNDID
+autolink_nodes 5119 5124 satelite elaboration-additional  5125
+autolink_nodes 119 5125 satelite example  5126
+autolink_nodes 5113 5126 multinuclear Contrast  5127
+autolink_nodes 5111 5127 satelite elaboration-additional  5128
+autolink_nodes 5128 5062 multinuclear Topic-Drift  5129
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098 5105}
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098 5105 5127}
+create-a-node-here really 110.23 133 {\n  Many of the adjusters}
+create-a-node-here really 110.65 134 { employed by Aetna and other insurers}
+create-a-node-here really 111.52 135 { have\nsome experience with construction work or carpentry.}
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098 5105 5127 5074}
+autolink_nodes 133 134 satelite-embedded elaboration-object-attribute-e  5130
+autolink_nodes 135 5130 multinuclear Same-Unit  5131
+create-a-node-here really 112.45 136 {\n  But such skills were alien to Toni Johnson.}
+nextSentence really
+autolink_nodes 5131 136 nucleus antithesis  5132
+create-a-node-here really 113.58 137 {\n  Four years ago, she was managing a film-processing shop }
+create-a-node-here really 114.14 138 {and was\ntotally bored.}
+nextSentence really
+autolink_nodes 137 138 multinuclear List  5133
+create-a-node-here really 115.20 139 {\n  A friend mentioned}
+create-a-node-here really 116.9 140 { that she might want to look into a position\nat Aetna,}
+create-a-node-here really 116.46 141 { if she was interested in a job }
+create-a-node-here really 117.4 142 {that would constantly challenge\nher.}
+nextSentence really
+autolink_nodes 141 142 satelite-embedded elaboration-object-attribute-e  5134
+autolink_nodes 140 5134 satelite condition  5135
+autolink_nodes 5135 139 satelite attribution  5136
+autolink_nodes 5136 5133 satelite circumstance  5137
+autolink_nodes 5137 5132 satelite circumstance  5138
+create-a-node-here really 118.16 143 {\n  She signed up,}
+create-a-node-here really 118.55 144 { starting as an "inside" adjuster,}
+create-a-node-here really 119.12 145 { who settles\nminor claims}
+create-a-node-here really 119.50 146 { and does a lot of work by phone.}
+nextSentence really
+autolink_nodes 145 146 multinuclear List  5139
+autolink_nodes 144 5139 satelite-embedded elaboration-object-attribute-e  5140
+autolink_nodes 143 5140 satelite-embedded elaboration-additional-e  5141
+autolink_nodes 5141 5138 satelite consequence-n  5142
+disconnect_node 5138 disconnect
+disconnect_node 5132 disconnect
+disconnect_node 5133 disconnect
+autolink_nodes 5132 5133 satelite elaboration-additional  5143
+autolink_nodes 5136 5143 satelite circumstance  5144
+autolink_nodes 5144 5141 nucleus consequence-n  5145
+create-a-node-here really 120.69 147 {\n  A year later, she moved to the commercial property claims division.}
+nextSentence really
+autolink_nodes 5145 147 multinuclear Sequence  5146
+nextSentence really
+create-a-node-here really 121.58 148 {\n  She spent a month at an Aetna school in Gettysburg, Pa.,}
+create-a-node-here really 122.33 149 { learning\nall about the construction trade,}
+create-a-node-here really 123.7 150 { including masonry, plumbing and electrical\nwiring.}
+nextSentence really
+autolink_nodes 149 150 satelite-embedded elaboration-set-member-e  5147
+autolink_nodes 148 5147 satelite-embedded elaboration-object-attribute-e  5148
+autolink_nodes 5146 5148 multinuclear Sequence below 5148
+create-a-node-here really 124.71 151 {\n  That was followed by three months at the Aetna Institute in Hartford,}
+create-a-node-here really 124.147 152 { where she was immersed in learning how to read and interpret policies.}
+nextSentence really
+autolink_nodes 151 152 satelite-embedded elaboration-object-attribute-e  5149
+autolink_nodes 5146 5149 multinuclear Sequence below 5149
+create-a-node-here really 125.39 153 {\n  Her new line of work has some perils.}
+nextSentence really
+create-a-node-here really 126.61 154 {\n  Recently, a contractor saved her from falling three stories}
+create-a-node-here really 127.56 155 { as\nshe investigated what remained of an old Victorian house}
+create-a-node-here really 128.9 156 { torched by an\narsonist.}
+nextSentence really
+autolink_nodes 155 156 satelite-embedded elaboration-object-attribute-e  5150
+autolink_nodes 154 5150 satelite circumstance  5151
+create-a-node-here really 129.25 157 {\n  "I owe that contractor.}
+nextSentence really
+create-a-node-here really 130.16 158 {\n  I really do," }
+create-a-node-here really 130.30 159 {she says.}
+nextSentence really
+autolink_nodes 158 159 satelite attribution  5152
+autolink_nodes 157 5152 satelite elaboration-additional  5153
+autolink_nodes 5151 5153 satelite elaboration-additional  5154
+autolink_nodes 153 5154 satelite evidence  5155
+autolink_nodes 5155 5146 satelite circumstance  5156
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098 5105 5127 5074 5146}
+create-a-node-here really 131.50 160 {\n  As Ms. Johnson stands outside the Hammack house }
+create-a-node-here really 132.17 161 {after winding up\nher chores there,}
+create-a-node-here really 132.58 162 { the house begins to creak and sway.}
+nextSentence really
+autolink_nodes 160 161 satelite temporal-after  5157
+autolink_nodes 162 5157 satelite temporal-same-time  5158
+create-a-node-here really 133.35 163 {\n  The ground shakes underneath her.}
+nextSentence really
+autolink_nodes 5158 163 multinuclear Temporal-Same-Time  5159
+create-a-node-here really 134.63 164 {\n  It is an aftershock, one of about 2,000 since the earthquake,}
+create-a-node-here really 135.24 165 {\nand it makes her uneasy.}
+nextSentence really
+autolink_nodes 5159 164 satelite explanation-argumentative  5160
+autolink_nodes 5160 165 satelite consequence-s  5161
+#create-a-node-here really 136.65 166 {\n  The next day, as she prepares a $10,000 check for the Hammacks,}
+#UNDID
+create-a-node-here really 136.15 166 {\n  The next day,}
+create-a-node-here really 136.70 167 { as she prepares a $10,000 check for the Hammacks,}
+create-a-node-here really 136.101 168 { which will cover the cost}
+create-a-node-here really 136.132 169 { of demolishing the house }
+create-a-node-here really 137.11 170 {and clearing away\nthe debris,}
+create-a-node-here really 137.50 171 { she jumps at the slightest noise.}
+autolink_nodes 169 170 multinuclear List  5162
+autolink_nodes 168 5162 satelite-embedded elaboration-object-attribute-e  5163
+autolink_nodes 167 5163 satelite-embedded elaboration-object-attribute-e  5164
+#autolink_nodes 171 5164 satelite-embedded circumstance-e  5165
+#UNDID
+autolink_nodes 171 5164 satelite-embedded circumstance-e  5165
+autolink_nodes 5165 166 multinuclear Same-Unit  5166
+autolink_nodes 5166 5161 multinuclear Sequence above 5167
+create-a-node-here really 138.36 172 {\n  On further reflection, she admits }
+create-a-node-here really 139.52 173 {that venturing inside the Hammacks\n' house the previous day wasn't" such a great idea."}
+nextSentence really
+autolink_nodes 172 173 nucleus attribution  5168
+autolink_nodes 5167 5168 satelite comment  5169
+autolink_nodes 5169 5156 satelite circumstance  5170
+disconnect_node 5168 disconnect
+autolink_nodes 5170 5168 satelite comment  5171
+create-a-node-here really 141.33 174 {\n  During her second meeting with the Hammacks, Ms. Johnson reviews\nexactly what their policy covers.}
+nextSentence really
+#autolink_nodes 5171 174 satelite elaboration-additional  5172
+#UNDID
+create-a-node-here really 142.66 175 {\n  They would like to retrieve some appliances on the second floor,}
+create-a-node-here really 142.82 176 { but wonder}
+create-a-node-here really 142.119 177 { if it's safe to venture inside.}
+autolink_nodes 176 177 nucleus attribution  5172
+autolink_nodes 175 5172 multinuclear Contrast  5173
+create-a-node-here really 143.25 178 {\n  Ms. Johnson tells them }
+create-a-node-here really 143.35 179 {that,}
+create-a-node-here really 143.77 180 { if the appliances can't be salvaged,}
+create-a-node-here really 143.124 181 { their policy covers the replacement cost.}
+nextSentence really
+#autolink_nodes 181 180 satelite-embedded condition-e  5174
+#UNDID
+autolink_nodes 180 181 nucleus-embedded condition-e  5174
+autolink_nodes 179 5174 multinuclear Same-Unit  5175
+autolink_nodes 5175 178 satelite attribution  5176
+autolink_nodes 5176 5173 multinuclear Problem-Solution  5177
+#create-a-node-here really 144.65 182 {\n  Mr. Hammack is eager to know what Aetna will pay for the house,}
+#create-a-node-here really 144.94 183 { which has to come down.}
+#UNDID
+#UNDID
+create-a-node-here really 144.31 182 {\n  Mr. Hammack is eager to know }
+create-a-node-here really 144.70 183 {what Aetna will pay for the house,}
+create-a-node-here really 144.99 184 { which has to come down.}
+autolink_nodes 183 184 satelite-embedded elaboration-object-attribute-e  5178
+autolink_nodes 182 5178 nucleus attribution  5179
+create-a-node-here really 145.54 185 {\n  "When will I get that check for a million dollars ?"}
+nextSentence really
+create-a-node-here really 145.69 186 { he jokes.}
+nextSentence really
+autolink_nodes 185 186 satelite attribution  5180
+autolink_nodes 5179 5180 satelite elaboration-additional  5181
+create-a-node-here really 146.53 187 {\n  The adjuster hadn't completed all the calculations,}
+create-a-node-here really 147.0 188 { but says\n}
+create-a-node-here really 147.38 189 {: "We 're talking policy limits."}
+nextSentence really
+autolink_nodes 188 189 nucleus attribution  5182
+autolink_nodes 5182 187 satelite antithesis  5183
+create-a-node-here really 148.38 190 {\n  In this case, that's about $250,000.}
+nextSentence really
+#autolink_nodes 5183 190 satelite elaboration-additional  5184
+#UNDID
+#autolink_nodes 189 190 satelite-embedded elaboration-additional-e below 5184
+#disconnect_node 190 modify
+#UNDID
+#UNDID
+autolink_nodes 189 190 satelite-embedded elaboration-general-specific-e below 5184
+autolink_nodes 5183 5181 multinuclear Question-Answer  5185
+create-a-node-here really 149.35 191 {\n  It suddenly dawns on Mr. Hammack }
+create-a-node-here really 150.60 192 {that rebuilding the house in Los\nGatos, an affluent community in Santa Clara County, may cost}
+create-a-node-here really 151.24 193 { more than\nAetna's policy will pay.}
+autolink_nodes 192 193 satelite comparison  5186
+autolink_nodes 191 5186 nucleus attribution  5187
+create-a-node-here really 152.31 194 {\n  "We can lose money on this," }
+create-a-node-here really 152.44 195 {he says.}
+nextSentence really
+autolink_nodes 194 195 satelite attribution  5188
+autolink_nodes 5187 5188 satelite hypothetical  5189
+create-a-node-here really 153.55 196 {\n  "And you didn't want me to buy earthquake insurance,"}
+create-a-node-here really 154.13 197 { says\nMrs. Hammack,}
+create-a-node-here really 154.45 198 { reaching across the table }
+create-a-node-here really 154.78 199 {and gently tapping his hand.}
+nextSentence really
+autolink_nodes 198 199 multinuclear List  5190
+autolink_nodes 196 197 satelite attribution  5191
+#autolink_nodes 5191 5190 satelite elaboration-additional  5192
+#UNDID
+autolink_nodes 197 5190 satelite elaboration-additional  5192
+create-a-node-here really 156.16 200 {\n  Earthquake insurance costs about $to $ annually for every\n$1,000 of value,}
+create-a-node-here really 156.65 201 { and high deductibles mean it generally pays}
+create-a-node-here really 157.23 202 { only when\nthere is a catastrophe.}
+autolink_nodes 201 202 satelite condition  5193
+autolink_nodes 200 5193 multinuclear List  5194
+create-a-node-here really 158.32 203 {\n  So, many Californians believe }
+create-a-node-here really 158.52 204 {they can get by}
+create-a-node-here really 158.69 205 { without it.}
+nextSentence really
+autolink_nodes 204 205 satelite circumstance  5195
+autolink_nodes 203 5195 nucleus attribution  5196
+autolink_nodes 5196 5194 satelite reason  5197
+create-a-node-here really 159.48 206 {\n  Even Ms. Johnson herself made that assumption.}
+nextSentence really
+create-a-node-here really 160.16 207 {\n  "I always knew}
+create-a-node-here really 160.54 208 { that the ` Big One ' was coming,}
+create-a-node-here really 161.14 209 { but not during\nmy lifetime," }
+create-a-node-here really 161.28 210 {she says.}
+nextSentence really
+autolink_nodes 208 209 multinuclear Contrast  5198
+autolink_nodes 207 5198 nucleus attribution  5199
+autolink_nodes 5199 210 satelite attribution  5200
+autolink_nodes 206 5200 satelite elaboration-additional  5201
+create-a-node-here really 162.14 211 {\n  Now she says}
+create-a-node-here really 162.73 212 { she's thinking of contacting her own insurance agent.}
+nextSentence really
+autolink_nodes 211 212 nucleus attribution  5202
+autolink_nodes 5202 5201 multinuclear Contrast  5203
+autolink_nodes 5197 5203 satelite example  5204
+autolink_nodes 5191 5204 satelite elaboration-additional  5205
+autolink_nodes 5189 5205 satelite elaboration-additional  5206
+autolink_nodes 5206 5185 satelite consequence-n  5207
+autolink_nodes 5185 5177 satelite circumstance  5208
+autolink_nodes 174 5207 satelite elaboration-general-specific  5209
+autolink_nodes 5171 5209 satelite elaboration-additional  5210
+create-a-node-here really 164.23 213 {\n  For Ms. Johnson, dealing with the earthquake has been more than\njust a work experience.}
+nextSentence really
+disconnect_node 5168 modify
+autolink_nodes 5167 5168 satelite comment below 5211
+create-a-node-here really 165.35 214 {\n  She lives in Oakland, a community}
+create-a-node-here really 165.68 215 { hit hard by the earthquake.}
+nextSentence really
+autolink_nodes 214 215 satelite-embedded elaboration-object-attribute-e  5212
+create-a-node-here really 166.42 216 {\n  She didn't have hot water for five days.}
+nextSentence really
+create-a-node-here really 167.15 217 {\n  The apartment}
+create-a-node-here really 168.0 218 { she shares with a 12-year-old daughter and her sister\n}
+create-a-node-here really 168.17 219 {was rattled,}
+create-a-node-here really 168.55 220 { books and crystal hit the floor,}
+create-a-node-here really 169.8 221 { but nothing was severely\ndamaged.}
+nextSentence really
+autolink_nodes 217 218 satelite-embedded elaboration-object-attribute-e  5213
+autolink_nodes 219 5213 multinuclear Same-Unit  5214
+autolink_nodes 220 5214 multinuclear List  5215
+autolink_nodes 5215 221 satelite antithesis  5216
+autolink_nodes 5216 216 multinuclear List  5217
+autolink_nodes 5212 5217 satelite evidence  5218
+#create-a-node-here really 170.55 222 {\n  Her sister, Cynthia, wishes Toni had a different job.}
+#nextSentence really
+#UNDID
+#UNDID
+create-a-node-here really 170.29 222 {\n  Her sister, Cynthia, wishes}
+create-a-node-here really 170.60 223 { Toni had a different job.}
+autolink_nodes 222 223 nucleus attribution  5219
+autolink_nodes 213 5218 satelite elaboration-additional  5220
+create-a-node-here really 171.34 224 {\n  "We worry about her out there," }
+create-a-node-here really 171.52 225 {Cynthia says.}
+nextSentence really
+autolink_nodes 224 225 satelite attribution  5221
+autolink_nodes 5219 5221 satelite elaboration-additional  5222
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098 5105 5127 5074 5146 5217}
+autolink_nodes 5220 5222 satelite elaboration-additional  5223
+create-a-node-here really 172.48 226 {\n  Last Sunday, Ms. Johnson finally got a chance }
+create-a-node-here really 172.73 227 {to water her plants,}
+create-a-node-here really 172.100 228 { but stopped abruptly.}
+nextSentence really
+autolink_nodes 226 227 satelite-embedded elaboration-object-attribute-e  5224
+autolink_nodes 228 5224 satelite antithesis  5225
+create-a-node-here really 173.13 229 {\n  "I realized}
+create-a-node-here really 173.46 230 { I couldn't waste this water}
+create-a-node-here really 174.15 231 { when there are people\nin Watsonville }
+create-a-node-here really 174.46 232 {who don't have fresh water}
+create-a-node-here really 174.62 233 { to drink."}
+nextSentence really
+autolink_nodes 232 233 satelite-embedded elaboration-object-attribute-e  5226
+autolink_nodes 231 5226 satelite-embedded elaboration-object-attribute-e  5227
+autolink_nodes 230 5227 satelite circumstance  5228
+autolink_nodes 229 5228 nucleus attribution  5229
+autolink_nodes 5225 5229 satelite reason  5230
+create-a-node-here really 175.30 234 {\n  She hasn't played any music }
+create-a-node-here really 175.60 235 {since the earthquake hit,}
+create-a-node-here really 176.18 236 { out of\nrespect for those }
+create-a-node-here really 176.50 237 {who died on Interstate 880 }
+create-a-node-here really 176.83 238 {where the roadway collapsed.}
+nextSentence really
+autolink_nodes 237 238 satelite-embedded elaboration-object-attribute-e  5231
+autolink_nodes 236 5231 satelite-embedded elaboration-object-attribute-e  5232
+#autolink_nodes 234 235 satelite temporal-after  5233
+#UNDID
+autolink_nodes 234 235 satelite-embedded temporal-after-e  5233
+autolink_nodes 5232 5233 multinuclear Same-Unit  5234
+autolink_nodes 5230 5234 multinuclear List  5235
+autolink_nodes 5223 5235 satelite evidence  5236
+collapsed_nodes {5019 5012 5003 5045 5038 5051 5061 5089 5081 5098 5105 5127 5074 5146 5217 5209}
+autolink_nodes 5210 5236 satelite elaboration-additional  5237
+autolink_nodes 5129 5237 multinuclear Topic-Drift below 5237
+collapsed_nodes {5019 5012 5045 5038 5051 5061 5089 5081 5098 5105 5127 5074 5146 5217 5209}
+collapsed_nodes {5045 5038 5051 5061 5089 5081 5098 5105 5127 5074 5146 5217 5209}
+collapsed_nodes {5045 5051 5061 5089 5081 5098 5105 5127 5074 5146 5217 5209}
+collapsed_nodes {5051 5061 5089 5081 5098 5105 5127 5074 5146 5217 5209}
+collapsed_nodes {5061 5089 5081 5098 5105 5127 5074 5146 5217 5209}
+collapsed_nodes {5089 5081 5098 5105 5127 5074 5146 5217 5209}
+collapsed_nodes {5089 5081 5098 5105 5127 5146 5217 5209}
+collapsed_nodes {5089 5098 5105 5127 5146 5217 5209}
+collapsed_nodes {5098 5105 5127 5146 5217 5209}
+collapsed_nodes {5105 5127 5146 5217 5209}
+collapsed_nodes {5127 5146 5217 5209}
+collapsed_nodes {5146 5217 5209}
+collapsed_nodes {5217 5209}
+collapsed_nodes {5217}
+#disconnect_node 5028 modify
+#UNDID
+disconnect_node 5028 modify
+autolink_nodes 5037 5028 satelite antithesis  5238
+collapsed_nodes {5217 5003}
+collapsed_nodes {5217 5003 5012}
+collapsed_nodes {5217 5003 5012 5238}
+collapsed_nodes {5217 5003 5012 5238 5046}
+collapsed_nodes {5217 5003 5012 5238 5046 5051}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061 5128}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061 5128 5146}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061 5128 5146 5156}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061 5128 5146 5156 5167}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061 5128 5146 5156 5167 5207}
+collapsed_nodes {5217 5003 5012 5238 5046 5051 5061 5128 5146 5156 5167 5207 5237}
+collapsed_nodes {5217 5012 5238 5046 5051 5061 5128 5146 5156 5167 5207 5237}
+collapsed_nodes {5217 5238 5046 5051 5061 5128 5146 5156 5167 5207 5237}
+collapsed_nodes {5217 5051 5061 5128 5146 5156 5167 5207 5237}
+collapsed_nodes {5217 5061 5128 5146 5156 5167 5207 5237}
+collapsed_nodes {5217 5128 5146 5156 5167 5207 5237}
+collapsed_nodes {5217 5146 5156 5167 5207 5237}
+collapsed_nodes {}

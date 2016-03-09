@@ -1,0 +1,34 @@
+nextSentence really
+create-a-node-here really 2.16 1 {\nBoeing Co. said }
+create-a-node-here really 2.72 2 {Trans European Airways ordered a dozen 737 jetliners }
+create-a-node-here really 2.115 3 {valued at a total of about $450 million.}
+nextSentence really
+create-a-node-here really 3.59 4 {\nThe 300 and 400 series aircraft will be powered by engines }
+create-a-node-here really 3.124 5 {jointly produced by General Electric Co. and Snecma of France.}
+nextSentence really
+create-a-node-here really 5.54 6 { \n\nCurrently, Boeing has a backlog of about $80 billion, }
+create-a-node-here really 5.122 7 {but production has been slowed by a strike of 55,000 machinists, }
+create-a-node-here really 5.158 8 {which entered its 22nd day today.}
+nextSentence really
+create-a-node-here really 7.85 9 { \n\nLast week, a mediator failed to rekindle talks between the company and the strikers, }
+create-a-node-here really 7.148 10 {who have rejected a pay raise offer of 10% over three years.}
+nextSentence really
+autolink_nodes 2 3 satelite elaboration-additional  5001
+autolink_nodes 1 5001 nucleus attribution  5002
+autolink_nodes 4 5 satelite elaboration-additional  5003
+autolink_nodes 5002 5003 satelite elaboration-additional  5004
+autolink_nodes 6 7 multinuclear Reason  5005
+autolink_nodes 7 8 satelite elaboration-additional  5006
+autolink_nodes 9 10 satelite elaboration-additional  5007
+#autolink_nodes 5005 5007 satelite elaboration-additional  5008
+#UNDID
+#autolink_nodes 5005 5007 satelite elaboration-additional  5008
+#UNDID
+autolink_nodes 5005 5007 satelite elaboration-additional  5008
+autolink_nodes 5004 5008 multinuclear Topic-Drift  5009
+collapsed_nodes {5009}
+collapsed_nodes {}
+disconnect_node 5 disconnect
+autolink_nodes 4 5 satelite-embedded elaboration-object-attribute-e  5010
+collapsed_nodes {5009}
+collapsed_nodes {}
