@@ -27,7 +27,7 @@ def simpleedus(edus):
             # print toks
 
             # build tags
-            label = [0] + (len(toks)-2)*[2] + [1]
+            label = (len(toks)-1)*[0] + [1]
             # print label
             tokseq.extend(toks)
             labels.extend(label)
@@ -122,8 +122,15 @@ def build_datasetlabel(trnedus):
     return edus_toks_label
 
 
-class GRU:
+class bidirectional_GRU:
+    """
+    the bidirectional gated recurrent unit neural network 
 
+    maintain 2 GRU layer 
+
+    combine this 2 layer output to generate output
+
+    """
     def  __init__(self,word_dim,label_dim,hidden_dim=128,bptt_truncate=-1):
 
         # assign instance variables
@@ -134,10 +141,11 @@ class GRU:
 
         # initialize the network parameters
         E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(hidden_dim,word_dim))
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
-        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim))
-        b = np.zeros((3,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
+        # combine hidden states from 2 layer 
+        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
+        b = np.zeros((6,hidden_dim))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -166,31 +174,68 @@ class GRU:
         x = T.ivector('x')
         y = T.ivector('y')
 
-        def forward_prop_step(x_t,s_t_prev):
+        def forward_direction_prop_step(x_t,s_t_prev):
             #
             #
             # Word embedding layer
             x_e = E[:,x_t]
-
             # GRU layer 1
             z_t = T.nnet.hard_sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
             r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
             c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            # directly return the hidden state as intermidate output 
+            return [s_t]
 
-            # output 
-            o_t = T.nnet.softmax(V.dot(s_t) + c)[0]
+        def backward_direction_prop_step(x_t,s_t_prev):
+            #
+            #
+            #
+            x_e = E[:,x_t]
 
-            return [o_t,s_t]
+            # GRU layer 2
+            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
+            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
+            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            return [s_t]
 
-        [o,s] , updates = theano.scan(
-                forward_prop_step,
+        def o_step(combined_s_t):
+            o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0]
+            return o_t
+
+
+        # forward direction states
+        f_s , updates = theano.scan(
+                forward_direction_prop_step,
                 sequences=x,
                 truncate_gradient=self.bptt_truncate,
-                outputs_info=[
-                    None,
-                    dict(initial=T.zeros(self.hidden_dim))
-                    ])
+                outputs_info=T.zeros(self.hidden_dim))
+            
+        # backward direction states
+        b_s , updates = theano.scan(
+                backward_direction_prop_step,
+                sequences=x[::-1], # the reverse direction input
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+
+        self.f_s = f_s
+        self.b_s = b_s
+
+        f_b_s = b_s[::-1]
+
+
+        # combine the forward GRU state and backward GRU state together 
+        combined_s = T.concatenate([f_s,b_s[::-1]],axis=1)
+        # concatenate the hidden state from 2 GRU layer to do the output
+        o , updates = theano.scan(
+                o_step,
+                sequences=combined_s,
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=None)
+
+
+
         prediction = T.argmax(o,axis=1)
         o_error = T.sum(T.nnet.categorical_crossentropy(o,y))
 
@@ -236,9 +281,6 @@ class GRU:
                    (self.mb,mb),
                    (self.mc,mc)]
         
-        """
-        updates = [(self.U,self.U-learning_rate*dU),(self.V,self.V-learning_rate*dV),(self.W,self.W-learning_rate*dW),(),()]
-        """
 
         self.sgd_step = theano.function(
                 [x,y, learning_rate, theano.Param(decay,default=0.9)],
@@ -275,6 +317,13 @@ def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9
     for epoch in range(nepoch):
         # For each training example ...
 
+        #
+        #
+        #
+        tocount = 0
+        tccount = 0
+        tycount = 0
+
         for i in np.random.permutation(len(y_train)):
             # One SGT step
             model.sgd_step(X_train[i],y_train[i],learning_rate,decay)
@@ -294,18 +343,101 @@ def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9
             output = model.predict_class(X_train[i])
             print 'predict_class : ' , output
 
-            acount = 0
+            # boundary accuracy 
+            # ocount is total boundary output number
+            # ccount is correct boundary number
+            # ycount is the true boundary number
+            ocount = 0
+            ccount = 0
+            ycount = 0
+
             for o,y in zip(output,y_train[i]):
-                if o == y:
-                    acount += 1
+                if o == 1:
+                    ocount += 1
+                if y == 1:
+                    ycount += 1
+                if y == o and y == 1:
+                    ccount += 1
+            #
+            tocount += ocount
+            tccount += ccount
+            tycount += ycount
+            if ccount != 0 and ocount != 0:
+                precision = float(ccount) / float(ocount)
+                recall = float(ccount) / float(ycount)
+                if (precision+recall) != 0:
+                    Fmeasure = 2 * (precision*recall) / (precision+recall)
                 else:
-                    pass;
-            print 'Accuracy : ' , float(acount) / float(len(y_train[i]))
+                    Fmeasure = 0
+            else :
+                precision = 0
+                recall = 0
+                Fmeasure = 0
+            print 'Accuracy : ' , precision
+            print 'Recall : ' , recall
+            print 'Fmeasure : ' , Fmeasure
 
+        # a epoch for training end here
+        if tocount != 0 and tccount != 0:
+            precision = float(tccount) / float(tocount)
+            recall = float(tccount) / float(tycount)
+            if (precision+recall) != 0:
+                Fmeasure = 2 * (precision*recall) / (precision+recall)
+            else:
+                Fmeasure = 0
+        else:
+            precision = 0
+            recall = 0
+            Fmeasure = 0
 
-            print 'num_examples_seen : ' , num_examples_seen;
+        print 'Accuracy of training set: ' , precision
+        print 'Recall of training set: ' , recall
+        print 'Fmeasure of training set: ' , Fmeasure
+
 
     return model
+
+
+def test_score(model,X_test,y_test):
+    print 'now score the test dataset'
+    scores = [];
+    tocount = 0
+    tccount = 0
+    tycount = 0
+
+    for i in range(len(y_test)):
+        output = model.predict_class(X_test[i])
+        ocount = 0
+        ccount = 0
+        ycount = 0
+
+        for o,y in zip(output,y_test[i]):
+            if o == 1:
+                ocount += 1
+            if y == 1:
+                ycount += 1
+            if y == o and y == 1:
+                ccount += 1
+
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+
+    if tocount != 0 and tccount != 0 :
+        precision = float(tccount) / float(tocount)
+        recall = float(tccount) / float(tycount)
+        if (precision+recall) != 0:
+            Fmeasure = 2 * (precision*recall) / (precision+recall)
+        else:
+            Fmeasure = 0
+    else:
+        precision = 0
+        recall = 0
+        Fmeasure = 0
+
+    print 'Accuracy of test set: ' , precision
+    print 'Recall of test set: ' , recall
+    print 'Fmeasure of test set: ' , Fmeasure
 
 def parser():
     
@@ -313,6 +445,7 @@ def parser():
     # collecting edus from corpus
 
     edux , eduy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+    testx, testy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
 
     # trnedus = extract_edu('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
     # trnedus = trnedus
@@ -320,8 +453,13 @@ def parser():
     # trnset = build_dataset(trnedus);
     # trnset_label = build_datasetlabel(trnedus);
 
+    # build training set
     trnset = copy.deepcopy(edux)
     trnset_label = copy.deepcopy(eduy)
+
+    # build test set
+    tstset = copy.deepcopy(testx)
+    tstset_label = copy.deepcopy(testy)
 
     print 'the size of Edus : ' , (len(trnset))
     print 'the size of label : ' , len(trnset_label)
@@ -334,7 +472,7 @@ def parser():
     print 'Found %d unique words tokens.' % len(word_freq.items())
 
     vocabulary_size = 4000
-    label_size = 3
+    label_size = 2
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1);
@@ -347,20 +485,28 @@ def parser():
     print 'Using vocabulary size %d.' % vocabulary_size
     print "The least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
 
+    # training dataset 
     for i,sent in enumerate(trnset):
         trnset[i] = [w if w in word_to_index else unknown_token for w in sent]
+
+    for i,sent in enumerate(tstset):
+        tstset[i] = [w if w in word_to_index else unknown_token for w in sent]
+
+
 
     print '***********************'
 
     print 'word to index :'
-    print word_to_index
     print 'index to word :'
-    print index_to_word
 
      
     # X_train , y_train
     X_train = np.asarray([[word_to_index[w] for w in sent ] for sent in trnset])
     y_train = np.asarray(trnset_label)
+
+    # X_test , y_test
+    X_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tstset])
+    y_test = np.asarray(tstset_label)
 
     print "\n Example sentence '%s' " % " ".join(edux[0])
     print "\n Example sentence after Pre-processing : '%s'" % trnset[0]
@@ -370,7 +516,7 @@ def parser():
     # print y_train
     # build model GRU
     # and test it for first output
-    model = GRU(vocabulary_size,label_size,hidden_dim=128,bptt_truncate=-1)
+    model = bidirectional_GRU(vocabulary_size,label_size,hidden_dim=128,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
@@ -386,16 +532,20 @@ def parser():
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_train[0],y_train[0])
     learning_rate = 0.00005
+
     model.sgd_step(X_train[0],y_train[0],learning_rate)
     print "SGD Step time : %f milliseconds" % ((t2-t1)*1000.)
     sys.stdout.flush()
 
     # training simple edu tag
 
-    NEPOCH = 50
+    NEPOCH = 100
+
     for epoch in range(NEPOCH):
         #
+        print 'this is epoch : ' , epoch
         train_with_sgd(model,X_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
+        test_score(model,X_test,y_test)
 
 
 

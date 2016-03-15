@@ -25,7 +25,7 @@ def extract_edu(dir_path):
         edus.extend(open(dir_path+'/'+edu_path).readlines());
 
     for edu in edus:
-        print edu;
+        print edu.strip();
 
     return edus;
 

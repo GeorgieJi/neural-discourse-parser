@@ -130,8 +130,19 @@ class bidirectional_GRU:
 
     combine this 2 layer output to generate output
 
+    when you are using the GRU to perform the sequence labeling you need hyper-parameter below
+
+    dimension of the hidden layer 
+    number of classes
+    number of word embeddings in the vocabulary (vocabulary size)
+    dimesion of the word embeddings
+    word window conetxt size is optional
+
+    word embedding layer 
+
+
     """
-    def  __init__(self,word_dim,label_dim,hidden_dim=128,bptt_truncate=-1):
+    def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
         # assign instance variables
 
@@ -140,8 +151,18 @@ class bidirectional_GRU:
         self.bptt_truncate = bptt_truncate
 
         # initialize the network parameters
-        E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(hidden_dim,word_dim))
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
+
+        if word_embedding is None:
+            # using random word vector
+            # using glove 
+            # using word2vec
+
+            E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
+        else:
+            # using pre-trained word vector
+            E = word_embedding
+
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
         W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
         # combine hidden states from 2 layer 
         V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
@@ -439,19 +460,43 @@ def test_score(model,X_test,y_test):
     print 'Recall of test set: ' , recall
     print 'Fmeasure of test set: ' , Fmeasure
 
+def load_word_embedding(path):
+
+    #
+    #
+    if False:
+        pass;
+    else:
+
+        wdvec = open(path,'r').readlines()
+        wvdic = dict()
+        for widx, vec in enumerate(wdvec):
+            items = vec.strip().split();
+            pv = np.array([float(x) for x in items[1:]]);
+            wvdic[items[0]] = pv;
+            wrddim = wvdic.itervalues().next().shape[0];
+    return wvdic
+
+def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
+
+    # index_to_word is the word list
+    vocab_size = len(index_to_word)
+    E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size)) 
+    
+    # for those word can be found in glove or word2vec pre-trained word vector
+    for w in index_to_word:
+        if w in wvdic:
+            E[:,word_to_index[w]] = wvdic[w]
+
+    return E
+
+
+
 def parser():
     
-    # extract_edu()
-    # collecting edus from corpus
 
     edux , eduy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
     testx, testy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
-
-    # trnedus = extract_edu('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    # trnedus = trnedus
-    # trnset word vector / trnlabel , EB, EC, EE
-    # trnset = build_dataset(trnedus);
-    # trnset_label = build_datasetlabel(trnedus);
 
     # build training set
     trnset = copy.deepcopy(edux)
@@ -472,7 +517,6 @@ def parser():
     print 'Found %d unique words tokens.' % len(word_freq.items())
 
     vocabulary_size = 4000
-    label_size = 2
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1);
@@ -492,13 +536,6 @@ def parser():
     for i,sent in enumerate(tstset):
         tstset[i] = [w if w in word_to_index else unknown_token for w in sent]
 
-
-
-    print '***********************'
-
-    print 'word to index :'
-    print 'index to word :'
-
      
     # X_train , y_train
     X_train = np.asarray([[word_to_index[w] for w in sent ] for sent in trnset])
@@ -512,21 +549,20 @@ def parser():
     print "\n Example sentence after Pre-processing : '%s'" % trnset[0]
     print "\n Example label after labeling : '%s' " % trnset_label[0]
 
-    # print X_train
-    # print y_train
-    # build model GRU
-    # and test it for first output
-    model = bidirectional_GRU(vocabulary_size,label_size,hidden_dim=128,bptt_truncate=-1)
+    # build Embedding matrix
+    label_size = 2
+    wvdic = load_word_embedding('glove.6B.200d.txt')
+    # 
+    word_dim = wvdic.values()[0].shape[0]
+
+    E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
+
+    # build model GRU and test it for first output
+    # def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+    model = bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=128,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
-    # output a prediction
-
-    print '>>>x0 , y0'
-    print X_train[0]
-    print y_train[0]
-    t2 = time.time()
-
     print model.predict(X_train[0])
     output = model.predict_class(X_train[0])
     print 'predict_class : ' , output
@@ -534,6 +570,8 @@ def parser():
     learning_rate = 0.00005
 
     model.sgd_step(X_train[0],y_train[0],learning_rate)
+
+    t2 = time.time()
     print "SGD Step time : %f milliseconds" % ((t2-t1)*1000.)
     sys.stdout.flush()
 
