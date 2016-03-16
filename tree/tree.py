@@ -72,16 +72,13 @@ def parse_tree(tree):
             pass
 
     tree = stack.pop()
-    print 'this is the tree'
-    print tree
 
     # Nodes is heiracaical structure tree
-
-    pass;
+    return tree
 
 def process():
     tree = open('wsj_0699.out.dis').readlines()
-    parse_tree(tree)
+    print parse_tree(tree)
 
 if __name__ == '__main__':
     process()
