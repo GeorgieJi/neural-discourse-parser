@@ -495,8 +495,10 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 def parser():
     
 
-    edux , eduy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    testx, testy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+    edux , eduy = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+    testx, testy = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+
+    print testx[0] , testy[0]
 
     # build training set
     trnset = copy.deepcopy(edux)
@@ -548,6 +550,8 @@ def parser():
     print "\n Example sentence '%s' " % " ".join(edux[0])
     print "\n Example sentence after Pre-processing : '%s'" % trnset[0]
     print "\n Example label after labeling : '%s' " % trnset_label[0]
+    print y_train.shape
+    print y_train[0]
 
     # build Embedding matrix
     label_size = 2

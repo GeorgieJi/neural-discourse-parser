@@ -212,10 +212,10 @@ Run the pos embedding
 download the word2vec 
 ./word2vec -train smallpos -output pos.txt -size 200 -window 10 -sample 1e-4 -negative 5 -hs 0 -binary 0 -cbow 0 -iter 3
 the training data is extract from language modeling corpus , automatic tagged by standford pos tagger
-
 the training process is done , but have not add into code yet
 
 Task 12> add lemma embedding
+[????]
 
 Task 13> check if there are anyway neural version of RST discoures parser
 there is none! good news
@@ -225,12 +225,16 @@ Task 14> UNK word process for parser
 [????]
 
 Task 15> replace the number
+[????]
 
 Task 16> see the training dataset performance can reach the perfact correct (overfitting)
 base.log
 baseGRU.log hidden_dim vocab=4k training_accuracy=81.11% test_acc=80.70 mean of score = 
 8k-bi.log hidden_dim vocab=8k training_acc=* mean of score = 85.43 test_acc=0.8095
 baseBiGRU.log 
+the current neural network can perform perfect in span task
+it can do overfit
+and it can match training dataset perfectly.
 [????]
 
 Task 17> update the code because the current version can easily mislead the reader!!!! please follow the theano standard version from RNNSLU task 
@@ -240,6 +244,23 @@ Task 18> the structure and relation data extract
 how to load tree
 
 target = [ ['NS','e1','e2'] , ['NN','e3','e4'] , ['NS','e12','e34'] ]
+[Done]
+
+Task 19> how to desgin the binary classifier and multi-class classifier and do it in neural style?
+1. check out the Feng's work for traidtional desgin
+2. check out the neural dependency parser's work for neural style
+how to do structure (nucleus) score ?
+how to do relation score ?                    
  
 
+Task 20> structure and relation score with gold standard
+very simple model Siamese RGU test for RST
 
+Task 21> add adadelta
+adadelta is way faster than rmsprop!
+but adadelta also has nan problem better keep the rmsprop and adadelta version both
+[Done] 
+
+Task 22> gradient clipping
+the RNN neural network all has potential gradient exploding problem
+using gradient clipping technical to handle it

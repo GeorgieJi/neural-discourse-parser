@@ -16,76 +16,101 @@ import copy
 sys.path.append('../tree')
 from tree import *
 
-def extract_nucleus(edus):
 
-    pas = []
-    for pa in edus:
-        tokseq = []
-        labels = []
-        patags = []
-        for line in pa:
-            # print line.strip()
-            toks = nltk.word_tokenize(line.strip().lower())
-            # print toks
+def traversal(tree):
+    parentpair = []
+    # usually the len of tree is 4
+    # print '>>>>>>>>>>>>>>>>>>>>.*'
+    left_tree = tree[2]
+    right_tree = tree[3]
+    span = ''
+    leftspan = ''
+    rightspan = ''
+    leftpair = []
+    rightpair = []
 
-            # build tags
-            label = (len(toks)-1)*[0] + [1]
-            # print label
-            tokseq.extend(toks)
-            labels.extend(label)
-        pas.append((tokseq,labels))
+    if len(left_tree) == 4:
+        leftpair , leftspan = traversal(left_tree)
+
+    if len(right_tree) == 4:
+        rightpair , rightspan = traversal(right_tree)
+
+    if len(left_tree) == 3:
+        leftspan = left_tree[2]
+
+    if len(right_tree) == 3:
+        rightspan = right_tree[2]
+
+    parentpair = [ [left_tree[0]+'-'+right_tree[0] , leftspan, rightspan] ]
+    parentpair.extend(leftpair)
+    parentpair.extend(rightpair)
+    # print '->' , parentpair
+    
+    return parentpair, leftspan + ' ' + rightspan
 
 
-    return pas
+def extract_nucleus(tree_str):
+
+    tree = parse_tree(tree_str)
+    pairs = traversal(tree)[0]
+    return pairs
 
 def build_data(dir_path):
     
     files = os.listdir(dir_path);
     edus_path = [];
     for filename in files:
-        if '.edus' in filename:
+        if '.dis' in filename:
             # print filename;
             edus_path.append(filename);
 
-    tree_str = [];
+    trees = [];
     for edu_path in edus_path:
-        tree_str.append(open(dir_path+'/'+edu_path).readlines());
-
-    train_x = [];
-    train_y = [];
-
-    print len(tree_str) , ' in total '
-    pas = extract_nucleus(edus)
-
-    for pa in pas:
-        train_x.append(pa[0])
-        train_y.append(pa[1])
-    return [train_x,train_y]
+        trees.append(open(dir_path+'/'+edu_path).readlines());
 
 
+    pairs = []
+    for tree in trees:
+        pairs.extend(extract_nucleus(tree))
 
-class bidirectional_GRU:
+    senas = []
+    senbs = []
+    nucs = []
+
+    for pair in pairs:
+        errorflag = True
+        if pair[0] == 'Nucleus-Satellite':
+            nucs.append([0])
+        elif pair[0] == 'Nucleus-Nucleus':
+            nucs.append([1])
+        elif pair[0] == 'Satellite-Nucleus':
+            nucs.append([2])
+        else:
+            errorflag = False # filter the wrong tree
+            
+
+        if errorflag:
+            senas.append(nltk.word_tokenize(pair[1].strip().lower()))
+            senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
+        else:
+            continue
+    
+    return senas , senbs , nucs
+
+
+
+class Siamese_GRU:
     """
-    the bidirectional gated recurrent unit neural network 
-
-    maintain 2 GRU layer 
-
-    combine this 2 layer output to generate output
-
-    when you are using the GRU to perform the sequence labeling you need hyper-parameter below
-
-    dimension of the hidden layer 
-    number of classes
-    number of word embeddings in the vocabulary (vocabulary size)
-    dimesion of the word embeddings
-    word window conetxt size is optional
-
-    word embedding layer 
-
+    A implemention of Siamese Recurrent Architectures for Learning Sentence Similarity
+    http://www.aaai.org/Conferences/AAAI/2016/Papers/15Mueller12195.pdf
 
     """
     def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
+        """
+        Train 2 spearate GRU network to represent each sentence in pair as a fixed-length vector
+        then calculate the 2 sentence vector Manhanttan distance 
+        """
         # assign instance variables
 
         self.word_dim = word_dim
@@ -134,12 +159,11 @@ class bidirectional_GRU:
     def __theano_build__(self):
         E, V, U, W, b, c = self.E, self.V, self.U, self.W, self.b , self.c
 
-        x = T.ivector('x')
-        y = T.ivector('y')
+        x_a = T.ivector('x_a')
+        x_b = T.ivector('x_b')
+        y = T.lvector('y')
 
-        def forward_direction_prop_step(x_t,s_t_prev):
-            #
-            #
+        def sena_forward_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -150,10 +174,7 @@ class bidirectional_GRU:
             # directly return the hidden state as intermidate output 
             return [s_t]
 
-        def backward_direction_prop_step(x_t,s_t_prev):
-            #
-            #
-            #
+        def senb_forward_step(x_t,s_t_prev):
             x_e = E[:,x_t]
 
             # GRU layer 2
@@ -163,46 +184,44 @@ class bidirectional_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             return [s_t]
 
-        def o_step(combined_s_t):
-            o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0]
-            return o_t
+        def manhattan_distance(h_a,h_b):
+            return T.exp(-1*abs(h_a-h_b))
 
+        def mse_error(p,y):
+            return (p-y)**2
 
-        # forward direction states
-        f_s , updates = theano.scan(
-                forward_direction_prop_step,
-                sequences=x,
+        # sentence a vector (states)
+        a_s , updates = theano.scan(
+                sena_forward_step,
+                sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
             
-        # backward direction states
+        # sentence b vector (states)
         b_s , updates = theano.scan(
-                backward_direction_prop_step,
-                sequences=x[::-1], # the reverse direction input
+                senb_forward_step,
+                sequences=x_b,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
 
-        self.f_s = f_s
-        self.b_s = b_s
+        # semantic similarity 
+        # s_sim = manhattan_distance(a_s[-1],b_s[-1])
 
-        f_b_s = b_s[::-1]
+        # for classification using simple strategy 
+        sena = a_s[-1]
+        senb = b_s[-1]
+
+        combined_s = T.concatenate([sena,senb],axis=0)
+
+        # softmax class
+        o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+        om = o.reshape((1,o.shape[0]))
+        prediction = T.argmax(om,axis=1)
+        o_error = T.nnet.categorical_crossentropy(om,y)
 
 
-        # combine the forward GRU state and backward GRU state together 
-        combined_s = T.concatenate([f_s,b_s[::-1]],axis=1)
-        # concatenate the hidden state from 2 GRU layer to do the output
-        o , updates = theano.scan(
-                o_step,
-                sequences=combined_s,
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=None)
-
-
-
-        prediction = T.argmax(o,axis=1)
-        o_error = T.sum(T.nnet.categorical_crossentropy(o,y))
-
-        cost = o_error
+        # cost 
+        cost = T.sum(o_error)
 
         # Gradients
         dE = T.grad(cost,E)
@@ -213,9 +232,9 @@ class bidirectional_GRU:
         dc = T.grad(cost,c)
 
         # Assign functions
-        self.predict = theano.function([x],o)
-        self.predict_class = theano.function([x],prediction)
-        self.ce_error = theano.function([x,y],cost)
+        self.predict = theano.function([x_a,x_b],om)
+        self.predict_class = theano.function([x_a,x_b],prediction)
+        self.ce_error = theano.function([x_a,x_b,y],cost)
         # self.bptt = theano.function([x,y],[dE,dU,dW,db,dV,dc])
 
         # SGD parameters
@@ -246,34 +265,22 @@ class bidirectional_GRU:
         
 
         self.sgd_step = theano.function(
-                [x,y, learning_rate, theano.Param(decay,default=0.9)],
+                [x_a,x_b,y, learning_rate, theano.Param(decay,default=0.9)],
                 [],
                 updates=updates)
 
-    def calculate_total_loss(self,X,Y):
-        return np.sum([self.ce_error(x,y) for x,y in zip(X,Y)])
 
-    def calculate_loss(self,X,Y):
-        # Divide calculate_loss by the number of words
-        num_words = np.sum([len(y) for y in Y])
-        return self.calculate_total_loss(X,Y)/float(num_words)
+def index_to_class(index):
+    label = '';
+    if index == 0:
+        label = 'Nucleus-Satellite'
+    elif index == 1:
+        label = 'Nucleus-Nucleus'
+    elif index == 2:
+        label = 'Satellite-Nucleus'
+    return label
 
-
-def sgd_callback(model,num_examples_seen,X_train,y_train,index_to_word,word_to_index):
-    dt = datetime.now().isoformat()
-    loss = model.calculate_loss(X_train[:10000],y_train[:10000])
-
-    print("\n%s (%d)" % (dt, num_examples_seen)) 
-    print("-------------------------------------------------")
-    print("Loss : %f" % loss)
-
-    generate_sentences(model,10,index_to_word,word_to_index)
-
-    print("\n")
-    sys.stdout.flush()
-
-
-def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
     num_examples_seen = 0
 
     print 'now learning_rate : ' , learning_rate;
@@ -289,23 +296,27 @@ def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9
 
         for i in np.random.permutation(len(y_train)):
             # One SGT step
-            model.sgd_step(X_train[i],y_train[i],learning_rate,decay)
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i],learning_rate,decay)
             num_examples_seen += 1
             # Optionally do callback
             print '>>>>>'
 
-            wrds = []
-            for j in X_train[i]:
-                wrds.append(index_to_word[j])
+            lwrds = []
+            rwrds = []
+            for lj,rj in zip(X_1_train[i],X_2_train[i]):
+                lwrds.append(index_to_word[lj])
+                rwrds.append(index_to_word[rj])
 
             print 'i-th :' , i;
-            print 'X_train[i] : ' , X_train[i]
-            print 'the edus : ' ," ".join(wrds)
-            print 'ce_error : ' , model.ce_error(X_train[i],y_train[i])
+            print 'the left edu : ' ," ".join(lwrds)
+            print 'the right edu : ' , " ".join(rwrds)
+            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
             # print 'predict : ' , model.predict(X_train[i])
-            output = model.predict_class(X_train[i])
+            output = model.predict_class(X_1_train[i],X_2_train[i])
             print 'predict_class : ' , output
-
+            print index_to_class(output)
+            print 'true label : ' , y_train[i]
+            print index_to_class(y_train[i][0])
             # boundary accuracy 
             # ocount is total boundary output number
             # ccount is correct boundary number
@@ -315,12 +326,10 @@ def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9
             ycount = 0
 
             for o,y in zip(output,y_train[i]):
-                if o == 1:
-                    ocount += 1
-                if y == 1:
-                    ycount += 1
-                if y == o and y == 1:
+                if o == y:
                     ccount += 1
+                ycount += 1
+                ocount += 1
             #
             tocount += ocount
             tccount += ccount
@@ -336,9 +345,6 @@ def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9
                 precision = 0
                 recall = 0
                 Fmeasure = 0
-            print 'Accuracy : ' , precision
-            print 'Recall : ' , recall
-            print 'Fmeasure : ' , Fmeasure
 
         # a epoch for training end here
         if tocount != 0 and tccount != 0:
@@ -361,7 +367,7 @@ def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9
     return model
 
 
-def test_score(model,X_test,y_test):
+def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
     print 'now score the test dataset'
     scores = [];
     tocount = 0
@@ -369,18 +375,35 @@ def test_score(model,X_test,y_test):
     tycount = 0
 
     for i in range(len(y_test)):
-        output = model.predict_class(X_test[i])
+        output = model.predict_class(X_1_test[i],X_2_test[i])
         ocount = 0
         ccount = 0
         ycount = 0
 
+        lwrds = []
+        rwrds = []
+
+        for lj, rj in zip(X_1_test[i],X_2_test[i]):
+            lwrds.append(index_to_word[lj])
+            rwrds.append(index_to_word[rj])
+
+        print 'i-th : ' , i;
+        print 'the left edu : , ' , " ".join(lwrds)
+        print 'the right edu : ' , " ".join(rwrds)
+        print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
+
+        # print 
+        print 'predict_class : ' , output
+        print index_to_class(output)
+        print 'true label : ' , y_test[i]
+        print index_to_class(y_test[i][0])
+
+
         for o,y in zip(output,y_test[i]):
-            if o == 1:
-                ocount += 1
-            if y == 1:
-                ycount += 1
-            if y == o and y == 1:
+            if y == o:
                 ccount += 1
+            ycount += 1
+            ocount += 1
 
         tocount += ocount
         tccount += ccount
@@ -435,8 +458,93 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
 
 def nucleus():
-    edux , eduy = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    testx, testy = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+
+    ledus, redus , nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+    tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+
+
+    print 'load in ' , len(nucs) , 'training sample'
+    print 'load in ' , len(tst_nucs) , 'test sample'
+
+    token_list = []
+    for sena, senb in zip(ledus,redus):
+        token_list.extend(sena)
+        token_list.extend(senb)
+
+    word_freq = nltk.FreqDist(token_list)
+    print 'Found %d unique words tokens . ' % len(word_freq.items())
+
+    vocabulary_size = 5*1000
+    unknown_token = 'UNK'
+
+    vocab = word_freq.most_common(vocabulary_size-1)
+    index_to_word = [x[0] for x in vocab]
+    print 'vocab : '
+    index_to_word.append(unknown_token)
+    word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
+
+    print 'Using vocabulary size %d. ' % vocabulary_size
+    print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
+
+    # training dataset
+    for i,(edua,edub) in enumerate(zip(ledus,redus)):
+        ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
+        redus[i] = [w if w in word_to_index else unknown_token for w in edub]
+
+    # test dataset
+    for i,(edua,edub) in enumerate(zip(tst_ledus,tst_redus)):
+        tst_ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
+        tst_redus[i] = [w if w in word_to_index else unknown_token for w in edub]
+
+    # X_1_train , X_2_train , y_train
+    X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
+    X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
+    y_train = (nucs)
+
+    # X_1_test, X_2_test , y_train
+    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
+    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
+    y_test = (tst_nucs)
+
+    print "\n Example sentence '%s' " % " ".join(ledus[0])
+    print "\n Example sentence '%s' " % " ".join(redus[0])
+    print "\n Example sentence after Pre-processing : '%s' " % X_1_train[0]
+    print "\n Example sentence after Pre-processing : '%s' " % X_2_train[0]
+    print "\n Example label : ", y_train[0]
+    print ""
+
+    # build Embedding matrix
+    label_size = 3
+    wvdic = load_word_embedding('../data/glove.6B.200d.txt')
+    word_dim = wvdic.values()[0].shape[0]
+
+    E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
+
+    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=128,word_embedding=E,bptt_truncate=-1)
+
+    # Print SGD step time
+    t1 = time.time()
+    print model.predict(X_1_train[0],X_2_train[0])
+    output = model.predict_class(X_1_train[0],X_2_train[0])
+    print 'predict_class : ' , output
+    print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
+    learning_rate = 0.00005
+
+    model.sgd_step(X_1_train[0],X_2_train[0],y_train[0],learning_rate)
+    t2 = time.time()
+
+    print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
+    sys.stdout.flush()
+
+    # 
+    NEPOCH = 100
+
+    for epoch in range(NEPOCH):
+
+        print 'this is epoch : ' , epoch
+        train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
+
+        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
     
 
