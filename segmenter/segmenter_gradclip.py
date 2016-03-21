@@ -29,6 +29,19 @@ def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_
         gp = T.grad(cost, param)
         exp_sqr_ups[param] = theano.shared(value=(empty), name="exp_grad_%s" % param.name)
         gparams.append(gp)
+
+    # this is place you should think of gradient clip using the l2-norm
+    g2 = 0.
+    clip_c = 1.
+    for g in gparams:
+        g2 += (g**2).sum()
+    is_finite = T.or_(T.isnan(g2), T.isinf(g2))
+    new_grads = []
+    for g in gparams:
+        new_grad = T.switch(is_finite,g/T.sqrt(g2)*clip_c,g)
+        new_grads.append(new_grad)
+    gparams = new_grads
+
     for param, gp in zip(params, gparams):
         exp_sg = exp_sqr_grads[param]
         exp_su = exp_sqr_ups[param]

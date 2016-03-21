@@ -1,8 +1,6 @@
 this takscheck is used to check the process of task and problems 
 
-1. 
-
-we will implement the neural discourse parser step by step. The discourse parser usually contains three main componement : discourse segmenter , discourse relation classifier , discourse structure builder .
+1.we will implement the neural discourse parser step by step. The discourse parser usually contains three main componement : discourse segmenter , discourse relation classifier , discourse structure builder .
 
 the first componement is the discourse segmenter , the segmenter needs to split the sentence into serval non-overlap part. we consider this task as sequence labeling. More specifically , we will labeling every word in given sentence using : B , E , C tags. which means (B)egin of EDU, (E)nd of EDU, (C)ontinueious of EDU respectively.
 
@@ -182,13 +180,6 @@ o_5 = softmax(V*(f_s5:b_s1))
 
 [Done]
 
-Task 9> structure and relation
-
-three indivial component 
-the segmenter , structure and relation 
-score the testset segmenter [Done]
-score the structure 
-score the relation 
 
 Task 10> add pre-trained word vector
 how to ?
@@ -206,6 +197,74 @@ word embedding layer is meant to learning word representation during training pr
 code E = (hidden_dim,vocabulary size)
 [Done]
 
+
+
+Task 17> update the code because the current version can easily mislead the reader!!!! please follow the theano standard version from RNNSLU task 
+[Done]
+
+Task 18> the structure and relation data extract
+how to load tree
+
+target = [ ['NS','e1','e2'] , ['NN','e3','e4'] , ['NS','e12','e34'] ]
+[Done]
+
+
+Task 21> add adadelta
+adadelta is way faster than rmsprop!
+but adadelta also has nan problem better keep the rmsprop and adadelta version both
+[Done] 
+
+Task 22> gradient clipping
+the RNN neural network all has potential gradient exploding problem
+using gradient clipping technical to handle it
+
+for gradient update in theano function, the problem is to understand what is exactly going on during updates.
+
+usually, we first collect the params which refers to the cost 
+then we calculate the gradient respect to those params
+
+then, update those params with 
+
+updates = [(param_1, param_1 - learning_rate * grad_1)] the key is to adjust the learning_rate 
+
+all of SGD algorithm is based on this particular idea
+
+but whatever your SGD algorithm is , if the gradient is accidently very big say inf. then, your SGD will fail to calculate the correct result.
+
+to solve this we employ a simple strategy called gradient clip
+
+for any gradient we compute such as:
+grads = tensor.grad(cost,wrt=itemlist(tparams))
+
+# apply gradient clipping here
+
+if clip_c > 0. :
+    g2 = 0.
+    for g in grads:
+        g2 += (g**2).sum()
+    new_grads = []
+    for g in grads:
+        new_grads.append(tensor.switch(g2 > (clip_c**2), g/tensor.sqrt(g2)*clip_c,g ))
+    grads = new_grads
+[Done]
+
+Task 9> structure and relation
+
+three indivial component 
+the segmenter , structure and relation 
+score the testset segmenter [Done]
+score the structure 
+score the relation 
+
+Task 19> how to desgin the binary classifier and multi-class classifier and do it in neural style?
+1. check out the Feng's work for traidtional desgin
+2. check out the neural dependency parser's work for neural style
+how to do structure (nucleus) score ?
+how to do relation score ?                    
+ 
+
+Task 20> structure and relation score with gold standard
+very simple model Siamese RGU test for RST
 
 Task 11> add pos embedding
 Run the pos embedding 
@@ -237,30 +296,3 @@ it can do overfit
 and it can match training dataset perfectly.
 [????]
 
-Task 17> update the code because the current version can easily mislead the reader!!!! please follow the theano standard version from RNNSLU task 
-[Done]
-
-Task 18> the structure and relation data extract
-how to load tree
-
-target = [ ['NS','e1','e2'] , ['NN','e3','e4'] , ['NS','e12','e34'] ]
-[Done]
-
-Task 19> how to desgin the binary classifier and multi-class classifier and do it in neural style?
-1. check out the Feng's work for traidtional desgin
-2. check out the neural dependency parser's work for neural style
-how to do structure (nucleus) score ?
-how to do relation score ?                    
- 
-
-Task 20> structure and relation score with gold standard
-very simple model Siamese RGU test for RST
-
-Task 21> add adadelta
-adadelta is way faster than rmsprop!
-but adadelta also has nan problem better keep the rmsprop and adadelta version both
-[Done] 
-
-Task 22> gradient clipping
-the RNN neural network all has potential gradient exploding problem
-using gradient clipping technical to handle it

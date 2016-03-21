@@ -36,6 +36,8 @@ def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_
         updates[exp_sg] = up_exp_sg
         step = -(T.sqrt(exp_su + epsilon) / T.sqrt(up_exp_sg + epsilon)) * gp
         updates[exp_su] = rho * exp_su + (1 - rho) * T.sqr(step)
+        # 
+        # step is the adadelta key! 
         stepped_param = param + step
         if norm == 1:
             if (param.get_value(borrow=True).ndim == 2) and param.name!='Words':
