@@ -18,7 +18,7 @@ from collections import OrderedDict
 sys.path.append('../tree')
 from tree import *
 
-def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-6,norm_lim=9,word_vec_name='Words'):
+def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_vec_name='Words'):
     """
     adadelta update rule, mostly from
     https://groups.google.com/forum/#!topic/pylearn-dev/3QbKtCumAW4 (for Adadelta)
@@ -33,6 +33,19 @@ def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-6,norm_lim=9,word_
         gp = T.grad(cost, param)
         exp_sqr_ups[param] = theano.shared(value=(empty), name="exp_grad_%s" % param.name)
         gparams.append(gp)
+
+    # this is place you should think of gradient clip using the l2-norm
+    g2 = 0.
+    clip_c = 1.
+    for g in gparams:
+        g2 += (g**2).sum()
+    is_finite = T.or_(T.isnan(g2), T.isinf(g2))
+    new_grads = []
+    for g in gparams:
+        new_grad = T.switch(is_finite,g/T.sqrt(g2)*clip_c,g)
+        new_grads.append(new_grad)
+    gparams = new_grads
+
     for param, gp in zip(params, gparams):
         exp_sg = exp_sqr_grads[param]
         exp_su = exp_sqr_ups[param]
@@ -54,6 +67,7 @@ def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-6,norm_lim=9,word_
         else:
             updates[param] = stepped_param
     return updates
+
 
 def traversal(tree):
     parentpair = []
@@ -158,20 +172,15 @@ class Siamese_GRU:
         # initialize the network parameters
 
         if word_embedding is None:
-            # using random word vector
-            # using glove 
-            # using word2vec
-
             E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
         else:
-            # using pre-trained word vector
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
-        # combine hidden states from 2 layer 
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
+        b = np.zeros((3,hidden_dim))
+        
         V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
-        b = np.zeros((6,hidden_dim))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -182,13 +191,6 @@ class Siamese_GRU:
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
-        # SGD / rmsprop : initialize parameters
-        self.mE = theano.shared(name='mE', value=np.zeros(E.shape).astype(theano.config.floatX))
-        self.mU = theano.shared(name='mU', value=np.zeros(U.shape).astype(theano.config.floatX))
-        self.mV = theano.shared(name='mV', value=np.zeros(V.shape).astype(theano.config.floatX))
-        self.mW = theano.shared(name='mW', value=np.zeros(W.shape).astype(theano.config.floatX))
-        self.mb = theano.shared(name='mb', value=np.zeros(b.shape).astype(theano.config.floatX))
-        self.mc = theano.shared(name='mc', value=np.zeros(c.shape).astype(theano.config.floatX))
 
         self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
         
@@ -204,7 +206,7 @@ class Siamese_GRU:
         x_b = T.ivector('x_b')
         y = T.lvector('y')
 
-        def sena_forward_step(x_t,s_t_prev):
+        def forward_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -215,32 +217,17 @@ class Siamese_GRU:
             # directly return the hidden state as intermidate output 
             return [s_t]
 
-        def senb_forward_step(x_t,s_t_prev):
-            x_e = E[:,x_t]
-
-            # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
-            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
-            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            return [s_t]
-
-        def manhattan_distance(h_a,h_b):
-            return T.exp(-1*abs(h_a-h_b))
-
-        def mse_error(p,y):
-            return (p-y)**2
 
         # sentence a vector (states)
         a_s , updates = theano.scan(
-                sena_forward_step,
+                forward_step,
                 sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
             
         # sentence b vector (states)
         b_s , updates = theano.scan(
-                senb_forward_step,
+                forward_step,
                 sequences=x_b,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
@@ -298,15 +285,12 @@ def index_to_class(index):
     return label
 
 def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+    
     num_examples_seen = 0
-
     print 'now learning_rate : ' , learning_rate;
     for epoch in range(nepoch):
         # For each training example ...
 
-        #
-        #
-        #
         tocount = 0
         tccount = 0
         tycount = 0
@@ -318,11 +302,8 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=
             # Optionally do callback
             print '>>>>>'
 
-            lwrds = []
-            rwrds = []
-            for lj,rj in zip(X_1_train[i],X_2_train[i]):
-                lwrds.append(index_to_word[lj])
-                rwrds.append(index_to_word[rj])
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
 
             print 'i-th :' , i;
             print 'the left edu : ' ," ".join(lwrds)
@@ -398,12 +379,8 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
         ccount = 0
         ycount = 0
 
-        lwrds = []
-        rwrds = []
-
-        for lj, rj in zip(X_1_test[i],X_2_test[i]):
-            lwrds.append(index_to_word[lj])
-            rwrds.append(index_to_word[rj])
+        lwrds = [index_to_word[j] for j in X_1_test[i]]
+        rwrds = [index_to_word[j] for j in X_2_test[i]]
 
         print 'i-th : ' , i;
         print 'the left edu : , ' , " ".join(lwrds)

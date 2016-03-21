@@ -13,8 +13,60 @@ import os
 import nltk
 import copy
 
+from collections import OrderedDict
+
 sys.path.append('../tree')
 from tree import *
+
+def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_vec_name='Words'):
+    """
+    adadelta update rule, mostly from
+    https://groups.google.com/forum/#!topic/pylearn-dev/3QbKtCumAW4 (for Adadelta)
+    """
+    updates = OrderedDict({})
+    exp_sqr_grads = OrderedDict({})
+    exp_sqr_ups = OrderedDict({})
+    gparams = []
+    for param in params:
+        empty = np.zeros_like(param.get_value(),dtype=theano.config.floatX)
+        exp_sqr_grads[param] = theano.shared(value=(empty), name="exp_grad_%s" % param.name)
+        gp = T.grad(cost, param)
+        exp_sqr_ups[param] = theano.shared(value=(empty), name="exp_grad_%s" % param.name)
+        gparams.append(gp)
+
+    # this is place you should think of gradient clip using the l2-norm
+    g2 = 0.
+    clip_c = 1.
+    for g in gparams:
+        g2 += (g**2).sum()
+    is_finite = T.or_(T.isnan(g2), T.isinf(g2))
+    new_grads = []
+    for g in gparams:
+        new_grad = T.switch(is_finite,g/T.sqrt(g2)*clip_c,g)
+        new_grads.append(new_grad)
+    gparams = new_grads
+
+    for param, gp in zip(params, gparams):
+        exp_sg = exp_sqr_grads[param]
+        exp_su = exp_sqr_ups[param]
+        up_exp_sg = rho * exp_sg + (1 - rho) * T.sqr(gp)
+        updates[exp_sg] = up_exp_sg
+        step = -(T.sqrt(exp_su + epsilon) / T.sqrt(up_exp_sg + epsilon)) * gp
+        updates[exp_su] = rho * exp_su + (1 - rho) * T.sqr(step)
+        stepped_param = param + step
+        if norm == 1:
+            if (param.get_value(borrow=True).ndim == 2) and param.name!='Words':
+                col_norms = T.sqrt(T.sum(T.sqr(stepped_param), axis=0))
+                desired_norms = T.clip(col_norms, 0, T.sqrt(norm_lim))
+                scale = desired_norms / (1e-7 + col_norms)
+                updates[param] = stepped_param * scale
+            else:
+                updates[param] = stepped_param
+        elif norm == 0:
+            updates[param] = stepped_param
+        else:
+            updates[param] = stepped_param
+    return updates
 
 
 def traversal(tree):
@@ -120,20 +172,15 @@ class Siamese_GRU:
         # initialize the network parameters
 
         if word_embedding is None:
-            # using random word vector
-            # using glove 
-            # using word2vec
-
             E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
         else:
-            # using pre-trained word vector
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
-        # combine hidden states from 2 layer 
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
+        b = np.zeros((3,hidden_dim))
+        
         V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
-        b = np.zeros((6,hidden_dim))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -144,13 +191,9 @@ class Siamese_GRU:
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
-        # SGD / rmsprop : initialize parameters
-        self.mE = theano.shared(name='mE', value=np.zeros(E.shape).astype(theano.config.floatX))
-        self.mU = theano.shared(name='mU', value=np.zeros(U.shape).astype(theano.config.floatX))
-        self.mV = theano.shared(name='mV', value=np.zeros(V.shape).astype(theano.config.floatX))
-        self.mW = theano.shared(name='mW', value=np.zeros(W.shape).astype(theano.config.floatX))
-        self.mb = theano.shared(name='mb', value=np.zeros(b.shape).astype(theano.config.floatX))
-        self.mc = theano.shared(name='mc', value=np.zeros(c.shape).astype(theano.config.floatX))
+
+        self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
+        
 
         # We store the Theano graph here
         self.theano = {}
@@ -163,7 +206,7 @@ class Siamese_GRU:
         x_b = T.ivector('x_b')
         y = T.lvector('y')
 
-        def sena_forward_step(x_t,s_t_prev):
+        def forward_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -174,35 +217,20 @@ class Siamese_GRU:
             # directly return the hidden state as intermidate output 
             return [s_t]
 
-        def senb_forward_step(x_t,s_t_prev):
-            x_e = E[:,x_t]
-
-            # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
-            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
-            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            return [s_t]
-
-        def manhattan_distance(h_a,h_b):
-            return T.exp(-1*abs(h_a-h_b))
-
-        def mse_error(p,y):
-            return (p-y)**2
 
         # sentence a vector (states)
         a_s , updates = theano.scan(
-                sena_forward_step,
+                forward_step,
                 sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
             
         # sentence b vector (states)
         b_s , updates = theano.scan(
-                senb_forward_step,
+                forward_step,
                 sequences=x_b,
                 truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
+                outputs_info=a_s[-1])
 
         # semantic similarity 
         # s_sim = manhattan_distance(a_s[-1],b_s[-1])
@@ -223,13 +251,9 @@ class Siamese_GRU:
         # cost 
         cost = T.sum(o_error)
 
-        # Gradients
-        dE = T.grad(cost,E)
-        dU = T.grad(cost,U)
-        dW = T.grad(cost,W)
-        db = T.grad(cost,b)
-        dV = T.grad(cost,V)
-        dc = T.grad(cost,c)
+        # updates
+        updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
+
 
         # Assign functions
         self.predict = theano.function([x_a,x_b],om)
@@ -242,30 +266,10 @@ class Siamese_GRU:
         decay = T.scalar('decay')
 
         # rmsprop cache updates
-        mE = decay * self.mE + (1-decay) * dE ** 2
-        mU = decay * self.mU + (1-decay) * dU ** 2
-        mW = decay * self.mW + (1-decay) * dW ** 2
-        mV = decay * self.mV + (1-decay) * dV ** 2
-        mb = decay * self.mb + (1-decay) * db ** 2
-        mc = decay * self.mc + (1-decay) * dc ** 2
 
-       
-        updates = [(E,E - learning_rate * dE / T.sqrt(mE + 1e-6)),
-                   (U,U - learning_rate * dU / T.sqrt(mU + 1e-6)),
-                   (W,W - learning_rate * dW / T.sqrt(mW + 1e-6)),
-                   (V,V - learning_rate * dV / T.sqrt(mV + 1e-6)),
-                   (b,b - learning_rate * db / T.sqrt(mb + 1e-6)),
-                   (c,c - learning_rate * dc / T.sqrt(mc + 1e-6)),
-                   (self.mE,mE),
-                   (self.mU,mU),
-                   (self.mW,mW),
-                   (self.mV,mV),
-                   (self.mb,mb),
-                   (self.mc,mc)]
-        
 
         self.sgd_step = theano.function(
-                [x_a,x_b,y, learning_rate, theano.Param(decay,default=0.9)],
+                [x_a,x_b,y],
                 [],
                 updates=updates)
 
@@ -281,31 +285,25 @@ def index_to_class(index):
     return label
 
 def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+    
     num_examples_seen = 0
-
     print 'now learning_rate : ' , learning_rate;
     for epoch in range(nepoch):
         # For each training example ...
 
-        #
-        #
-        #
         tocount = 0
         tccount = 0
         tycount = 0
 
         for i in np.random.permutation(len(y_train)):
             # One SGT step
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i],learning_rate,decay)
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
             num_examples_seen += 1
             # Optionally do callback
             print '>>>>>'
 
-            lwrds = []
-            rwrds = []
-            for lj,rj in zip(X_1_train[i],X_2_train[i]):
-                lwrds.append(index_to_word[lj])
-                rwrds.append(index_to_word[rj])
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
 
             print 'i-th :' , i;
             print 'the left edu : ' ," ".join(lwrds)
@@ -317,6 +315,7 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=
             print index_to_class(output)
             print 'true label : ' , y_train[i]
             print index_to_class(y_train[i][0])
+            print 'the number of example have seen for now : ' , num_examples_seen
             # boundary accuracy 
             # ocount is total boundary output number
             # ccount is correct boundary number
@@ -380,12 +379,8 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
         ccount = 0
         ycount = 0
 
-        lwrds = []
-        rwrds = []
-
-        for lj, rj in zip(X_1_test[i],X_2_test[i]):
-            lwrds.append(index_to_word[lj])
-            rwrds.append(index_to_word[rj])
+        lwrds = [index_to_word[j] for j in X_1_test[i]]
+        rwrds = [index_to_word[j] for j in X_2_test[i]]
 
         print 'i-th : ' , i;
         print 'the left edu : , ' , " ".join(lwrds)
@@ -528,9 +523,9 @@ def nucleus():
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
-    learning_rate = 0.0000005
+    learning_rate = 0.000005
 
-    model.sgd_step(X_1_train[0],X_2_train[0],y_train[0],learning_rate)
+    model.sgd_step(X_1_train[0],X_2_train[0],y_train[0])
     t2 = time.time()
 
     print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
