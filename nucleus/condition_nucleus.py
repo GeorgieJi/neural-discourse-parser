@@ -469,7 +469,7 @@ def nucleus():
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
 
-    vocabulary_size = 5*1000
+    vocabulary_size = 14*1000
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1)

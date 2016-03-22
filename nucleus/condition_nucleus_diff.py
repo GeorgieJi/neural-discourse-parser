@@ -12,7 +12,7 @@ import sys
 import os
 import nltk
 import copy
-# from theano.compile.nanguardmode import NanGuardMode
+
 from collections import OrderedDict
 
 sys.path.append('../tree')
@@ -39,10 +39,10 @@ def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_
     clip_c = 1.
     for g in gparams:
         g2 += (g**2).sum()
-    # is_finite = T.or_(T.isnan(g2), T.isinf(g2))
+    is_finite = T.or_(T.isnan(g2), T.isinf(g2))
     new_grads = []
     for g in gparams:
-        new_grad = T.switch(g2>(clip_c**2),g/T.sqrt(g2)*clip_c,g)
+        new_grad = T.switch(is_finite,g/T.sqrt(g2)*clip_c,g)
         new_grads.append(new_grad)
     gparams = new_grads
 
@@ -131,22 +131,24 @@ def build_data(dir_path):
 
     for pair in pairs:
         errorflag = True
+        # one-hot representation
         if pair[0] == 'Nucleus-Satellite':
-            score = [0]
+            nucs.append(np.asarray([1,0,0]))
         elif pair[0] == 'Nucleus-Nucleus':
-            score = [1]
+            nucs.append(np.asarray([0,1,0]))
         elif pair[0] == 'Satellite-Nucleus':
-            score = [2]
+            nucs.append(np.asarray([0,0,1]))
         else:
             errorflag = False # filter the wrong tree
-            
+        
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if errorflag and len(wrdsa) > 100 and len(wrdsb) > 100:
+
+        # if errorflag and len(wrdsa) < 100 and len(wrdsb) < 100:
+        if errorflag :
             senas.append(nltk.word_tokenize(pair[1].strip().lower()))
             senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
-            nucs.append(score)
         else:
             continue
     
@@ -208,6 +210,7 @@ class Siamese_GRU:
         x_a = T.ivector('x_a')
         x_b = T.ivector('x_b')
         y = T.lvector('y')
+        n_y = y.reshape((1,y.shape[0]))
 
         def forward_step(x_t,s_t_prev):
             # Word embedding layer
@@ -233,7 +236,7 @@ class Siamese_GRU:
                 forward_step,
                 sequences=x_b,
                 truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
+                outputs_info=a_s[-1])
 
         # semantic similarity 
         # s_sim = manhattan_distance(a_s[-1],b_s[-1])
@@ -242,14 +245,24 @@ class Siamese_GRU:
         sena = a_s[-1]
         senb = b_s[-1]
 
-        combined_s = T.concatenate([sena,senb],axis=0)
+        hb = sena * senb
+        ha = abs(sena - senb)
 
+        combined_s = T.concatenate([ha,hb],axis=0)
+        n_x = V.dot(combined_s)+c
+        n_x = n_x.reshape((1,n_x.shape[0]))
         # softmax class
-        o = T.nnet.softmax(V.dot(combined_s)+c)[0]
-        om = o.reshape((1,o.shape[0]))
-        prediction = T.argmax(om,axis=1)
-        o_error = T.nnet.categorical_crossentropy(om,y)
+        # o = T.nnet.softmax(V.dot(n_x)+c)
+        # prediction = T.argmax(o,axis=1)
+        # o_error = T.nnet.categorical_crossentropy(o,y)
 
+        # softmax+crossentropy can lead to nan in gradient for unbounded activations
+        # https://github.com/Theano/Theano/issues/3162
+        xdev = n_x - n_x.max(1,keepdims=True)
+        lsm = xdev - T.log(T.sum(T.exp(xdev),axis=1,keepdims=True))
+        o = T.exp(lsm)
+        prediction = T.argmax(o,axis=1)
+        o_error = -T.sum(n_y*lsm,axis=1)
 
         # cost 
         cost = T.sum(o_error)
@@ -259,7 +272,7 @@ class Siamese_GRU:
 
 
         # Assign functions
-        self.predict = theano.function([x_a,x_b],om)
+        self.predict = theano.function([x_a,x_b],o)
         self.predict_class = theano.function([x_a,x_b],prediction)
         self.ce_error = theano.function([x_a,x_b,y],cost)
         # self.bptt = theano.function([x,y],[dE,dU,dW,db,dV,dc])
@@ -269,13 +282,12 @@ class Siamese_GRU:
         decay = T.scalar('decay')
 
         # rmsprop cache updates
-        # find the nan
+
+
         self.sgd_step = theano.function(
                 [x_a,x_b,y],
                 [],
-                updates=updates
-                # mode=NanGuardMode(nan_is_error=True, inf_is_error=True, big_is_error=True)
-                )
+                updates=updates)
 
 
 def index_to_class(index):
@@ -299,7 +311,7 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=
         tccount = 0
         tycount = 0
 
-        for i in range(len(y_train)):
+        for i in np.random.permutation(len(y_train)):
             # One SGT step
             model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
             num_examples_seen += 1
@@ -316,9 +328,9 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=
             # print 'predict : ' , model.predict(X_train[i])
             output = model.predict_class(X_1_train[i],X_2_train[i])
             print 'predict_class : ' , output
-            print index_to_class(output)
+            print index_to_class(output[0])
             print 'true label : ' , y_train[i]
-            print index_to_class(y_train[i][0])
+            print index_to_class(np.argmax(y_train[i]))
             print 'the number of example have seen for now : ' , num_examples_seen
             # boundary accuracy 
             # ocount is total boundary output number
@@ -328,7 +340,7 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=
             ccount = 0
             ycount = 0
 
-            for o,y in zip(output,y_train[i]):
+            for o,y in zip(output,[ np.argmax(y_train[i])]):
                 if o == y:
                     ccount += 1
                 ycount += 1
@@ -393,12 +405,12 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
 
         # print 
         print 'predict_class : ' , output
-        print index_to_class(output)
+        print index_to_class(output[0])
         print 'true label : ' , y_test[i]
-        print index_to_class(y_test[i][0])
+        print index_to_class(np.argmax(y_test[i]))
 
 
-        for o,y in zip(output,y_test[i]):
+        for o,y in zip(output,[np.argmax(y_test[i])]):
             if y == o:
                 ccount += 1
             ycount += 1
@@ -498,12 +510,12 @@ def nucleus():
     # X_1_train , X_2_train , y_train
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
-    y_train = (nucs)
+    y_train = np.asarray(nucs)
 
     # X_1_test, X_2_test , y_train
     X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
     X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
-    y_test = (tst_nucs)
+    y_test = np.asarray(tst_nucs)
 
     print "\n Example sentence '%s' " % " ".join(ledus[0])
     print "\n Example sentence '%s' " % " ".join(redus[0])
@@ -526,7 +538,8 @@ def nucleus():
     print model.predict(X_1_train[0],X_2_train[0])
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
-    print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
+    print 'yshape : ' , model.yshape(y_train[0])
+    # print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
     learning_rate = 0.000005
 
     model.sgd_step(X_1_train[0],X_2_train[0],y_train[0])
@@ -541,7 +554,7 @@ def nucleus():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
+        # train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
         test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 

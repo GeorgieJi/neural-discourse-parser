@@ -132,27 +132,32 @@ def build_data(dir_path):
     for pair in pairs:
         errorflag = True
         if pair[0] == 'Nucleus-Satellite':
-            score = [0]
+            nucs.append([0])
         elif pair[0] == 'Nucleus-Nucleus':
-            score = [1]
+            nucs.append([1])
         elif pair[0] == 'Satellite-Nucleus':
-            score = [2]
+            nucs.append([2])
         else:
             errorflag = False # filter the wrong tree
             
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if errorflag and len(wrdsa) > 100 and len(wrdsb) > 100:
+        if errorflag and len(wrdsa)< 100 and len(wrdsb) < 100:
             senas.append(nltk.word_tokenize(pair[1].strip().lower()))
             senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
-            nucs.append(score)
         else:
             continue
     
     return senas , senbs , nucs
 
+def filter_data(dataset):
+    senas = dataset[0]
+    senbs = dataset[1]
+    nucs = dataset[2]
 
+    for sena, senb, score in zip(senas,senbs,nucs):
+        pass;
 
 class Siamese_GRU:
     """
@@ -243,9 +248,11 @@ class Siamese_GRU:
         senb = b_s[-1]
 
         combined_s = T.concatenate([sena,senb],axis=0)
+        n_x = V.dot(combined_s)+c
 
         # softmax class
-        o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+        # o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+        o = T.exp(n_x) / (T.exp(n_x).sum(1,keepdims=True))
         om = o.reshape((1,o.shape[0]))
         prediction = T.argmax(om,axis=1)
         o_error = T.nnet.categorical_crossentropy(om,y)
