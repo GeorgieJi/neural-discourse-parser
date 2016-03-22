@@ -1,0 +1,302 @@
+this takscheck is used to check the process of task and problems 
+
+1.we will implement the neural discourse parser step by step. The discourse parser usually contains three main componement : discourse segmenter , discourse relation classifier , discourse structure builder .
+
+the first componement is the discourse segmenter , the segmenter needs to split the sentence into serval non-overlap part. we consider this task as sequence labeling. More specifically , we will labeling every word in given sentence using : B , E , C tags. which means (B)egin of EDU, (E)nd of EDU, (C)ontinueious of EDU respectively.
+
+we employ a simple GRU neural network to do it . GRU(gated recurrent unit) is a simplified version of LSTM (long short term memory) rnn , which has been proved effective in small dataset due to its simple framework and fewer parameters than LSTM.
+
+another framework we can choose will be : bidirectional RNN, LSTM, vanilla RNN and Bi-GRUs
+
+Step 1 : preprocess 
+
+preprocess needs to convert the sentence into word index sequence;
+
+Task 1 >collect training corpus :
+extract training data from RST corpus 
+[Done]
+
+Task 2 >tokenize and sentence_tokenize?
+and lowercase 
+[Done]
+
+Task 3 >build word vocabulary and word mapping
+in this step, we need to limit the size of vocabulary, which is vatal to the training time and size of parameter.
+
+input x : [['CBS','Inc.','is','cutting',...],['CBS','insisted','the',...]]
+x[0] : ['CBS','Inc.','is'];
+l[0] : ['B','C','E']
+[Done]
+
+need 'sent_start' 'sent_end' mark?
+reference to sequence labeling task : no need special mark
+
+then we need to build vocabulary for most k frequent words
+
+detail : X_train,y_train,word_to_index,index_to_word
+X_train
+[[10, 39, 3, 39, 5, 0, 31, 26, 1, 6, 22, 12, 9, 14, 18, 27, 36, 39, 39, 2]
+ [10, 39, 0] [19, 13, 39, 39, 21, 33, 0, 37, 4]
+ [39, 3, 0, 32, 39, 39, 39, 39, 0, 39, 39, 1, 39, 35, 39, 2]
+ [5, 39, 23, 39, 34] [7, 39, 15, 0, 11, 39, 1]
+ [16, 39, 8, 25, 9, 14, 3, 0, 11, 39, 12, 8, 4, 6] [30, 20, 38, 4]
+ [39, 13, 17, 39, 24, 7, 29, 39, 39, 39, 28, 2]
+ [5, 15, 39, 39, 0, 39, 39, 7, 0, 1, 2, 6]]
+y_train
+[[1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2] [1, 3, 2]
+ [1, 3, 3, 3, 3, 3, 3, 3, 2]
+ [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2] [1, 3, 3, 3, 2]
+ [1, 3, 3, 3, 3, 3, 2] [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2]
+ [1, 3, 3, 2] [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2]
+ [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2]]
+word_to_index
+{'and': 16, 'named': 17, 'since': 35, 'show': 1, 'is': 3, 'move': 19, 'rod': 20, 'it': 8, 'setback': 21, 'one': 9, "''": 6, 'cbs': 10, 'have': 23, 'sajak': 26, 'its': 27, 'best': 11, 'current': 36, 'said': 30, 'from': 18, 'network': 32, 'for': 33, 'intention': 34, 'pat': 31, ',': 4, '.': 2, 'late': 29, 'to': 12, 'program': 37, 'perth': 38, 'was': 13, '``': 5, 'run': 25, 'august': 28, 'president': 24, 'UNK': 39, 'down': 22, 'hour': 14, 'this': 15, 'of': 7, 'the': 0}
+index_to_word
+['the', 'show', '.', 'is', ',', '``', "''", 'of', 'it', 'one', 'cbs', 'best', 'to', 'was', 'hour', 'this', 'and', 'named', 'from', 'move', 'rod', 'setback', 'down', 'have', 'president', 'run', 'sajak', 'its', 'august', 'late', 'said', 'pat', 'network', 'for', 'intention', 'since', 'current', 'program', 'perth', 'UNK']
+
+
+
+Task 4 >Test on 1 example labeling
+x[0]
+l[0] 
+the initial neural network should predict 3 classes with uniform distribution (1/3,1/3,1/3)
+
+the training process is the same network performing on the every sample in training dataset
+the training method for single sample is model.sgd_step 
+the model.sgd_step will load in a sample from training dataset , perform the sequence labeling on it and compute the loss with the label data corresponding to.
+
+by doing process above on entire training dataset , we will obtain a local-mininal outcome neural network result
+
+notice:
+
+class:
+
+
+self.predict = theano.function([x],o)
+instance:
+model.predict(X_train[0]) -> 
+[[ 0.00024954  0.0002497   0.00024989 ...,  0.00025005  0.00024933
+   0.00025065]
+ [ 0.00024922  0.00024994  0.00025004 ...,  0.00025086  0.00024928
+   0.00025026]
+ [ 0.00024948  0.00025026  0.00025036 ...,  0.0002503   0.00025019
+   0.00025046]
+ ..., 
+ [ 0.00024894  0.00024941  0.00024991 ...,  0.00024975  0.00024972
+   0.00025028]
+ [ 0.00024956  0.00024956  0.00025031 ...,  0.00024996  0.0002496
+   0.00025065]
+ [ 0.00024936  0.00024941  0.00025007 ...,  0.00025024  0.00025002
+   0.00025043]]
+
+matrix size = (len(X_train[0]),vocabulary_size=4000)
+
+self.predict_class = theano.function([x],prediction)
+prediction = T.argmax(o,axis=1)
+model.predict_class(X_train[0]) ->
+[3545 3882  970 3959 3247 1007 3910  202  202 3037 1758  863  863  223 3117
+ 2699 3519 1395  194  368]
+
+we can use theano nnet categorical_crossentropy method here:
+
+tensor.nnet.categorical_crossentropy(coding_dist,true_dist)
+coding_dist - symbolic 2D Tensor. Each row represents a distribution.
+true_dist - symbolic 2D Tensor Or symbolic vector of ints. 
+In the case of an integer vector argument, each element represent the position
+of the '1' in a 1-of-N encoding (aka "one-hot" encoding)
+
+return tensor of rank one-less-than
+
+[Done]
+
+Task 5> training epoch for edu data
+
+use numpy.random.permutation to disorder the order of training examples
+
+[Done]
+
+Task 6> restructure the training data
+
+merge edus into a complete sentence 
+['cbs', 'inc.', 'is', 'cutting', '``', 'the', 'pat', 'sajak', 'show', "''", 'down', 'to', 'one', 'hour', 'from', 'its', 'current', '90', 'minutes', '.']
+[0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1]
+
+now use a whole paragraph as a unit
+
+[Done]
+
+Task 7> Task F-score 
+
+how to compute the F-score of span , nuclear , relation
+the span is calculate with the tag and span , it IS a sequence labeling task , the correct way to do it is only caluculate the boundary number! not the wrong one
+which leave us to recode the F-score 
+nuclear is a binary classifier perform on the manual segmenation (gold edu)
+same , relatoin is a multi-classifier perform on the manual segmenation
+[Done]
+
+Task 8> bi-directional GRU
+find code to learn!
+
+generate the forward direction f_s [f_s1,f_s2,f_s3,f_s4,f_s5]
+generate the backward direction b_s [b_s1,b_s2,b_s3,b_s4,b_s5]
+
+generate the output graph 
+
+e.g.
+hidden_state :  [[  3.82788192e-04  -2.80393468e-03   2.95947926e-03 ...,   3.10552790e-03
+    2.23563238e-03   3.06500262e-03]
+ [ -4.58721708e-04  -1.59730272e-03   7.07197930e-03 ...,   3.96566528e-03
+   -1.16562858e-03   2.65146866e-03]
+ [ -2.53103397e-04  -1.70026073e-03   5.95395371e-03 ...,  -2.92569608e-04
+   -2.24048598e-03   5.35151904e-03]
+ ..., 
+ [ -6.46839360e-04  -3.72763765e-03  -4.84721806e-03 ...,  -3.14405039e-03
+    1.32872815e-03  -2.84989167e-04]
+ [ -1.11254456e-03  -4.12883781e-03  -6.80065665e-03 ...,  -5.18637238e-03
+   -1.99213668e-03  -6.46716264e-03]
+ [ -3.68623380e-03   2.29907226e-03  -3.81174417e-03 ...,  -3.31515564e-03
+   -5.78509808e-05  -3.48684191e-04]]
+hidden_state shape :  (208, 128)
+backward hidden_state :  [[ -3.68623380e-03   2.29907226e-03  -3.81174417e-03 ...,  -3.31515564e-03
+   -5.78509808e-05  -3.48684191e-04]
+ [ -1.11254456e-03  -4.12883781e-03  -6.80065665e-03 ...,  -5.18637238e-03
+   -1.99213668e-03  -6.46716264e-03]
+ [ -6.46839360e-04  -3.72763765e-03  -4.84721806e-03 ...,  -3.14405039e-03
+    1.32872815e-03  -2.84989167e-04]
+ ..., 
+ [ -2.53103397e-04  -1.70026073e-03   5.95395371e-03 ...,  -2.92569608e-04
+   -2.24048598e-03   5.35151904e-03]
+ [ -4.58721708e-04  -1.59730272e-03   7.07197930e-03 ...,   3.96566528e-03
+   -1.16562858e-03   2.65146866e-03]
+ [  3.82788192e-04  -2.80393468e-03   2.95947926e-03 ...,   3.10552790e-03
+    2.23563238e-03   3.06500262e-03]]
+backward hidden_state shape :  (208, 128)
+
+o_1 = softmax(V*(f_s1:b_s5))
+o_2 = softmax(V*(f_s2:b_s4))
+o_3 = softmax(V*(f_s3:b_s3))
+o_4 = softmax(V*(f_s4:b_s2))
+o_5 = softmax(V*(f_s5:b_s1))
+
+[Done]
+
+
+Task 10> add pre-trained word vector
+how to ?
+what is the affect of word embedding?
+
+1. build vocabulary 
+2. build E (vocabulary,word_dim) , basically E is the look-up table for specific word vector
+3. load in pre-trained word vector , select word in vocabulary ?
+
+in cnn_sentence case , first we get the vocabulary and load the pre-trained word vector, if a word in pre-trained word vector then load it.
+if not give a random value for it
+
+word embedding layer is meant to learning word representation during training process.
+
+code E = (hidden_dim,vocabulary size)
+[Done]
+
+
+
+Task 17> update the code because the current version can easily mislead the reader!!!! please follow the theano standard version from RNNSLU task 
+[Done]
+
+Task 18> the structure and relation data extract
+how to load tree
+
+target = [ ['NS','e1','e2'] , ['NN','e3','e4'] , ['NS','e12','e34'] ]
+[Done]
+
+
+Task 21> add adadelta
+adadelta is way faster than rmsprop!
+but adadelta also has nan problem better keep the rmsprop and adadelta version both
+[Done] 
+
+Task 22> gradient clipping
+the RNN neural network all has potential gradient exploding problem
+using gradient clipping technical to handle it
+
+for gradient update in theano function, the problem is to understand what is exactly going on during updates.
+
+usually, we first collect the params which refers to the cost 
+then we calculate the gradient respect to those params
+
+then, update those params with 
+
+updates = [(param_1, param_1 - learning_rate * grad_1)] the key is to adjust the learning_rate 
+
+all of SGD algorithm is based on this particular idea
+
+but whatever your SGD algorithm is , if the gradient is accidently very big say inf. then, your SGD will fail to calculate the correct result.
+
+to solve this we employ a simple strategy called gradient clip
+
+for any gradient we compute such as:
+grads = tensor.grad(cost,wrt=itemlist(tparams))
+
+# apply gradient clipping here
+
+if clip_c > 0. :
+    g2 = 0.
+    for g in grads:
+        g2 += (g**2).sum()
+    new_grads = []
+    for g in grads:
+        new_grads.append(tensor.switch(g2 > (clip_c**2), g/tensor.sqrt(g2)*clip_c,g ))
+    grads = new_grads
+[Done]
+
+Task 9> structure and relation
+
+three indivial component 
+the segmenter , structure and relation 
+score the testset segmenter [Done]
+score the structure 
+score the relation 
+
+Task 19> how to desgin the binary classifier and multi-class classifier and do it in neural style?
+1. check out the Feng's work for traidtional desgin
+2. check out the neural dependency parser's work for neural style
+how to do structure (nucleus) score ?
+how to do relation score ?                    
+ 
+
+Task 1> structure and relation score with gold standard
+very simple model Siamese RGU test for RST
+
+Task 2> add pos embedding
+Run the pos embedding 
+download the word2vec 
+./word2vec -train smallpos -output pos.txt -size 200 -window 10 -sample 1e-4 -negative 5 -hs 0 -binary 0 -cbow 0 -iter 3
+the training data is extract from language modeling corpus , automatic tagged by standford pos tagger
+the training process is done , but have not add into code yet
+
+Task 3> add lemma embedding
+[????]
+
+Task 4> check if there are anyway neural version of RST discoures parser
+there is none! good news
+[Done]
+
+Task 5> UNK word process for parser
+[????]
+
+Task 6> replace the number
+[????]
+
+Task 7> see the training dataset performance can reach the perfact correct (overfitting)
+base.log
+baseGRU.log hidden_dim vocab=4k training_accuracy=81.11% test_acc=80.70 mean of score = 
+8k-bi.log hidden_dim vocab=8k training_acc=* mean of score = 85.43 test_acc=0.8095
+baseBiGRU.log 
+the current neural network can perform perfect in span task
+it can do overfit
+and it can match training dataset perfectly.
+[????]
+
+Task 8> build pos tag sentence 
+convert sentence from [w0, w1, w2, w3 , w4] to [p0, p1, p2, p3]
+
+Task 9> where is the nan come from ? how to solve it ? 
