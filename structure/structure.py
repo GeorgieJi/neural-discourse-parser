@@ -12,120 +12,277 @@ import sys
 import os
 import nltk
 import copy
+# from theano.compile.nanguardmode import NanGuardMode
+from collections import OrderedDict
+
+sys.path.append('../tree')
+from tree import *
+
+def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_vec_name='Words'):
+    """
+    adadelta update rule, mostly from
+    https://groups.google.com/forum/#!topic/pylearn-dev/3QbKtCumAW4 (for Adadelta)
+    """
+    updates = OrderedDict({})
+    exp_sqr_grads = OrderedDict({})
+    exp_sqr_ups = OrderedDict({})
+    gparams = []
+    for param in params:
+        empty = np.zeros_like(param.get_value(),dtype=theano.config.floatX)
+        exp_sqr_grads[param] = theano.shared(value=(empty), name="exp_grad_%s" % param.name)
+        gp = T.grad(cost, param)
+        exp_sqr_ups[param] = theano.shared(value=(empty), name="exp_grad_%s" % param.name)
+        gparams.append(gp)
+
+    # this is place you should think of gradient clip using the l2-norm
+    g2 = 0.
+    clip_c = 1.
+    for g in gparams:
+        g2 += (g**2).sum()
+    # is_finite = T.or_(T.isnan(g2), T.isinf(g2))
+    new_grads = []
+    for g in gparams:
+        new_grad = T.switch(g2>(clip_c**2),g/T.sqrt(g2)*clip_c,g)
+        new_grads.append(new_grad)
+    gparams = new_grads
+
+    for param, gp in zip(params, gparams):
+        exp_sg = exp_sqr_grads[param]
+        exp_su = exp_sqr_ups[param]
+        up_exp_sg = rho * exp_sg + (1 - rho) * T.sqr(gp)
+        updates[exp_sg] = up_exp_sg
+        step = -(T.sqrt(exp_su + epsilon) / T.sqrt(up_exp_sg + epsilon)) * gp
+        updates[exp_su] = rho * exp_su + (1 - rho) * T.sqr(step)
+        stepped_param = param + step
+        if norm == 1:
+            if (param.get_value(borrow=True).ndim == 2) and param.name!='Words':
+                col_norms = T.sqrt(T.sum(T.sqr(stepped_param), axis=0))
+                desired_norms = T.clip(col_norms, 0, T.sqrt(norm_lim))
+                scale = desired_norms / (1e-7 + col_norms)
+                updates[param] = stepped_param * scale
+            else:
+                updates[param] = stepped_param
+        elif norm == 0:
+            updates[param] = stepped_param
+        else:
+            updates[param] = stepped_param
+    return updates
 
 
-def simpleedus(edus):
+def traversal(tree):
+    parentpair = []
+    # usually the len of tree is 4
+    # print '>>>>>>>>>>>>>>>>>>>>.*'
+    left_tree = tree[2]
+    right_tree = tree[3]
+    span = ''
+    leftspan = ''
+    rightspan = ''
+    leftpair = []
+    rightpair = []
 
-    pas = []
-    for pa in edus:
-        tokseq = []
-        labels = []
-        patags = []
-        for line in pa:
-            # print line.strip()
-            toks = nltk.word_tokenize(line.strip().lower())
-            # print toks
+    if len(left_tree) == 4:
+        leftpair , leftspan = traversal(left_tree)
 
-            # build tags
-            label = [0] + (len(toks)-2)*[2] + [1]
-            # print label
-            tokseq.extend(toks)
-            labels.extend(label)
-        pas.append((tokseq,labels))
+    if len(right_tree) == 4:
+        rightpair , rightspan = traversal(right_tree)
+
+    if len(left_tree) == 3:
+        leftspan = left_tree[2]
+
+    if len(right_tree) == 3:
+        rightspan = right_tree[2]
+
+    parentpair = [ [1 , leftspan, rightspan] ]
+    parentpair.extend(leftpair)
+    parentpair.extend(rightpair)
+    # print '->' , parentpair
+    
+    return parentpair, leftspan + ' ' + rightspan
+
+def traversal_basic(tree):
+    parentpair = []
+    # usually the len of tree is 4
+    # print '>>>>>>>>>>>>>>>>>>>>.*'
+    left_tree = tree[2]
+    right_tree = tree[3]
+    span = ''
+    leftspan = ''
+    rightspan = ''
+    leftpair = []
+    rightpair = []
+
+    if len(left_tree) == 4:
+        leftpair , leftspan = traversal_basic(left_tree)
+
+    if len(right_tree) == 4:
+        rightpair , rightspan = traversal_basic(right_tree)
+
+    if len(left_tree) == 3:
+        leftspan = left_tree[2]
+
+    if len(right_tree) == 3:
+        rightspan = right_tree[2]
+
+    parentpair = [ [1 , leftspan, rightspan] ]
+    parentpair.extend(leftpair)
+    parentpair.extend(rightpair)
+    # print '->' , parentpair
+    
+    return parentpair, ""
+
+def generate_example(pairs,beduspairs):
+
+    # extract basic edu
+    # build the structure path
+
+    # collect all edus
+    edus = []
+    bedus = []
+
+    print 'pairs : ' 
+    print pairs
+
+    print 'beduspairs : ' 
+    print beduspairs
+
+    print 'full sentence : '
+    sentence = pairs[0][1] + ' ' + pairs[0][2]
+    print sentence
+
+    print '))))))'
+    for pair in pairs:
+        # print pair
+        edus.append(pair[1])
+        edus.append(pair[2])
+
+    # collect all basic edu
+    for pair in beduspairs:
+        # print pair
+        if pair[1] != '':
+            bedus.append(pair[1])
+        if pair[2] != "":
+            bedus.append(pair[2])
+
+    print edus
+    print 'basic edu list :'
+    print bedus
+    edu_stack = bedus
+
+    # get order of basic edu
+    # simple order 
+    order_edus = []
+    order_edus.append(edu_stack[0])
+    edu_stack.remove(edu_stack[0])
+    while True:
+
+        if len(edu_stack) == 0:
+            break
+
+        for edu in edu_stack:
+
+            if (edu + ' ' + " ".join(order_edus)) in sentence:
+                order_edus.insert(0,edu)
+                edu_stack.remove(edu)
+
+            if (" ".join(order_edus) + " " + edu) in sentence:
+                order_edus.append(edu)
+                edu_stack.remove(edu)
+
+            pass
+
+        pass
+
+    print 'ordered edus : '
+    print order_edus
 
 
-    return pas
+
+
+def extract_edus(tree_str):
+
+    tree = parse_tree(tree_str)
+    # print 'parsed pairs : '
+    pair = traversal(tree)[0]
+    # generate_example(pairs)
+    return pair
+
+def extract_basic_edus(tree_str):
+    tree = parse_tree(tree_str)
+    pair = traversal_basic(tree)[0]
+    return pair
 
 def build_data(dir_path):
     
     files = os.listdir(dir_path);
     edus_path = [];
     for filename in files:
-        if '.edus' in filename:
+        if '.dis' in filename:
             # print filename;
             edus_path.append(filename);
-    edus = [];
-    sens = [];
+
+    trees = [];
     for edu_path in edus_path:
-        edus.append(open(dir_path+'/'+edu_path).readlines());
-        sens.extend(open(dir_path+'/'+edu_path[:-5]).readlines());
+        trees.append(open(dir_path+'/'+edu_path).readlines());
 
-    train_x = [];
-    train_y = [];
+    print 'trees number : ' , len(trees)
+    print trees[274]
+    groups = []
+    basic_groups = []
+    for tree in trees:
+        groups.append(extract_edus(tree))
+        basic_groups.append(extract_basic_edus(tree))
 
-    print len(edus)
-    pas = simpleedus(edus)
+    print 'number of pairs', len(groups) , ''
 
-    for pa in pas:
-        train_x.append(pa[0])
-        train_y.append(pa[1])
-    return [train_x,train_y]
+    # for i,pair in enumerate (pairs):
+    #     if len(pair) > 6 and len(pair) < 10:
+    #         print pair
+    #         print i
+    # print format_trees[274]
+    # basicedus = basic_edu(format_trees[274])
+    generate_example(groups[274],basic_groups[274])
+    senas = []
+    senbs = []
+    nucs = []
+
+    for pair in pairs:
+        errorflag = True
+        if pair[0] == 'Nucleus-Satellite':
+            score = [0]
+        elif pair[0] == 'Nucleus-Nucleus':
+            score = [1]
+        elif pair[0] == 'Satellite-Nucleus':
+            score = [2]
+        else:
+            errorflag = False # filter the wrong tree
+            
+        wrdsa = nltk.word_tokenize(pair[1].strip().lower())
+        wrdsb = nltk.word_tokenize(pair[2].strip().lower())
+
+        if errorflag and len(wrdsa) < 100 and len(wrdsb) < 100:
+            senas.append(nltk.word_tokenize(pair[1].strip().lower()))
+            senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
+            nucs.append(score)
+        else:
+            continue
+    
+    return senas , senbs , nucs
 
 
 
-def extract_edu(dir_path):
-    files = os.listdir(dir_path);
-    edus_path = [];
-    for filename in files:
-        if '.edus' in filename:
-            # print filename;
-            edus_path.append(filename);
-    edus = [];
-    sens = [];
-    for edu_path in edus_path:
-        edus.extend(open(dir_path+'/'+edu_path).readlines());
-        sens.extend(open(dir_path+'/'+edu_path[:-5]).readlines());
-    return edus;
-
-def process_edu(edu_list):
-    ap_edus = [];
-    for edu in edu_list:
-        tokens = word_tokenize(edu);
-
-def load_wordembedding():
-    pass;
-
-def build_dataset(trnedus):
+class Siamese_GRU:
     """
-    return tokens list of edu
-    list of list edu tokens
-    """
-    edus_toks = [];
-    for edu in trnedus:
-        toks = nltk.word_tokenize(edu.strip().lower())
-        edus_toks.append(toks)
-    return edus_toks
-
-def build_datasetlabel(trnedus):
-    """
+    A implemention of Siamese Recurrent Architectures for Learning Sentence Similarity
+    http://www.aaai.org/Conferences/AAAI/2016/Papers/15Mueller12195.pdf
 
     """
-    edus_toks_label = [];
-    for i,edu in enumerate(trnedus):
-        toks = nltk.word_tokenize(edu.strip().lower())
+    def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
-        # Begin 0
-        # End 1
-        # Continuance 2
-        labels = [];
-        for j,tok in enumerate(toks):
-            if j == 0 :
-                labels.append(0)
-                # 
-            elif j == len(toks)-1:
-                labels.append(1)
-            else :
-                labels.append(2)
-
-        edus_toks_label.append(labels)
-
-    return edus_toks_label
-
-
-class GRU:
-
-    def  __init__(self,word_dim,label_dim,hidden_dim=128,bptt_truncate=-1):
-
+        """
+        Train 2 spearate GRU network to represent each sentence in pair as a fixed-length vector
+        then calculate the 2 sentence vector Manhanttan distance 
+        """
         # assign instance variables
 
         self.word_dim = word_dim
@@ -133,11 +290,17 @@ class GRU:
         self.bptt_truncate = bptt_truncate
 
         # initialize the network parameters
-        E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(hidden_dim,word_dim))
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
+
+        if word_embedding is None:
+            E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
+        else:
+            E = word_embedding
+
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
         W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
-        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim))
         b = np.zeros((3,hidden_dim))
+        
+        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -148,13 +311,9 @@ class GRU:
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
-        # SGD / rmsprop : initialize parameters
-        self.mE = theano.shared(name='mE', value=np.zeros(E.shape).astype(theano.config.floatX))
-        self.mU = theano.shared(name='mU', value=np.zeros(U.shape).astype(theano.config.floatX))
-        self.mV = theano.shared(name='mV', value=np.zeros(V.shape).astype(theano.config.floatX))
-        self.mW = theano.shared(name='mW', value=np.zeros(W.shape).astype(theano.config.floatX))
-        self.mb = theano.shared(name='mb', value=np.zeros(b.shape).astype(theano.config.floatX))
-        self.mc = theano.shared(name='mc', value=np.zeros(c.shape).astype(theano.config.floatX))
+
+        self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
+        
 
         # We store the Theano graph here
         self.theano = {}
@@ -163,51 +322,63 @@ class GRU:
     def __theano_build__(self):
         E, V, U, W, b, c = self.E, self.V, self.U, self.W, self.b , self.c
 
-        x = T.ivector('x')
-        y = T.ivector('y')
+        x_a = T.ivector('x_a')
+        x_b = T.ivector('x_b')
+        y = T.lvector('y')
 
-        def forward_prop_step(x_t,s_t_prev):
-            #
-            #
+        def forward_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
-
             # GRU layer 1
             z_t = T.nnet.hard_sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
             r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
             c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            # directly return the hidden state as intermidate output 
+            return [s_t]
 
-            # output 
-            o_t = T.nnet.softmax(V.dot(s_t) + c)[0]
 
-            return [o_t,s_t]
-
-        [o,s] , updates = theano.scan(
-                forward_prop_step,
-                sequences=x,
+        # sentence a vector (states)
+        a_s , updates = theano.scan(
+                forward_step,
+                sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
-                outputs_info=[
-                    None,
-                    dict(initial=T.zeros(self.hidden_dim))
-                    ])
-        prediction = T.argmax(o,axis=1)
-        o_error = T.sum(T.nnet.categorical_crossentropy(o,y))
+                outputs_info=T.zeros(self.hidden_dim))
+            
+        # sentence b vector (states)
+        b_s , updates = theano.scan(
+                forward_step,
+                sequences=x_b,
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
 
-        cost = o_error
+        # semantic similarity 
+        # s_sim = manhattan_distance(a_s[-1],b_s[-1])
 
-        # Gradients
-        dE = T.grad(cost,E)
-        dU = T.grad(cost,U)
-        dW = T.grad(cost,W)
-        db = T.grad(cost,b)
-        dV = T.grad(cost,V)
-        dc = T.grad(cost,c)
+        # for classification using simple strategy 
+        sena = a_s[-1]
+        senb = b_s[-1]
+
+        combined_s = T.concatenate([sena,senb],axis=0)
+
+        # softmax class
+        o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+        om = o.reshape((1,o.shape[0]))
+        prediction = T.argmax(om,axis=1)
+        o_error = T.nnet.categorical_crossentropy(om,y)
+
+
+        # cost 
+        cost = T.sum(o_error)
+
+        # updates
+        updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
+
 
         # Assign functions
-        self.predict = theano.function([x],o)
-        self.predict_class = theano.function([x],prediction)
-        self.ce_error = theano.function([x,y],cost)
+        self.predict = theano.function([x_a,x_b],om)
+        self.predict_class = theano.function([x_a,x_b],prediction)
+        self.ce_error = theano.function([x_a,x_b,y],cost)
         # self.bptt = theano.function([x,y],[dE,dU,dW,db,dV,dc])
 
         # SGD parameters
@@ -215,180 +386,290 @@ class GRU:
         decay = T.scalar('decay')
 
         # rmsprop cache updates
-        mE = decay * self.mE + (1-decay) * dE ** 2
-        mU = decay * self.mU + (1-decay) * dU ** 2
-        mW = decay * self.mW + (1-decay) * dW ** 2
-        mV = decay * self.mV + (1-decay) * dV ** 2
-        mb = decay * self.mb + (1-decay) * db ** 2
-        mc = decay * self.mc + (1-decay) * dc ** 2
-
-       
-        updates = [(E,E - learning_rate * dE / T.sqrt(mE + 1e-6)),
-                   (U,U - learning_rate * dU / T.sqrt(mU + 1e-6)),
-                   (W,W - learning_rate * dW / T.sqrt(mW + 1e-6)),
-                   (V,V - learning_rate * dV / T.sqrt(mV + 1e-6)),
-                   (b,b - learning_rate * db / T.sqrt(mb + 1e-6)),
-                   (c,c - learning_rate * dc / T.sqrt(mc + 1e-6)),
-                   (self.mE,mE),
-                   (self.mU,mU),
-                   (self.mW,mW),
-                   (self.mV,mV),
-                   (self.mb,mb),
-                   (self.mc,mc)]
-        
-        """
-        updates = [(self.U,self.U-learning_rate*dU),(self.V,self.V-learning_rate*dV),(self.W,self.W-learning_rate*dW),(),()]
-        """
-
+        # find the nan
         self.sgd_step = theano.function(
-                [x,y, learning_rate, theano.Param(decay,default=0.9)],
+                [x_a,x_b,y],
                 [],
-                updates=updates)
-
-    def calculate_total_loss(self,X,Y):
-        return np.sum([self.ce_error(x,y) for x,y in zip(X,Y)])
-
-    def calculate_loss(self,X,Y):
-        # Divide calculate_loss by the number of words
-        num_words = np.sum([len(y) for y in Y])
-        return self.calculate_total_loss(X,Y)/float(num_words)
+                updates=updates
+                # mode=NanGuardMode(nan_is_error=True, inf_is_error=True, big_is_error=True)
+                )
 
 
-def sgd_callback(model,num_examples_seen,X_train,y_train,index_to_word,word_to_index):
-    dt = datetime.now().isoformat()
-    loss = model.calculate_loss(X_train[:10000],y_train[:10000])
+def index_to_class(index):
+    label = '';
+    if index == 0:
+        label = 'Nucleus-Satellite'
+    elif index == 1:
+        label = 'Nucleus-Nucleus'
+    elif index == 2:
+        label = 'Satellite-Nucleus'
+    return label
 
-    print("\n%s (%d)" % (dt, num_examples_seen)) 
-    print("-------------------------------------------------")
-    print("Loss : %f" % loss)
-
-    generate_sentences(model,10,index_to_word,word_to_index)
-
-    print("\n")
-    sys.stdout.flush()
-
-
-def train_with_sgd(model,X_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+    
     num_examples_seen = 0
-
     print 'now learning_rate : ' , learning_rate;
     for epoch in range(nepoch):
         # For each training example ...
 
-        for i in np.random.permutation(len(y_train)):
+        tocount = 0
+        tccount = 0
+        tycount = 0
+
+        for i in range(len(y_train)):
             # One SGT step
-            model.sgd_step(X_train[i],y_train[i],learning_rate,decay)
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
             num_examples_seen += 1
             # Optionally do callback
             print '>>>>>'
-
-            wrds = []
-            for j in X_train[i]:
-                wrds.append(index_to_word[j])
-
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
             print 'i-th :' , i;
-            print 'X_train[i] : ' , X_train[i]
-            print 'the edus : ' ," ".join(wrds)
-            print 'ce_error : ' , model.ce_error(X_train[i],y_train[i])
-            print 'predict : ' , model.predict(X_train[i])
-            output = model.predict_class(X_train[i])
+            print 'the left edu : ' ," ".join(lwrds)
+            print 'the right edu : ' , " ".join(rwrds)
+            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
+            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
+            output = model.predict_class(X_1_train[i],X_2_train[i])
             print 'predict_class : ' , output
-            print 'num_examples_seen : ' , num_examples_seen;
+            print index_to_class(output)
+            print 'true label : ' , y_train[i]
+            print index_to_class(y_train[i][0])
+            print 'the number of example have seen for now : ' , num_examples_seen
+            ocount = 0
+            ccount = 0
+            ycount = 0
+            if i % 500 == 0:
+                test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+
+            for o,y in zip(output,y_train[i]):
+                if o == y:
+                    print 'correct prediction'
+                    ccount += 1
+                ycount += 1
+                ocount += 1
+            #
+            tocount += ocount
+            tccount += ccount
+            tycount += ycount
+            if ccount != 0 and ocount != 0:
+                precision = float(ccount) / float(ocount)
+                recall = float(ccount) / float(ycount)
+                if (precision+recall) != 0:
+                    Fmeasure = 2 * (precision*recall) / (precision+recall)
+                else:
+                    Fmeasure = 0
+            else :
+                precision = 0
+                recall = 0
+                Fmeasure = 0
+
+        # a epoch for training end here
+        if tocount != 0 and tccount != 0:
+            precision = float(tccount) / float(tocount)
+            recall = float(tccount) / float(tycount)
+            if (precision+recall) != 0:
+                Fmeasure = 2 * (precision*recall) / (precision+recall)
+            else:
+                Fmeasure = 0
+        else:
+            precision = 0
+            recall = 0
+            Fmeasure = 0
+
+        print 'Accuracy of training set: ' , precision
+        print 'Recall of training set: ' , recall
+        print 'Fmeasure of training set: ' , Fmeasure
+
 
     return model
 
-def parser():
+
+def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
+    print 'now score the test dataset'
+    scores = [];
+    tocount = 0
+    tccount = 0
+    tycount = 0
+
+    for i in range(len(y_test)):
+        output = model.predict_class(X_1_test[i],X_2_test[i])
+        ocount = 0
+        ccount = 0
+        ycount = 0
+
+        lwrds = [index_to_word[j] for j in X_1_test[i]]
+        rwrds = [index_to_word[j] for j in X_2_test[i]]
+
+        print 'i-th : ' , i;
+        print 'the left edu : , ' , " ".join(lwrds)
+        print 'the right edu : ' , " ".join(rwrds)
+        print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
+
+        # print 
+        print 'predict_class : ' , output
+        print index_to_class(output)
+        print 'true label : ' , y_test[i]
+        print index_to_class(y_test[i][0])
+
+
+        for o,y in zip(output,y_test[i]):
+            if y == o:
+                print 'the correct prediction!'
+                ccount += 1
+            ycount += 1
+            ocount += 1
+
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+
+    if tocount != 0 and tccount != 0 :
+        precision = float(tccount) / float(tocount)
+        recall = float(tccount) / float(tycount)
+        if (precision+recall) != 0:
+            Fmeasure = 2 * (precision*recall) / (precision+recall)
+        else:
+            Fmeasure = 0
+    else:
+        precision = 0
+        recall = 0
+        Fmeasure = 0
+
+    print 'Accuracy of test set: ' , precision
+    print 'Recall of test set: ' , recall
+    print 'Fmeasure of test set: ' , Fmeasure
+
+def load_word_embedding(path):
+
+    #
+    #
+    if False:
+        pass;
+    else:
+
+        wdvec = open(path,'r').readlines()
+        wvdic = dict()
+        for widx, vec in enumerate(wdvec):
+            items = vec.strip().split();
+            pv = np.array([float(x) for x in items[1:]]);
+            wvdic[items[0]] = pv;
+            wrddim = wvdic.itervalues().next().shape[0];
+    return wvdic
+
+def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
+
+    # index_to_word is the word list
+    vocab_size = len(index_to_word)
+    E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size)) 
     
-    # extract_edu()
-    # collecting edus from corpus
+    # for those word can be found in glove or word2vec pre-trained word vector
+    for w in index_to_word:
+        if w in wvdic:
+            E[:,word_to_index[w]] = wvdic[w]
 
-    edux , eduy = build_data('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+    return E
 
-    # trnedus = extract_edu('data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    # trnedus = trnedus
-    # trnset word vector / trnlabel , EB, EC, EE
-    # trnset = build_dataset(trnedus);
-    # trnset_label = build_datasetlabel(trnedus);
 
-    trnset = copy.deepcopy(edux)
-    trnset_label = copy.deepcopy(eduy)
 
-    print 'the size of Edus : ' , (len(trnset))
-    print 'the size of label : ' , len(trnset_label)
+def structure():
 
-    token_list = [];
-    for sen in trnset:
-        token_list.extend(sen)
+    #
+    # * -- step1 -- build training data
+    #
 
-    word_freq = nltk.FreqDist(token_list);
-    print 'Found %d unique words tokens.' % len(word_freq.items())
+    ledus, redus , nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+    # tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
 
-    vocabulary_size = 4000
-    label_size = 3
+    #
+    # * -- step2-- train a binary for structure classification
+    # 
+
+    """
+    print 'load in ' , len(nucs) , 'training sample'
+    print 'load in ' , len(tst_nucs) , 'test sample'
+
+    token_list = []
+    for sena, senb in zip(ledus,redus):
+        token_list.extend(sena)
+        token_list.extend(senb)
+
+    word_freq = nltk.FreqDist(token_list)
+    print 'Found %d unique words tokens . ' % len(word_freq.items())
+
+    vocabulary_size = 1*1000
     unknown_token = 'UNK'
 
-    vocab = word_freq.most_common(vocabulary_size-1);
+    vocab = word_freq.most_common(vocabulary_size-1)
     index_to_word = [x[0] for x in vocab]
     print 'vocab : '
-    # print vocab
     index_to_word.append(unknown_token)
     word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
 
-    print 'Using vocabulary size %d.' % vocabulary_size
-    print "The least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
+    print 'Using vocabulary size %d. ' % vocabulary_size
+    print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
 
-    for i,sent in enumerate(trnset):
-        trnset[i] = [w if w in word_to_index else unknown_token for w in sent]
+    # training dataset
+    for i,(edua,edub) in enumerate(zip(ledus,redus)):
+        ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
+        redus[i] = [w if w in word_to_index else unknown_token for w in edub]
 
-    print '***********************'
+    # test dataset
+    for i,(edua,edub) in enumerate(zip(tst_ledus,tst_redus)):
+        tst_ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
+        tst_redus[i] = [w if w in word_to_index else unknown_token for w in edub]
 
-    print 'word to index :'
-    print word_to_index
-    print 'index to word :'
-    print index_to_word
+    # X_1_train , X_2_train , y_train
+    X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
+    X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
+    y_train = (nucs)
 
-     
-    # X_train , y_train
-    X_train = np.asarray([[word_to_index[w] for w in sent ] for sent in trnset])
-    y_train = np.asarray(trnset_label)
+    # X_1_test, X_2_test , y_train
+    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
+    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
+    y_test = (tst_nucs)
 
-    print "\n Example sentence '%s' " % " ".join(edux[0])
-    print "\n Example sentence after Pre-processing : '%s'" % trnset[0]
-    print "\n Example label after labeling : '%s' " % trnset_label[0]
+    print " Example sentence '%s' " % " ".join(ledus[0])
+    print " Example sentence '%s' " % " ".join(redus[0])
+    print " Example sentence after Pre-processing : '%s' " % X_1_train[0]
+    print " Example sentence after Pre-processing : '%s' " % X_2_train[0]
+    print " Example label : ", y_train[0]
+    print ""
 
-    # print X_train
-    # print y_train
-    # build model GRU
-    # and test it for first output
-    model = GRU(vocabulary_size,label_size,hidden_dim=128,bptt_truncate=-1)
+    # build Embedding matrix
+    label_size = 3
+    wvdic = load_word_embedding('../data/glove.6B.200d.txt')
+    word_dim = wvdic.values()[0].shape[0]
+
+    E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
+
+    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=128,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
-    # output a prediction
+    print model.predict(X_1_train[0],X_2_train[0])
+    output = model.predict_class(X_1_train[0],X_2_train[0])
+    print 'predict_class : ' , output
+    print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
+    learning_rate = 0.000005
 
-    print '>>>x0 , y0'
-    print X_train[0]
-    print y_train[0]
+    model.sgd_step(X_1_train[0],X_2_train[0],y_train[0])
     t2 = time.time()
 
-    print model.predict(X_train[0])
-    output = model.predict_class(X_train[0])
-    print 'predict_class : ' , output
-    print 'ce_error : ' , model.ce_error(X_train[0],y_train[0])
-    learning_rate = 0.00005
-    model.sgd_step(X_train[0],y_train[0],learning_rate)
-    print "SGD Step time : %f milliseconds" % ((t2-t1)*1000.)
+    print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
     sys.stdout.flush()
 
-    # training simple edu tag
+    # 
+    NEPOCH = 100
 
-    NEPOCH = 50
     for epoch in range(NEPOCH):
-        #
-        train_with_sgd(model,X_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
+        print 'this is epoch : ' , epoch
+        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
+        # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+
+    """
 
 
 if __name__ == '__main__':
-    parser();
+    structure();

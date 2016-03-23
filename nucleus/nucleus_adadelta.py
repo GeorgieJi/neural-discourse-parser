@@ -143,7 +143,7 @@ def build_data(dir_path):
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if errorflag and len(wrdsa) > 100 and len(wrdsb) > 100:
+        if errorflag and len(wrdsa) < 100 and len(wrdsb) < 100:
             senas.append(nltk.word_tokenize(pair[1].strip().lower()))
             senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
             nucs.append(score)
@@ -288,7 +288,7 @@ def index_to_class(index):
         label = 'Satellite-Nucleus'
     return label
 
-def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
     
     num_examples_seen = 0
     print 'now learning_rate : ' , learning_rate;
@@ -305,31 +305,28 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=0.001,nepoch=
             num_examples_seen += 1
             # Optionally do callback
             print '>>>>>'
-
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
-
             print 'i-th :' , i;
             print 'the left edu : ' ," ".join(lwrds)
             print 'the right edu : ' , " ".join(rwrds)
+            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
             print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
-            # print 'predict : ' , model.predict(X_train[i])
             output = model.predict_class(X_1_train[i],X_2_train[i])
             print 'predict_class : ' , output
             print index_to_class(output)
             print 'true label : ' , y_train[i]
             print index_to_class(y_train[i][0])
             print 'the number of example have seen for now : ' , num_examples_seen
-            # boundary accuracy 
-            # ocount is total boundary output number
-            # ccount is correct boundary number
-            # ycount is the true boundary number
             ocount = 0
             ccount = 0
             ycount = 0
+            if i % 500 == 0:
+                test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
             for o,y in zip(output,y_train[i]):
                 if o == y:
+                    print 'correct prediction'
                     ccount += 1
                 ycount += 1
                 ocount += 1
@@ -400,6 +397,7 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
 
         for o,y in zip(output,y_test[i]):
             if y == o:
+                print 'the correct prediction!'
                 ccount += 1
             ycount += 1
             ocount += 1
@@ -473,7 +471,7 @@ def nucleus():
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
 
-    vocabulary_size = 14*1000
+    vocabulary_size = 1*1000
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1)
@@ -541,9 +539,9 @@ def nucleus():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        train_with_sgd(model,X_1_train,X_2_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
+        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
-        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+        # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
     
 
