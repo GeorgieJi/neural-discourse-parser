@@ -1,0 +1,58 @@
+Task1> deal with nan
+
+1. what cause it?
+
+2. where i can find it?
+
+3. which symbolic varialbe lead to the inf or nan?
+
+cues:
+
+1. the predict shows [nan nan nan]
+   the ce_error = nan
+   related to the vocabulary size ? 
+
+collected solution:
+case1: gradient inf -> gradient clip
+
+
+case2: softmax + crossentropy -> inf
+
+softmax exp(x_k)/sum(exp(x_k)) -> 0
+crossentropy ylogp + (1-y)log(1-p) when p = 0, and y = 1, ylogp may be the inf
+
+case3: the theano softmax problem
+the problem goes away if you explicitly write out the softmax function instead of using theano's :
+
+case4: the ce_error will blow up during the training process
+find out where why . how to locate the nan value?
+
+case5: detect the nan in theano
+http://stackoverflow.com/questions/32581184/no-module-named-nanguardmode
+http://deeplearning.net/software/theano/tutorial/debug_faq.html
+https://github.com/fchollet/keras/issues/828
+
+case6: fix the < p >
+does not help ? but the only different between segment and nucleus is the < p >
+
+case7 : the sentence vector is nan
+i-th : 7866
+the left edu :  the bush administration said it is UNK a `` comprehensive '' proposal for UNK UNK trade that could help break an UNK in the current round of UNK trade UNK p-end the proposal UNK the u.s. desire to UNK or reduce a host of UNK subsidies on farm products . but it would allow considerable flexibility in determining how and when these goals would be UNK . the u.s. plan also would ease the transition to UNK agriculture trade by allowing some countries to convert UNK barriers into tariffs that , together with existing tariffs , then would be phased out over 10 years. p-end the u.s. is UNK the proposal today in UNK , hoping that the initiative will UNK members of the general agreement on tariffs and trade to reach agreement on new trade rules before their current negotiating round concludes in december 1990 .
+the right edu :  another u.s. proposal filed monday UNK more `` fair play '' in services trade , including predictable and clear rules and UNK in the treatment of foreign and domestic service UNK p-end
+the parameter :  
+[ nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan
+  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan
+  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan
+  nan  nan  nan  nan  nan]
+[ nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan
+  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan
+  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan  nan
+  nan  nan  nan  nan  nan]
+
+case8: find a method to monitor the shared variable
+
+Task2> structure classifier (binary classifier)
+double items extract 
+triple items extract
+
+

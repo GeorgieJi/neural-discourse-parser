@@ -124,8 +124,8 @@ def traversal_basic(tree):
     if len(right_tree) == 3:
         rightspan = right_tree[2]
 
-    parentpair = [ [1 , leftspan, rightspan] ]
     parentpair.extend(leftpair)
+    parentpair.extend([1,leftspan,rightspan])
     parentpair.extend(rightpair)
     # print '->' , parentpair
     
@@ -143,8 +143,6 @@ def generate_example(pairs,beduspairs):
     sentence = pairs[0][1] + ' ' + pairs[0][2]
     edus.append(sentence)
 
-    print 'full sentence :'
-    print sentence
 
     for pair in pairs:
         # print pair
@@ -152,36 +150,17 @@ def generate_example(pairs,beduspairs):
         edus.append(pair[2])
 
     # collect all basic edu
-    for pair in beduspairs:
+    for item in beduspairs:
         # print pair
-        if pair[1] != '':
-            bedus.append(pair[1])
-        if pair[2] != "":
-            bedus.append(pair[2])
+        if item != '' and item != 1:
+            bedus.append(item)
 
     edu_stack = copy.deepcopy(bedus)
 
     # get order of basic edu
     # simple order 
-    order_edus = []
-    order_edus.append(edu_stack[0])
-    edu_stack.remove(edu_stack[0])
-    while True:
-        if len(edu_stack) == 0:
-            break
-        for edu in edu_stack:
-            if (edu + ' ' + " ".join(order_edus)) in sentence:
-                order_edus.insert(0,edu)
-                edu_stack.remove(edu)
-            if (" ".join(order_edus) + " " + edu) in sentence:
-                order_edus.append(edu)
-                edu_stack.remove(edu)
-            pass
-        print (edu_stack) 
-        pass
     
-    print 'order edus is right ?'
-    print sentence == " ".join(order_edus)
+    order_edus = edu_stack
 
     levels = []
     update_edus = []
@@ -206,11 +185,7 @@ def generate_example(pairs,beduspairs):
             update_edus.append(order_edus[-1])
 
         levels.append([order_edus,update_edus])
-        # print '>>>>>order' 
-        # print (order_edus)
         order_edus = update_edus
-        # print '>>>>>update'
-        # print (order_edus)
        
         update_edus = []
 
@@ -229,17 +204,8 @@ def generate_example(pairs,beduspairs):
             redu = oedus[i+1]
             if ledu+' '+redu in uedus:
                 bsmps.append([1,ledu,redu])
-                # print [1,ledu,redu]
             else:
                 bsmps.append([0,ledu,redu])
-                # print [0,ledu,redu]
-        # print '>>>>>>>>>>>>>>>>>oedus'
-        # for edu in oedus:
-        #     print edu
-        # print '%%%%%%%%%%%%%%%%%uedus'
-        # for edu in uedus:
-        #     print edu
-        # print '----------------level----------------'
 
     return bsmps
 
@@ -280,45 +246,35 @@ def build_data(dir_path):
             groups.append(ftrees)
             basic_groups.append(extract_basic_edus(tree))
 
-    print 'number of pairs', len(groups) , ''
-    print 'group ' , groups[3]
-    print 'bgroup ' , basic_groups[3]
+    # print 'number of pairs', len(groups) , ''
+    # print 'group ' , groups[242]
+    # print 'bgroup ' , basic_groups[242]
+
     pairs = []
-    i = 0
-    pairs = generate_example(groups[3],basic_groups[3])
+    # pairs = generate_example(groups[242],basic_groups[242])
     for group,basic_group in zip(groups,basic_groups):
-        # print i+1 , 'finish'
-        # i += 1
-        # pairs.extend(generate_example(group,basic_group))
+        pairs.extend(generate_example(group,basic_group))
         pass
 
     for pair in pairs:
-        print pair
         pass
     
     senas = []
     senbs = []
     nucs = []
-    print examples
 
     for pair in pairs:
-        errorflag = True
-        if pair[0] == 'Nucleus-Satellite':
-            score = [0]
-        elif pair[0] == 'Nucleus-Nucleus':
-            score = [1]
-        elif pair[0] == 'Satellite-Nucleus':
-            score = [2]
-        else:
-            errorflag = False # filter the wrong tree
-            
+
+        pair[1] = pair[1].strip().replace('<P>','')
+        pair[2] = pair[2].strip().replace('<P>','')
+
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if errorflag and len(wrdsa) < 100 and len(wrdsb) < 100:
-            senas.append(nltk.word_tokenize(pair[1].strip().lower()))
-            senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
-            nucs.append(score)
+        if True:
+            senas.append(wrdsa)
+            senbs.append(wrdsb)
+            nucs.append([pair[0]])
         else:
             continue
     
@@ -632,14 +588,15 @@ def structure():
     # * -- step1 -- build training data
     #
 
+    
     ledus, redus , nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    # tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+    tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
 
+    print 'loading finish'
     #
     # * -- step2-- train a binary for structure classification
     # 
 
-    """
     print 'load in ' , len(nucs) , 'training sample'
     print 'load in ' , len(tst_nucs) , 'test sample'
 
@@ -651,7 +608,7 @@ def structure():
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
 
-    vocabulary_size = 1*1000
+    vocabulary_size = 5*1000
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1)
@@ -691,7 +648,7 @@ def structure():
     print ""
 
     # build Embedding matrix
-    label_size = 3
+    label_size = 2
     wvdic = load_word_embedding('../data/glove.6B.200d.txt')
     word_dim = wvdic.values()[0].shape[0]
 
@@ -719,11 +676,10 @@ def structure():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
+        # train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
-        # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
-    """
 
 
 if __name__ == '__main__':

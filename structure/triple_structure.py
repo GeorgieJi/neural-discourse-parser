@@ -93,19 +93,141 @@ def traversal(tree):
     if len(right_tree) == 3:
         rightspan = right_tree[2]
 
-    parentpair = [ [left_tree[0]+'-'+right_tree[0] , leftspan, rightspan] ]
+    parentpair = [ [1 , leftspan, rightspan] ]
     parentpair.extend(leftpair)
     parentpair.extend(rightpair)
     # print '->' , parentpair
     
     return parentpair, leftspan + ' ' + rightspan
 
+def traversal_basic(tree):
+    parentpair = []
+    # usually the len of tree is 4
+    # print '>>>>>>>>>>>>>>>>>>>>.*'
+    left_tree = tree[2]
+    right_tree = tree[3]
+    span = ''
+    leftspan = ''
+    rightspan = ''
+    leftpair = []
+    rightpair = []
 
-def extract_nucleus(tree_str):
+    if len(left_tree) == 4:
+        leftpair , leftspan = traversal_basic(left_tree)
 
+    if len(right_tree) == 4:
+        rightpair , rightspan = traversal_basic(right_tree)
+
+    if len(left_tree) == 3:
+        leftspan = left_tree[2]
+
+    if len(right_tree) == 3:
+        rightspan = right_tree[2]
+
+    parentpair.extend(leftpair)
+    parentpair.extend([1,leftspan,rightspan])
+    parentpair.extend(rightpair)
+    # print '->' , parentpair
+    
+    return parentpair, ""
+
+def generate_example(pairs,beduspairs):
+
+    # extract basic edu
+    # build the structure path
+
+    # collect all edus
+    edus = []
+    bedus = []
+
+    sentence = pairs[0][1] + ' ' + pairs[0][2]
+    edus.append(sentence)
+
+    print '****************************************************'
+    print 'full sentence :'
+    print sentence
+
+    for pair in pairs:
+        # print pair
+        edus.append(pair[1])
+        edus.append(pair[2])
+
+    # collect all basic edu
+    for item in beduspairs:
+        # print pair
+        if item != '' and item != 1:
+            bedus.append(item)
+
+    edu_stack = copy.deepcopy(bedus)
+
+    # get order of basic edu
+    # simple order 
+    
+    print 'order edus is right ?'
+    print sentence == " ".join(bedus)
+    order_edus = edu_stack
+
+    levels = []
+    update_edus = []
+    while True:
+        if len(order_edus) == 1:
+            break
+
+        i = 0
+        while i < (len(order_edus)-1):
+            ledu = order_edus[i]
+            redu = order_edus[i+1]
+            if ledu+' '+redu in edus:
+                update_edus.append(ledu+' '+redu)
+                stackflag = False
+                i = i+2
+            else:
+                update_edus.append(ledu)
+                stackflag = True
+                i = i+1
+
+        if stackflag or i==len(order_edus)-1:
+            update_edus.append(order_edus[-1])
+
+        levels.append([order_edus,update_edus])
+        order_edus = update_edus
+       
+        update_edus = []
+
+    # print 'the last edu : ' , sentence == order_edus[0]
+
+    # extract from levels list, each pair from levels contains ordered edus and its update
+
+    bsmps = []
+    for level in levels:
+        oedus = level[0]
+        uedus = level[1]
+
+        # print 'there are ' , len(oedus) , 'in this level'
+        for i in range(len(oedus)-1):
+            ledu = oedus[i]
+            redu = oedus[i+1]
+            if ledu+' '+redu in uedus:
+                bsmps.append([1,ledu,redu])
+            else:
+                bsmps.append([0,ledu,redu])
+
+    for bsmp in bsmps:
+        print bsmp
+
+    return bsmps
+
+def extract_edus(tree_str):
     tree = parse_tree(tree_str)
-    pairs = traversal(tree)[0]
-    return pairs
+    # print 'parsed pairs : '
+    pair = traversal(tree)[0]
+    # generate_example(pairs)
+    return pair
+
+def extract_basic_edus(tree_str):
+    tree = parse_tree(tree_str)
+    pair = traversal_basic(tree)[0]
+    return pair
 
 def build_data(dir_path):
     
@@ -120,14 +242,39 @@ def build_data(dir_path):
     for edu_path in edus_path:
         trees.append(open(dir_path+'/'+edu_path).readlines());
 
+    print 'trees number : ' , len(trees)
+    # print trees[1]
+    groups = []
+    basic_groups = []
+    for tree in trees:
+        ftrees = extract_edus(tree)
+        if ftrees[0][1] == '' and ftrees[0][2] == '':
+            pass
+        else:
+            groups.append(ftrees)
+            basic_groups.append(extract_basic_edus(tree))
+
+    print 'number of pairs', len(groups) , ''
+    print 'group ' , groups[242]
+    print 'bgroup ' , basic_groups[242]
 
     pairs = []
-    for tree in trees:
-        pairs.extend(extract_nucleus(tree))
+    i = 0
+    # pairs = generate_example(groups[242],basic_groups[242])
+    for group,basic_group in zip(groups,basic_groups):
+        print i+1 , 'finish'
+        i += 1
+        pairs.extend(generate_example(group,basic_group))
+        pass
 
+    for pair in pairs:
+        # print pair
+        pass
+    
     senas = []
     senbs = []
     nucs = []
+    print examples
 
     for pair in pairs:
         errorflag = True
@@ -139,21 +286,13 @@ def build_data(dir_path):
             score = [2]
         else:
             errorflag = False # filter the wrong tree
-
-        pair[1] = pair[1].strip().replace('<P>','')
-        pair[2] = pair[2].strip().replace('<P>','')
-
+            
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        # replace the < P > with 'p-end'
-        wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
-        wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
-
-
-        if errorflag and len(wrdsa) < 150 and len(wrdsb) < 150:
-            senas.append(wrdsa)
-            senbs.append(wrdsb)
+        if errorflag and len(wrdsa) < 100 and len(wrdsb) < 100:
+            senas.append(nltk.word_tokenize(pair[1].strip().lower()))
+            senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
             nucs.append(score)
         else:
             continue
@@ -254,10 +393,6 @@ class Siamese_GRU:
 
         # softmax class
         o = T.nnet.softmax(V.dot(combined_s)+c)[0]
-
-        # in case the o contains 0 which cause inf
-        eps = np.asarray([1.0e-10,1.0e-10,1.0e-10],dtype=theano.config.floatX)
-        o = o + eps
         om = o.reshape((1,o.shape[0]))
         prediction = T.argmax(om,axis=1)
         o_error = T.nnet.categorical_crossentropy(om,y)
@@ -269,28 +404,8 @@ class Siamese_GRU:
         # updates
         updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
 
-        # monitor parameter
-        mV = V * T.ones_like(V)
-        mc = c * T.ones_like(c)
-        mU = U * T.ones_like(U)
-        mW = W * T.ones_like(W)
-
-        gV = T.grad(cost,V)
-        gc = T.grad(cost,c)
-        gU = T.grad(cost,U)
-        gW = T.grad(cost,W)
-
-        mgV = gV * T.ones_like(gV)
-        mgc = gc * T.ones_like(gc)
-        mgU = gU * T.ones_like(gU)
-        mgW = gW * T.ones_like(gW)
-
-
-
 
         # Assign functions
-        self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
-        self.monitor_grad = theano.function([x_a,x_b,y],[mgV,mgc,mgU,mgW])
         self.predict = theano.function([x_a,x_b],om)
         self.predict_class = theano.function([x_a,x_b],prediction)
         self.ce_error = theano.function([x_a,x_b,y],cost)
@@ -331,32 +446,29 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
         tccount = 0
         tycount = 0
 
-        for i in np.random.permutation(len(y_train)):
+        for i in range(len(y_train)):
             # One SGT step
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
             num_examples_seen += 1
             # Optionally do callback
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
-            print 'the number of example have seen for now : ' , num_examples_seen
-            output = model.predict_class(X_1_train[i],X_2_train[i])
-            print '>>>>> case'
+            print '>>>>>'
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
             print 'i-th :' , i;
-            print 'the left edu : '
-            print " ".join(lwrds)
-            print 'the right edu : '
-            print " ".join(rwrds)
+            print 'the left edu : ' ," ".join(lwrds)
+            print 'the right edu : ' , " ".join(rwrds)
             print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
             print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
+            output = model.predict_class(X_1_train[i],X_2_train[i])
             print 'predict_class : ' , output
             print index_to_class(output)
             print 'true label : ' , y_train[i]
             print index_to_class(y_train[i][0])
-
+            print 'the number of example have seen for now : ' , num_examples_seen
             ocount = 0
             ccount = 0
             ycount = 0
-            if False:
+            if i % 500 == 0:
                 test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
             for o,y in zip(output,y_train[i]):
@@ -489,12 +601,20 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
 
 
-def nucleus():
+def structure():
+
+    #
+    # * -- step1 -- build training data
+    #
 
     ledus, redus , nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+    # tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
 
+    #
+    # * -- step2-- train a binary for structure classification
+    # 
 
+    """
     print 'load in ' , len(nucs) , 'training sample'
     print 'load in ' , len(tst_nucs) , 'test sample'
 
@@ -506,7 +626,7 @@ def nucleus():
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
 
-    vocabulary_size = 5*1000
+    vocabulary_size = 1*1000
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1)
@@ -538,11 +658,11 @@ def nucleus():
     X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
     y_test = (tst_nucs)
 
-    print "\n Example sentence '%s' " % " ".join(ledus[0])
-    print "\n Example sentence '%s' " % " ".join(redus[0])
-    print "\n Example sentence after Pre-processing : '%s' " % X_1_train[0]
-    print "\n Example sentence after Pre-processing : '%s' " % X_2_train[0]
-    print "\n Example label : ", y_train[0]
+    print " Example sentence '%s' " % " ".join(ledus[0])
+    print " Example sentence '%s' " % " ".join(redus[0])
+    print " Example sentence after Pre-processing : '%s' " % X_1_train[0]
+    print " Example sentence after Pre-processing : '%s' " % X_2_train[0]
+    print " Example label : ", y_train[0]
     print ""
 
     # build Embedding matrix
@@ -552,11 +672,11 @@ def nucleus():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=50,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=128,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
-
+    print model.predict(X_1_train[0],X_2_train[0])
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
@@ -576,10 +696,10 @@ def nucleus():
         print 'this is epoch : ' , epoch
         train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
-        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+        # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
-    
+    """
 
 
 if __name__ == '__main__':
-    nucleus();
+    structure();
