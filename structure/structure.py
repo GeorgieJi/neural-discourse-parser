@@ -140,17 +140,12 @@ def generate_example(pairs,beduspairs):
     edus = []
     bedus = []
 
-    print 'pairs : ' 
-    print pairs
-
-    print 'beduspairs : ' 
-    print beduspairs
-
-    print 'full sentence : '
     sentence = pairs[0][1] + ' ' + pairs[0][2]
+    edus.append(sentence)
+
+    print 'full sentence :'
     print sentence
 
-    print '))))))'
     for pair in pairs:
         # print pair
         edus.append(pair[1])
@@ -164,10 +159,7 @@ def generate_example(pairs,beduspairs):
         if pair[2] != "":
             bedus.append(pair[2])
 
-    print edus
-    print 'basic edu list :'
-    print bedus
-    edu_stack = bedus
+    edu_stack = copy.deepcopy(bedus)
 
     # get order of basic edu
     # simple order 
@@ -175,32 +167,83 @@ def generate_example(pairs,beduspairs):
     order_edus.append(edu_stack[0])
     edu_stack.remove(edu_stack[0])
     while True:
-
         if len(edu_stack) == 0:
             break
-
         for edu in edu_stack:
-
             if (edu + ' ' + " ".join(order_edus)) in sentence:
                 order_edus.insert(0,edu)
                 edu_stack.remove(edu)
-
             if (" ".join(order_edus) + " " + edu) in sentence:
                 order_edus.append(edu)
                 edu_stack.remove(edu)
-
             pass
-
+        print (edu_stack) 
         pass
+    
+    print 'order edus is right ?'
+    print sentence == " ".join(order_edus)
 
-    print 'ordered edus : '
-    print order_edus
+    levels = []
+    update_edus = []
+    while True:
+        if len(order_edus) == 1:
+            break
 
+        i = 0
+        while i < (len(order_edus)-1):
+            ledu = order_edus[i]
+            redu = order_edus[i+1]
+            if ledu+' '+redu in edus:
+                update_edus.append(ledu+' '+redu)
+                stackflag = False
+                i = i+2
+            else:
+                update_edus.append(ledu)
+                stackflag = True
+                i = i+1
 
+        if stackflag or i==len(order_edus)-1:
+            update_edus.append(order_edus[-1])
 
+        levels.append([order_edus,update_edus])
+        # print '>>>>>order' 
+        # print (order_edus)
+        order_edus = update_edus
+        # print '>>>>>update'
+        # print (order_edus)
+       
+        update_edus = []
+
+    # print 'the last edu : ' , sentence == order_edus[0]
+
+    # extract from levels list, each pair from levels contains ordered edus and its update
+
+    bsmps = []
+    for level in levels:
+        oedus = level[0]
+        uedus = level[1]
+
+        # print 'there are ' , len(oedus) , 'in this level'
+        for i in range(len(oedus)-1):
+            ledu = oedus[i]
+            redu = oedus[i+1]
+            if ledu+' '+redu in uedus:
+                bsmps.append([1,ledu,redu])
+                # print [1,ledu,redu]
+            else:
+                bsmps.append([0,ledu,redu])
+                # print [0,ledu,redu]
+        # print '>>>>>>>>>>>>>>>>>oedus'
+        # for edu in oedus:
+        #     print edu
+        # print '%%%%%%%%%%%%%%%%%uedus'
+        # for edu in uedus:
+        #     print edu
+        # print '----------------level----------------'
+
+    return bsmps
 
 def extract_edus(tree_str):
-
     tree = parse_tree(tree_str)
     # print 'parsed pairs : '
     pair = traversal(tree)[0]
@@ -226,25 +269,37 @@ def build_data(dir_path):
         trees.append(open(dir_path+'/'+edu_path).readlines());
 
     print 'trees number : ' , len(trees)
-    print trees[274]
+    # print trees[1]
     groups = []
     basic_groups = []
     for tree in trees:
-        groups.append(extract_edus(tree))
-        basic_groups.append(extract_basic_edus(tree))
+        ftrees = extract_edus(tree)
+        if ftrees[0][1] == '' and ftrees[0][2] == '':
+            pass
+        else:
+            groups.append(ftrees)
+            basic_groups.append(extract_basic_edus(tree))
 
     print 'number of pairs', len(groups) , ''
+    print 'group ' , groups[3]
+    print 'bgroup ' , basic_groups[3]
+    pairs = []
+    i = 0
+    pairs = generate_example(groups[3],basic_groups[3])
+    for group,basic_group in zip(groups,basic_groups):
+        # print i+1 , 'finish'
+        # i += 1
+        # pairs.extend(generate_example(group,basic_group))
+        pass
 
-    # for i,pair in enumerate (pairs):
-    #     if len(pair) > 6 and len(pair) < 10:
-    #         print pair
-    #         print i
-    # print format_trees[274]
-    # basicedus = basic_edu(format_trees[274])
-    generate_example(groups[274],basic_groups[274])
+    for pair in pairs:
+        print pair
+        pass
+    
     senas = []
     senbs = []
     nucs = []
+    print examples
 
     for pair in pairs:
         errorflag = True

@@ -30,9 +30,10 @@ find out where why . how to locate the nan value?
 case5: detect the nan in theano
 http://stackoverflow.com/questions/32581184/no-module-named-nanguardmode
 http://deeplearning.net/software/theano/tutorial/debug_faq.html
+https://github.com/fchollet/keras/issues/828
 
 case6: fix the < p >
-does not help
+does not help ? but the only different between segment and nucleus is the < p >
 
 case7 : the sentence vector is nan
 i-th : 7866
@@ -51,4 +52,7 @@ the parameter :
 case8: find a method to monitor the shared variable
 
 Task2> structure classifier (binary classifier)
+double items extract 
+triple items extract
+
 

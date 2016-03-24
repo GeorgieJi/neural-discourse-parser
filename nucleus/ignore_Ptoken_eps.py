@@ -139,13 +139,21 @@ def build_data(dir_path):
             score = [2]
         else:
             errorflag = False # filter the wrong tree
-            
+
+        pair[1] = pair[1].strip().replace('<P>','')
+        pair[2] = pair[2].strip().replace('<P>','')
+
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if errorflag and len(wrdsa) < 100 and len(wrdsb) < 100:
-            senas.append(nltk.word_tokenize(pair[1].strip().lower()))
-            senbs.append(nltk.word_tokenize(pair[2].strip().lower()))
+        # replace the < P > with 'p-end'
+        wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
+        wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
+
+
+        if errorflag and len(wrdsa) < 150 and len(wrdsb) < 150:
+            senas.append(wrdsa)
+            senbs.append(wrdsb)
             nucs.append(score)
         else:
             continue
@@ -246,6 +254,10 @@ class Siamese_GRU:
 
         # softmax class
         o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+
+        # in case the o contains 0 which cause inf
+        eps = np.asarray([1.0e-10,1.0e-10,1.0e-10],dtype=theano.config.floatX)
+        o = o + eps
         om = o.reshape((1,o.shape[0]))
         prediction = T.argmax(om,axis=1)
         o_error = T.nnet.categorical_crossentropy(om,y)
@@ -257,8 +269,28 @@ class Siamese_GRU:
         # updates
         updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
 
+        # monitor parameter
+        mV = V * T.ones_like(V)
+        mc = c * T.ones_like(c)
+        mU = U * T.ones_like(U)
+        mW = W * T.ones_like(W)
+
+        gV = T.grad(cost,V)
+        gc = T.grad(cost,c)
+        gU = T.grad(cost,U)
+        gW = T.grad(cost,W)
+
+        mgV = gV * T.ones_like(gV)
+        mgc = gc * T.ones_like(gc)
+        mgU = gU * T.ones_like(gU)
+        mgW = gW * T.ones_like(gW)
+
+
+
 
         # Assign functions
+        self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
+        self.monitor_grad = theano.function([x_a,x_b,y],[mgV,mgc,mgU,mgW])
         self.predict = theano.function([x_a,x_b],om)
         self.predict_class = theano.function([x_a,x_b],prediction)
         self.ce_error = theano.function([x_a,x_b,y],cost)
@@ -301,15 +333,28 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
 
         for i in range(len(y_train)):
             # One SGT step
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
             num_examples_seen += 1
             # Optionally do callback
-            print '>>>>>'
+            print '>>>>> before update '
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
             print 'i-th :' , i;
             print 'the left edu : ' ," ".join(lwrds)
             print 'the right edu : ' , " ".join(rwrds)
+            print 'the parameter : ' , 
+            res = model.monitor(X_1_train[i],X_2_train[i])
+            print res[0]
+            print res[1]
+            print res[2]
+            print res[3]
+
+            print 'the gradient : ' , 
+            grd = model.monitor_grad(X_1_train[i],X_2_train[i],y_train[i])
+            print grd[0]
+            print grd[1]
+            print grd[2]
+            print grd[3]
+
             print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
             print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
             output = model.predict_class(X_1_train[i],X_2_train[i])
@@ -317,11 +362,42 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
             print index_to_class(output)
             print 'true label : ' , y_train[i]
             print index_to_class(y_train[i][0])
+
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
+            output = model.predict_class(X_1_train[i],X_2_train[i])
+            print '>>>>> after update '
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
+            print 'i-th :' , i;
+            print 'the left edu : ' ," ".join(lwrds)
+            print 'the right edu : ' , " ".join(rwrds)
+            print 'the parameter : ' , 
+            res = model.monitor(X_1_train[i],X_2_train[i])
+            print res[0]
+            print res[1]
+            print res[2]
+            print res[3]
+
+            print 'the gradient : ' , 
+            grd = model.monitor_grad(X_1_train[i],X_2_train[i],y_train[i])
+            print grd[0]
+            print grd[1]
+            print grd[2]
+            print grd[3]
+
+            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
+            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
+
+            print 'predict_class : ' , output
+            print index_to_class(output)
+            print 'true label : ' , y_train[i]
+            print index_to_class(y_train[i][0])
             print 'the number of example have seen for now : ' , num_examples_seen
+            
             ocount = 0
             ccount = 0
             ycount = 0
-            if i % 500 == 0:
+            if False:
                 test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
             for o,y in zip(output,y_train[i]):
@@ -471,7 +547,7 @@ def nucleus():
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
 
-    vocabulary_size = 1*1000
+    vocabulary_size = 5*1000
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1)
@@ -517,10 +593,14 @@ def nucleus():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=128,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=50,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
+    print 'monitor parameter : '
+    print model.monitor(X_1_train[0],X_2_train[0])
+    print model.monitor_grad(X_1_train[0],X_2_train[0],y_train[0])
+
     print model.predict(X_1_train[0],X_2_train[0])
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
@@ -541,7 +621,7 @@ def nucleus():
         print 'this is epoch : ' , epoch
         train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
-        # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
     
 
