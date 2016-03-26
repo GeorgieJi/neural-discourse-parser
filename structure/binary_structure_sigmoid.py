@@ -373,7 +373,7 @@ class Siamese_GRU:
         combined_s = T.concatenate([sena,senb],axis=0)
 
         # softmax class
-        o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+        o = T.nnet.sigmoid(V.dot(combined_s)+c)[0]
 
         # in case the o contains 0 which cause inf
         eps = np.asarray([1.0e-10,1.0e-10,1.0e-10],dtype=theano.config.floatX)

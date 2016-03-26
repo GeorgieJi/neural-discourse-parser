@@ -265,13 +265,13 @@ def build_data(dir_path):
 
     for pair in pairs:
 
-        pair[1] = pair[1].strip().replace('<P>','')
-        pair[2] = pair[2].strip().replace('<P>','')
+        pair[1] = pair[1].strip().replace('<P>',' paraend ')
+        pair[2] = pair[2].strip().replace('<P>',' paraend ')
 
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if len(wrdsa) < 100 and len(wrdsb) < 100:
+        if True:
             senas.append(wrdsa)
             senbs.append(wrdsb)
             nucs.append([pair[0]])
