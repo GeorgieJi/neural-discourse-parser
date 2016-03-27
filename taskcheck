@@ -1,8 +1,29 @@
 task1> structure rebuild
 
-binary build
+binary build easy to blow up the model... because it is to stupid
 
 triple build
 
 
 task2> relation recognition
+how many relation exactly...
+Attribution
+Background
+Cause
+Comparsion
+Condition
+Contrast
+Elaboration
+Enablement
+Evaluation
+Explanation
+Joint
+Manner-Means
+Topic-Comment
+Summary
+Temporal
+Topic-Chang
+
+textual-organization
+span
+same-unit
