@@ -1,29 +1,3 @@
-task1> structure rebuild
+task1> soft attention for relation and nucleus
 
-binary build easy to blow up the model... because it is to stupid
-
-triple build
-
-
-task2> relation recognition
-how many relation exactly...
-Attribution
-Background
-Cause
-Comparsion
-Condition
-Contrast
-Elaboration
-Enablement
-Evaluation
-Explanation
-Joint
-Manner-Means
-Topic-Comment
-Summary
-Temporal
-Topic-Chang
-
-textual-organization
-span
-same-unit
+currently, we already achieve acceptable result on segment task, but the performance on nucleus and relation is not acceptable
