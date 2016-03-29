@@ -183,6 +183,11 @@ def build_data(dir_path):
         wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
         wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
 
+        wrdsa.insert(0,'B_E')
+        wrdsb.insert(0,'B_E')
+        wrdsa.append('E_E')
+        wrdsb.append('E_E')
+
 
         if len(wrdsa) < 150 and len(wrdsb) < 150:
             senas.append(wrdsa)
@@ -641,7 +646,7 @@ def relation():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=100,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=1000,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
