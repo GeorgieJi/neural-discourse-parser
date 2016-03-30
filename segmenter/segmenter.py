@@ -463,7 +463,7 @@ def test_score(model,X_test,y_test):
                 ocount += 1
             if y == 1:
                 ycount += 1
-            if y == o and y == 1:
+            if y == o:
                 ccount += 1
 
         tocount += ocount
@@ -501,7 +501,7 @@ def data_score(model,X_test,y_test):
                 ocount += 1
             if y == 1:
                 ycount += 1
-            if y == o and y == 1:
+            if y == o:
                 ccount += 1
         tocount += ocount
         tccount += ccount

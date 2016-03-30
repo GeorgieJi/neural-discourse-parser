@@ -190,7 +190,7 @@ def build_data(dir_path):
         # wrdsb.append('E_O_E')
 
         # modified for sequence model
-        if len(wrdsa) < 150 and len(wrdsb) < 150:
+        if len(wrdsa) < 50 and len(wrdsb) < 50:
             senas.append(wrdsa+wrdsb)
             senbs.append(len(wrdsb))
             disrels.append(rel)
@@ -205,8 +205,6 @@ def build_data(dir_path):
 class Sequence_bidirectional_GRU:
     """
     modeling elementray discourse unit pair as a context related sequence using bidirectional GRU with attention mechanism
-
-    single attention 
     """
     def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
@@ -313,24 +311,15 @@ class Sequence_bidirectional_GRU:
 
         bid_s = T.concatenate([s_f,s_b[::-1]],axis=1)
 
-        # get left edu and right edu
 
-        e_a = bid_s[0:bidx]
-        e_b = bid_s[bidx:]
-
-        def soft_attention(h_i):
-            return T.tanh(W_att.dot(h_i)+b_att)
-        
-        def weight_attention(h_i,a_j):
-            return h_i*a_j
-
+        """
         a_att, updates = theano.scan(
                 soft_attention,
-                sequences=e_a
+                sequences=a_s
                 )
         b_att, updates = theano.scan(
                 soft_attention,
-                sequences=e_b
+                sequences=b_s
                 )
 
         a_att = T.exp(a_att)
@@ -343,12 +332,13 @@ class Sequence_bidirectional_GRU:
 
         a_s_att,updates = theano.scan(
                 weight_attention,
-                sequences=[e_a,a_att]
+                sequences=[a_s,a_att]
                 )
         b_s_att,updates = theano.scan(
                 weight_attention,
-                sequences=[e_b,b_att]
+                sequences=[b_s,b_att]
                 )
+        """
         # eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
 
         # semantic similarity 
@@ -362,10 +352,10 @@ class Sequence_bidirectional_GRU:
         # theano scan 
         # exp(a)
         # 
-        sena = a_s_att.sum(axis=0)
-        senb = b_s_att.sum(axis=0)
+        # sena = a_s_att.sum(axis=0)
+        # senb = b_s_att.sum(axis=0)
         sen = bid_s
-        combined_s = T.concatenate([sena,senb],axis=0)
+        combined_s = T.concatenate([sen[0],sen[-1]],axis=0)
 
         # softmax class
         o = T.nnet.softmax(V.dot(combined_s)+c)[0]
@@ -406,10 +396,10 @@ class Sequence_bidirectional_GRU:
         # Assign functions
         # self.comsen = theano.function([x_a,x_b],[a_att,b_att])
         self.monitor = theano.function([],[mV,mc,mU,mW])
-        self.monitor_grad = theano.function([x,bidx,y],[mgV,mgc,mgU,mgW])
-        self.predict = theano.function([x,bidx],om)
-        self.predict_class = theano.function([x,bidx],prediction)
-        self.ce_error = theano.function([x,bidx,y],cost)
+        self.monitor_grad = theano.function([x,y],[mgV,mgc,mgU,mgW])
+        self.predict = theano.function([x],om)
+        self.predict_class = theano.function([x],prediction)
+        self.ce_error = theano.function([x,y],cost)
         # self.bptt = theano.function([x,y],[dE,dU,dW,db,dV,dc])
 
         # SGD parameters
@@ -419,7 +409,7 @@ class Sequence_bidirectional_GRU:
         # rmsprop cache updates
         # find the nan
         self.sgd_step = theano.function(
-                [x,bidx,y],
+                [x,y],
                 [],
                 updates=updates
                 # mode=NanGuardMode(nan_is_error=True, inf_is_error=True, big_is_error=True)
@@ -440,9 +430,9 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
             # One SGT step
             num_examples_seen += 1
             # Optionally do callback
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
+            model.sgd_step(X_1_train[i],y_train[i]) 
             print 'the number of example have seen for now : ' , num_examples_seen
-            output = model.predict_class(X_1_train[i],X_2_train[i])
+            output = model.predict_class(X_1_train[i])
             print '>>>>> case'
             wrds = [index_to_word[j] for j in X_1_train[i]]
             print 'i-th :' , i;
@@ -450,8 +440,8 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
             print " ".join(wrds)
             print 'the right edu : '
             print X_2_train[i]
-            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
-            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
+            print 'predict : ' , model.predict(X_1_train[i])
+            print 'ce_error : ' , model.ce_error(X_1_train[i],y_train[i])
             print 'predict_relation : ' , output
             print index_to_relation[output[0]]
             print 'true relation : ' , y_train[i]
@@ -514,7 +504,7 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
     tycount = 0
 
     for i in range(len(y_test)):
-        output = model.predict_class(X_1_test[i],X_2_test[i])
+        output = model.predict_class(X_1_test[i])
         ocount = 0
         ccount = 0
         ycount = 0
@@ -524,7 +514,7 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
         print 'i-th : ' , i;
         print 'the left edu : , ' , " ".join(wrds)
         print 'the right edu : ' , X_2_test[i]
-        print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
+        print 'ce_error : ' , model.ce_error(X_1_test[i],y_test[i])
 
         # print 
         print 'predict relation : ' , output
@@ -669,19 +659,19 @@ def relation():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Sequence_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=1000,word_embedding=E,bptt_truncate=-1)
+    model = Sequence_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
     print X_train[0]
     print bidx_train[0]
     print 'combines' ,
-    output = model.predict_class(X_train[0],bidx_train[0])
+    output = model.predict_class(X_train[0])
     print 'predict_class : ' , output
-    print 'ce_error : ' , model.ce_error(X_train[0],bidx_train[0],y_train[0])
+    print 'ce_error : ' , model.ce_error(X_train[0],y_train[0])
     learning_rate = 0.000005
 
-    model.sgd_step(X_train[0],bidx_train[0],y_train[0])
+    model.sgd_step(X_train[0],y_train[0])
     t2 = time.time()
 
     print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
@@ -693,7 +683,7 @@ def relation():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        # train_with_sgd(model,X_train,bidx_train,y_train,X_test,bidx_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
+        train_with_sgd(model,X_train,bidx_train,y_train,X_test,bidx_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
         test_score(model,X_test,bidx_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
 

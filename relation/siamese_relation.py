@@ -1,6 +1,5 @@
 '''
-A Fast and Accurate Discourse Parser using Neural Networks
-
+A Fast and Accurate Dependency Parser using Neural Networks
 '''
 
 import numpy as np
@@ -184,27 +183,23 @@ def build_data(dir_path):
         wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
         wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
 
-        # wrdsa.insert(0,'B_O_E')
-        # wrdsb.insert(0,'B_O_E')
-        # wrdsa.append('E_O_E')
-        # wrdsb.append('E_O_E')
 
-        # modified for sequence model
-        if len(wrdsa) < 150 and len(wrdsb) < 150:
-            senas.append(wrdsa+wrdsb)
-            senbs.append(len(wrdsb))
+        if len(wrdsa) < 50 and len(wrdsb) < 50:
+            senas.append(wrdsa)
+            senbs.append(wrdsb)
             disrels.append(rel)
         else:
             continue
-
     
     return senas , senbs , disrels
 
 
 
-class Sequence_bidirectional_GRU:
+class Siamese_GRU:
     """
-    modeling elementray discourse unit pair as a context related sequence using bidirectional GRU with attention mechanism
+    A implemention of Siamese Recurrent Architectures for Learning Sentence Similarity
+    http://www.aaai.org/Conferences/AAAI/2016/Papers/15Mueller12195.pdf
+
     """
     def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
@@ -226,17 +221,12 @@ class Sequence_bidirectional_GRU:
         else:
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
-        b = np.zeros((6,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
+        b = np.zeros((3,hidden_dim))
         
-        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*4))
+        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
         c = np.zeros(label_dim)
-
-        # initialize the soft attention parameters
-        # basically the soft attention is the single hidden layer 
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
-        b_att = np.zeros(1)
 
         # Created shared variable
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
@@ -245,11 +235,6 @@ class Sequence_bidirectional_GRU:
         self.V = theano.shared(name='V',value=V.astype(theano.config.floatX))
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
-
-        # Created attention variable
-        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
-        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
-
 
 
         self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
@@ -260,13 +245,13 @@ class Sequence_bidirectional_GRU:
         self.__theano_build__()
 
     def __theano_build__(self):
-        E, V, U, W, b, c, W_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.b_att
+        E, V, U, W, b, c = self.E, self.V, self.U, self.W, self.b , self.c
 
-        x = T.ivector('x')
-        bidx = T.lscalar('bidx')
+        x_a = T.ivector('x_a')
+        x_b = T.ivector('x_b')
         y = T.lvector('y')
 
-        def forward_direction_step(x_t,s_t_prev):
+        def forward_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -276,101 +261,35 @@ class Sequence_bidirectional_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             # directly return the hidden state as intermidate output 
             return [s_t]
-        
-        
-        def backward_direction_step(x_t,s_t_prev):
-            # Word embedding layer
-            x_e = E[:,x_t]
-            # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
-            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
-            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            # directly return the hidden state as intermidate output 
-            return [s_t]
 
 
-
-        # sentence a vector (states) forward direction 
-        s_f , updates = theano.scan(
-                forward_direction_step,
-                sequences=x,
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-
-        # sentence b vector (states) backward direction
-        s_b , updates = theano.scan(
-                backward_direction_step,
-                sequences=x[::-1],
+        # sentence a vector (states)
+        a_s , updates = theano.scan(
+                forward_step,
+                sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
             
-        
-
-        # combine the sena
-
-        bid_s = T.concatenate([s_f,s_b[::-1]],axis=1)
-
-        # get left edu and right edu
-
-        e_a = bid_s[0:bidx]
-        e_b = bid_s[bidx:]
-
-        def soft_attention(h_i):
-            return T.tanh(W_att.dot(h_i)+b_att)
-        
-        def weight_attention(h_i,a_j):
-            return h_i*a_j
-
-        """
-        a_att, updates = theano.scan(
-                soft_attention,
-                sequences=a_s
-                )
-        b_att, updates = theano.scan(
-                soft_attention,
-                sequences=b_s
-                )
-
-        a_att = T.exp(a_att)
-        a_att = a_att.flatten()
-        a_att = a_att / a_att.sum()
-
-        b_att = T.exp(b_att)
-        b_att = b_att.flatten()
-        b_att = b_att / b_att.sum()
-
-        a_s_att,updates = theano.scan(
-                weight_attention,
-                sequences=[a_s,a_att]
-                )
-        b_s_att,updates = theano.scan(
-                weight_attention,
-                sequences=[b_s,b_att]
-                )
-        """
-        # eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
+        # sentence b vector (states)
+        b_s , updates = theano.scan(
+                forward_step,
+                sequences=x_b,
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
 
         # semantic similarity 
         # s_sim = manhattan_distance(a_s[-1],b_s[-1])
 
-        # for classification using simple strategy
-        # for now we still use the last word vector as sentence vector
-        # apply a simple single hidden layer on each word in sentence 
-        # 
-        # a (wi) = attention(wi) = tanh(w_att.dot(wi)+b)
-        # theano scan 
-        # exp(a)
-        # 
-        # sena = a_s_att.sum(axis=0)
-        # senb = b_s_att.sum(axis=0)
-        sen = bid_s
-        combined_s = T.concatenate([sen[0],sen[-1]],axis=0)
+        # for classification using simple strategy 
+        sena = a_s[-1]
+        senb = b_s[-1]
+
+        combined_s = T.concatenate([sena,senb],axis=0)
 
         # softmax class
         o = T.nnet.softmax(V.dot(combined_s)+c)[0]
 
-        # in case the o contains 0 which cause inf and nan
+        # in case the o contains 0 which cause inf
         eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
         o = o + eps
         om = o.reshape((1,o.shape[0]))
@@ -404,12 +323,11 @@ class Sequence_bidirectional_GRU:
 
 
         # Assign functions
-        # self.comsen = theano.function([x_a,x_b],[a_att,b_att])
-        self.monitor = theano.function([],[mV,mc,mU,mW])
-        self.monitor_grad = theano.function([x,y],[mgV,mgc,mgU,mgW])
-        self.predict = theano.function([x],om)
-        self.predict_class = theano.function([x],prediction)
-        self.ce_error = theano.function([x,y],cost)
+        self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
+        self.monitor_grad = theano.function([x_a,x_b,y],[mgV,mgc,mgU,mgW])
+        self.predict = theano.function([x_a,x_b],om)
+        self.predict_class = theano.function([x_a,x_b],prediction)
+        self.ce_error = theano.function([x_a,x_b,y],cost)
         # self.bptt = theano.function([x,y],[dE,dU,dW,db,dV,dc])
 
         # SGD parameters
@@ -419,11 +337,22 @@ class Sequence_bidirectional_GRU:
         # rmsprop cache updates
         # find the nan
         self.sgd_step = theano.function(
-                [x,y],
+                [x_a,x_b,y],
                 [],
                 updates=updates
                 # mode=NanGuardMode(nan_is_error=True, inf_is_error=True, big_is_error=True)
                 )
+
+
+def index_to_class(index):
+    label = '';
+    if index == 0:
+        label = 'Nucleus-Satellite'
+    elif index == 1:
+        label = 'Nucleus-Nucleus'
+    elif index == 2:
+        label = 'Satellite-Nucleus'
+    return label
 
 def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[],index_to_relation=[]):
     
@@ -440,18 +369,19 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
             # One SGT step
             num_examples_seen += 1
             # Optionally do callback
-            model.sgd_step(X_1_train[i],y_train[i]) 
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
             print 'the number of example have seen for now : ' , num_examples_seen
-            output = model.predict_class(X_1_train[i])
+            output = model.predict_class(X_1_train[i],X_2_train[i])
             print '>>>>> case'
-            wrds = [index_to_word[j] for j in X_1_train[i]]
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
             print 'i-th :' , i;
             print 'the left edu : '
-            print " ".join(wrds)
+            print " ".join(lwrds)
             print 'the right edu : '
-            print X_2_train[i]
-            print 'predict : ' , model.predict(X_1_train[i])
-            print 'ce_error : ' , model.ce_error(X_1_train[i],y_train[i])
+            print " ".join(rwrds)
+            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
+            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
             print 'predict_relation : ' , output
             print index_to_relation[output[0]]
             print 'true relation : ' , y_train[i]
@@ -514,17 +444,18 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
     tycount = 0
 
     for i in range(len(y_test)):
-        output = model.predict_class(X_1_test[i])
+        output = model.predict_class(X_1_test[i],X_2_test[i])
         ocount = 0
         ccount = 0
         ycount = 0
 
-        wrds = [index_to_word[j] for j in X_1_test[i]]
+        lwrds = [index_to_word[j] for j in X_1_test[i]]
+        rwrds = [index_to_word[j] for j in X_2_test[i]]
 
         print 'i-th : ' , i;
-        print 'the left edu : , ' , " ".join(wrds)
-        print 'the right edu : ' , X_2_test[i]
-        print 'ce_error : ' , model.ce_error(X_1_test[i],y_test[i])
+        print 'the left edu : , ' , " ".join(lwrds)
+        print 'the right edu : ' , " ".join(rwrds)
+        print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
 
         # print 
         print 'predict relation : ' , output
@@ -594,14 +525,16 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
 def relation():
 
-    edus, bidx , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    tst_edus, tst_bidx, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+    ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+
+    tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
     print 'load in ' , len(rels) , 'training sample'
     print 'load in ' , len(tst_rels) , 'test sample'
 
     token_list = []
-    for edu in (edus):
-        token_list.extend(edu)
+    for sena, senb in zip(ledus,redus):
+        token_list.extend(sena)
+        token_list.extend(senb)
 
     # collect discourse relations
     relation_list = []
@@ -635,29 +568,34 @@ def relation():
     print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
 
     # training dataset
-    for i,edu in enumerate(edus):
-        edus[i] = [w if w in word_to_index else unknown_token for w in edu]
+    for i,(edua,edub) in enumerate(zip(ledus,redus)):
+        ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
+        redus[i] = [w if w in word_to_index else unknown_token for w in edub]
     for i,rel in enumerate(rels):
         rels[i] = [relation_to_index[rel]]
 
     # test dataset
-    for i,edu in enumerate(tst_edus):
-        tst_edus[i] = [w if w in word_to_index else unknown_token for w in edu]
+    for i,(edua,edub) in enumerate(zip(tst_ledus,tst_redus)):
+        tst_ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
+        tst_redus[i] = [w if w in word_to_index else unknown_token for w in edub]
+
     for i,rel in enumerate(tst_rels):
         tst_rels[i] = [relation_to_index[rel]]
 
-    X_train = np.asarray([[word_to_index[w] for w in sent ] for sent in edus])
-    bidx_train = bidx 
+    # X_1_train , X_2_train , y_train
+    X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
+    X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
     y_train = (rels)
 
-    X_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_edus])
-    bidx_test = tst_bidx
+    # X_1_test, X_2_test , y_train
+    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
+    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
     y_test = (tst_rels)
 
-    print "Example sentence '%s' " % " ".join(edus[0])
-    print "Example boundary '%s' " % bidx[0]
-    print "Example sentence after Pre-processing : '%s' " % X_train[0]
-    print "Example sentence after Pre-processing : '%s' " % bidx[0]
+    print "Example sentence '%s' " % " ".join(ledus[0])
+    print "Example sentence '%s' " % " ".join(redus[0])
+    print "Example sentence after Pre-processing : '%s' " % X_1_train[0]
+    print "Example sentence after Pre-processing : '%s' " % X_2_train[0]
     print "Example label : ", y_train[0]
     print ""
 
@@ -669,19 +607,17 @@ def relation():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Sequence_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=1000,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
-    print X_train[0]
-    print bidx_train[0]
-    print 'combines' ,
-    output = model.predict_class(X_train[0])
+
+    output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
-    print 'ce_error : ' , model.ce_error(X_train[0],y_train[0])
+    print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
     learning_rate = 0.000005
 
-    model.sgd_step(X_train[0],y_train[0])
+    model.sgd_step(X_1_train[0],X_2_train[0],y_train[0])
     t2 = time.time()
 
     print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
@@ -693,10 +629,9 @@ def relation():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        # train_with_sgd(model,X_train,bidx_train,y_train,X_test,bidx_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
+        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
-        test_score(model,X_test,bidx_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
-
+        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
 
 
