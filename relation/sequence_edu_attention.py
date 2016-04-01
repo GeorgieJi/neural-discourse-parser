@@ -189,14 +189,13 @@ def build_data(dir_path):
         wrdsb.append('E_O_E')
 
 
-        if len(wrdsa) < 150 and len(wrdsb) < 150:
+        if len(wrdsa) < 50 and len(wrdsb) < 50:
             senas.append(wrdsa)
             senbs.append(wrdsb)
             disrels.append(rel)
         else:
             continue
 
-        pairs = pairs[0:100]
     
     return senas , senbs , disrels
 
@@ -650,7 +649,7 @@ def relation():
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
 
-    vocabulary_size = 5*1000
+    vocabulary_size = 
     unknown_token = 'UNK'
 
     vocab = word_freq.most_common(vocabulary_size-1)
@@ -702,7 +701,7 @@ def relation():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=1000,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()

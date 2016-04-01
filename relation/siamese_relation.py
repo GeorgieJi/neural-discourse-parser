@@ -183,6 +183,11 @@ def build_data(dir_path):
         wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
         wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
 
+        wrdsa.insert(0,'B_E')
+        wrdsb.insert(0,'B_E')
+        wrdsa.append('E_E')
+        wrdsb.append('E_E')
+
 
         if len(wrdsa) < 50 and len(wrdsb) < 50:
             senas.append(wrdsa)
