@@ -236,8 +236,10 @@ class Siamese_bidirectional_GRU:
 
         # initialize the soft attention parameters
         # basically the soft attention is the single hidden layer 
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
-        b_att = np.zeros(1)
+        # no idea how to set the attention layer hidden node dim just set it as hidden dim for now
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
+        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+        b_att = np.zeros(hidden_dim)
 
         # Created shared variable
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
@@ -249,11 +251,12 @@ class Siamese_bidirectional_GRU:
 
         # Created attention variable
         self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
+        self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
         self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
 
 
 
-        self.params = [self.E,self.U,self.W,self.V,self.b,self.c,self.W_att,self.b_att]
+        self.params = [self.E, self.U, self.W, self.V, self.b, self.c, self.W_att, self.v_att, self.b_att]
         
 
         # We store the Theano graph here
@@ -261,7 +264,7 @@ class Siamese_bidirectional_GRU:
         self.__theano_build__()
 
     def __theano_build__(self):
-        E, V, U, W, b, c, W_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.b_att
+        E, V, U, W, b, c, W_att, v_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.v_att, self.b_att
 
         x_a = T.ivector('x_a')
         x_b = T.ivector('x_b')
@@ -326,7 +329,7 @@ class Siamese_bidirectional_GRU:
         b_s = T.concatenate([b_s_f,b_s_b[::-1]],axis=1)
 
         def soft_attention(h_i):
-            return T.tanh(W_att.dot(h_i)+b_att)
+            return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
         
         def weight_attention(h_i,a_j):
             return h_i*a_j
