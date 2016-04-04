@@ -716,6 +716,13 @@ def relation():
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
+    hidden_dim = 200
+
+    print 'now build mode ...'
+    print 'hidden dim : ' , hidden_dim
+    print 'word dim : ' , word_dim
+    print 'vocabulary size : ' , len(index_to_word)
+
     model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
