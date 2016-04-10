@@ -155,11 +155,11 @@ class bid_GRU:
         # self.theano = {}
         # self.__theano_build__()
  
-    def recurrent(self,x_s,E):
+    def recurrent(self,x_s,x_s_m,E):
         U, W, b, W_att, v_att, b_att = self.U, self.W, self.b, self.W_att, self.v_att, self.b_att
         # x_s = T.ivector('x_s')
 
-        def forward_direction_step(x_t,s_t_prev):
+        def forward_direction_step(x_t,x_s_m_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -167,10 +167,14 @@ class bid_GRU:
             r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
             c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+
+            # leaky integrate and obtain next hidden state
+            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
+
             # directly return the hidden state as intermidate output 
             return [s_t]
         
-        def backward_direction_step(x_t,s_t_prev):
+        def backward_direction_step(x_t,x_s_m_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 2
@@ -178,20 +182,26 @@ class bid_GRU:
             r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
             c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+
+            # leaky integrate and obtain next hidden state
+            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
+
             # directly return the hidden state as intermidate output 
             return [s_t]
 
         # create sequence hidden states from input
         s_f , updates = theano.scan(
                 forward_direction_step,
-                sequences=x_s,
+                sequences=[x_s,x_s_m],
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
+
         s_b , updates = theano.scan(
                 backward_direction_step,
-                sequences=x_s[::-1],
+                sequences=[x_s[::-1],x_s_m[::-1]],
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
+
         h_s = T.concatenate([s_f,s_b],axis=1)
 
         def soft_attention(h_i,v_att,W_att,b_att):
@@ -249,7 +259,7 @@ def prepare_data(seqs_x, maxlen=None):
 
     for idx , s_x in enumerate(seqs_x):
         x[idx,:lengths_x[idx]] = s_x
-        x_mask[idx,:lengths_x[idx]+1] = 1.
+        x_mask[idx,:lengths_x[idx]] = 1.
 
 
     return x, x_mask
@@ -272,13 +282,15 @@ class framework:
         gru_layer = bid_GRU(word_dim,hidden_dim,bptt_truncate=-1)
 
         x_a = T.lvector('x_a')
+        x_a_m = T.vector('x_a_m')
         x_b = T.lvector('x_b')
+        x_b_m = T.vector('x_b_m')
 
         y = T.lvector('y')
 
         # 2 symbolic vector (1*)
-        v_a = gru_layer.recurrent(x_a,self.E)
-        v_b = gru_layer.recurrent(x_b,self.E)
+        v_a = gru_layer.recurrent(x_a,x_a_m,self.E)
+        v_b = gru_layer.recurrent(x_b,x_b_m,self.E)
 
         edu_pair_fea = T.concatenate([v_a,v_b],axis=0)
 
@@ -317,13 +329,13 @@ class framework:
 
 
         # framework assign function
-        self.predict = theano.function([x_a,x_b],prediction)
-        self.predict_class = theano.function([x_a,x_b],prediction)
-        self.ce_error = theano.function([x_a,x_b,y],cost)
+        self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
+        self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
+        self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
         # self.comsen = theano.function([],)
 
         self.sgd_step = theano.function(
-                [x_a,x_b,y],
+                [x_a,x_a_m,x_b,x_b_m,y],
                 [],
                 updates = updates
                 )
@@ -403,25 +415,24 @@ def relation():
     # X_1_train , X_2_train , y_train
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
-
-    # X_1_train, X_1_train_mask = prepare_data(X_1_train,maxlen)
-    # X_2_train, X_2_train_mask = prepare_data(X_2_train,maxlen)
+    X_1_train, X_1_train_mask = prepare_data(X_1_train,maxlen)
+    X_2_train, X_2_train_mask = prepare_data(X_2_train,maxlen)
     y_train = (rels)
 
     # X_1_test, X_2_test , y_train
     X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
     X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
+    X_1_test, X_1_test_mask = prepare_data(X_1_test,maxlen)
+    X_2_test, X_2_test_mask = prepare_data(X_2_test,maxlen)
     y_test = (tst_rels)
 
-    # X_1_test, X_1_test_mask = prepare_data(X_1_test,maxlen)
-    # X_2_test, X_2_test_mask = prepare_data(X_2_test,maxlen)
 
     print "Example sentence '%s' " % " ".join(ledus[0])
     print "Example sentence '%s' " % " ".join(redus[0])
     print "Example sentence after Pre-processing : '%s' " % X_1_train[0]
     print "Example sentence after Pre-processing : '%s' " % X_2_train[0]
-    # print "Example sentence mask after masked : '%s' " % X_1_train_mask[0]
-    # print "Example sentence mask after masked : '%s' " % X_2_train_mask[0]
+    print "Example sentence mask after masked : '%s' " % X_1_train_mask[0]
+    print "Example sentence mask after masked : '%s' " % X_2_train_mask[0]
     print "Example label : ", y_train[0]
     print ""
 
@@ -452,12 +463,12 @@ def relation():
     # a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
     # print a_att
     # print b_att
-    output = model.predict_class(X_1_train[0],X_2_train[0])
+    output = model.predict_class(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0])
     print 'predict_class : ' , output
-    print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
+    print 'ce_error : ' , model.ce_error(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
     learning_rate = 0.000005
 
-    model.sgd_step(X_1_train[0],X_2_train[0],y_train[0])
+    model.sgd_step(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
     t2 = time.time()
 
     print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
@@ -469,8 +480,8 @@ def relation():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
-        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
+        train_with_sgd(model,X_1_train,X_2_train,X_1_train_mask,X_2_train_mask,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
+        test_score(model,X_1_test,X_2_test,X_1_test_mask,X_2_test_mask,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
 
 
