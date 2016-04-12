@@ -132,6 +132,7 @@ class bid_GRU:
         W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
         v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
         b_att = np.zeros((hidden_dim))
+        sv_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim*2))
 
         # initialize the soft attention parameters
         # basically the soft attention is the single hidden layer 
@@ -147,16 +148,18 @@ class bid_GRU:
         self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
         self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
         self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
+        self.sv_att = theano.shared(name='sv_att',value=sv_att.astype(theano.config.floatX))
 
 
-        self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att]
+        # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
+        self.params = [self.U,self.W,self.b,self.sv_att]
 
         # store the theano graph 
         # self.theano = {}
         # self.__theano_build__()
  
     def recurrent(self,x_s,x_s_m,E):
-        U, W, b, W_att, v_att, b_att = self.U, self.W, self.b, self.W_att, self.v_att, self.b_att
+        U, W, b, W_att, v_att, b_att, sv_att = self.U, self.W, self.b, self.W_att, self.v_att, self.b_att, self.sv_att
         # x_s = T.ivector('x_s')
 
         def forward_direction_step(x_t,x_s_m_t,s_t_prev):
@@ -184,7 +187,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
+            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t))
 
             # directly return the hidden state as intermidate output 
             return [s_t]
@@ -204,15 +207,22 @@ class bid_GRU:
 
         h_s = T.concatenate([s_f,s_b],axis=1)
 
-        def soft_attention(h_i,v_att,W_att,b_att):
-            return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
+        # 
+        # 
+        # 
+        def score_attention(h_i,x_s_m_t):
+            return x_s_m_t*sv_att.dot(h_i)
+
+        # wrong function !
+        # def soft_attention(h_i,v_att,W_att,b_att):
+        #     return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
 
         def weight_attention(h_i,a_j):
             return h_i*a_j
 
         h_att, updates = theano.scan(
-                soft_attention,
-                sequences=[h_s,v_att,W_att,b_att]
+                score_attention,
+                sequences=[h_s,x_s_m]
                 )
 
         h_att = T.exp(h_att)
@@ -381,19 +391,20 @@ def relation():
     vocabulary_size = len(word_freq)  
     unknown_token = 'UNK'
     vocab = word_freq.most_common(vocabulary_size)
-    index_to_word = [x[0] for x in vocab]
-
+    index_to_word = []
+    index_to_word.append('E_O_E')
+    index_to_word.extend([x[0] for x in vocab])
     # load in frequent word in common sentences
     freq_word = load_freq_word('../freq_word/freq_word')
     index_to_word.extend(freq_word)
-    # remove the reduplicate word
-    index_to_word = list(set(index_to_word))
-
-
     index_to_word.append(unknown_token)
+    # remove the reduplicate word
+    index_to_word = list(OrderedDict.fromkeys(index_to_word))
+
     word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
     print 'Using vocabulary size %d. ' % len(index_to_word )
     print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
+
 
     # code-snippet-3 build general training dataset
     # training dataset
@@ -441,12 +452,10 @@ def relation():
     label_size = 18
     wvdic = load_word_embedding('../data/glove.6B.300d.txt')
     word_dim = wvdic.values()[0].shape[0]
-
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
 
-    hidden_dim = 200
-    
+    hidden_dim = 50
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
