@@ -172,7 +172,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t))
+            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
 
             # directly return the hidden state as intermidate output 
             return [s_t]
@@ -187,7 +187,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t))
+            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
 
             # directly return the hidden state as intermidate output 
             return [s_t]
@@ -208,7 +208,7 @@ class bid_GRU:
         h_s = T.concatenate([s_f,s_b[::-1]],axis=1)
 
         # 
-        # 
+        # only use a very simple vector to do so 
         # 
         def score_attention(h_i,x_s_m_t):
             return x_s_m_t*sv_att.dot(h_i)
@@ -426,15 +426,15 @@ def relation():
     # X_1_train , X_2_train , y_train
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
-    X_1_train, X_1_train_mask = prepare_data(X_1_train,maxlen)
-    X_2_train, X_2_train_mask = prepare_data(X_2_train,maxlen)
+    X_1_train_nu, X_1_train_mask = prepare_data(X_1_train,maxlen)
+    X_2_train_nu, X_2_train_mask = prepare_data(X_2_train,maxlen)
     y_train = (rels)
 
     # X_1_test, X_2_test , y_train
     X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
     X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
-    X_1_test, X_1_test_mask = prepare_data(X_1_test,maxlen)
-    X_2_test, X_2_test_mask = prepare_data(X_2_test,maxlen)
+    X_1_test_nu, X_1_test_mask = prepare_data(X_1_test,maxlen)
+    X_2_test_nu, X_2_test_mask = prepare_data(X_2_test,maxlen)
     y_test = (tst_rels)
 
 
