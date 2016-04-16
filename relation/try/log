@@ -1,0 +1,108 @@
+186,189c186,189
+<         wrdsa.insert(0,'B_O_E')
+<         wrdsb.insert(0,'B_O_E')
+<         wrdsa.append('E_O_E')
+<         wrdsb.append('E_O_E')
+---
+>         wrdsa.insert(0,'B_E')
+>         wrdsb.insert(0,'B_E')
+>         wrdsa.append('E_E')
+>         wrdsb.append('E_E')
+192c192
+<         if len(wrdsa) < 50 and len(wrdsb) < 50:
+---
+>         if len(wrdsa) < 150 and len(wrdsb) < 150:
+198d197
+< 
+237,241d235
+<         # initialize the soft attention parameters
+<         # basically the soft attention is the single hidden layer 
+<         W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
+<         b_att = np.zeros(1)
+< 
+250,254d243
+<         # Created attention variable
+<         self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
+<         self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
+< 
+< 
+256c245
+<         self.params = [self.E,self.U,self.W,self.V,self.b,self.c,self.W_att,self.b_att]
+---
+>         self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
+264c253
+<         E, V, U, W, b, c, W_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.b_att
+---
+>         E, V, U, W, b, c = self.E, self.V, self.U, self.W, self.b , self.c
+328,329d316
+<         def soft_attention(h_i):
+<             return T.tanh(W_att.dot(h_i)+b_att)
+331,362d317
+<         def weight_attention(h_i,a_j):
+<             return h_i*a_j
+< 
+<         a_att, updates = theano.scan(
+<                 soft_attention,
+<                 sequences=a_s
+<                 )
+<         b_att, updates = theano.scan(
+<                 soft_attention,
+<                 sequences=b_s
+<                 )
+< 
+<         # softmax
+<         # a_att = (59,1)
+<         # b_att = (58,1)
+<         a_att = T.exp(a_att)
+<         a_att = a_att.flatten()
+<         a_att = a_att / a_att.sum()
+< 
+<         b_att = T.exp(b_att)
+<         b_att = b_att.flatten()
+<         b_att = b_att / b_att.sum()
+< 
+<         a_s_att,updates = theano.scan(
+<                 weight_attention,
+<                 sequences=[a_s,a_att]
+<                 )
+<         b_s_att,updates = theano.scan(
+<                 weight_attention,
+<                 sequences=[b_s,b_att]
+<                 )
+<         # eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
+367,376c322,324
+<         # for classification using simple strategy
+<         # for now we still use the last word vector as sentence vector
+<         # apply a simple single hidden layer on each word in sentence 
+<         # 
+<         # a (wi) = attention(wi) = tanh(w_att.dot(wi)+b)
+<         # theano scan 
+<         # exp(a)
+<         # 
+<         sena = a_s_att.sum(axis=0)
+<         senb = b_s_att.sum(axis=0)
+---
+>         # for classification using simple strategy 
+>         sena = a_s[-1]
+>         senb = b_s[-1]
+380,382d327
+< 
+< 
+< 
+420d364
+<         self.comsen = theano.function([x_a,x_b],[a_att,b_att])
+623a568
+> 
+704c649
+<     model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
+---
+>     model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=1000,word_embedding=E,bptt_truncate=-1)
+708,713c653
+<     print X_1_train[0]
+<     print X_2_train[0]
+<     print 'combines' ,
+<     a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
+<     print a_att.shape
+<     print b_att.shape
+---
+> 

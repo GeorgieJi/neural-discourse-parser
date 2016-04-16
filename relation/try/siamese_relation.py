@@ -1,5 +1,5 @@
 '''
-A Fast and Accurate Discourse Parser using Neural Networks
+A Fast and Accurate Dependency Parser using Neural Networks
 '''
 
 import numpy as np
@@ -183,10 +183,10 @@ def build_data(dir_path):
         wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
         wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
 
-        wrdsa.insert(0,'B_O_E')
-        wrdsb.insert(0,'B_O_E')
-        wrdsa.append('E_O_E')
-        wrdsb.append('E_O_E')
+        wrdsa.insert(0,'B_E')
+        wrdsb.insert(0,'B_E')
+        wrdsa.append('E_E')
+        wrdsb.append('E_E')
 
 
         if len(wrdsa) < 50 and len(wrdsb) < 50:
@@ -195,13 +195,12 @@ def build_data(dir_path):
             disrels.append(rel)
         else:
             continue
-
     
     return senas , senbs , disrels
 
 
 
-class Siamese_bidirectional_GRU:
+class Siamese_GRU:
     """
     A implemention of Siamese Recurrent Architectures for Learning Sentence Similarity
     http://www.aaai.org/Conferences/AAAI/2016/Papers/15Mueller12195.pdf
@@ -227,17 +226,12 @@ class Siamese_bidirectional_GRU:
         else:
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
-        b = np.zeros((6,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
+        b = np.zeros((3,hidden_dim))
         
-        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*4))
+        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
         c = np.zeros(label_dim)
-
-        # initialize the soft attention parameters
-        # basically the soft attention is the single hidden layer 
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
-        b_att = np.zeros(1)
 
         # Created shared variable
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
@@ -247,13 +241,8 @@ class Siamese_bidirectional_GRU:
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
-        # Created attention variable
-        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
-        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
 
-
-
-        self.params = [self.E,self.U,self.W,self.V,self.b,self.c,self.W_att,self.b_att]
+        self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
         
 
         # We store the Theano graph here
@@ -261,13 +250,13 @@ class Siamese_bidirectional_GRU:
         self.__theano_build__()
 
     def __theano_build__(self):
-        E, V, U, W, b, c, W_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.b_att
+        E, V, U, W, b, c = self.E, self.V, self.U, self.W, self.b , self.c
 
         x_a = T.ivector('x_a')
         x_b = T.ivector('x_b')
         y = T.lvector('y')
 
-        def forward_direction_step(x_t,s_t_prev):
+        def forward_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -277,113 +266,35 @@ class Siamese_bidirectional_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             # directly return the hidden state as intermidate output 
             return [s_t]
-        
-        
-        def backward_direction_step(x_t,s_t_prev):
-            # Word embedding layer
-            x_e = E[:,x_t]
-            # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
-            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
-            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            # directly return the hidden state as intermidate output 
-            return [s_t]
 
 
-
-        # sentence a vector (states) forward direction 
-        a_s_f , updates = theano.scan(
-                forward_direction_step,
+        # sentence a vector (states)
+        a_s , updates = theano.scan(
+                forward_step,
                 sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
-
-        # sentence b vector (states) backward direction
-        a_s_b , updates = theano.scan(
-                backward_direction_step,
-                sequences=x_a[::-1],
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
             
-        # sentence b vector (states) forward direction 
-        b_s_f , updates = theano.scan(
-                forward_direction_step,
+        # sentence b vector (states)
+        b_s , updates = theano.scan(
+                forward_step,
                 sequences=x_b,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
-        
-        # sentence b vector (states) backward direction 
-        b_s_b , updates = theano.scan(
-                backward_direction_step,
-                sequences=x_b[::-1],
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-
-
-        # combine the sena
-        a_s = T.concatenate([a_s_f,a_s_b[::-1]],axis=1)
-        b_s = T.concatenate([b_s_f,b_s_b[::-1]],axis=1)
-
-        def soft_attention(h_i):
-            return T.tanh(W_att.dot(h_i)+b_att)
-        
-        def weight_attention(h_i,a_j):
-            return h_i*a_j
-
-        a_att, updates = theano.scan(
-                soft_attention,
-                sequences=a_s
-                )
-        b_att, updates = theano.scan(
-                soft_attention,
-                sequences=b_s
-                )
-
-        # softmax
-        # a_att = (59,1)
-        # b_att = (58,1)
-        a_att = T.exp(a_att)
-        a_att = a_att.flatten()
-        a_att = a_att / a_att.sum()
-
-        b_att = T.exp(b_att)
-        b_att = b_att.flatten()
-        b_att = b_att / b_att.sum()
-
-        a_s_att,updates = theano.scan(
-                weight_attention,
-                sequences=[a_s,a_att]
-                )
-        b_s_att,updates = theano.scan(
-                weight_attention,
-                sequences=[b_s,b_att]
-                )
-        # eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
 
         # semantic similarity 
         # s_sim = manhattan_distance(a_s[-1],b_s[-1])
 
-        # for classification using simple strategy
-        # for now we still use the last word vector as sentence vector
-        # apply a simple single hidden layer on each word in sentence 
-        # 
-        # a (wi) = attention(wi) = tanh(w_att.dot(wi)+b)
-        # theano scan 
-        # exp(a)
-        # 
-        sena = a_s_att.sum(axis=0)
-        senb = b_s_att.sum(axis=0)
+        # for classification using simple strategy 
+        sena = a_s[-1]
+        senb = b_s[-1]
 
         combined_s = T.concatenate([sena,senb],axis=0)
-
-
-
 
         # softmax class
         o = T.nnet.softmax(V.dot(combined_s)+c)[0]
 
-        # in case the o contains 0 which cause inf and nan
+        # in case the o contains 0 which cause inf
         eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
         o = o + eps
         om = o.reshape((1,o.shape[0]))
@@ -417,7 +328,6 @@ class Siamese_bidirectional_GRU:
 
 
         # Assign functions
-        self.comsen = theano.function([x_a,x_b],[a_att,b_att])
         self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
         self.monitor_grad = theano.function([x_a,x_b,y],[mgV,mgc,mgU,mgW])
         self.predict = theano.function([x_a,x_b],om)
@@ -616,19 +526,12 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
     return E
 
-def load_freq_word(path):
-
-    sens = open(path).readlines()
-    fword = [];
-    for sen in sens:
-        fword.append(sen.strip())
-
-    return fword
 
 
 def relation():
 
     ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+
     tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
     print 'load in ' , len(rels) , 'training sample'
     print 'load in ' , len(tst_rels) , 'test sample'
@@ -654,29 +557,22 @@ def relation():
     print index_to_relation
     print relation_to_index
 
-
-    # 
-    # code-snippet-2 build general word vocabulary
-    #
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
-    vocabulary_size = len(word_freq)  
+
+    vocabulary_size = 5*1000
     unknown_token = 'UNK'
-    vocab = word_freq.most_common(vocabulary_size)
+
+    vocab = word_freq.most_common(vocabulary_size-1)
     index_to_word = [x[0] for x in vocab]
-    freq_word = load_freq_word('../freq_word/freq_word')
-    index_to_word.extend(freq_word)
-    # remove the reduplicate word
-    index_to_word = list(set(index_to_word))
     print 'vocab : '
     index_to_word.append(unknown_token)
     word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
-    print 'Using vocabulary size %d. ' % len(index_to_word )
+
+    print 'Using vocabulary size %d. ' % vocabulary_size
     print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
 
-    # code-snippet-3 build general training dataset
     # training dataset
-    # 
     for i,(edua,edub) in enumerate(zip(ledus,redus)):
         ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
         redus[i] = [w if w in word_to_index else unknown_token for w in edub]
@@ -711,28 +607,16 @@ def relation():
 
     # build Embedding matrix
     label_size = 18
-    wvdic = load_word_embedding('../data/glove.6B.300d.txt')
+    wvdic = load_word_embedding('../data/glove.6B.200d.txt')
     word_dim = wvdic.values()[0].shape[0]
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    hidden_dim = 50
-
-    print 'now build mode ...'
-    print 'hidden dim : ' , hidden_dim
-    print 'word dim : ' , word_dim
-    print 'vocabulary size : ' , len(index_to_word)
-
-    model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
-    print X_1_train[0]
-    print X_2_train[0]
-    print 'combines' ,
-    a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
-    print a_att.shape
-    print b_att.shape
+
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])

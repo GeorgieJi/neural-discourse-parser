@@ -236,11 +236,8 @@ class Siamese_bidirectional_GRU:
 
         # initialize the soft attention parameters
         # basically the soft attention is the single hidden layer 
-        # no idea how to set the attention layer hidden node dim just set it as hidden dim for now
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(2,hidden_dim,hidden_dim*2))
-        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(2,hidden_dim))
-        b_att = np.zeros((2,hidden_dim))
-
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
+        b_att = np.zeros(1)
 
         # Created shared variable
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
@@ -252,11 +249,11 @@ class Siamese_bidirectional_GRU:
 
         # Created attention variable
         self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
-        self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
         self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
 
 
-        self.params = [self.E, self.U, self.W, self.V, self.b, self.c, self.W_att, self.v_att, self.b_att]
+
+        self.params = [self.E,self.U,self.W,self.V,self.b,self.c,self.W_att,self.b_att]
         
 
         # We store the Theano graph here
@@ -264,7 +261,7 @@ class Siamese_bidirectional_GRU:
         self.__theano_build__()
 
     def __theano_build__(self):
-        E, V, U, W, b, c, W_att, v_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.v_att, self.b_att
+        E, V, U, W, b, c, W_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.b_att
 
         x_a = T.ivector('x_a')
         x_b = T.ivector('x_b')
@@ -328,19 +325,19 @@ class Siamese_bidirectional_GRU:
         a_s = T.concatenate([a_s_f,a_s_b[::-1]],axis=1)
         b_s = T.concatenate([b_s_f,b_s_b[::-1]],axis=1)
 
-        def soft_attention(h_i,v_att,W_att,b_att):
-            return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
+        def soft_attention(h_i):
+            return T.tanh(W_att.dot(h_i)+b_att)
         
         def weight_attention(h_i,a_j):
             return h_i*a_j
 
         a_att, updates = theano.scan(
                 soft_attention,
-                sequences=[a_s,v_att[0],W_att[0],b_att[0]]
+                sequences=a_s
                 )
         b_att, updates = theano.scan(
                 soft_attention,
-                sequences=[b_s,v_att[1],W_att[1],b_att[1]]
+                sequences=b_s
                 )
 
         # softmax
@@ -416,6 +413,9 @@ class Siamese_bidirectional_GRU:
         mgU = gU * T.ones_like(gU)
         mgW = gW * T.ones_like(gW)
 
+
+
+
         # Assign functions
         self.comsen = theano.function([x_a,x_b],[a_att,b_att])
         self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
@@ -470,14 +470,11 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
             print '>>>>> case'
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
-            a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
             print 'i-th :' , i;
             print 'the left edu : '
             print " ".join(lwrds)
-            print a_att
             print 'the right edu : '
             print " ".join(rwrds)
-            print b_att
             print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
             print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
             print 'predict_relation : ' , output
@@ -550,14 +547,9 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
         lwrds = [index_to_word[j] for j in X_1_test[i]]
         rwrds = [index_to_word[j] for j in X_2_test[i]]
 
-        a_att, b_att = model.comsen(X_1_test[i],X_2_test[i])
-
-        
         print 'i-th : ' , i;
         print 'the left edu : , ' , " ".join(lwrds)
-        print a_att
         print 'the right edu : ' , " ".join(rwrds)
-        print b_att
         print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
 
         # print 
@@ -672,14 +664,11 @@ def relation():
     unknown_token = 'UNK'
     vocab = word_freq.most_common(vocabulary_size)
     index_to_word = [x[0] for x in vocab]
-
-    # load in frequent word in common sentences
     freq_word = load_freq_word('../freq_word/freq_word')
     index_to_word.extend(freq_word)
     # remove the reduplicate word
     index_to_word = list(set(index_to_word))
-
-
+    print 'vocab : '
     index_to_word.append(unknown_token)
     word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
     print 'Using vocabulary size %d. ' % len(index_to_word )
@@ -722,19 +711,17 @@ def relation():
 
     # build Embedding matrix
     label_size = 18
-    wvdic = load_word_embedding('../data/glove.6B.300d.txt')
+    wvdic = load_word_embedding('../data/glove.6B.200d.txt')
     word_dim = wvdic.values()[0].shape[0]
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
+    hidden_dim = 200
 
-    hidden_dim = 50
-    
-    print 'now build model ...'
+    print 'now build mode ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
     print 'vocabulary size : ' , len(index_to_word)
-
 
     model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
@@ -742,10 +729,10 @@ def relation():
     t1 = time.time()
     print X_1_train[0]
     print X_2_train[0]
-    print 'attention weight : '
+    print 'combines' ,
     a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
-    print a_att
-    print b_att
+    print a_att.shape
+    print b_att.shape
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
