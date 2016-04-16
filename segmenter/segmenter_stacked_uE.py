@@ -203,11 +203,11 @@ class bidirectional_GRU:
             # using pre-trained word vector
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(12,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(12,hidden_dim,hidden_dim))
         # combine hidden states from 2 layer 
         V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
-        b = np.zeros((6,hidden_dim))
+        b = np.zeros((12,hidden_dim))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -263,10 +263,31 @@ class bidirectional_GRU:
             c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             return [s_t]
+        
+        def forward_direction_prop_step_2(x_e,s_t_prev):
+            #
+            #
+            # GRU layer 1
+            z_t = T.nnet.hard_sigmoid(U[6].dot(x_e)+W[6].dot(s_t_prev)) + b[6]
+            r_t = T.nnet.hard_sigmoid(U[7].dot(x_e)+W[7].dot(s_t_prev)) + b[7]
+            c_t = T.tanh(U[8].dot(x_e)+W[8].dot(s_t_prev*r_t)+b[8])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            # directly return the hidden state as intermidate output 
+            return [s_t]
+
+        def backward_direction_prop_step_2(x_e,s_t_prev):
+            #
+            #
+
+            # GRU layer 2
+            z_t = T.nnet.hard_sigmoid(U[9].dot(x_e)+W[9].dot(s_t_prev)) + b[9]
+            r_t = T.nnet.hard_sigmoid(U[10].dot(x_e)+W[10].dot(s_t_prev)) + b[10]
+            c_t = T.tanh(U[11].dot(x_e)+W[11].dot(s_t_prev*r_t)+b[11])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            return [s_t]
 
         def o_step(combined_s_t):
-            o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0]
-        
+            o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0] 
             eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
             o_t = o_t + eps
 
@@ -294,11 +315,28 @@ class bidirectional_GRU:
 
 
         # combine the forward GRU state and backward GRU state together 
-        combined_s = T.concatenate([f_s,b_s[::-1]],axis=1)
+        c_x = T.concatenate([f_s,b_s[::-1]],axis=1)
+        
+        # forward direction states
+        f_s_2 , updates = theano.scan(
+                forward_direction_prop_step_2,
+                sequences=c_x,
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+            
+        # backward direction states
+        b_s_2 , updates = theano.scan(
+                backward_direction_prop_step_2,
+                sequences=c_x[::-1], # the reverse direction input
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+
+        c_x_2 = T.concatenate([f_s_2,b_s_2[::-1]],axis=1)
+        
         # concatenate the hidden state from 2 GRU layer to do the output
         o , updates = theano.scan(
                 o_step,
-                sequences=combined_s,
+                sequences=c_x_2,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=None)
 
@@ -631,7 +669,7 @@ def parser():
 
     # build model GRU and test it for first output
     # def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
-    model = bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=300,word_embedding=E,bptt_truncate=-1)
+    model = bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=150,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
