@@ -132,11 +132,6 @@ class bid_GRU:
         W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
         b = np.zeros((6,hidden_dim))
 
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
-        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
-        b_att = np.zeros((hidden_dim))
-        sv_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim*2))
-
         # initialize the soft attention parameters
         # basically the soft attention is the single hidden layer 
         # no idea how to set the attention layer hidden node dim just set it as hidden dim for now
@@ -147,22 +142,15 @@ class bid_GRU:
         self.W = theano.shared(name='W',value=W.astype(theano.config.floatX))
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
 
-        # Created attention variable
-        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
-        self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
-        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
-        self.sv_att = theano.shared(name='sv_att',value=sv_att.astype(theano.config.floatX))
-
-
         # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
-        self.params = [self.U,self.W,self.b,self.sv_att]
+        self.params = [self.U,self.W,self.b]
 
         # store the theano graph 
         # self.theano = {}
         # self.__theano_build__()
  
     def recurrent(self,x_s,x_s_m,E):
-        U, W, b, W_att, v_att, b_att, sv_att = self.U, self.W, self.b, self.W_att, self.v_att, self.b_att, self.sv_att
+        U, W, b = self.U, self.W, self.b
         # x_s = T.ivector('x_s')
 
         def forward_direction_step(x_t,x_s_m_t,s_t_prev):
@@ -349,12 +337,35 @@ class tensor_layer:
                 outputs_info=None,
                 truncate_gradient=self.bptt_truncate
                 )
-        kscore = kscore.reshape(kscore.shape[0])
+        # kscore = kscore.reshape((kscore.shape[0]))
         # perform ur in k vector
         tscore = ur.dot(kscore.T)
         
         return tscore
 
+
+class label_score:
+
+    def __init__(self,label_dim,hidden_dim,k):
+
+        self.tensor_layers = []
+        self.params = []
+
+        for i in range(label_dim):
+            tmp_tensor = tensor_layer(hidden_dim,k)
+            self.tensor_layers.append(tmp_tensor)
+            self.params += tmp_tensor.params
+
+
+
+    def score(self,s1,s2):
+        c_s = []
+        for t in self.tensor_layers:
+            c_s.append(t.tensor_score(s1,s2))
+
+        # use Stack tensors in sequence on given axis
+        c_s = T.stack(c_s).flatten()
+        return c_s
 
 
 class framework:
@@ -392,38 +403,64 @@ class framework:
         a_x_a = sa_layer.soft_attention(v_a,x_a_m)
         a_x_b = sa_layer.soft_attention(v_b,x_b_m)
 
+        # print type(a_x_a)
+        # print type(a_x_b)
         # now the a_x_a and a_x_b is vector with shape of (hidden_dim*2)
 
-        tensor1 = tensor_layer(hidden_dim*2,10)
-        ts1 = tensor1.tensor_score(a_x_a,a_x_b)
 
+        tcr_score = label_score(label_dim,hidden_dim*2,3)
+        # 
+        l_s = tcr_score.score(a_x_a,a_x_b)
 
+        print 'number of parameters of tensor layer'
+        print len(tcr_score.params)
 
-        edu_pair_fea = T.concatenate([v_a,v_b],axis=0)
+        # cost 
+        # L(i) = max(0, 1-g(i)+g(c))
 
+        # index
+        # tensor score 
+        c_i = y[0]
+        ks_r = T.arange(l_s.shape[0])
+
+        def _compare(k,y,l_s):
+            # T.eq
+            t = T.switch( T.eq(k,y) , 0 , T.maximum(0,1-l_s[y]+l_s[k]) )
+            return t
+
+        o,updates = theano.scan(
+                _compare,
+                sequences=ks_r,
+                non_sequences = [c_i,l_s]
+                )
+
+        cost = T.sum(o)
+
+        # edu_pair_fea = T.concatenate([a_x_a,a_x_b],axis=0)
         # build hidden_layer for edu pair
-        mlp_layer_1 = HiddenLayer(hidden_dim*4,label_dim)
+        # mlp_layer_1 = HiddenLayer(hidden_dim*4,label_dim)
         # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
-        ep_fea_2 = mlp_layer_1.forward(edu_pair_fea)
+        # ep_fea_2 = mlp_layer_1.forward(edu_pair_fea)
         # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
-
         # softmax 
-        o = T.nnet.softmax(ep_fea_2)[0]
+        # o = T.nnet.softmax(ep_fea_2)[0]
 
         # trick for prevent nan
-        eps = np.asarray([1.0e-10]*label_dim,dtype=theano.config.floatX)
-        o = o + eps
-        om = o.reshape((1,o.shape[0]))
+        # eps = np.asarray([1.0e-10]*label_dim,dtype=theano.config.floatX)
+        # o = o + eps
+        om = l_s.reshape((1,l_s.shape[0]))
         prediction = T.argmax(om,axis=1)
-        o_error = T.nnet.categorical_crossentropy(om,y)
+        # o_error = T.nnet.categorical_crossentropy(om,y)
 
         # cost
-        cost = T.sum(o_error)
+        # cost = T.sum(o_error)
 
         # collect the params from each model
         self.params = []
-        self.params = self.params + [ self.E ] 
-        self.params = self.params + gru_layer.params + mlp_layer_1.params 
+        self.params = self.params + [ self.E ]
+        self.params = self.params + gru_layer.params 
+        self.params = self.params + sa_layer.params
+        self.params = self.params + tcr_score.params
 
 
         # please verify the parameters of model
@@ -439,7 +476,7 @@ class framework:
         self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
         self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
         self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
-        self.t_score = theano.function([x_a,x_a_m,x_b,x_b_m],ts1)
+        self.t_score = theano.function([x_a,x_a_m,x_b,x_b_m],l_s)
         # self.comsen = theano.function([],)
 
         self.sgd_step = theano.function(
