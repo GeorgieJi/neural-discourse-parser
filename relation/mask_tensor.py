@@ -210,36 +210,7 @@ class bid_GRU:
 
         h_s = T.concatenate([s_f,s_b[::-1]],axis=1)
 
-        # 
-        # only use a very simple vector to do so 
-        # 
-        def score_attention(h_i,x_s_m_t):
-            return x_s_m_t*sv_att.dot(h_i)
-
-        # wrong function !
-        # def soft_attention(h_i,v_att,W_att,b_att):
-        #     return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
-
-        def weight_attention(h_i,a_j):
-            return h_i*a_j
-
-        h_att, updates = theano.scan(
-                score_attention,
-                sequences=[h_s,x_s_m]
-                )
-
-        h_att = T.exp(h_att)
-        h_att = h_att.flatten()
-        h_att = h_att / h_att.sum()
-
-        h_s_att, updates = theano.scan(
-                weight_attention,
-                sequences=[h_s,h_att]
-                )
-
-        a_s = h_s_att.sum(axis=0)
-
-        return a_s
+        return h_s
 
 
 # new update for soft attention layer
@@ -261,21 +232,43 @@ class soft_attention_layer:
         self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
         self.sv_att = theano.shared(name='sv_att',value=sv_att.astype(theano.config.floatX))
 
-        # parameter collections
+        # collect parameter
 
         self.params = [self.sv_att]
 
     def soft_attention(self,x_s,x_s_m):
-
-
+        W_att, v_att, b_att, sv_att = self.W_att, self.v_att, self.b_att, self.sv_att
         
+        def score_attention(h_i,x_s_m_t):
+            return x_s_m_t*sv_att.dot(h_i)
+
+        def weight_attention(h_i,a_j):
+            return h_i*a_j
+
+        h_att, updates = theano.scan(
+                score_attention,
+                sequences=[x_s,x_s_m]
+                )
+
+        h_att = T.exp(h_att)
+        h_att = h_att.flatten()
+        h_att = h_att / h_att.sum()
+
+        h_s_att, updates = theano.scan(
+                weight_attention,
+                sequences=[x_s,h_att]
+                )
+
+        a_s = h_s_att.sum(axis=0)
+        
+        return a_s
+
 
 # batch preparation
 def prepare_data(seqs_x, maxlen=None):
 
     # 
     lengths_x = [len(s) for s in seqs_x]
-
     if maxlen is not None:
         new_seqs_x = []
         new_lengths_x = []
@@ -301,8 +294,68 @@ def prepare_data(seqs_x, maxlen=None):
         x[idx,:lengths_x[idx]] = s_x
         x_mask[idx,:lengths_x[idx]] = 1.
 
-
     return x, x_mask
+
+
+class tensor_layer:
+    """
+    the sentence vector is hidden_dim , with k slices , tensor acts like a score function
+    build tensor layer for each discourse relation
+    """
+    def __init__(self,hidden_dim,k,bptt_truncate=-1):
+        
+        # assign instance variables
+        self.hidden_dim = hidden_dim
+        self.k = k
+        self.bptt_truncate = bptt_truncate
+        
+        # 
+        # build tensor layer here
+        # g (e1,R,e2) = uTr f (e1T Wr(1:k) e2 + Vr [e1,e2] + bR)
+        # loss = N_sum Kclass_sum max(0,1-g(Ti)+g(Tic)) + decay 
+
+        # u = R'k
+        # w = R'k*d*d
+        # v = R'k*2d
+        # b = R'k
+        Wr = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(k,hidden_dim,hidden_dim))
+        Vr = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(k,2*hidden_dim))
+        br = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(k))
+        ur = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(k))
+
+        # Created shared variable
+        self.Wr = theano.shared(name='Wr',value=Wr.astype(theano.config.floatX))
+        self.Vr = theano.shared(name='Vr',value=Vr.astype(theano.config.floatX))
+        self.br = theano.shared(name='br',value=br.astype(theano.config.floatX))
+        self.ur = theano.shared(name='ur',value=ur.astype(theano.config.floatX))
+
+        # parameter collections
+
+        self.params = [self.Wr,self.Vr,self.br,self.ur]
+
+    # build theano graph here
+
+    def tensor_score(self,s1,s2):
+        Wr, Vr, br, ur = self.Wr, self.Vr, self.br, self.ur
+        # for each slice of k
+        def slice_tensor(w,v,b,s1,s2):
+            c_s = T.concatenate([s1,s2],axis=0)
+            g = T.tanh( ( (s1.T).dot(w) ).dot(s2) + v.dot(c_s.T) + b )
+            return g
+        kscore, updates = theano.scan(
+                slice_tensor,
+                sequences=[Wr,Vr,br],
+                non_sequences=[s1,s2],
+                outputs_info=None,
+                truncate_gradient=self.bptt_truncate
+                )
+        kscore = kscore.reshape(kscore.shape[0])
+        # perform ur in k vector
+        tscore = ur.dot(kscore.T)
+        
+        return tscore
+
+
 
 class framework:
     """
@@ -329,8 +382,22 @@ class framework:
         y = T.lvector('y')
 
         # 2 symbolic vector (1*)
+        # 2 symbolic vector list / code update 
         v_a = gru_layer.recurrent(x_a,x_a_m,self.E)
         v_b = gru_layer.recurrent(x_b,x_b_m,self.E)
+
+        # soft attention layer , single layer for all
+        sa_layer = soft_attention_layer(hidden_dim)
+
+        a_x_a = sa_layer.soft_attention(v_a,x_a_m)
+        a_x_b = sa_layer.soft_attention(v_b,x_b_m)
+
+        # now the a_x_a and a_x_b is vector with shape of (hidden_dim*2)
+
+        tensor1 = tensor_layer(hidden_dim*2,10)
+        ts1 = tensor1.tensor_score(a_x_a,a_x_b)
+
+
 
         edu_pair_fea = T.concatenate([v_a,v_b],axis=0)
 
@@ -372,6 +439,7 @@ class framework:
         self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
         self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
         self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
+        self.t_score = theano.function([x_a,x_a_m,x_b,x_b_m],ts1)
         # self.comsen = theano.function([],)
 
         self.sgd_step = theano.function(
@@ -503,7 +571,9 @@ def relation():
     # print a_att
     # print b_att
     output = model.predict_class(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0])
+    t_s = model.t_score(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0])
     print 'predict_class : ' , output
+    print 'tensor_score : ' , t_s
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
     learning_rate = 0.000005
 
