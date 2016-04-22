@@ -144,6 +144,7 @@ class bid_GRU:
 
         # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
         self.params = [self.U,self.W,self.b]
+        self.L2 = (self.U**2).sum() + (self.W**2).sum()
 
         # store the theano graph 
         # self.theano = {}
@@ -223,6 +224,7 @@ class soft_attention_layer:
         # collect parameter
 
         self.params = [self.sv_att]
+        self.L2 = (self.sv_att**2).sum()
 
     def soft_attention(self,x_s,x_s_m):
         W_att, v_att, b_att, sv_att = self.W_att, self.v_att, self.b_att, self.sv_att
@@ -321,6 +323,9 @@ class tensor_layer:
 
         self.params = [self.Wr,self.Vr,self.br,self.ur]
 
+        # L2 regularized 
+        self.L2 = (self.Wr**2).sum() + (self.Vr**2).sum() + (self.ur**2).sum()
+
     # build theano graph here
 
     def tensor_score(self,s1,s2):
@@ -350,13 +355,13 @@ class label_score:
 
         self.tensor_layers = []
         self.params = []
+        self.L2 = 0
 
         for i in range(label_dim):
             tmp_tensor = tensor_layer(hidden_dim,k)
             self.tensor_layers.append(tmp_tensor)
             self.params += tmp_tensor.params
-
-
+            self.L2 += tmp_tensor.L2
 
     def score(self,s1,s2):
         c_s = []
@@ -408,7 +413,7 @@ class framework:
         # now the a_x_a and a_x_b is vector with shape of (hidden_dim*2)
 
 
-        tcr_score = label_score(label_dim,hidden_dim*2,3)
+        tcr_score = label_score(label_dim,hidden_dim*2,1)
         # 
         l_s = tcr_score.score(a_x_a,a_x_b)
 
@@ -434,7 +439,6 @@ class framework:
                 non_sequences = [c_i,l_s]
                 )
 
-        cost = T.sum(o)
 
         # edu_pair_fea = T.concatenate([a_x_a,a_x_b],axis=0)
         # build hidden_layer for edu pair
@@ -462,6 +466,14 @@ class framework:
         self.params = self.params + sa_layer.params
         self.params = self.params + tcr_score.params
 
+        # collect the L2 reg from each model
+        self.L2 = 0
+        self.L2 += self.L2 + gru_layer.L2
+        self.L2 += self.L2 + sa_layer.L2
+        self.L2 += self.L2 + tcr_score.L2
+
+        cost = T.sum(o) + 0.00001*self.L2
+
 
         # please verify the parameters of model
         print 'please verify the parameter of model'
@@ -473,6 +485,8 @@ class framework:
 
 
         # framework assign function
+        L2 = self.L2
+        self.L2_reg = theano.function([],L2)
         self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
         self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
         self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
@@ -590,7 +604,7 @@ def relation():
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
 
-    hidden_dim = 50
+    hidden_dim = 100
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim

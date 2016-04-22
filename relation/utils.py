@@ -46,6 +46,7 @@ def train_with_sgd(model,X_1_train,X_2_train,X_1_train_mask,X_2_train_mask,y_tra
             print " ".join(rwrds)
             print 'predict : ' , model.predict(X_1_train[i],X_1_train_mask[i],X_2_train[i],X_2_train_mask[i])
             print 'ce_error : ' , model.ce_error(X_1_train[i],X_1_train_mask[i],X_2_train[i],X_2_train_mask[i],y_train[i])
+            print 'weight L2 reg ' , model.L2_reg();
             print 'predict_relation : ' , output
             print index_to_relation[output[0]]
             print 'true relation : ' , y_train[i]
