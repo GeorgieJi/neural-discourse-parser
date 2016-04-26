@@ -491,7 +491,7 @@ class bid_GRU:
         W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
         v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
         b_att = np.zeros((hidden_dim))
-        sv_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim*2))
+        sv_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
 
         # initialize the soft attention parameters
         # basically the soft attention is the single hidden layer 
@@ -531,7 +531,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
+            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t) )
 
             # directly return the hidden state as intermidate output 
             return [s_t]
@@ -546,7 +546,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
+            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t) )
 
             # directly return the hidden state as intermidate output 
             return [s_t]
