@@ -572,19 +572,23 @@ class soft_attention_layer:
 
         # assign instance variables
         self.hidden_dim = hidden_dim
-        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+        b_att = np.zeros(1)
 
         # 
-        self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
+        self.W_att = theano.shared(name='W_att',value=v_att.astype(theano.config.floatX))
+        self.b_att = theano.shared(name='b_att',value=v_att.astype(theano.config.floatX))
+
 
         # collect parameter
-        self.params = [self.v_att]
+        self.params = [self.W_att, self.b_att]
 
     def soft_att(self,x_s):
-        v_att = self.v_att 
+        W_att, b_att  = self.W_att , self.b_att
         
         def score_attention(h_i):
-            return v_att.dot(h_i)
+            return T.tanh(W_att.dot(h_i) + b_att)
 
         def weight_attention(h_i,a_j):
             return h_i*a_j
@@ -639,11 +643,10 @@ class framework:
 
         # left edu attention 
 
-        lsa = soft_attention_layer(hidden_dim*2)
-        rsa = soft_attention_layer(hidden_dim*2)
+        sa = soft_attention_layer(hidden_dim*2)
 
-        s_v_a = lsa.soft_att(v_a)
-        s_v_b = rsa.soft_att(v_b)
+        s_v_a = sa.soft_att(v_a)
+        s_v_b = sa.soft_att(v_b)
         # right edu attention
 
         edu_pair_fea = T.concatenate([s_v_a,s_v_b],axis=0)
@@ -794,7 +797,7 @@ def relation():
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
 
-    hidden_dim = 150
+    hidden_dim = 50
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim

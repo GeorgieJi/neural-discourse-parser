@@ -781,7 +781,7 @@ def structure():
     label_size = 2
     wvdic = load_word_embedding('../data/glove.6B.300d.txt')
     word_dim = wvdic.values()[0].shape[0]
-    hidden_dim = 200
+    hidden_dim = 600
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
