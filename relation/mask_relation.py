@@ -531,7 +531,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t) )
+            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
 
             # directly return the hidden state as intermidate output 
             return [s_t]
@@ -546,7 +546,7 @@ class bid_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
 
             # leaky integrate and obtain next hidden state
-            s_t = x_s_m_t * ( s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t) )
+            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)
 
             # directly return the hidden state as intermidate output 
             return [s_t]
@@ -563,6 +563,10 @@ class bid_GRU:
                 sequences=[x_s[::-1],x_s_m[::-1]],
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
+
+        # vector * mask
+        s_f = s_f * x_s_m
+        s_b = s_b * x_s_m[::-1]
 
         h_s = T.concatenate([s_f,s_b[::-1]],axis=1)
 
@@ -814,7 +818,7 @@ def relation():
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
 
-    hidden_dim = 50
+    hidden_dim = 300
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim

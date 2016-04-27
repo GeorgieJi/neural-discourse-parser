@@ -775,7 +775,7 @@ def relation():
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
 
-    hidden_dim = 50
+    hidden_dim = 600
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
