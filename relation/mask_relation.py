@@ -490,7 +490,7 @@ class bid_GRU:
 
         W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
         v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
-        b_att = np.zeros((hidden_dim))
+        b_att = np.zeros(1)
         sv_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim*2))
 
         # initialize the soft attention parameters
@@ -511,7 +511,7 @@ class bid_GRU:
 
 
         # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
-        self.params = [self.U,self.W,self.b,self.sv_att]
+        self.params = [self.U,self.W,self.b,self.sv_att,self.b_att]
 
         # store the theano graph 
         # self.theano = {}
@@ -564,28 +564,25 @@ class bid_GRU:
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
 
-        # vector * mask
-        s_f = s_f * x_s_m
-        s_b = s_b * x_s_m[::-1]
 
         h_s = T.concatenate([s_f,s_b[::-1]],axis=1)
 
         # 
         # only use a very simple vector to do so 
         # 
-        def score_attention(h_i,x_s_m_t):
-            return x_s_m_t*sv_att.dot(h_i)
+        def score_attention(h_i):
+            return T.tanh(sv_att.dot(h_i)+b_att)
 
         # wrong function !
         # def soft_attention(h_i,v_att,W_att,b_att):
         #     return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
 
-        def weight_attention(h_i,a_j):
-            return h_i*a_j
+        def weight_attention(h_i,a_j,x_s_m_t):
+            return h_i*a_j*x_s_m_t
 
         h_att, updates = theano.scan(
                 score_attention,
-                sequences=[h_s,x_s_m]
+                sequences=[h_s]
                 )
 
         h_att = T.exp(h_att)
@@ -594,7 +591,7 @@ class bid_GRU:
 
         h_s_att, updates = theano.scan(
                 weight_attention,
-                sequences=[h_s,h_att]
+                sequences=[h_s,h_att,x_s_m]
                 )
 
         a_s = h_s_att.sum(axis=0)

@@ -577,8 +577,8 @@ class soft_attention_layer:
         b_att = np.zeros(1)
 
         # 
-        self.W_att = theano.shared(name='W_att',value=v_att.astype(theano.config.floatX))
-        self.b_att = theano.shared(name='b_att',value=v_att.astype(theano.config.floatX))
+        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
+        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
 
 
         # collect parameter
@@ -673,7 +673,7 @@ class framework:
         # collect the params from each model
         self.params = []
         self.params = self.params + [ self.E ]
-        self.params = self.params + lsa.params + rsa.params
+        self.params = self.params + sa.params
         self.params = self.params + gru_layer.params + mlp_layer_1.params 
 
 
@@ -767,7 +767,6 @@ def relation():
     for i,(edua,edub) in enumerate(zip(tst_ledus,tst_redus)):
         tst_ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
         tst_redus[i] = [w if w in word_to_index else unknown_token for w in edub]
-
     for i,rel in enumerate(tst_rels):
         tst_rels[i] = [relation_to_index[rel]]
 
