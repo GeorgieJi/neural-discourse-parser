@@ -577,21 +577,26 @@ class bid_GRU:
         # def soft_attention(h_i,v_att,W_att,b_att):
         #     return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
 
-        def weight_attention(h_i,a_j,x_s_m_t):
-            return h_i*a_j*x_s_m_t
+        def weight_attention(h_i,a_j):
+            return h_i*a_j
 
         h_att, updates = theano.scan(
                 score_attention,
                 sequences=[h_s]
                 )
 
+        # score exp
         h_att = T.exp(h_att)
         h_att = h_att.flatten()
+
+        # using mask on h_attention score
+        h_att = h_att * x_s_m
+
         h_att = h_att / h_att.sum()
 
         h_s_att, updates = theano.scan(
                 weight_attention,
-                sequences=[h_s,h_att,x_s_m]
+                sequences=[h_s,h_att]
                 )
 
         a_s = h_s_att.sum(axis=0)
