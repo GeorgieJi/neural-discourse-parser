@@ -17,6 +17,183 @@ from collections import OrderedDict
 
 sys.path.append('../tree')
 from tree import *
+# from utils import *
+
+
+def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[],index_to_relation=[]):
+    
+    num_examples_seen = 0
+    print 'now learning_rate : ' , learning_rate;
+    for epoch in range(nepoch):
+        # For each training example ...
+
+        tocount = 0
+        tccount = 0
+        tycount = 0
+
+        for i in np.random.permutation(len(y_train)):
+            # One SGT step
+            num_examples_seen += 1
+            # Optionally do callback
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
+            print 'the number of example have seen for now : ' , num_examples_seen
+            output = model.predict_class(X_1_train[i],X_2_train[i])
+            print '>>>>> case'
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
+            # a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
+            print 'i-th :' , i;
+            print 'the left edu : '
+            print " ".join(lwrds)
+            print 'the right edu : '
+            print " ".join(rwrds)
+            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
+            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
+            print 'predict_relation : ' , output
+            print index_to_relation[output[0]]
+            print 'true relation : ' , y_train[i]
+            print index_to_relation[y_train[i][0]]
+
+            ocount = 0
+            ccount = 0
+            ycount = 0
+
+            for o,y in zip(output,y_train[i]):
+                if o == y:
+                    print 'correct prediction'
+                    ccount += 1
+                ycount += 1
+                ocount += 1
+            #
+            tocount += ocount
+            tccount += ccount
+            tycount += ycount
+            if ccount != 0 and ocount != 0:
+                precision = float(ccount) / float(ocount)
+                recall = float(ccount) / float(ycount)
+                if (precision+recall) != 0:
+                    Fmeasure = 2 * (precision*recall) / (precision+recall)
+                else:
+                    Fmeasure = 0
+            else :
+                precision = 0
+                recall = 0
+                Fmeasure = 0
+
+        # a epoch for training end here
+        if tocount != 0 and tccount != 0:
+            precision = float(tccount) / float(tocount)
+            recall = float(tccount) / float(tycount)
+            if (precision+recall) != 0:
+                Fmeasure = 2 * (precision*recall) / (precision+recall)
+            else:
+                Fmeasure = 0
+        else:
+            precision = 0
+            recall = 0
+            Fmeasure = 0
+
+        print 'Accuracy of training set: ' , precision
+        print 'Recall of training set: ' , recall
+        print 'Fmeasure of training set: ' , Fmeasure
+
+
+    return model
+
+
+def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
+    print 'now score the test dataset'
+    scores = [];
+    tocount = 0
+    tccount = 0
+    tycount = 0
+
+    for i in range(len(y_test)):
+        output = model.predict_class(X_1_test[i],X_2_test[i])
+        ocount = 0
+        ccount = 0
+        ycount = 0
+        lwrds = [index_to_word[j] for j in X_1_test[i]]
+        rwrds = [index_to_word[j] for j in X_2_test[i]]
+        
+        print 'i-th : ' , i;
+        print 'the left edu : , ' , " ".join(lwrds)
+        print 'the right edu : ' , " ".join(rwrds)
+        print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
+
+        # print 
+        print 'predict relation : ' , output
+        print index_to_relation[output[0]]
+        print 'true relation : ' , y_test[i]
+        print index_to_relation[y_test[i][0]]
+
+
+        for o,y in zip(output,y_test[i]):
+            if y == o:
+                print 'the correct prediction!'
+                ccount += 1
+            ycount += 1
+            ocount += 1
+
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+
+    if tocount != 0 and tccount != 0 :
+        precision = float(tccount) / float(tocount)
+        recall = float(tccount) / float(tycount)
+        if (precision+recall) != 0:
+            Fmeasure = 2 * (precision*recall) / (precision+recall)
+        else:
+            Fmeasure = 0
+    else:
+        precision = 0
+        recall = 0
+        Fmeasure = 0
+
+    print 'Accuracy of test set: ' , precision
+    print 'Recall of test set: ' , recall
+    print 'Fmeasure of test set: ' , Fmeasure
+
+def load_word_embedding(path):
+
+    #
+    #
+    if False:
+        pass;
+    else:
+
+        wdvec = open(path,'r').readlines()
+        wvdic = dict()
+        for widx, vec in enumerate(wdvec):
+            items = vec.strip().split();
+            pv = np.array([float(x) for x in items[1:]]);
+            wvdic[items[0]] = pv;
+            wrddim = wvdic.itervalues().next().shape[0];
+    return wvdic
+
+def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
+
+    # index_to_word is the word list
+    vocab_size = len(index_to_word)
+    E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size)) 
+    
+    # for those word can be found in glove or word2vec pre-trained word vector
+    for w in index_to_word:
+        if w in wvdic:
+            E[:,word_to_index[w]] = wvdic[w]
+
+    return E
+
+def load_freq_word(path):
+
+    sens = open(path).readlines()
+    fword = [];
+    for sen in sens:
+        fword.append(sen.strip())
+
+    return fword
+
 
 def sgd_updates_adadelta(norm,params,cost,rho=0.95,epsilon=1e-9,norm_lim=9,word_vec_name='Words'):
     """
@@ -109,6 +286,7 @@ def extract_nucleus(tree_str):
         pass
     else:
         pairs = traversal(tree)[0]
+
     return pairs
 
 def relation_mapping(subrelation):
@@ -145,8 +323,10 @@ def relation_mapping(subrelation):
 
     return mappingrel
 
-
-def build_data(dir_path):
+#
+#
+#
+def build_data(dir_path,maxlen):
     
     files = os.listdir(dir_path);
     edus_path = [];
@@ -183,13 +363,13 @@ def build_data(dir_path):
         wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
         wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
 
-        wrdsa.insert(0,'B_O_E')
-        wrdsb.insert(0,'B_O_E')
+        # wrdsa.insert(0,'B_O_E')
+        # wrdsb.insert(0,'B_O_E')
         wrdsa.append('E_O_E')
         wrdsb.append('E_O_E')
 
 
-        if len(wrdsa) < 50 and len(wrdsb) < 50:
+        if len(wrdsa) < maxlen and len(wrdsb) < maxlen:
             senas.append(wrdsa)
             senbs.append(wrdsb)
             disrels.append(rel)
@@ -200,75 +380,148 @@ def build_data(dir_path):
     return senas , senbs , disrels
 
 
+class ConvPoolLayer1D(object):
 
-class Siamese_bidirectional_GRU:
-    """
-    A implemention of Siamese Recurrent Architectures for Learning Sentence Similarity
-    http://www.aaai.org/Conferences/AAAI/2016/Papers/15Mueller12195.pdf
+    def __init__(self,filter_shape,image_shape,poolsize=(2,2),W=None,b=None):
 
-    """
-    def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+        assert iamge_shape[1] == filter_shape[1]
+        self.filter_shape = filter_shape
+        self.image_shape = image_shape
+        self.poolsize = poolsize
+        
+        fan_in = np.prod(filter_shape[1:])
+        fan_out = (filter_shape[0] * np.prod(filter_shape[2:])/np.prod(poolsize))
+        W_bound = np.sqrt(6. / (fan_in + fan_out))
+        W = rng.uniform(low=-W_bound,high=W_bound,size=filter_shape)
+        b = np.zeros((filter_shape[0]),dtype=theano.config.floatX)
+        
+        self.W = theano.shared(name='W',value=W.astype(theano.config.floatX))
+        self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
+        
+        self.params = [self.W,self.b]
+        
+        self.theano = {}
+        self.__theano_build__()
 
-        """
-        Train 2 spearate GRU network to represent each sentence in pair as a fixed-length vector
-        then calculate the 2 sentence vector Manhanttan distance 
-        """
+    def __theano_build__(self):
+
+        W, b = self.W, self.b
+        x = T.tensor3('x')
+        # convolve input feature maps with filters
+        conv_out = conv.conv2d(
+                input = x,
+                filters = W,
+                filter_shape = filter_shape,
+                image_shape = image_shape
+                )
+
+        # downsample each feature map individually, using maxpooling
+        pooled_out = downsample.max_pool_2d(
+                input=conv_out,
+                ds=poolsize,
+                ignore_border=False
+                )
+
+        output = T.tanh(pooled_out + self.b.dimshuffle('x',0,'x','x'))
+        self.cnn_output = theano.function([x],output)
+
+
+
+class HiddenLayer(object):
+    def __init__(self, n_in, n_out, W=None, b=None,
+                 activation=T.tanh):
+
+        rng = np.random.RandomState(2345)
+        # end-snippet-1
+        if True :
+            W_values = np.asarray(
+                rng.uniform(
+                    low=-np.sqrt(6. / (n_in + n_out)),
+                    high=np.sqrt(6. / (n_in + n_out)),
+                    size=(n_in, n_out)
+                ),
+                dtype=theano.config.floatX
+            )
+            if activation == theano.tensor.nnet.sigmoid:
+                W_values *= 4
+        self.W = theano.shared(value=W_values, name='W', borrow=True)
+        if True :
+            b_values = np.zeros((n_out,), dtype=theano.config.floatX)
+        self.b = theano.shared(value=b_values, name='b', borrow=True)
+        if W is not None:
+            self.W = W;
+        if b is not None:
+            self.b = (b);
+        self.n_in = n_in;
+        self.n_out = n_out;
+        self.activation=activation;
+        # parameters of the model
+        self.params = [self.W, self.b]
+        
+        # self.theano = {}
+        # self.__theano_build__()
+    def forward(self,x):
+        W, b, activation  = self.W , self.b, self.activation
+        # x = T.vector('x')
+        lin_output = T.dot(x, self.W) + self.b
+        output = (
+            lin_output if activation is None
+            else activation(lin_output)
+        )
+
+        return output
+
+
+
+class bid_GRU:
+
+    def __init__(self,word_dim,hidden_dim,bptt_truncate=-1):
+
         # assign instance variables
-
         self.word_dim = word_dim
         self.hidden_dim = hidden_dim
         self.bptt_truncate = bptt_truncate
-        self.label_dim = label_dim
+        
 
+        # print E[:,0]
         # initialize the network parameters
-
-        if word_embedding is None:
-            E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
-        else:
-            E = word_embedding
 
         U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
         W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
         b = np.zeros((6,hidden_dim))
-        
-        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*4))
-        c = np.zeros(label_dim)
+
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
+        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+        b_att = np.zeros((hidden_dim))
+        sv_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim*2))
 
         # initialize the soft attention parameters
         # basically the soft attention is the single hidden layer 
         # no idea how to set the attention layer hidden node dim just set it as hidden dim for now
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(2,hidden_dim,hidden_dim*2))
-        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(2,hidden_dim))
-        b_att = np.zeros((2,hidden_dim))
 
 
         # Created shared variable
-        self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
         self.U = theano.shared(name='U',value=U.astype(theano.config.floatX))
         self.W = theano.shared(name='W',value=W.astype(theano.config.floatX))
-        self.V = theano.shared(name='V',value=V.astype(theano.config.floatX))
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
-        self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
         # Created attention variable
         self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
         self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
         self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
+        self.sv_att = theano.shared(name='sv_att',value=sv_att.astype(theano.config.floatX))
 
 
-        self.params = [self.E, self.U, self.W, self.V, self.b, self.c, self.W_att, self.v_att, self.b_att]
-        
+        # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
+        self.params = [self.U,self.W,self.b,self.sv_att]
 
-        # We store the Theano graph here
-        self.theano = {}
-        self.__theano_build__()
-
-    def __theano_build__(self):
-        E, V, U, W, b, c, W_att, v_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.v_att, self.b_att
-
-        x_a = T.ivector('x_a')
-        x_b = T.ivector('x_b')
-        y = T.lvector('y')
+        # store the theano graph 
+        # self.theano = {}
+        # self.__theano_build__()
+ 
+    def recurrent(self,x_s,E):
+        U, W, b, W_att, v_att, b_att, sv_att = self.U, self.W, self.b, self.W_att, self.v_att, self.b_att, self.sv_att
+        # x_s = T.ivector('x_s')
 
         def forward_direction_step(x_t,s_t_prev):
             # Word embedding layer
@@ -278,9 +531,11 @@ class Siamese_bidirectional_GRU:
             r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
             c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+
+            # leaky integrate and obtain next hidden state
+
             # directly return the hidden state as intermidate output 
             return [s_t]
-        
         
         def backward_direction_step(x_t,s_t_prev):
             # Word embedding layer
@@ -290,354 +545,145 @@ class Siamese_bidirectional_GRU:
             r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
             c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+
+            # leaky integrate and obtain next hidden state
+
             # directly return the hidden state as intermidate output 
             return [s_t]
 
-
-
-        # sentence a vector (states) forward direction 
-        a_s_f , updates = theano.scan(
+        # create sequence hidden states from input
+        s_f , updates = theano.scan(
                 forward_direction_step,
-                sequences=x_a,
+                sequences=[x_s],
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
 
-        # sentence b vector (states) backward direction
-        a_s_b , updates = theano.scan(
+        s_b , updates = theano.scan(
                 backward_direction_step,
-                sequences=x_a[::-1],
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-            
-        # sentence b vector (states) forward direction 
-        b_s_f , updates = theano.scan(
-                forward_direction_step,
-                sequences=x_b,
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-        
-        # sentence b vector (states) backward direction 
-        b_s_b , updates = theano.scan(
-                backward_direction_step,
-                sequences=x_b[::-1],
+                sequences=[x_s[::-1]],
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
 
+        h_s = T.concatenate([s_f,s_b[::-1]],axis=1)
 
-        # combine the sena
-        a_s = T.concatenate([a_s_f,a_s_b[::-1]],axis=1)
-        b_s = T.concatenate([b_s_f,b_s_b[::-1]],axis=1)
+        # 
+        # only use a very simple vector to do so 
+        # 
+        def score_attention(h_i):
+            return sv_att.dot(h_i)
 
-        def soft_attention(h_i,v_att,W_att,b_att):
-            return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
-        
+        # wrong function !
+        # def soft_attention(h_i,v_att,W_att,b_att):
+        #     return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
+
         def weight_attention(h_i,a_j):
             return h_i*a_j
 
-        a_att, updates = theano.scan(
-                soft_attention,
-                sequences=[a_s,v_att[0],W_att[0],b_att[0]]
-                )
-        b_att, updates = theano.scan(
-                soft_attention,
-                sequences=[b_s,v_att[1],W_att[1],b_att[1]]
+        h_att, updates = theano.scan(
+                score_attention,
+                sequences=[h_s]
                 )
 
-        # softmax
-        # a_att = (59,1)
-        # b_att = (58,1)
-        a_att = T.exp(a_att)
-        a_att = a_att.flatten()
-        a_att = a_att / a_att.sum()
+        h_att = T.exp(h_att)
+        h_att = h_att.flatten()
+        h_att = h_att / h_att.sum()
 
-        b_att = T.exp(b_att)
-        b_att = b_att.flatten()
-        b_att = b_att / b_att.sum()
-
-        a_s_att,updates = theano.scan(
+        h_s_att, updates = theano.scan(
                 weight_attention,
-                sequences=[a_s,a_att]
+                sequences=[h_s,h_att]
                 )
-        b_s_att,updates = theano.scan(
-                weight_attention,
-                sequences=[b_s,b_att]
-                )
-        # eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
 
-        # semantic similarity 
-        # s_sim = manhattan_distance(a_s[-1],b_s[-1])
+        a_s = h_s_att.sum(axis=0)
 
-        # for classification using simple strategy
-        # for now we still use the last word vector as sentence vector
-        # apply a simple single hidden layer on each word in sentence 
-        # 
-        # a (wi) = attention(wi) = tanh(w_att.dot(wi)+b)
-        # theano scan 
-        # exp(a)
-        # 
-        sena = a_s_att.sum(axis=0)
-        senb = b_s_att.sum(axis=0)
-
-        combined_s = T.concatenate([sena,senb],axis=0)
+        return a_s
 
 
 
+# batch preparation
+class framework:
+    """
+    build all theano graph here , in here we can combine as many as nerual layer we need !
+    """
+    def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
-        # softmax class
-        o = T.nnet.softmax(V.dot(combined_s)+c)[0]
+        # the frameword only holds the global word embedding 
+        if word_embedding is None:
+            E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
+        else:
+            E = word_embedding
+        self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
 
-        # in case the o contains 0 which cause inf and nan
-        eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
+        # build bi-GRU
+        # def __init__(self,word_dim,hidden_dim,word_embedding,bptt_truncate=-1)
+        gru_layer = bid_GRU(word_dim,hidden_dim,bptt_truncate=-1)
+
+        x_a = T.lvector('x_a')
+        x_a_m = T.vector('x_a_m')
+        x_b = T.lvector('x_b')
+        x_b_m = T.vector('x_b_m')
+
+        y = T.lvector('y')
+
+        # 2 symbolic vector (1*)
+        v_a = gru_layer.recurrent(x_a,self.E)
+        v_b = gru_layer.recurrent(x_b,self.E)
+
+        edu_pair_fea = T.concatenate([v_a,v_b],axis=0)
+
+        # build hidden_layer for edu pair
+        mlp_layer_1 = HiddenLayer(hidden_dim*4,label_dim)
+        # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
+        ep_fea_2 = mlp_layer_1.forward(edu_pair_fea)
+        # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
+
+        # softmax 
+        o = T.nnet.softmax(ep_fea_2)[0]
+
+        # trick for prevent nan
+        eps = np.asarray([1.0e-10]*label_dim,dtype=theano.config.floatX)
         o = o + eps
         om = o.reshape((1,o.shape[0]))
         prediction = T.argmax(om,axis=1)
         o_error = T.nnet.categorical_crossentropy(om,y)
 
-
-        # cost 
+        # cost
         cost = T.sum(o_error)
+
+        # collect the params from each model
+        self.params = []
+        self.params = self.params + [ self.E ] 
+        self.params = self.params + gru_layer.params + mlp_layer_1.params 
+
+
+        # please verify the parameters of model
+        print 'please verify the parameter of model'
+        print self.params
+        print len(self.params)
 
         # updates
         updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
 
-        # monitor parameter
-        mV = V * T.ones_like(V)
-        mc = c * T.ones_like(c)
-        mU = U * T.ones_like(U)
-        mW = W * T.ones_like(W)
 
-        gV = T.grad(cost,V)
-        gc = T.grad(cost,c)
-        gU = T.grad(cost,U)
-        gW = T.grad(cost,W)
-
-        mgV = gV * T.ones_like(gV)
-        mgc = gc * T.ones_like(gc)
-        mgU = gU * T.ones_like(gU)
-        mgW = gW * T.ones_like(gW)
-
-        # Assign functions
-        self.comsen = theano.function([x_a,x_b],[a_att,b_att])
-        self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
-        self.monitor_grad = theano.function([x_a,x_b,y],[mgV,mgc,mgU,mgW])
-        self.predict = theano.function([x_a,x_b],om)
+        # framework assign function
+        self.predict = theano.function([x_a,x_b],prediction)
         self.predict_class = theano.function([x_a,x_b],prediction)
         self.ce_error = theano.function([x_a,x_b,y],cost)
-        # self.bptt = theano.function([x,y],[dE,dU,dW,db,dV,dc])
+        # self.comsen = theano.function([],)
 
-        # SGD parameters
-        learning_rate = T.scalar('learning_rate')
-        decay = T.scalar('decay')
-
-        # rmsprop cache updates
-        # find the nan
         self.sgd_step = theano.function(
                 [x_a,x_b,y],
                 [],
-                updates=updates
-                # mode=NanGuardMode(nan_is_error=True, inf_is_error=True, big_is_error=True)
+                updates = updates
                 )
 
-
-def index_to_class(index):
-    label = '';
-    if index == 0:
-        label = 'Nucleus-Satellite'
-    elif index == 1:
-        label = 'Nucleus-Nucleus'
-    elif index == 2:
-        label = 'Satellite-Nucleus'
-    return label
-
-def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[],index_to_relation=[]):
-    
-    num_examples_seen = 0
-    print 'now learning_rate : ' , learning_rate;
-    for epoch in range(nepoch):
-        # For each training example ...
-
-        tocount = 0
-        tccount = 0
-        tycount = 0
-
-        for i in np.random.permutation(len(y_train)):
-            # One SGT step
-            num_examples_seen += 1
-            # Optionally do callback
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
-            print 'the number of example have seen for now : ' , num_examples_seen
-            output = model.predict_class(X_1_train[i],X_2_train[i])
-            print '>>>>> case'
-            lwrds = [index_to_word[j] for j in X_1_train[i]]
-            rwrds = [index_to_word[j] for j in X_2_train[i]]
-            a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
-            print 'i-th :' , i;
-            print 'the left edu : '
-            print " ".join(lwrds)
-            print a_att
-            print 'the right edu : '
-            print " ".join(rwrds)
-            print b_att
-            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
-            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
-            print 'predict_relation : ' , output
-            print index_to_relation[output[0]]
-            print 'true relation : ' , y_train[i]
-            print index_to_relation[y_train[i][0]]
-
-            ocount = 0
-            ccount = 0
-            ycount = 0
-            if False:
-                test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
-
-            for o,y in zip(output,y_train[i]):
-                if o == y:
-                    print 'correct prediction'
-                    ccount += 1
-                ycount += 1
-                ocount += 1
-            #
-            tocount += ocount
-            tccount += ccount
-            tycount += ycount
-            if ccount != 0 and ocount != 0:
-                precision = float(ccount) / float(ocount)
-                recall = float(ccount) / float(ycount)
-                if (precision+recall) != 0:
-                    Fmeasure = 2 * (precision*recall) / (precision+recall)
-                else:
-                    Fmeasure = 0
-            else :
-                precision = 0
-                recall = 0
-                Fmeasure = 0
-
-        # a epoch for training end here
-        if tocount != 0 and tccount != 0:
-            precision = float(tccount) / float(tocount)
-            recall = float(tccount) / float(tycount)
-            if (precision+recall) != 0:
-                Fmeasure = 2 * (precision*recall) / (precision+recall)
-            else:
-                Fmeasure = 0
-        else:
-            precision = 0
-            recall = 0
-            Fmeasure = 0
-
-        print 'Accuracy of training set: ' , precision
-        print 'Recall of training set: ' , recall
-        print 'Fmeasure of training set: ' , Fmeasure
-
-
-    return model
-
-
-def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
-    print 'now score the test dataset'
-    scores = [];
-    tocount = 0
-    tccount = 0
-    tycount = 0
-
-    for i in range(len(y_test)):
-        output = model.predict_class(X_1_test[i],X_2_test[i])
-        ocount = 0
-        ccount = 0
-        ycount = 0
-
-        lwrds = [index_to_word[j] for j in X_1_test[i]]
-        rwrds = [index_to_word[j] for j in X_2_test[i]]
-
-        a_att, b_att = model.comsen(X_1_test[i],X_2_test[i])
-
-        
-        print 'i-th : ' , i;
-        print 'the left edu : , ' , " ".join(lwrds)
-        print a_att
-        print 'the right edu : ' , " ".join(rwrds)
-        print b_att
-        print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
-
-        # print 
-        print 'predict relation : ' , output
-        print index_to_relation[output[0]]
-        print 'true relation : ' , y_test[i]
-        print index_to_relation[y_test[i][0]]
-
-
-        for o,y in zip(output,y_test[i]):
-            if y == o:
-                print 'the correct prediction!'
-                ccount += 1
-            ycount += 1
-            ocount += 1
-
-        tocount += ocount
-        tccount += ccount
-        tycount += ycount
-
-    if tocount != 0 and tccount != 0 :
-        precision = float(tccount) / float(tocount)
-        recall = float(tccount) / float(tycount)
-        if (precision+recall) != 0:
-            Fmeasure = 2 * (precision*recall) / (precision+recall)
-        else:
-            Fmeasure = 0
-    else:
-        precision = 0
-        recall = 0
-        Fmeasure = 0
-
-    print 'Accuracy of test set: ' , precision
-    print 'Recall of test set: ' , recall
-    print 'Fmeasure of test set: ' , Fmeasure
-
-def load_word_embedding(path):
-
-    #
-    #
-    if False:
-        pass;
-    else:
-
-        wdvec = open(path,'r').readlines()
-        wvdic = dict()
-        for widx, vec in enumerate(wdvec):
-            items = vec.strip().split();
-            pv = np.array([float(x) for x in items[1:]]);
-            wvdic[items[0]] = pv;
-            wrddim = wvdic.itervalues().next().shape[0];
-    return wvdic
-
-def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
-
-    # index_to_word is the word list
-    vocab_size = len(index_to_word)
-    E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size)) 
-    
-    # for those word can be found in glove or word2vec pre-trained word vector
-    for w in index_to_word:
-        if w in wvdic:
-            E[:,word_to_index[w]] = wvdic[w]
-
-    return E
-
-def load_freq_word(path):
-
-    sens = open(path).readlines()
-    fword = [];
-    for sen in sens:
-        fword.append(sen.strip())
-
-    return fword
+        pass
 
 
 def relation():
 
-    ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+    maxlen = 50
+    ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING',maxlen);
+    tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST',maxlen)
     print 'load in ' , len(rels) , 'training sample'
     print 'load in ' , len(tst_rels) , 'test sample'
 
@@ -671,19 +717,20 @@ def relation():
     vocabulary_size = len(word_freq)  
     unknown_token = 'UNK'
     vocab = word_freq.most_common(vocabulary_size)
-    index_to_word = [x[0] for x in vocab]
-
+    index_to_word = []
+    index_to_word.append('E_O_E')
+    index_to_word.extend([x[0] for x in vocab])
     # load in frequent word in common sentences
     freq_word = load_freq_word('../freq_word/freq_word')
     index_to_word.extend(freq_word)
-    # remove the reduplicate word
-    index_to_word = list(set(index_to_word))
-
-
     index_to_word.append(unknown_token)
+    # remove the reduplicate word
+    index_to_word = list(OrderedDict.fromkeys(index_to_word))
+
     word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
     print 'Using vocabulary size %d. ' % len(index_to_word )
     print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
+
 
     # code-snippet-3 build general training dataset
     # training dataset
@@ -712,6 +759,7 @@ def relation():
     X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
     y_test = (tst_rels)
 
+
     print "Example sentence '%s' " % " ".join(ledus[0])
     print "Example sentence '%s' " % " ".join(redus[0])
     print "Example sentence after Pre-processing : '%s' " % X_1_train[0]
@@ -722,30 +770,28 @@ def relation():
 
     # build Embedding matrix
     label_size = 18
-    wvdic = load_word_embedding('../data/glove.6B.200d.txt')
+    wvdic = load_word_embedding('../data/glove.6B.300d.txt')
     word_dim = wvdic.values()[0].shape[0]
-
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
 
-    hidden_dim = 200
-    
+    hidden_dim = 600
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
     print 'vocabulary size : ' , len(index_to_word)
 
+    model = framework(word_dim,label_size,vocabulary_size,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
-    model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
     print X_1_train[0]
     print X_2_train[0]
     print 'attention weight : '
-    a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
-    print a_att
-    print b_att
+    # a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
+    # print a_att
+    # print b_att
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
@@ -764,7 +810,6 @@ def relation():
 
         print 'this is epoch : ' , epoch
         train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
-
         test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
 
