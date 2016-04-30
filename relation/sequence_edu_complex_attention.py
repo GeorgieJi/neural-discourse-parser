@@ -1,5 +1,5 @@
 '''
-A Fast and Accurate Dependency Parser using Neural Networks
+A Fast and Accurate Discourse Parser using Neural Networks
 '''
 
 import numpy as np
@@ -93,133 +93,58 @@ def traversal(tree):
     if len(right_tree) == 3:
         rightspan = right_tree[2]
 
-    parentpair = [ [1 , leftspan, rightspan] ]
+    parentpair = [ [left_tree[1]+'-'+right_tree[1] , leftspan, rightspan] ]
     parentpair.extend(leftpair)
     parentpair.extend(rightpair)
     # print '->' , parentpair
     
     return parentpair, leftspan + ' ' + rightspan
 
-def traversal_basic(tree):
-    parentpair = []
-    # usually the len of tree is 4
-    # print '>>>>>>>>>>>>>>>>>>>>.*'
-    left_tree = tree[2]
-    right_tree = tree[3]
-    span = ''
-    leftspan = ''
-    rightspan = ''
-    leftpair = []
-    rightpair = []
 
-    if len(left_tree) == 4:
-        leftpair , leftspan = traversal_basic(left_tree)
+def extract_nucleus(tree_str):
 
-    if len(right_tree) == 4:
-        rightpair , rightspan = traversal_basic(right_tree)
-
-    if len(left_tree) == 3:
-        leftspan = left_tree[2]
-
-    if len(right_tree) == 3:
-        rightspan = right_tree[2]
-
-    parentpair.extend(leftpair)
-    parentpair.extend([1,leftspan,rightspan])
-    parentpair.extend(rightpair)
-    # print '->' , parentpair
-    
-    return parentpair, ""
-
-def generate_example(pairs,beduspairs):
-
-    # extract basic edu
-    # build the structure path
-
-    # collect all edus
-    edus = []
-    bedus = []
-
-    sentence = pairs[0][1] + ' ' + pairs[0][2]
-    edus.append(sentence)
-
-
-    for pair in pairs:
-        # print pair
-        edus.append(pair[1])
-        edus.append(pair[2])
-
-    # collect all basic edu
-    for item in beduspairs:
-        # print pair
-        if item != '' and item != 1:
-            bedus.append(item)
-
-    edu_stack = copy.deepcopy(bedus)
-
-    # get order of basic edu
-    # simple order 
-    
-    order_edus = edu_stack
-
-    levels = []
-    update_edus = []
-    while True:
-        if len(order_edus) == 1:
-            break
-
-        i = 0
-        while i < (len(order_edus)-1):
-            ledu = order_edus[i]
-            redu = order_edus[i+1]
-            if ledu+' '+redu in edus:
-                update_edus.append(ledu+' '+redu)
-                stackflag = False
-                i = i+2
-            else:
-                update_edus.append(ledu)
-                stackflag = True
-                i = i+1
-
-        if stackflag or i==len(order_edus)-1:
-            update_edus.append(order_edus[-1])
-
-        levels.append([order_edus,update_edus])
-        order_edus = update_edus
-       
-        update_edus = []
-
-    # print 'the last edu : ' , sentence == order_edus[0]
-
-    # extract from levels list, each pair from levels contains ordered edus and its update
-
-    bsmps = []
-    for level in levels:
-        oedus = level[0]
-        uedus = level[1]
-
-        # print 'there are ' , len(oedus) , 'in this level'
-        for i in range(len(oedus)-1):
-            ledu = oedus[i]
-            redu = oedus[i+1]
-            if ledu+' '+redu in uedus:
-                bsmps.append([1,ledu,redu])
-            else:
-                bsmps.append([0,ledu,redu])
-
-    return bsmps
-
-def extract_edus(tree_str):
     tree = parse_tree(tree_str)
-    # print 'parsed pairs : '
-    pair = traversal(tree)[0]
-    # generate_example(pairs)
-    return pair
+    if tree == ')//TT_ERR':
+        pairs = []
+        pass
+    else:
+        pairs = traversal(tree)[0]
+    return pairs
 
-def extract_basic_edus(tree_str):
-    tree = parse_tree(tree_str)
-    pair = traversal_basic(tree)[0]
-    return pair
+def relation_mapping(subrelation):
+
+    relsmap = dict()
+
+    relsmap['Attribution'] = ['attribution','attribution-negative']
+    relsmap['Background'] = ['background','circumstance']
+    relsmap['Cause'] = ['cause','result','consequence']
+    relsmap['Comparsion'] = ['comparison','preference','analogy','proportion']
+    relsmap['Condition'] = ['condition','hypothetical','contingency','otherwise']
+    relsmap['Contrast'] = ['contrast','concession','antithesis']
+    relsmap['Elaboration'] = ['elaboration-additional','elaboration-general-specific','elaboration-part-whole','elaboration-process-step','elaboration-object-attribute','elaboration-set-member','example','definition']
+    relsmap['Enablement'] = ['purpose','enablement']
+    relsmap['Evaluation'] = ['evaluation','interpretation','conclusion','comment']
+    relsmap['Explanation'] = ['evidence','explanation-argumentative','reason']
+    relsmap['Joint'] = ['list','disjunction']
+    relsmap['Manner-Means'] = ['manner','means']
+    relsmap['Topic-Comment'] = ['problem-solution','question-answer','statement-response','topic-comment','comment-topic','rhetorical-question']
+    relsmap['Summary'] = ['summary','restatement']
+    relsmap['Temporal'] = ['temporal-before','temporal-after','temporal-same-time','sequence','inverted-sequence']
+    relsmap['TopicChange'] = ['topic-shift','topic-drift']
+    relsmap['TextualOrganization'] = ['textualorganization']
+    relsmap['Same-Unit'] = ['same-unit']
+
+    mappingrel = 'RelationError'
+    for mrel in relsmap:
+        for srel in relsmap[mrel]:
+            if srel in subrelation.lower():
+                mappingrel = mrel
+
+    if mappingrel == 'RelationError':
+        raise Exception('Discourse Relation Mapping Error!')
+
+    return mappingrel
+
 
 def build_data(dir_path):
     
@@ -234,55 +159,49 @@ def build_data(dir_path):
     for edu_path in edus_path:
         trees.append(open(dir_path+'/'+edu_path).readlines());
 
-    print 'trees number : ' , len(trees)
-    # print trees[1]
-    groups = []
-    basic_groups = []
-    for tree in trees:
-        ftrees = extract_edus(tree)
-        if ftrees[0][1] == '' and ftrees[0][2] == '':
-            pass
-        else:
-            groups.append(ftrees)
-            basic_groups.append(extract_basic_edus(tree))
-
-    # print 'number of pairs', len(groups) , ''
-    # print 'group ' , groups[242]
-    # print 'bgroup ' , basic_groups[242]
 
     pairs = []
-    # pairs = generate_example(groups[242],basic_groups[242])
-    for group,basic_group in zip(groups,basic_groups):
-        pairs.extend(generate_example(group,basic_group))
-        pass
+    for tree in trees:
+        pairs.extend(extract_nucleus(tree))
 
-    for pair in pairs:
-        pass
-    
     senas = []
     senbs = []
-    nucs = []
+    disrels = []
 
     for pair in pairs:
 
-        pair[1] = pair[1].strip().replace('<P>','')
-        pair[2] = pair[2].strip().replace('<P>','')
+        pair[1] = pair[1].strip().replace('<P>',' p_end ')
+        pair[2] = pair[2].strip().replace('<P>',' p_end ')
 
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
 
-        if len(wrdsa) < 100 and len(wrdsb) < 100:
+        # only focus on 18 discourse relations
+        rel = relation_mapping(pair[0].lower()).lower()
+
+        # replace the < P > with 'p-end'
+        wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
+        wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
+
+        wrdsa.insert(0,'B_O_E')
+        wrdsb.insert(0,'B_O_E')
+        wrdsa.append('E_O_E')
+        wrdsb.append('E_O_E')
+
+
+        if len(wrdsa) < 50 and len(wrdsb) < 50:
             senas.append(wrdsa)
             senbs.append(wrdsb)
-            nucs.append([pair[0]])
+            disrels.append(rel)
         else:
             continue
+
     
-    return senas , senbs , nucs
+    return senas , senbs , disrels
 
 
 
-class Siamese_GRU:
+class Siamese_bidirectional_GRU:
     """
     A implemention of Siamese Recurrent Architectures for Learning Sentence Similarity
     http://www.aaai.org/Conferences/AAAI/2016/Papers/15Mueller12195.pdf
@@ -299,6 +218,7 @@ class Siamese_GRU:
         self.word_dim = word_dim
         self.hidden_dim = hidden_dim
         self.bptt_truncate = bptt_truncate
+        self.label_dim = label_dim
 
         # initialize the network parameters
 
@@ -307,12 +227,19 @@ class Siamese_GRU:
         else:
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
-        b = np.zeros((3,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
+        b = np.zeros((6,hidden_dim))
         
-        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
+        V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*4))
         c = np.zeros(label_dim)
+
+        # initialize the soft attention parameters
+        # basically the soft attention is the single hidden layer 
+        # no idea how to set the attention layer hidden node dim just set it as hidden dim for now
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
+        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+        b_att = np.zeros(hidden_dim)
 
         # Created shared variable
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
@@ -322,8 +249,14 @@ class Siamese_GRU:
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
+        # Created attention variable
+        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
+        self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
+        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
 
-        self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
+
+
+        self.params = [self.E, self.U, self.W, self.V, self.b, self.c, self.W_att, self.v_att, self.b_att]
         
 
         # We store the Theano graph here
@@ -331,13 +264,13 @@ class Siamese_GRU:
         self.__theano_build__()
 
     def __theano_build__(self):
-        E, V, U, W, b, c = self.E, self.V, self.U, self.W, self.b , self.c
+        E, V, U, W, b, c, W_att, v_att, b_att = self.E, self.V, self.U, self.W, self.b , self.c, self.W_att, self.v_att, self.b_att
 
         x_a = T.ivector('x_a')
         x_b = T.ivector('x_b')
         y = T.lvector('y')
 
-        def forward_step(x_t,s_t_prev):
+        def forward_direction_step(x_t,s_t_prev):
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
@@ -347,36 +280,114 @@ class Siamese_GRU:
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             # directly return the hidden state as intermidate output 
             return [s_t]
+        
+        
+        def backward_direction_step(x_t,s_t_prev):
+            # Word embedding layer
+            x_e = E[:,x_t]
+            # GRU layer 2
+            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
+            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
+            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            # directly return the hidden state as intermidate output 
+            return [s_t]
 
 
-        # sentence a vector (states)
-        a_s , updates = theano.scan(
-                forward_step,
+
+        # sentence a vector (states) forward direction 
+        a_s_f , updates = theano.scan(
+                forward_direction_step,
                 sequences=x_a,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
+
+        # sentence b vector (states) backward direction
+        a_s_b , updates = theano.scan(
+                backward_direction_step,
+                sequences=x_a[::-1],
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
             
-        # sentence b vector (states)
-        b_s , updates = theano.scan(
-                forward_step,
+        # sentence b vector (states) forward direction 
+        b_s_f , updates = theano.scan(
+                forward_direction_step,
                 sequences=x_b,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=T.zeros(self.hidden_dim))
+        
+        # sentence b vector (states) backward direction 
+        b_s_b , updates = theano.scan(
+                backward_direction_step,
+                sequences=x_b[::-1],
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+
+
+        # combine the sena
+        a_s = T.concatenate([a_s_f,a_s_b[::-1]],axis=1)
+        b_s = T.concatenate([b_s_f,b_s_b[::-1]],axis=1)
+
+        def soft_attention(h_i):
+            return v_att.dot(T.tanh(W_att.dot(h_i)+b_att))
+        
+        def weight_attention(h_i,a_j):
+            return h_i*a_j
+
+        a_att, updates = theano.scan(
+                soft_attention,
+                sequences=a_s
+                )
+        b_att, updates = theano.scan(
+                soft_attention,
+                sequences=b_s
+                )
+
+        # softmax
+        # a_att = (59,1)
+        # b_att = (58,1)
+        a_att = T.exp(a_att)
+        a_att = a_att.flatten()
+        a_att = a_att / a_att.sum()
+
+        b_att = T.exp(b_att)
+        b_att = b_att.flatten()
+        b_att = b_att / b_att.sum()
+
+        a_s_att,updates = theano.scan(
+                weight_attention,
+                sequences=[a_s,a_att]
+                )
+        b_s_att,updates = theano.scan(
+                weight_attention,
+                sequences=[b_s,b_att]
+                )
+        # eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
 
         # semantic similarity 
         # s_sim = manhattan_distance(a_s[-1],b_s[-1])
 
-        # for classification using simple strategy 
-        sena = a_s[-1]
-        senb = b_s[-1]
+        # for classification using simple strategy
+        # for now we still use the last word vector as sentence vector
+        # apply a simple single hidden layer on each word in sentence 
+        # 
+        # a (wi) = attention(wi) = tanh(w_att.dot(wi)+b)
+        # theano scan 
+        # exp(a)
+        # 
+        sena = a_s_att.sum(axis=0)
+        senb = b_s_att.sum(axis=0)
 
         combined_s = T.concatenate([sena,senb],axis=0)
+
+
+
 
         # softmax class
         o = T.nnet.softmax(V.dot(combined_s)+c)[0]
 
-        # in case the o contains 0 which cause inf
-        eps = np.asarray([1.0e-10,1.0e-10],dtype=theano.config.floatX)
+        # in case the o contains 0 which cause inf and nan
+        eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
         o = o + eps
         om = o.reshape((1,o.shape[0]))
         prediction = T.argmax(om,axis=1)
@@ -389,8 +400,29 @@ class Siamese_GRU:
         # updates
         updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
 
+        # monitor parameter
+        mV = V * T.ones_like(V)
+        mc = c * T.ones_like(c)
+        mU = U * T.ones_like(U)
+        mW = W * T.ones_like(W)
+
+        gV = T.grad(cost,V)
+        gc = T.grad(cost,c)
+        gU = T.grad(cost,U)
+        gW = T.grad(cost,W)
+
+        mgV = gV * T.ones_like(gV)
+        mgc = gc * T.ones_like(gc)
+        mgU = gU * T.ones_like(gU)
+        mgW = gW * T.ones_like(gW)
+
+
+
 
         # Assign functions
+        self.comsen = theano.function([x_a,x_b],[a_att,b_att])
+        self.monitor = theano.function([x_a,x_b],[sena,senb,mV,mc,mU,mW])
+        self.monitor_grad = theano.function([x_a,x_b,y],[mgV,mgc,mgU,mgW])
         self.predict = theano.function([x_a,x_b],om)
         self.predict_class = theano.function([x_a,x_b],prediction)
         self.ce_error = theano.function([x_a,x_b,y],cost)
@@ -410,8 +442,17 @@ class Siamese_GRU:
                 )
 
 
+def index_to_class(index):
+    label = '';
+    if index == 0:
+        label = 'Nucleus-Satellite'
+    elif index == 1:
+        label = 'Nucleus-Nucleus'
+    elif index == 2:
+        label = 'Satellite-Nucleus'
+    return label
 
-def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[]):
+def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[],index_to_relation=[]):
     
     num_examples_seen = 0
     print 'now learning_rate : ' , learning_rate;
@@ -422,27 +463,32 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
         tccount = 0
         tycount = 0
 
-        for i in range(len(y_train)):
+        for i in np.random.permutation(len(y_train)):
             # One SGT step
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i])
             num_examples_seen += 1
             # Optionally do callback
-            print '>>>>>'
+            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
+            print 'the number of example have seen for now : ' , num_examples_seen
+            output = model.predict_class(X_1_train[i],X_2_train[i])
+            print '>>>>> case'
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
             print 'i-th :' , i;
-            print 'the left edu : ' ," ".join(lwrds)
-            print 'the right edu : ' , " ".join(rwrds)
+            print 'the left edu : '
+            print " ".join(lwrds)
+            print 'the right edu : '
+            print " ".join(rwrds)
             print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
             print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
-            output = model.predict_class(X_1_train[i],X_2_train[i])
-            print 'predict_class : ' , output
-            print 'true label : ' , y_train[i]
-            print 'the number of example have seen for now : ' , num_examples_seen
+            print 'predict_relation : ' , output
+            print index_to_relation[output[0]]
+            print 'true relation : ' , y_train[i]
+            print index_to_relation[y_train[i][0]]
+
             ocount = 0
             ccount = 0
             ycount = 0
-            if i % 500 == 0:
+            if False:
                 test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
 
             for o,y in zip(output,y_train[i]):
@@ -488,7 +534,7 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
     return model
 
 
-def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
+def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
     print 'now score the test dataset'
     scores = [];
     tocount = 0
@@ -510,8 +556,10 @@ def test_score(model,X_1_test,X_2_test,y_test,index_to_word):
         print 'ce_error : ' , model.ce_error(X_1_test[i],X_2_test[i],y_test[i])
 
         # print 
-        print 'predict_class : ' , output
-        print 'true label : ' , y_test[i]
+        print 'predict relation : ' , output
+        print index_to_relation[output[0]]
+        print 'true relation : ' , y_test[i]
+        print index_to_relation[y_test[i][0]]
 
 
         for o,y in zip(output,y_test[i]):
@@ -571,85 +619,116 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
     return E
 
+def load_freq_word(path):
+
+    sens = open(path).readlines()
+    fword = [];
+    for sen in sens:
+        fword.append(sen.strip())
+
+    return fword
 
 
-def structure():
+def relation():
 
-    #
-    # * -- step1 -- build training data
-    #
-
-    
-    ledus, redus , nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
-    tst_ledus, tst_redus, tst_nucs = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
-
-    print 'loading finish'
-    #
-    # * -- step2-- train a binary for structure classification
-    # 
-
-    print 'load in ' , len(nucs) , 'training sample'
-    print 'load in ' , len(tst_nucs) , 'test sample'
+    ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING');
+    tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST')
+    print 'load in ' , len(rels) , 'training sample'
+    print 'load in ' , len(tst_rels) , 'test sample'
 
     token_list = []
     for sena, senb in zip(ledus,redus):
         token_list.extend(sena)
         token_list.extend(senb)
 
+    # collect discourse relations
+    relation_list = []
+    relation_list.extend(rels)
+    relation_list.extend(tst_rels)
+
+    # 
+    rel_freq = nltk.FreqDist(relation_list)
+    print 'Found %d unique discourse relations . ' % len(rel_freq.items())
+
+    disrel_num = len(rel_freq.items())
+    rel_vocab = rel_freq.most_common(disrel_num)
+    index_to_relation = [x[0] for x in rel_vocab]
+    relation_to_index = dict([(r,i) for i,r in enumerate(index_to_relation)])
+    print index_to_relation
+    print relation_to_index
+
+
+    # 
+    # code-snippet-2 build general word vocabulary
+    #
     word_freq = nltk.FreqDist(token_list)
     print 'Found %d unique words tokens . ' % len(word_freq.items())
-
-    vocabulary_size = 10*1000
+    vocabulary_size = len(word_freq)  
     unknown_token = 'UNK'
-
-    vocab = word_freq.most_common(vocabulary_size-1)
+    vocab = word_freq.most_common(vocabulary_size)
     index_to_word = [x[0] for x in vocab]
+    freq_word = load_freq_word('../freq_word/freq_word')
+    index_to_word.extend(freq_word)
+    # remove the reduplicate word
+    index_to_word = list(set(index_to_word))
     print 'vocab : '
     index_to_word.append(unknown_token)
     word_to_index = dict([(w,i) for i,w in enumerate(index_to_word)])
-
-    print 'Using vocabulary size %d. ' % vocabulary_size
+    print 'Using vocabulary size %d. ' % len(index_to_word )
     print "the least frequent word in our vocabulary is '%s' and appeared %d times " % (vocab[-1][0],vocab[-1][1])
 
+    # code-snippet-3 build general training dataset
     # training dataset
+    # 
     for i,(edua,edub) in enumerate(zip(ledus,redus)):
         ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
         redus[i] = [w if w in word_to_index else unknown_token for w in edub]
+    for i,rel in enumerate(rels):
+        rels[i] = [relation_to_index[rel]]
 
     # test dataset
     for i,(edua,edub) in enumerate(zip(tst_ledus,tst_redus)):
         tst_ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
         tst_redus[i] = [w if w in word_to_index else unknown_token for w in edub]
 
+    for i,rel in enumerate(tst_rels):
+        tst_rels[i] = [relation_to_index[rel]]
+
     # X_1_train , X_2_train , y_train
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
-    y_train = (nucs)
+    y_train = (rels)
 
     # X_1_test, X_2_test , y_train
     X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
     X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
-    y_test = (tst_nucs)
+    y_test = (tst_rels)
 
-    print " Example sentence '%s' " % " ".join(ledus[0])
-    print " Example sentence '%s' " % " ".join(redus[0])
-    print " Example sentence after Pre-processing : '%s' " % X_1_train[0]
-    print " Example sentence after Pre-processing : '%s' " % X_2_train[0]
-    print " Example label : ", y_train[0]
+    print "Example sentence '%s' " % " ".join(ledus[0])
+    print "Example sentence '%s' " % " ".join(redus[0])
+    print "Example sentence after Pre-processing : '%s' " % X_1_train[0]
+    print "Example sentence after Pre-processing : '%s' " % X_2_train[0]
+    print "Example label : ", y_train[0]
     print ""
 
+
     # build Embedding matrix
-    label_size = 2
-    wvdic = load_word_embedding('../data/glove.6B.300d.txt')
+    label_size = 18
+    wvdic = load_word_embedding('../data/glove.6B.200d.txt')
     word_dim = wvdic.values()[0].shape[0]
 
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    model = Siamese_GRU(word_dim,label_size,vocabulary_size,hidden_dim=100,word_embedding=E,bptt_truncate=-1)
+    model = Siamese_bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=200,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()
-    print model.predict(X_1_train[0],X_2_train[0])
+    print X_1_train[0]
+    print X_2_train[0]
+    print 'combines' ,
+    a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
+    print a_att.shape
+    print b_att.shape
     output = model.predict_class(X_1_train[0],X_2_train[0])
     print 'predict_class : ' , output
     print 'ce_error : ' , model.ce_error(X_1_train[0],X_2_train[0],y_train[0])
@@ -667,11 +746,11 @@ def structure():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
-        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
+        train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
-        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word)
+        test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
 
 
 if __name__ == '__main__':
-    structure();
+    relation();
