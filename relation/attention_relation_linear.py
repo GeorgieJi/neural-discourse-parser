@@ -795,7 +795,7 @@ def relation():
     word_dim = wvdic.values()[0].shape[0]
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    hidden_dim = 50
+    hidden_dim = 300
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
