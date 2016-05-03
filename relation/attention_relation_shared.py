@@ -101,6 +101,130 @@ def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,le
     return model
 
 
+def train_update(model,train_set,test_set,index_to_word,index_to_relation):
+
+    num_examples_seen = 0
+    X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
+    X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
+
+    tocount = 0
+    tccount = 0
+    tycount = 0
+
+    for i in np.random.permutation(len(y_train)):
+
+        num_examples_seen += 1
+        ce_error, predict = model.train_model(i)
+        # print
+        print '>>>>> case'
+        lwrds = [index_to_word[j] for j in X_1_train[i]]
+        rwrds = [index_to_word[j] for j in X_2_train[i]]
+        # a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
+        print 'i-th :' , i;
+        print 'the left edu : '
+        print " ".join(lwrds)
+        print 'the right edu : '
+        print " ".join(rwrds)
+        print 'ce_error : ' , ce_error
+        print 'predict : ' , predict
+        print index_to_relation[predict[0]]
+        print 'true relation : ' , y_train[i]
+        print index_to_relation[y_train[i][0]]
+
+        ocount = 0
+        ccount = 0
+        ycount = 0
+
+        for o,y in zip(predict,y_train[i]):
+            if o == y:
+                print 'correct prediction'
+                ccount += 1
+            ycount += 1
+            ocount += 1
+
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+
+    # a epoch for traning end here
+    if tocount != 0 and tccount != 0:
+        precision = float(tccount) / float(tocount)
+        recall = float(tccount) / float(tycount)
+        if (precision+recall) != 0:
+            Fmeasure = 2 * (precision*recall) / (precision+recall)
+        else:
+            Fmeasure = 0
+    else:
+
+        precision = 0
+        recall = 0
+        Fmeasure = 0
+
+    print 'Accuracy of training set : ' , precision
+    print 'Recall of training set : ' , recall
+    print 'Fmeasure of training set : ' , Fmeasure
+
+    return model
+
+
+def test_update(model,test_set,index_to_word,index_to_relation):
+
+    X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
+    print 'now score the test dataset'
+    scores = []
+
+    tocount = 0
+    tccount = 0
+    tycount = 0
+
+
+    for i in xrange(len(y_test)):
+        predict = model.predict_tst(i)
+        ocount = 0
+        ccount = 0
+        ycount = 0
+        
+        lwrds = [index_to_word[j] for j in X_1_test[i]]
+        rwrds = [index_to_word[j] for j in X_2_test[i]]
+        print 'i-th : ' , i;
+        print 'the left edu : , ' , " ".join(lwrds)
+        print 'the right edu : ' , " ".join(rwrds)
+
+        print 'predict relation : ' , index_to_relation[predict[0]]
+        print 'true relation : ' , index_to_relation[y_test[i][0]]
+
+        for o,y in zip(predict,y_test[i]):
+            if y == o:
+                print 'the correct prediction!'
+                ccount += 1
+
+            ycount += 1
+            ocount += 1
+
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+
+    if tocount != 0 and tccount != 0:
+        precision = float(tccount) / float(tocount)
+        recall = float(tccount) / float(tycount)
+        if (precision+recall) != 0:
+            Fmeasure = 2 * (precision*recall) / (precision+recall)
+        else:
+            Fmeasure = 0
+    
+    else:
+        precision = 0
+        recall = 0
+        Fmeasure = 0
+        
+    print 'Accuracy of test set: ' , precision
+    print 'Recall of test set: ' , recall
+    print 'Fmeasure of test set: ' , Fmeasure
+
+
+
+
 def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
     print 'now score the test dataset'
     scores = [];
@@ -880,10 +1004,11 @@ class framework:
 
         # compiling a Theano function that computes the mistakes that are made
         # by the model on a minibatch
-
+        
+        #
         self.train_model = theano.function(
                 inputs=[index],
-                outputs=cost,
+                outputs=[cost,prediction],
                 updates=updates,
                 givens={
                     x_a:x_1_trn[index],
@@ -894,18 +1019,44 @@ class framework:
                     }
                 )
 
+        # 
+        self.predict = theano.function(
+                inputs=[index],
+                outputs = prediction,
+                givens={
+                    x_a:x_1_trn[index],
+                    x_a_m:x_1_trn_msk[index],
+                    x_b:x_2_trn[index],
+                    x_b_m:x_2_trn_msk[index]
+                    }
+                )
+        
+        # test model 
+        self.predict_tst = theano.function(
+                inputs=[index],
+                outputs = prediction,
+                givens={
+                    x_a:x_1_tst[index],
+                    x_a_m:x_1_tst_msk[index],
+                    x_b:x_2_tst[index],
+                    x_b_m:x_2_tst_msk[index]
+                    }
+                )
+
 
         # framework assign function
-        self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
-        self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
-        self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
+        # self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
+        # self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
+        # self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
         # self.comsen = theano.function([],)
 
+        """
         self.sgd_step = theano.function(
                 [x_a,x_a_m,x_b,x_b_m,y],
                 [],
                 updates = updates
                 )
+        """
 
         pass
 
@@ -941,14 +1092,13 @@ def relation():
     # a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
     # print a_att
     # print b_att
-    output = model.predict_class(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0])
-    print 'predict_class : ' , output
-    print 'ce_error : ' , model.ce_error(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
+    # output = model.predict_class(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0])
+    # print 'predict_class : ' , output
+    # print 'ce_error : ' , model.ce_error(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
     learning_rate = 0.000005
-
-    model.sgd_step(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
+    # model.sgd_step(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
+    print 'cost : ' , model.train_model(0)
     t2 = time.time()
-
     print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
     sys.stdout.flush()
 
@@ -958,6 +1108,10 @@ def relation():
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
+
+        train_update(model,train_set,test_set,index_to_word,index_to_relation)
+        test_update(model,test_set,index_to_word,index_to_relation)
+
         # train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
         # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
