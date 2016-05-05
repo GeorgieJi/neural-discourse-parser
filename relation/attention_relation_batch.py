@@ -946,6 +946,26 @@ class framework:
             E = word_embedding
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
 
+
+        # load word for speed up no need to load word embedding every time
+        x_1_trn_r = x_1_trn[:,::-1]
+        x_2_trn_r = x_2_trn[:,::-1]
+
+        x_1_tst_r = x_1_tst[:,::-1]
+        x_2_tst_r = x_1_tst[:,::-1]
+
+        emb_1_trn = self.E[x_1_trn.flatten()]
+        emb_1_trn_r = self.E[x_1_trn_r.flatten()]
+        
+        emb_2_trn = self.E[x_2_trn.flatten()]
+        emb_2_trn_r = self.E[x_2_trn_r.flatten()]
+        
+        emb_1_tst = self.E[x_1_tst.flatten()]
+        emb_1_tst_r = self.E[x_1_tst_r.flatten()]
+        
+        emb_2_tst = self.E[x_1_tst.flatten()]
+        emb_2_tst_r = self.E[x_1_tst_r.flatten()]
+
         # build bi-GRU
         # def __init__(self,word_dim,hidden_dim,word_embedding,bptt_truncate=-1)
         gru_layer = bid_GRU(word_dim,hidden_dim,bptt_truncate=-1)
