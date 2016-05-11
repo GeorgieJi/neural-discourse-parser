@@ -107,14 +107,23 @@ def train_update(model,train_set,test_set,index_to_word,index_to_relation):
     X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
     X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
 
+
+    print len(X_1_train)
+    print len(X_1_train_mask)
+    print len(X_2_train)
+    print len(X_2_train_mask)
+    print len(y_train)
     tocount = 0
     tccount = 0
     tycount = 0
 
     for i in np.random.permutation(len(y_train)):
 
+        print 'total number of training data set : '  , len(y_train)
+        print 'i : ' , i
         num_examples_seen += 1
         ce_error, predict = model.train_model(i)
+        _mapping = model.mapping(i)[0]
         # print
         print '>>>>> case'
         lwrds = [index_to_word[j] for j in X_1_train[i]]
@@ -125,6 +134,11 @@ def train_update(model,train_set,test_set,index_to_word,index_to_relation):
         print " ".join(lwrds)
         print 'the right edu : '
         print " ".join(rwrds)
+        print 'the vectro mapping shape : '
+        print _mapping.shape
+        mask_mapping = model.mask_mapping(i)[0]
+        print 'the mask mapping'
+        print mask_mapping.shape
         print 'ce_error : ' , ce_error
         print 'predict : ' , predict
         print index_to_relation[predict[0]]
@@ -300,7 +314,7 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
     # index_to_word is the word list
     vocab_size = len(index_to_word)
-    E = np.random.uniform(-np.sqrt(1./word_dim+vocab_size),np.sqrt(1./word_dim+vocab_size),(word_dim,vocab_size)) 
+    E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size)) 
     
     # for those word can be found in glove or word2vec pre-trained word vector
     for w in index_to_word:
@@ -749,6 +763,7 @@ def load_data():
     load the dataset 
     warp them with theano shared object
     """
+
     maxlen = 50
     ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING',maxlen);
     tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST',maxlen)
@@ -820,21 +835,29 @@ def load_data():
     # X_1_train , X_2_train , y_train
     # convert it into matrix
 
+
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
+    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
+    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
+
+    # maxlen = max([get_maxlen(X_1_train),get_maxlen(X_2_train),get_maxlen(X_1_test),get_maxlen(X_2_test)])
+    # print 'maxlen : ' , maxlen
+
     X_1_train, X_1_train_mask = prepare_data(X_1_train,maxlen)
     X_2_train, X_2_train_mask = prepare_data(X_2_train,maxlen)
     y_train = (rels)
-
     # X_1_test, X_2_test , y_train
     # for shared variable strategy we need X_1_train to be matrix 
-
-    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
-    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
     X_1_test, X_1_test_mask = prepare_data(X_1_test,maxlen)
     X_2_test, X_2_test_mask = prepare_data(X_2_test,maxlen)
     y_test = (tst_rels)
 
+    print 'build_data'
+    print len(X_1_train)
+    print len(X_2_train)
+    print len(X_1_train_mask)
+    print len(X_2_train_mask)
 
     print "Example sentence '%s' " % " ".join(ledus[0])
     print "Example sentence '%s' " % " ".join(redus[0])
@@ -846,7 +869,7 @@ def load_data():
     test_set = [X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test]
 
 
-    return train_set, test_set, index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index
+    return train_set, test_set, index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen
 
 
 
@@ -875,6 +898,11 @@ def shared_dataset_float(data,borrow=True):
 
 
 # batch preparation
+
+def get_maxlen(seqs_x):
+
+    return max([len(s) for s in seqs_x])
+
 def prepare_data(seqs_x, maxlen=None):
 
     # 
@@ -908,11 +936,42 @@ def prepare_data(seqs_x, maxlen=None):
 
     return x, x_mask
 
+def mapping_(x,y,lx,ly,word_dim):
+
+    T_y = y.T
+    xx = T.tile(x,(1,ly))
+    yy = T.tile(T_y,(1,lx))
+
+    xx = xx.reshape((word_dim,lx*ly))
+    yy = (yy.reshape((ly*lx,word_dim))).T
+
+    cxy = (T.concatenate([xx,yy],axis=0)).T
+
+    return cxy
+    
+def mask_mapping_(x,y,lx,ly):
+
+    x = x.reshape((1,lx))
+    y = y.reshape((1,ly))
+
+    T_y = y.T
+    xx = T.tile(x,(1,ly))
+    yy = T.tile(T_y,(1,lx))
+
+    xx = xx.reshape((1,lx*ly))
+    yy = (yy.reshape((ly*lx,1))).T
+
+    cxy = T.concatenate([xx,yy],axis=0)
+    cxy = cxy[0]*cxy[1]
+
+    return cxy
+
+
 class framework:
     """
     build all theano graph here , in here we can combine as many as nerual layer we need !
     """
-    def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+    def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,maxlen,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
         # load dataset as shared variables
         # train_set
@@ -955,18 +1014,28 @@ class framework:
         v_a = gru_layer.recurrent(x_a,self.E)
         v_b = gru_layer.recurrent(x_b,self.E)
 
+        # build across mapping
+        # build horizontal direction matrix and vertical direction matrix
+        
+        a_b_map = mapping_(v_a,v_b,maxlen,maxlen,hidden_dim*2)
+        a_b_mask_map = mask_mapping_(x_a_m,x_b_m,maxlen,maxlen)
+
+
         # left edu attention 
 
         sa = soft_attention_layer(hidden_dim*2)
+        sb = soft_attention_layer(hidden_dim*4)
 
         s_v_a = sa.soft_att(v_a,x_a_m)
         s_v_b = sa.soft_att(v_b,x_b_m)
+
+        a_b_mapping = sb.soft_att(a_b_map,a_b_mask_map)
         # right edu attention
 
-        edu_pair_fea = T.concatenate([s_v_a,s_v_b],axis=0)
+        edu_pair_fea = T.concatenate([s_v_a,s_v_b,a_b_mapping],axis=0)
 
         # build hidden_layer for edu pair
-        mlp_layer_1 = HiddenLayer(hidden_dim*4,label_dim)
+        mlp_layer_1 = HiddenLayer(hidden_dim*8,label_dim)
         # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
         ep_fea_2 = mlp_layer_1.forward(edu_pair_fea)
         # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
@@ -990,7 +1059,7 @@ class framework:
         # collect the params from each model
         self.params = []
         self.params = self.params + [ self.E ]
-        self.params = self.params + sa.params
+        self.params = self.params + sa.params + sb.params
         self.params = self.params + gru_layer.params + mlp_layer_1.params 
 
 
@@ -1004,7 +1073,28 @@ class framework:
 
         # compiling a Theano function that computes the mistakes that are made
         # by the model on a minibatch
-        
+
+        self.mapping = theano.function(
+                inputs=[index],
+                outputs = [a_b_map],
+                givens={
+                    x_a:x_1_trn[index],
+                    x_b:x_2_trn[index]
+                    }
+                
+                )
+
+        self.mask_mapping = theano.function(
+                inputs=[index],
+                outputs = [a_b_mask_map],
+                givens={
+                    x_a_m:x_1_trn_msk[index],
+                    x_b_m:x_2_trn_msk[index]
+                    }
+                
+                )
+
+
         #
         self.train_model = theano.function(
                 inputs=[index],
@@ -1064,9 +1154,15 @@ class framework:
 def relation():
 
     # load data set
-    train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index = load_data()
+    train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen = load_data()
     X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
     X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
+    
+    print 'load_data'
+    print len(X_1_train)
+    print len(X_2_train)
+    print len(X_1_train_mask)
+    print len(X_2_train_mask)
 
     # build Embedding matrix
     label_size = 18
@@ -1081,7 +1177,7 @@ def relation():
     print 'vocabulary size : ' , len(index_to_word)
 
     # def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
-    model = framework(word_dim,label_size,vocabulary_size,train_set,test_set,test_set,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
+    model = framework(word_dim,label_size,vocabulary_size,train_set,test_set,test_set,maxlen,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
 
     # Print SGD step time
