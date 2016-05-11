@@ -309,7 +309,7 @@ def build_data(dir_path):
 
 class HiddenLayer(object):
     def __init__(self, n_in, n_out, W=None, b=None,
-                 activation=T.tanh):
+                 activation=None):
 
         rng = np.random.RandomState(2345)
         # end-snippet-1

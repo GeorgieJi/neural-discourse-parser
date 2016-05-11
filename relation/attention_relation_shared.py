@@ -300,7 +300,7 @@ def build_we_matrix(wvdic,index_to_word,word_to_index,word_dim):
 
     # index_to_word is the word list
     vocab_size = len(index_to_word)
-    E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size)) 
+    E = np.random.uniform(-np.sqrt(1./word_dim+vocab_size),np.sqrt(1./word_dim+vocab_size),(word_dim,vocab_size)) 
     
     # for those word can be found in glove or word2vec pre-trained word vector
     for w in index_to_word:
