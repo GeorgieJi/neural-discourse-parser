@@ -107,14 +107,23 @@ def train_update(model,train_set,test_set,index_to_word,index_to_relation):
     X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
     X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
 
+
+    print len(X_1_train)
+    print len(X_1_train_mask)
+    print len(X_2_train)
+    print len(X_2_train_mask)
+    print len(y_train)
     tocount = 0
     tccount = 0
     tycount = 0
 
     for i in np.random.permutation(len(y_train)):
 
+        print 'total number of training data set : '  , len(y_train)
+        print 'i : ' , i
         num_examples_seen += 1
         ce_error, predict = model.train_model(i)
+        _mapping = model.mapping(i)[0]
         # print
         print '>>>>> case'
         lwrds = [index_to_word[j] for j in X_1_train[i]]
@@ -125,6 +134,11 @@ def train_update(model,train_set,test_set,index_to_word,index_to_relation):
         print " ".join(lwrds)
         print 'the right edu : '
         print " ".join(rwrds)
+        print 'the vectro mapping shape : '
+        print _mapping.shape
+        mask_mapping = model.mask_mapping(i)[0]
+        print 'the mask mapping'
+        print mask_mapping.shape
         print 'ce_error : ' , ce_error
         print 'predict : ' , predict
         print index_to_relation[predict[0]]
@@ -595,46 +609,99 @@ class HiddenLayer(object):
 
         return output
 
-class GRU:
+
+
+class bid_GRU:
 
     def __init__(self,word_dim,hidden_dim,bptt_truncate=-1):
 
+        # assign instance variables
         self.word_dim = word_dim
         self.hidden_dim = hidden_dim
         self.bptt_truncate = bptt_truncate
 
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
+        # print E[:,0]
+        # initialize the network parameters
+
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
         b = np.zeros((6,hidden_dim))
-        
-        self.W = theano.shared(name='W',value=U.astype(theano.config.floatX))
-        self.U = theano.shared(name='U',value=W.astype(theano.config.floatX))
+
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim*2),np.sqrt(1./hidden_dim*2),(hidden_dim,hidden_dim*2))
+        v_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+        b_att = np.zeros((hidden_dim))
+
+        # initialize the soft attention parameters
+        # basically the soft attention is the single hidden layer 
+        # no idea how to set the attention layer hidden node dim just set it as hidden dim for now
+
+
+        # Created shared variable
+        self.U = theano.shared(name='U',value=U.astype(theano.config.floatX))
+        self.W = theano.shared(name='W',value=W.astype(theano.config.floatX))
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
 
+        # Created attention variable
+        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
+        self.v_att = theano.shared(name='v_att',value=v_att.astype(theano.config.floatX))
+        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
+
+
+        # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
         self.params = [self.U,self.W,self.b]
 
-    def recurrent(self,x_s,x_s_m):
+        # store the theano graph 
+        # self.theano = {}
+        # self.__theano_build__()
+ 
+    def recurrent(self,x_s,E):
         U, W, b = self.U, self.W, self.b
-        
-        def _step(x_t,x_s_m_t,s_t_prev):
-            
-            z_t = T.nnet.hard_sigmoid(W[0].dot(x_t)+U[0].dot(s_t_prev)) + b[0]
-            r_t = T.nnet.hard_sigmoid(W[1].dot(x_t)+U[1].dot(s_t_prev)) + b[1]
-            c_t = T.tanh(W[2].dot(x_t)+U[2].dot(s_t_prev*r_t)+b[2])
+        # x_s = T.ivector('x_s')
+
+        def forward_direction_step(x_t,s_t_prev):
+            # Word embedding layer
+            x_e = E[:,x_t]
+            # GRU layer 1
+            z_t = T.nnet.hard_sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
+            r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
+            c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)            
-            
+
+            # leaky integrate and obtain next hidden state
+
+            # directly return the hidden state as intermidate output 
             return [s_t]
         
-        s_t , updates = theano.scan(
-                _step,
-                sequences=[x_s,x_s_m],
+        def backward_direction_step(x_t,s_t_prev):
+            # Word embedding layer
+            x_e = E[:,x_t]
+            # GRU layer 2
+            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
+            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
+            c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+
+            # leaky integrate and obtain next hidden state
+
+            # directly return the hidden state as intermidate output 
+            return [s_t]
+
+        # create sequence hidden states from input
+        s_f , updates = theano.scan(
+                forward_direction_step,
+                sequences=[x_s],
                 truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim)
-                )
+                outputs_info=T.zeros(self.hidden_dim))
 
-        return s_t
+        s_b , updates = theano.scan(
+                backward_direction_step,
+                sequences=[x_s[::-1]],
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
 
+        h_s = T.concatenate([s_f,s_b[::-1]],axis=1)
+        
+        return h_s
 
 
 class soft_attention_layer:
@@ -696,6 +763,7 @@ def load_data():
     load the dataset 
     warp them with theano shared object
     """
+
     maxlen = 50
     ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING',maxlen);
     tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST',maxlen)
@@ -767,21 +835,29 @@ def load_data():
     # X_1_train , X_2_train , y_train
     # convert it into matrix
 
+
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
+    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
+    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
+
+    # maxlen = max([get_maxlen(X_1_train),get_maxlen(X_2_train),get_maxlen(X_1_test),get_maxlen(X_2_test)])
+    # print 'maxlen : ' , maxlen
+
     X_1_train, X_1_train_mask = prepare_data(X_1_train,maxlen)
     X_2_train, X_2_train_mask = prepare_data(X_2_train,maxlen)
     y_train = (rels)
-
     # X_1_test, X_2_test , y_train
     # for shared variable strategy we need X_1_train to be matrix 
-
-    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
-    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
     X_1_test, X_1_test_mask = prepare_data(X_1_test,maxlen)
     X_2_test, X_2_test_mask = prepare_data(X_2_test,maxlen)
     y_test = (tst_rels)
 
+    print 'build_data'
+    print len(X_1_train)
+    print len(X_2_train)
+    print len(X_1_train_mask)
+    print len(X_2_train_mask)
 
     print "Example sentence '%s' " % " ".join(ledus[0])
     print "Example sentence '%s' " % " ".join(redus[0])
@@ -793,7 +869,7 @@ def load_data():
     test_set = [X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test]
 
 
-    return train_set, test_set, index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index
+    return train_set, test_set, index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen
 
 
 
@@ -822,6 +898,11 @@ def shared_dataset_float(data,borrow=True):
 
 
 # batch preparation
+
+def get_maxlen(seqs_x):
+
+    return max([len(s) for s in seqs_x])
+
 def prepare_data(seqs_x, maxlen=None):
 
     # 
@@ -855,21 +936,42 @@ def prepare_data(seqs_x, maxlen=None):
 
     return x, x_mask
 
-def build_sampler(E,x):
+def mapping_(x,y,lx,ly,word_dim):
 
-    n_timesteps = x.shape[1]
-    n_samples = x.shape[0]
-    word_dim = E.shape[0]
-    emb_x = E[x.flatten()]
-    emb_x = emb_x.reshape([n_samples,n_timesteps,word_dim])
+    T_y = y.T
+    xx = T.tile(x,(1,ly))
+    yy = T.tile(T_y,(1,lx))
 
-    return emb_x
+    xx = xx.reshape((word_dim,lx*ly))
+    yy = (yy.reshape((ly*lx,word_dim))).T
+
+    cxy = (T.concatenate([xx,yy],axis=0)).T
+
+    return cxy
+    
+def mask_mapping_(x,y,lx,ly):
+
+    x = x.reshape((1,lx))
+    y = y.reshape((1,ly))
+
+    T_y = y.T
+    xx = T.tile(x,(1,ly))
+    yy = T.tile(T_y,(1,lx))
+
+    xx = xx.reshape((1,lx*ly))
+    yy = (yy.reshape((ly*lx,1))).T
+
+    cxy = T.concatenate([xx,yy],axis=0)
+    cxy = cxy[0]*cxy[1]
+
+    return cxy
+
 
 class framework:
     """
     build all theano graph here , in here we can combine as many as nerual layer we need !
     """
-    def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+    def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,maxlen,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
 
         # load dataset as shared variables
         # train_set
@@ -887,78 +989,53 @@ class framework:
         x_2_tst = shared_dataset_int(X_2_test)
         x_2_tst_msk = shared_dataset_float(X_2_test_mask)
         y_tst = shared_dataset_int(y_test)
-        
+
+        index = T.lscalar() # index to a [mini]batch
+        x_a = T.lvector('x_a') # the data is presented as a vector of word index
+        x_a_m = T.fvector('x_a_m') # the mask of vector [0. 0. 0. 1.] 
+        x_b = T.lvector('x_b')
+        x_b_m = T.fvector('x_b_m')
+
+        y = T.lvector('y') # the labels of relation discourse
+
         # the frameword only holds the global word embedding 
         if word_embedding is None:
             E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
         else:
             E = word_embedding
-
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
 
-        # load word for speed up no need to load word embedding every time
-        x_1_trn_r = x_1_trn[:,::-1]
-        x_2_trn_r = x_2_trn[:,::-1]
-
-        x_1_tst_r = x_1_tst[:,::-1]
-        x_2_tst_r = x_1_tst[:,::-1]
-
-        emb_1_trn = build_sampler(self.E,x_1_trn)
-        emb_1_trn_r = build_sampler(self.E,x_1_trn_r)
-
-        emb_2_trn = build_sampler(self.E,x_2_trn)
-        emb_2_trn_r = build_sampler(self.E,x_2_trn_r)
-
-        emb_1_tst = build_sampler(self.E,x_1_tst)
-        emb_1_tst_r = build_sampler(self.E,x_1_tst_r)
-
-        emb_2_tst = build_sampler(self.E,x_2_tst)
-        emb_2_tst_r = build_sampler(self.E,x_2_tst_r)
-
-
-
-        index = T.lscalar() # index to a [mini]batch
-        x_a = T.matrix('x_a') # the data is presented as a vector of word index
-        x_a_m = T.fvector('x_a_m') # the mask of vector [0. 0. 0. 1.] 
-
-        x_a_r = x_a[:,::-1]
-        x_a_m_r = x_a_m[::-1]
-
-        x_b = T.matrix('x_b')
-        x_b_m = T.fvector('x_b_m')
-
-        x_b_r = x_b[:,::-1]
-        x_b_m_r = x_b_m[::-1]
-
-        y = T.lvector('y') # the labels of relation discourse
+        # build bi-GRU
+        # def __init__(self,word_dim,hidden_dim,word_embedding,bptt_truncate=-1)
+        gru_layer = bid_GRU(word_dim,hidden_dim,bptt_truncate=-1)
 
         
-        gru = GRU(word_dim,hidden_dim,bptt_truncate=-1)
-        gru_r = GRU(word_dim,hidden_dim,bptt_truncate=-1)
+        # 2 symbolic vector (1*)
+        v_a = gru_layer.recurrent(x_a,self.E)
+        v_b = gru_layer.recurrent(x_b,self.E)
 
-        h_a = gru.recurrent(x_a,x_a_m)
-        h_a_r = gru_r.recurrent(x_a_r,x_a_m_r)
-
-        v_a = T.concatenate([h_a,h_a_r[::-1]],axis=1)
-
-        h_b = gru.recurrent(x_b,x_b_m)
-        h_b_r = gru_r.recurrent(x_b_r,x_b_m_r)
-
-        v_b = T.concatenate([h_b,h_b_r[::-1]],axis=1)
+        # build across mapping
+        # build horizontal direction matrix and vertical direction matrix
         
+        a_b_map = mapping_(v_a,v_b,maxlen,maxlen,hidden_dim*2)
+        a_b_mask_map = mask_mapping_(x_a_m,x_b_m,maxlen,maxlen)
+
 
         # left edu attention 
 
         sa = soft_attention_layer(hidden_dim*2)
+        sb = soft_attention_layer(hidden_dim*4)
 
         s_v_a = sa.soft_att(v_a,x_a_m)
         s_v_b = sa.soft_att(v_b,x_b_m)
+
+        a_b_mapping = sb.soft_att(a_b_map,a_b_mask_map)
         # right edu attention
 
-        edu_pair_fea = T.concatenate([s_v_a,s_v_b],axis=0)
+        edu_pair_fea = T.concatenate([s_v_a,s_v_b,a_b_mapping],axis=0)
 
         # build hidden_layer for edu pair
-        mlp_layer_1 = HiddenLayer(hidden_dim*4,label_dim)
+        mlp_layer_1 = HiddenLayer(hidden_dim*8,label_dim)
         # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
         ep_fea_2 = mlp_layer_1.forward(edu_pair_fea)
         # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
@@ -983,7 +1060,7 @@ class framework:
         self.params = []
         self.params = self.params + [ self.E ]
         self.params = self.params + sa.params
-        self.params = self.params + gru.params + gru_r.params + mlp_layer_1.params 
+        self.params = self.params + gru_layer.params + mlp_layer_1.params 
 
 
         # please verify the parameters of model
@@ -996,7 +1073,28 @@ class framework:
 
         # compiling a Theano function that computes the mistakes that are made
         # by the model on a minibatch
-        
+
+        self.mapping = theano.function(
+                inputs=[index],
+                outputs = [a_b_map],
+                givens={
+                    x_a:x_1_trn[index],
+                    x_b:x_2_trn[index]
+                    }
+                
+                )
+
+        self.mask_mapping = theano.function(
+                inputs=[index],
+                outputs = [a_b_mask_map],
+                givens={
+                    x_a_m:x_1_trn_msk[index],
+                    x_b_m:x_2_trn_msk[index]
+                    }
+                
+                )
+
+
         #
         self.train_model = theano.function(
                 inputs=[index],
@@ -1056,9 +1154,15 @@ class framework:
 def relation():
 
     # load data set
-    train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index = load_data()
+    train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen = load_data()
     X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
     X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
+    
+    print 'load_data'
+    print len(X_1_train)
+    print len(X_2_train)
+    print len(X_1_train_mask)
+    print len(X_2_train_mask)
 
     # build Embedding matrix
     label_size = 18
@@ -1066,14 +1170,14 @@ def relation():
     word_dim = wvdic.values()[0].shape[0]
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    hidden_dim = 150
+    hidden_dim = 300
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
     print 'vocabulary size : ' , len(index_to_word)
 
     # def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
-    model = framework(word_dim,label_size,vocabulary_size,train_set,test_set,test_set,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
+    model = framework(word_dim,label_size,vocabulary_size,train_set,test_set,test_set,maxlen,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
 
     # Print SGD step time
