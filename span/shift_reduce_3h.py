@@ -307,6 +307,71 @@ def build_data(dir_path):
     return edus0 , edus1 , edus2, acts
 
 
+def build_tree_data(dir_path):
+    
+    files = os.listdir(dir_path);
+    edus_path = [];
+    for filename in files:
+        if '.dis' in filename:
+            # print filename;
+            edus_path.append(filename);
+
+    trees = [];
+    for edu_path in edus_path:
+        trees.append(open(dir_path+'/'+edu_path).readlines());
+
+    print 'trees number : ' , len(trees)
+    # print trees[1]
+    groups = []
+    basic_groups = []
+    for tree in trees:
+        ftrees = extract_edus(tree)
+        if ftrees[0][1] == '' and ftrees[0][2] == '':
+            pass
+        else:
+            groups.append(ftrees)
+            basic_groups.append(extract_basic_edus(tree))
+
+    # print 'number of pairs', len(groups) , ''
+    # print 'group ' , groups[242]
+    # print 'bgroup ' , basic_groups[242]
+
+    tree_examples = []
+    # pairs = generate_example(groups[242],basic_groups[242])
+    for group,basic_group in zip(groups,basic_groups):
+        # if len(basic_group) < 15:
+        if True:
+            tree_examples.append(generate_example(group,basic_group))
+        pass
+
+    edus0 = []
+    edus1 = []
+    edus2 = []
+    acts = []
+
+    for pair in examples:
+        pair[0] = pair[0].strip().replace('<P>',' P_E ')
+        pair[1] = pair[1].strip().replace('<P>',' P_E ')
+        pair[2] = pair[2].strip().replace('<P>',' P_E ')
+        wrds0 = nltk.word_tokenize(pair[0].strip().lower())
+        wrds1 = nltk.word_tokenize(pair[1].strip().lower())
+        wrds2 = nltk.word_tokenize(pair[2].strip().lower())
+        # print wrds0
+        # print wrds1
+        # print wrds2
+        # print pair[3]
+        if True:
+            edus0.append(wrds0)
+            edus1.append(wrds1)
+            edus2.append(wrds2)
+            acts.append(pair[3])
+
+        else:
+            continue
+    
+    return edus0 , edus1 , edus2, acts
+
+
 class HiddenLayer(object):
     def __init__(self, n_in, n_out, W=None, b=None,
                  activation=None):
@@ -657,6 +722,7 @@ def test_score(model,X_1_test,X_2_test,X_3_test,y_test,index_to_word):
     tccount = 0
     tycount = 0
 
+    # test on tree
     for i in range(len(y_test)):
         output = model.predict_class(X_1_test[i],X_2_test[i],X_3_test[i])
         ocount = 0
@@ -704,6 +770,16 @@ def test_score(model,X_1_test,X_2_test,X_3_test,y_test,index_to_word):
     print 'Accuracy of test set: ' , precision
     print 'Recall of test set: ' , recall
     print 'Fmeasure of test set: ' , Fmeasure
+
+
+def tree_score():
+
+    # using modeing predict , perform shift-reduce on each basic tree
+
+    # score on the gold tree
+
+
+    pass
 
 def load_word_embedding(path):
 
@@ -867,6 +943,7 @@ def structure():
         train_with_sgd(model,X_1_train,X_2_train,X_3_train,y_train,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word)
 
         test_score(model,X_1_test,X_2_test,X_3_test,y_test,index_to_word=index_to_word)
+        tree_score()
 
 
 

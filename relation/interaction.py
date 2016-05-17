@@ -1059,7 +1059,7 @@ class framework:
         # collect the params from each model
         self.params = []
         self.params = self.params + [ self.E ]
-        self.params = self.params + sa.params
+        self.params = self.params + sa.params + sb.params
         self.params = self.params + gru_layer.params + mlp_layer_1.params 
 
 

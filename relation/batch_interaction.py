@@ -19,134 +19,114 @@ sys.path.append('../tree')
 from tree import *
 # from utils import *
 
+def build_batch_set(x1,x1m,x2,x2m,y,batch_size):
 
-def train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=0.001,nepoch=20,decay=0.9,index_to_word=[],index_to_relation=[]):
+    total_n = len(x1)
+    print 'total number of dataset : ' , total_n
+
+    if total_n < batch_size:
+        print 'warning : the total number of dataset is less than the batch size'
+
+    batch_num = 0
+    remain_num = 0
+
+    batch_num = total_n / batch_size
+    remain_num = total_n % batch_size
+
+    samples = []
+
+    for i in range(batch_num):
+        tmp = []
+        tmp.append(x1[i*batch_size:(i+1)*batch_size])
+        tmp.append(x1m[i*batch_size:(i+1)*batch_size])
+        tmp.append(x2[i*batch_size:(i+1)*batch_size])
+        tmp.append(x2m[i*batch_size:(i+1)*batch_size])
+        tmp.append(y[i*batch_size:(i+1)*batch_size])
+        samples.append(tmp)
+
+    if remain_num != 0:
+        tmp = []
+        tmp.append(x1[batch_num*batch_size:])
+        tmp.append(x1m[batch_num*batch_size:])
+        tmp.append(x2[batch_num*batch_size:])
+        tmp.append(x2m[batch_num*batch_size:])
+        tmp.append(y[batch_num*batch_size:])
+        samples.append(tmp)
+
+
+    return samples
+
+        
+
+
+def train_with_sgd(model,train_samples,index_to_word=[],index_to_relation=[]):
     
     num_examples_seen = 0
-    print 'now learning_rate : ' , learning_rate;
-    for epoch in range(nepoch):
-        # For each training example ...
-
-        tocount = 0
-        tccount = 0
-        tycount = 0
-
-        for i in np.random.permutation(len(y_train)):
-            # One SGT step
-            num_examples_seen += 1
-            # Optionally do callback
-            model.sgd_step(X_1_train[i],X_2_train[i],y_train[i]) 
-            print 'the number of example have seen for now : ' , num_examples_seen
-            output = model.predict_class(X_1_train[i],X_2_train[i])
-            print '>>>>> case'
+    # For each training example ...
+    
+    tocount = 0
+    tccount = 0
+    tycount = 0
+    
+    for i in np.random.permutation(len(train_samples)):
+        # One SGT step
+        num_examples_seen += len(train_samples[i][0])
+        X_1_train = train_samples[i][0]
+        X_1_train_mask = train_samples[i][1]
+        X_2_train = train_samples[i][2]
+        X_2_train_mask = train_samples[i][3]
+        y_train = train_samples[i][4]
+        
+        # Optionally do callback
+        model.sgd_step(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
+        output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask)
+        
+        for i in range(len(X_1_train)):
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
+            print '---->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
             # a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
-            print 'i-th :' , i;
+            print 'i-th :' , i; 
             print 'the left edu : '
             print " ".join(lwrds)
             print 'the right edu : '
             print " ".join(rwrds)
-            print 'predict : ' , model.predict(X_1_train[i],X_2_train[i])
-            print 'ce_error : ' , model.ce_error(X_1_train[i],X_2_train[i],y_train[i])
-            print 'predict_relation : ' , output
-            print index_to_relation[output[0]]
+            print 'predict_relation : ' , output[i]
+            print index_to_relation[output[i]]
             print 'true relation : ' , y_train[i]
-            print index_to_relation[y_train[i][0]]
-
-            ocount = 0
-            ccount = 0
-            ycount = 0
-
-            for o,y in zip(output,y_train[i]):
-                if o == y:
-                    print 'correct prediction'
-                    ccount += 1
-                ycount += 1
-                ocount += 1
-            #
-            tocount += ocount
-            tccount += ccount
-            tycount += ycount
-            if ccount != 0 and ocount != 0:
-                precision = float(ccount) / float(ocount)
-                recall = float(ccount) / float(ycount)
-                if (precision+recall) != 0:
-                    Fmeasure = 2 * (precision*recall) / (precision+recall)
-                else:
-                    Fmeasure = 0
-            else :
-                precision = 0
-                recall = 0
-                Fmeasure = 0
-
-        # a epoch for training end here
-        if tocount != 0 and tccount != 0:
-            precision = float(tccount) / float(tocount)
-            recall = float(tccount) / float(tycount)
+            print index_to_relation[y_train[i]]
+            if output[i] == y_train[i]:
+                print 'correct prediction'
+            else:
+                print 'wrong prediction'
+        
+        print 'the number of example have seen for now : ' , num_examples_seen
+        # 
+        ocount = 0
+        ccount = 0
+        ycount = 0
+        for o,y in zip(output,y_train):
+            if o == y:
+                ccount += 1
+            ycount += 1
+            ocount += 1
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+        
+        if ccount != 0 and ocount != 0:
+            precision = float(ccount) / float(ocount)
+            recall = float(ccount) / float(ycount)
             if (precision+recall) != 0:
                 Fmeasure = 2 * (precision*recall) / (precision+recall)
             else:
                 Fmeasure = 0
-        else:
+        else :
             precision = 0
             recall = 0
             Fmeasure = 0
 
-        print 'Accuracy of training set: ' , precision
-        print 'Recall of training set: ' , recall
-        print 'Fmeasure of training set: ' , Fmeasure
-
-
-    return model
-
-
-def train_update(model,train_set,test_set,index_to_word,index_to_relation):
-
-    num_examples_seen = 0
-    X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
-    X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
-
-    tocount = 0
-    tccount = 0
-    tycount = 0
-
-    for i in np.random.permutation(len(y_train)):
-
-        num_examples_seen += 1
-        ce_error, predict = model.train_model(i)
-        # print
-        print '>>>>> case'
-        lwrds = [index_to_word[j] for j in X_1_train[i]]
-        rwrds = [index_to_word[j] for j in X_2_train[i]]
-        # a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
-        print 'i-th :' , i;
-        print 'the left edu : '
-        print " ".join(lwrds)
-        print 'the right edu : '
-        print " ".join(rwrds)
-        print 'ce_error : ' , ce_error
-        print 'predict : ' , predict
-        print index_to_relation[predict[0]]
-        print 'true relation : ' , y_train[i]
-        print index_to_relation[y_train[i][0]]
-
-        ocount = 0
-        ccount = 0
-        ycount = 0
-
-        for o,y in zip(predict,y_train[i]):
-            if o == y:
-                print 'correct prediction'
-                ccount += 1
-            ycount += 1
-            ocount += 1
-
-        tocount += ocount
-        tccount += ccount
-        tycount += ycount
-
-    # a epoch for traning end here
+    # a epoch for training end here
     if tocount != 0 and tccount != 0:
         precision = float(tccount) / float(tocount)
         recall = float(tccount) / float(tycount)
@@ -155,77 +135,107 @@ def train_update(model,train_set,test_set,index_to_word,index_to_relation):
         else:
             Fmeasure = 0
     else:
-
         precision = 0
         recall = 0
         Fmeasure = 0
 
-    print 'Accuracy of training set : ' , precision
-    print 'Recall of training set : ' , recall
-    print 'Fmeasure of training set : ' , Fmeasure
+    print 'Accuracy of training set: ' , precision
+    print 'Recall of training set: ' , recall
+    print 'Fmeasure of training set: ' , Fmeasure
+
 
     return model
 
-
-def test_update(model,test_set,index_to_word,index_to_relation):
-
-    X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
-    print 'now score the test dataset'
-    scores = []
-
-    tocount = 0
-    tccount = 0
-    tycount = 0
-
-
-    for i in xrange(len(y_test)):
-        predict = model.predict_tst(i)
-        ocount = 0
-        ccount = 0
-        ycount = 0
-        
-        lwrds = [index_to_word[j] for j in X_1_test[i]]
-        rwrds = [index_to_word[j] for j in X_2_test[i]]
-        print 'i-th : ' , i;
-        print 'the left edu : , ' , " ".join(lwrds)
-        print 'the right edu : ' , " ".join(rwrds)
-
-        print 'predict relation : ' , index_to_relation[predict[0]]
-        print 'true relation : ' , index_to_relation[y_test[i][0]]
-
-        for o,y in zip(predict,y_test[i]):
-            if y == o:
-                print 'the correct prediction!'
-                ccount += 1
-
-            ycount += 1
-            ocount += 1
-
-        tocount += ocount
-        tccount += ccount
-        tycount += ycount
-
-    if tocount != 0 and tccount != 0:
-        precision = float(tccount) / float(tocount)
-        recall = float(tccount) / float(tycount)
-        if (precision+recall) != 0:
-            Fmeasure = 2 * (precision*recall) / (precision+recall)
-        else:
-            Fmeasure = 0
+def test_score(model,train_samples,index_to_word=[],index_to_relation=[]):
     
+    num_examples_seen = 0
+    # For each training example ...
+    
+    tocount = 0
+    tccount = 0
+    tycount = 0
+    print 'now score the test set performance ... '
+    for i in range(len(train_samples)):
+        # One SGT step
+        num_examples_seen += len(train_samples[i][0])
+        X_1_train = train_samples[i][0]
+        X_1_train_mask = train_samples[i][1]
+        X_2_train = train_samples[i][2]
+        X_2_train_mask = train_samples[i][3]
+        y_train = train_samples[i][4]
+        
+        # Optionally do callback
+        # model.sgd_step(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
+        # print 'the number of example have seen for now : ' , num_examples_seen
+        output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask)
+        
+        for i in range(len(X_1_train)):
+            lwrds = [index_to_word[j] for j in X_1_train[i]]
+            rwrds = [index_to_word[j] for j in X_2_train[i]]
+            print '---->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+            # a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
+            print 'i-th :' , i; 
+            print 'the left edu : '
+            print " ".join(lwrds)
+            print 'the right edu : '
+            print " ".join(rwrds)
+            print 'predict_relation : ' , output[i]
+            print index_to_relation[output[i]]
+            print 'true relation : ' , y_train[i]
+            print index_to_relation[y_train[i]]
+            if output[i] == y_train[i]:
+                print 'correct prediction'
+            else:
+                print 'wrong prediction'
+        
+        # 
+        ocount = 0
+        ccount = 0
+        ycount = 0
+        for o,y in zip(output,y_train):
+            if o == y:
+                ccount += 1
+            ycount += 1
+            ocount += 1
+        tocount += ocount
+        tccount += ccount
+        tycount += ycount
+        
+        if ccount != 0 and ocount != 0:
+            precision = float(ccount) / float(ocount)
+            recall = float(ccount) / float(ycount)
+            if (precision+recall) != 0:
+                Fmeasure = 2 * (precision*recall) / (precision+recall)
+            else:
+                Fmeasure = 0
+        else :
+            precision = 0
+            recall = 0
+            Fmeasure = 0
+
+    # a epoch for training end here
+    if tocount != 0 and tccount != 0:
+        precision = float(tccount) / float(tocount)
+        recall = float(tccount) / float(tycount)
+        if (precision+recall) != 0:
+            Fmeasure = 2 * (precision*recall) / (precision+recall)
+        else:
+            Fmeasure = 0
     else:
         precision = 0
         recall = 0
         Fmeasure = 0
-        
+
     print 'Accuracy of test set: ' , precision
     print 'Recall of test set: ' , recall
     print 'Fmeasure of test set: ' , Fmeasure
 
 
+    return model
 
 
-def test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
+
+def _test_score(model,X_1_test,X_2_test,y_test,index_to_word,index_to_relation):
     print 'now score the test dataset'
     scores = [];
     tocount = 0
@@ -587,7 +597,7 @@ class HiddenLayer(object):
     def forward(self,x):
         W, b, activation  = self.W , self.b, self.activation
         # x = T.vector('x')
-        lin_output = T.dot(x,self.W) + self.b
+        lin_output = T.dot(x,W) + b[None,:]
         output = (
             lin_output if activation is None
             else activation(lin_output)
@@ -595,107 +605,114 @@ class HiddenLayer(object):
 
         return output
 
-class GRU:
+def ortho_weight(ndim):
+    W = np.random.randn(ndim,ndim)
+    u, s, v = np.linalg.svd(W)
+    return u.astype('float32')
+
+def init_weight(nin,nout,scale=0.01):
+    W = scale * np.random.randn(nin,nout)
+    return W.astype('float32')
+
+
+class gru_tensor:
 
     def __init__(self,word_dim,hidden_dim,bptt_truncate=-1):
 
+        # assign instance variables
         self.word_dim = word_dim
         self.hidden_dim = hidden_dim
         self.bptt_truncate = bptt_truncate
 
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,word_dim))
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(3,hidden_dim,hidden_dim))
-        b = np.zeros((6,hidden_dim))
-        
-        self.W = theano.shared(name='W',value=U.astype(theano.config.floatX))
-        self.U = theano.shared(name='U',value=W.astype(theano.config.floatX))
+        # 
+        W = np.concatenate([init_weight(word_dim,hidden_dim),init_weight(word_dim,hidden_dim)],axis=1)
+        U = np.concatenate([ortho_weight(hidden_dim),ortho_weight(hidden_dim)],axis=1)
+        b = np.zeros((2*hidden_dim)).astype('float32')
+        Wx = init_weight(word_dim, hidden_dim)
+        Ux = ortho_weight(hidden_dim)
+        bx = np.zeros((hidden_dim)).astype('float32')
+
+        # Created shared variable
+        self.W = theano.shared(name='W',value=W.astype(theano.config.floatX))
+        self.U = theano.shared(name='U',value=U.astype(theano.config.floatX))
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
+        self.Wx = theano.shared(name='Wx',value=Wx.astype(theano.config.floatX))
+        self.Ux = theano.shared(name='Ux',value=Ux.astype(theano.config.floatX))
+        self.bx = theano.shared(name='bx',value=bx.astype(theano.config.floatX))
 
-        self.params = [self.U,self.W,self.b]
 
-    def recurrent(self,x_s,x_s_m):
-        U, W, b = self.U, self.W, self.b
-        
-        def _step(x_t,x_s_m_t,s_t_prev):
-            
-            z_t = T.nnet.hard_sigmoid(W[0].dot(x_t)+U[0].dot(s_t_prev)) + b[0]
-            r_t = T.nnet.hard_sigmoid(W[1].dot(x_t)+U[1].dot(s_t_prev)) + b[1]
-            c_t = T.tanh(W[2].dot(x_t)+U[2].dot(s_t_prev*r_t)+b[2])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            s_t = s_t * x_s_m_t + s_t_prev * (1. - x_s_m_t)            
-            
-            return [s_t]
-        
-        s_t , updates = theano.scan(
+        # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
+        self.params = [self.U,self.W,self.b,self.Ux,self.Wx,self.bx]
+ 
+    def recurrent(self,x_s,x_m,E):
+        U, W, b, Wx, Ux, bx = self.U, self.W, self.b, self.Wx, self.Ux, self.bx
+        word_dim, hidden_dim = self.word_dim, self.hidden_dim
+
+
+        # x_s -> x_s_emb
+        # (n_samples,nsteps) -> (nsteps,n_samples)
+        xs = x_s         
+        xm = x_m
+
+        n_steps = xs.shape[0] #
+        word_dim = E.shape[0]
+        n_samples = xs.shape[1]
+
+        emb = E[:,xs.flatten()]
+        emb = emb.reshape([n_steps, n_samples, word_dim])
+
+        state_below_ = T.dot(emb,W) + b.dimshuffle('x','x',0)
+        state_belowx = T.dot(emb,Wx) + bx.dimshuffle('x','x',0)
+
+        def _slice(_x,n,dim):
+            return _x[:,n*dim:(n+1)*dim]
+
+        def _step_slice(m_, x_, xx_, h_, U, Ux):
+            preact = T.dot(h_,U)
+            preact += x_
+
+            # reset and update gates
+            r = T.nnet.hard_sigmoid(_slice(preact,0,hidden_dim))
+            u = T.nnet.hard_sigmoid(_slice(preact,1,hidden_dim))
+
+            # compute the hidden state proposal
+            preactx = T.dot(h_, Ux)
+            preactx = preactx * r
+            preactx = preactx + xx_
+
+            # hidden state proposal
+            h = T.tanh(preactx)
+
+            # leaky integrate and obtain next hidden state
+            h = u * h_ + (1. - u) * h
+            h = m_[:,None] * h + (1. - m_)[:,None] * h_
+
+            return h
+
+        seqs = [xm, state_below_, state_belowx]
+        init_states = [T.alloc(0., n_samples, hidden_dim)]
+        _step = _step_slice
+        shared_vars = [U, Ux]
+
+        rval, updates = theano.scan(
                 _step,
-                sequences=[x_s,x_s_m],
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim)
+                sequences=seqs,
+                outputs_info=init_states,
+                non_sequences=shared_vars,
+                n_steps=n_steps
+                # strict=True
                 )
 
-        return s_t
-
-
-
-class soft_attention_layer:
-
-    def __init__(self,hidden_dim):
-
-        # assign instance variables
-        self.hidden_dim = hidden_dim
-
-        W_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
-        b_att = np.zeros(1)
-
-        # 
-        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
-        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
-
-
-        # collect parameter
-        self.params = [self.W_att, self.b_att]
-
-    def soft_att(self,x_s,x_s_m):
-
-        # 
-        W_att, b_att  = self.W_att , self.b_att
         
-        def score_attention(h_i):
-            return T.tanh(W_att.dot(h_i) + b_att)
-
-        def weight_attention(h_i,a_j):
-            return h_i*a_j
-
-        h_att, updates = theano.scan(
-                score_attention,
-                sequences=[x_s]
-                )
-
-        h_att = T.exp(h_att)
-        h_att = h_att.flatten()
-
-        # mask on score
-        h_att = h_att * x_s_m
-        h_att = h_att / h_att.sum()
-
-        h_s_att, updates = theano.scan(
-                weight_attention,
-                sequences=[x_s,h_att]               
-                )
-
-        a_s = h_s_att.sum(axis=0)
-
-        return a_s
+        return rval
 
 
-
-"""
-"""
 def load_data():
     """
     load the dataset 
     warp them with theano shared object
     """
+
     maxlen = 50
     ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING',maxlen);
     tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST',maxlen)
@@ -755,33 +772,41 @@ def load_data():
         redus[i] = [w if w in word_to_index else unknown_token for w in edub]
     for i,rel in enumerate(rels):
         # rels = [ [1] [2] [3]]
-        rels[i] = [relation_to_index[rel]]
+        rels[i] = relation_to_index[rel]
 
     # test dataset
     for i,(edua,edub) in enumerate(zip(tst_ledus,tst_redus)):
         tst_ledus[i] = [w if w in word_to_index else unknown_token for w in edua]
         tst_redus[i] = [w if w in word_to_index else unknown_token for w in edub]
     for i,rel in enumerate(tst_rels):
-        tst_rels[i] = [relation_to_index[rel]]
+        tst_rels[i] = relation_to_index[rel]
 
     # X_1_train , X_2_train , y_train
     # convert it into matrix
 
+
     X_1_train = np.asarray([[word_to_index[w] for w in sent ] for sent in ledus])
     X_2_train = np.asarray([[word_to_index[w] for w in sent ] for sent in redus])
+    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
+    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
+
+    # maxlen = max([get_maxlen(X_1_train),get_maxlen(X_2_train),get_maxlen(X_1_test),get_maxlen(X_2_test)])
+    # print 'maxlen : ' , maxlen
+
     X_1_train, X_1_train_mask = prepare_data(X_1_train,maxlen)
     X_2_train, X_2_train_mask = prepare_data(X_2_train,maxlen)
     y_train = (rels)
-
     # X_1_test, X_2_test , y_train
     # for shared variable strategy we need X_1_train to be matrix 
-
-    X_1_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_ledus])
-    X_2_test = np.asarray([[word_to_index[w] for w in sent ] for sent in tst_redus])
     X_1_test, X_1_test_mask = prepare_data(X_1_test,maxlen)
     X_2_test, X_2_test_mask = prepare_data(X_2_test,maxlen)
     y_test = (tst_rels)
 
+    print 'build_data'
+    print len(X_1_train)
+    print len(X_2_train)
+    print len(X_1_train_mask)
+    print len(X_2_train_mask)
 
     print "Example sentence '%s' " % " ".join(ledus[0])
     print "Example sentence '%s' " % " ".join(redus[0])
@@ -793,7 +818,7 @@ def load_data():
     test_set = [X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test]
 
 
-    return train_set, test_set, index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index
+    return train_set, test_set, index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen
 
 
 
@@ -822,6 +847,11 @@ def shared_dataset_float(data,borrow=True):
 
 
 # batch preparation
+
+def get_maxlen(seqs_x):
+
+    return max([len(s) for s in seqs_x])
+
 def prepare_data(seqs_x, maxlen=None):
 
     # 
@@ -855,135 +885,173 @@ def prepare_data(seqs_x, maxlen=None):
 
     return x, x_mask
 
-def build_sampler(E,x):
+def mapping_(x,y,lx,ly,word_dim):
 
-    n_timesteps = x.shape[1]
-    n_samples = x.shape[0]
-    word_dim = E.shape[0]
-    emb_x = E[x.flatten()]
-    emb_x = emb_x.reshape([n_samples,n_timesteps,word_dim])
+    T_y = y.T
+    xx = T.tile(x,(1,ly))
+    yy = T.tile(T_y,(1,lx))
 
-    return emb_x
+    xx = xx.reshape((word_dim,lx*ly))
+    yy = (yy.reshape((ly*lx,word_dim))).T
+
+    cxy = (T.concatenate([xx,yy],axis=0)).T
+
+    return cxy
+    
+def mask_mapping_(x,y,lx,ly):
+
+    x = x.reshape((1,lx))
+    y = y.reshape((1,ly))
+
+    T_y = y.T
+    xx = T.tile(x,(1,ly))
+    yy = T.tile(T_y,(1,lx))
+
+    xx = xx.reshape((1,lx*ly))
+    yy = (yy.reshape((ly*lx,1))).T
+
+    cxy = T.concatenate([xx,yy],axis=0)
+    cxy = cxy[0]*cxy[1]
+
+    return cxy
+
+class soft_attention_tensor:
+
+    def __init__(self,hidden_dim):
+
+        # assign instance variables
+        self.hidden_dim = hidden_dim
+
+        W_att = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(hidden_dim))
+        b_att = np.zeros(1)
+
+        # 
+        self.W_att = theano.shared(name='W_att',value=W_att.astype(theano.config.floatX))
+        self.b_att = theano.shared(name='b_att',value=b_att.astype(theano.config.floatX))
+
+
+        # collect parameter
+        self.params = [self.W_att, self.b_att]
+
+    def soft_att(self,x_s,x_s_m):
+        
+        # 
+        W_att, b_att, hidden_dim = self.W_att , self.b_att, self.hidden_dim
+        h_att = T.tanh( T.dot(x_s,W_att) + b_att[:,None,None])
+
+        # the h_att -> (1,50,10) / trade off dim-shuffle
+        h_att = h_att[0]
+        # (50,100)
+        h_att = T.exp(h_att)
+        
+        # multiple mask
+        h_att = h_att * x_s_m
+        h_att = h_att / h_att.sum(axis=0)
+        h_s_att = x_s * h_att[:,:,None]
+        a_s = h_s_att.sum(axis=0)
+
+        return a_s
+
 
 class framework:
     """
     build all theano graph here , in here we can combine as many as nerual layer we need !
     """
-    def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+    def  __init__(self,word_dim,label_dim,vocab_size,maxlen,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+
+
+        n_steps = maxlen
+        # n_samples = batch_size
 
         # load dataset as shared variables
         # train_set
-        X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
-        X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
 
-        x_1_trn = shared_dataset_int(X_1_train)
-        x_1_trn_msk = shared_dataset_float(X_1_train_mask)
-        x_2_trn = shared_dataset_int(X_2_train)
-        x_2_trn_msk = shared_dataset_float(X_2_train_mask)
-        y_trn = shared_dataset_int(y_train)
-
-        x_1_tst = shared_dataset_int(X_1_test)
-        x_1_tst_msk = shared_dataset_float(X_1_test_mask)
-        x_2_tst = shared_dataset_int(X_2_test)
-        x_2_tst_msk = shared_dataset_float(X_2_test_mask)
-        y_tst = shared_dataset_int(y_test)
+        index = T.lscalar() # index to a [mini]batch
+        x_1 = T.matrix('x_1',dtype='int64')
+        x_1_m = T.matrix('x_1_m',dtype='float32')
+        x_2 = T.matrix('x_2',dtype='int64')
+        x_2_m = T.matrix('x_2_m',dtype='float32')
+        y = T.lvector('y') # the labels of relation discourse
         
+        # convert the input shape from (n_samples,n_steps) -> (n_steps,n_samples)
+        x1 = x_1.T
+        x1m = x_1_m.T
+        x2 = x_2.T
+        x2m = x_2_m.T
+
+        x1r = x1[::-1]
+        x1mr = x1m[::-1]
+        x2r = x2[::-1]
+        x2mr = x2m[::-1]
+
+        # be careful about matrix
+
         # the frameword only holds the global word embedding 
         if word_embedding is None:
             E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
         else:
             E = word_embedding
-
         self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
 
-        # load word for speed up no need to load word embedding every time
-        x_1_trn_r = x_1_trn[:,::-1]
-        x_2_trn_r = x_2_trn[:,::-1]
-
-        x_1_tst_r = x_1_tst[:,::-1]
-        x_2_tst_r = x_1_tst[:,::-1]
-
-        emb_1_trn = build_sampler(self.E,x_1_trn)
-        emb_1_trn_r = build_sampler(self.E,x_1_trn_r)
-
-        emb_2_trn = build_sampler(self.E,x_2_trn)
-        emb_2_trn_r = build_sampler(self.E,x_2_trn_r)
-
-        emb_1_tst = build_sampler(self.E,x_1_tst)
-        emb_1_tst_r = build_sampler(self.E,x_1_tst_r)
-
-        emb_2_tst = build_sampler(self.E,x_2_tst)
-        emb_2_tst_r = build_sampler(self.E,x_2_tst_r)
+        # Gru tensor version layer for forward and backword
+        forward_gru = gru_tensor(word_dim,hidden_dim,bptt_truncate=-1)
+        backward_gru = gru_tensor(word_dim,hidden_dim,bptt_truncate=-1)
 
 
+        x_1_f = forward_gru.recurrent(x1,x1m,self.E)
+        x_1_b = backward_gru.recurrent(x1r,x1mr,self.E)
 
-        index = T.lscalar() # index to a [mini]batch
-        x_a = T.matrix('x_a') # the data is presented as a vector of word index
-        x_a_m = T.fvector('x_a_m') # the mask of vector [0. 0. 0. 1.] 
+        x_2_f = forward_gru.recurrent(x2,x2m,self.E)
+        x_2_b = backward_gru.recurrent(x2r,x2mr,self.E)
 
-        x_a_r = x_a[:,::-1]
-        x_a_m_r = x_a_m[::-1]
 
-        x_b = T.matrix('x_b')
-        x_b_m = T.fvector('x_b_m')
+        # v_a/v_b -> (50, 100, 160)
+        # x1m/x2m -> (50,100)
+        s_1 = T.concatenate([x_1_f,x_1_b],axis=2)
+        s_2 = T.concatenate([x_2_f,x_2_b],axis=2)
 
-        x_b_r = x_b[:,::-1]
-        x_b_m_r = x_b_m[::-1]
 
-        y = T.lvector('y') # the labels of relation discourse
+        # build across mapping
+        # build horizontal direction matrix and vertical direction matrix
 
+        sa = soft_attention_tensor(hidden_dim*2)
+        s_1a = sa.soft_att(s_1,x1m) # (50,100,1)
+        s_2a = sa.soft_att(s_2,x2m) # (50,100,1)
+
+        # sb = soft_attention_tensor(hidden_dim*4)
         
-        gru = GRU(word_dim,hidden_dim,bptt_truncate=-1)
-        gru_r = GRU(word_dim,hidden_dim,bptt_truncate=-1)
-
-        h_a = gru.recurrent(x_a,x_a_m)
-        h_a_r = gru_r.recurrent(x_a_r,x_a_m_r)
-
-        v_a = T.concatenate([h_a,h_a_r[::-1]],axis=1)
-
-        h_b = gru.recurrent(x_b,x_b_m)
-        h_b_r = gru_r.recurrent(x_b_r,x_b_m_r)
-
-        v_b = T.concatenate([h_b,h_b_r[::-1]],axis=1)
-        
-
-        # left edu attention 
-
-        sa = soft_attention_layer(hidden_dim*2)
-
-        s_v_a = sa.soft_att(v_a,x_a_m)
-        s_v_b = sa.soft_att(v_b,x_b_m)
+        # a_b_mapping = sb.soft_att(a_b_map,a_b_mask_map)
         # right edu attention
 
-        edu_pair_fea = T.concatenate([s_v_a,s_v_b],axis=0)
+        edu_pair_fea = T.concatenate([s_1a,s_2a],axis=1) # (100,160+160)
 
         # build hidden_layer for edu pair
-        mlp_layer_1 = HiddenLayer(hidden_dim*4,label_dim)
+        mlp_layer = HiddenLayer(hidden_dim*4,label_dim)
         # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
-        ep_fea_2 = mlp_layer_1.forward(edu_pair_fea)
+        ep_fea_2 = mlp_layer.forward(edu_pair_fea)
         # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
 
         # softmax 
-        o = T.nnet.softmax(ep_fea_2)[0]
+        o = T.nnet.softmax(ep_fea_2)
 
         # trick for prevent nan
-        eps = np.asarray([1.0e-10]*label_dim,dtype=theano.config.floatX)
-        o = o + eps
-        om = o.reshape((1,o.shape[0]))
+        eps = T.ones_like(o) * 1.0e-10
+        om = o + eps
+
+        # 
         prediction = T.argmax(om,axis=1)
         o_error = T.nnet.categorical_crossentropy(om,y)
 
         # cost
         cost = T.sum(o_error)
 
-
-
-
         # collect the params from each model
         self.params = []
-        self.params = self.params + [ self.E ]
-        self.params = self.params + sa.params
-        self.params = self.params + gru.params + gru_r.params + mlp_layer_1.params 
+        self.params += [ self.E ]
+        self.params += sa.params
+        self.params += forward_gru.params
+        self.params += backward_gru.params
+        self.params += mlp_layer.params 
 
 
         # please verify the parameters of model
@@ -996,69 +1064,36 @@ class framework:
 
         # compiling a Theano function that computes the mistakes that are made
         # by the model on a minibatch
-        
-        #
-        self.train_model = theano.function(
-                inputs=[index],
-                outputs=[cost,prediction],
-                updates=updates,
-                givens={
-                    x_a:x_1_trn[index],
-                    x_a_m:x_1_trn_msk[index],
-                    x_b:x_2_trn[index],
-                    x_b_m:x_2_trn_msk[index],
-                    y:y_trn[index]
-                    }
-                )
-
-        # 
-        self.predict = theano.function(
-                inputs=[index],
-                outputs = prediction,
-                givens={
-                    x_a:x_1_trn[index],
-                    x_a_m:x_1_trn_msk[index],
-                    x_b:x_2_trn[index],
-                    x_b_m:x_2_trn_msk[index]
-                    }
-                )
-        
-        # test model 
-        self.predict_tst = theano.function(
-                inputs=[index],
-                outputs = prediction,
-                givens={
-                    x_a:x_1_tst[index],
-                    x_a_m:x_1_tst_msk[index],
-                    x_b:x_2_tst[index],
-                    x_b_m:x_2_tst_msk[index]
-                    }
-                )
-
-
         # framework assign function
-        # self.predict = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
-        # self.predict_class = theano.function([x_a,x_a_m,x_b,x_b_m],prediction)
-        # self.ce_error = theano.function([x_a,x_a_m,x_b,x_b_m,y],cost)
-        # self.comsen = theano.function([],)
+        self.predict = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
+        self.predict_class = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
+        self.ce_error = theano.function([x_1,x_1_m,x_2,x_2_m,y],cost)
 
-        """
+        self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1,s_1a,prediction])
+        self.check_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x1,x1m,x2,x2m])
+
         self.sgd_step = theano.function(
-                [x_a,x_a_m,x_b,x_b_m,y],
+                [x_1,x_1_m,x_2,x_2_m,y],
                 [],
                 updates = updates
                 )
-        """
-
-        pass
 
 
 def relation():
 
     # load data set
-    train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index = load_data()
+    train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen = load_data()
     X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train = train_set
     X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test = test_set
+
+    
+    print 'load_data'
+    print len(X_1_train)
+    print len(X_2_train)
+    print len(X_1_train_mask)
+    print len(X_2_train_mask)
+
+
 
     # build Embedding matrix
     label_size = 18
@@ -1066,46 +1101,40 @@ def relation():
     word_dim = wvdic.values()[0].shape[0]
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
-    hidden_dim = 150
+    hidden_dim = 300
+    batch_size = 30
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
     print 'vocabulary size : ' , len(index_to_word)
 
-    # def  __init__(self,word_dim,label_dim,vocab_size,train_set,dev_set,test_set,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
-    model = framework(word_dim,label_size,vocabulary_size,train_set,test_set,test_set,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
+    model = framework(word_dim,label_size,vocabulary_size,maxlen,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
 
     # Print SGD step time
     t1 = time.time()
     print X_1_train[0]
     print X_2_train[0]
-    print 'attention weight : '
-    # a_att, b_att = model.comsen(X_1_train[0],X_2_train[0])
-    # print a_att
-    # print b_att
-    # output = model.predict_class(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0])
-    # print 'predict_class : ' , output
-    # print 'ce_error : ' , model.ce_error(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
+
+    model.sgd_step(X_1_train[:10],X_1_train_mask[:10],X_2_train[:10],X_2_train_mask[:10],y_train[:10])
     learning_rate = 0.000005
-    # model.sgd_step(X_1_train[0],X_1_train_mask[0],X_2_train[0],X_2_train_mask[0],y_train[0])
-    # print 'cost : ' , model.train_model(0)
     t2 = time.time()
     print "SGD Step time : %f milliseconds " % ((t2-t1)*1000.)
     sys.stdout.flush()
 
     # 
     NEPOCH = 100
-
+    train_samples = build_batch_set(X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train, batch_size)
+    test_samples = build_batch_set(X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test, batch_size)
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
 
-        train_update(model,train_set,test_set,index_to_word,index_to_relation)
-        test_update(model,test_set,index_to_word,index_to_relation)
+        # train_update(model,train_set,test_set,index_to_word,index_to_relation)
+        # test_update(model,test_set,index_to_word,index_to_relation)
 
-        # train_with_sgd(model,X_1_train,X_2_train,y_train,X_1_test,X_2_test,y_test,learning_rate=learning_rate,nepoch=1,decay=0.9,index_to_word=index_to_word,index_to_relation=index_to_relation)
-        # test_score(model,X_1_test,X_2_test,y_test,index_to_word=index_to_word,index_to_relation=index_to_relation)
+        train_with_sgd(model,train_samples,index_to_word=index_to_word,index_to_relation=index_to_relation)
+        test_score(model,test_samples,index_to_word=index_to_word,index_to_relation=index_to_relation)
 
 
 
