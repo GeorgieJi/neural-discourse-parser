@@ -820,8 +820,9 @@ def act_to_index(act):
         raise ValueError('unknown action type')
         pass
 
-def structure():
 
+def load_data():
+    
     #
     # * -- step1 -- build training data
     #
@@ -909,6 +910,10 @@ def structure():
     print " Example sentence after Pre-processing : '%s' " % X_3_train[0]
     print " Example label : ", y_train[0]
     print ""
+
+
+
+def structure():
 
     # build Embedding matrix
     label_size = 2
