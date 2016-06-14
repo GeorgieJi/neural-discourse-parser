@@ -81,17 +81,38 @@ def train_with_sgd(model,train_samples,index_to_word=[],index_to_relation=[]):
         model.sgd_step(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
         ce_err = model.ce_error(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
         output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask)
+        s1att,s2att = model.sp_att(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask)
+
+        s1att = s1att.T
+        s2att = s2att.T
+
+        print X_1_train.shape
+        print X_1_train_mask.shape
+        
+        print X_2_train.shape
+        print X_2_train_mask.shape
+        # print s1att
+        print s1att.shape
+        # print s2att
+        print s2att.shape
         
         for i in range(len(X_1_train)):
             lwrds = [index_to_word[j] for j in X_1_train[i]]
             rwrds = [index_to_word[j] for j in X_2_train[i]]
+
             print '---->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
             # a_att, b_att = model.comsen(X_1_train[i],X_2_train[i])
             print 'i-th :' , i; 
             print 'the left edu : '
             print " ".join(lwrds)
+            print 'left attention : ' 
+            print s1att[i]
+
             print 'the right edu : '
             print " ".join(rwrds)
+            print 'right attention : '
+            print s2att[i]
+
             print 'predict_relation : ' , output[i]
             print index_to_relation[output[i]]
             print 'true relation : ' , y_train[i]
@@ -474,6 +495,8 @@ def build_data(dir_path,maxlen):
             senas.append(wrdsa)
             senbs.append(wrdsb)
             disrels.append(rel)
+
+
         else:
             continue
 
@@ -799,8 +822,10 @@ def prepare_data(seqs_x, maxlen=None):
     n_samples = len(seqs_x)
     maxlen_x = np.max(lengths_x) + 1
 
-    x = np.zeros((n_samples, maxlen_x)).astype('int64')
-    x_mask = np.zeros((n_samples, maxlen_x)).astype('float32')
+   
+
+    x = np.zeros((n_samples, maxlen)).astype('int64')
+    x_mask = np.zeros((n_samples, maxlen)).astype('float32')
 
     for idx , s_x in enumerate(seqs_x):
         x[idx,:lengths_x[idx]] = s_x
@@ -874,7 +899,7 @@ class soft_attention_tensor:
         h_s_att = x_s * h_att[:,:,None]
         a_s = h_s_att.sum(axis=0)
 
-        return a_s
+        return a_s , h_att
 
 
 class framework:
@@ -941,8 +966,8 @@ class framework:
         # s_1a = s_1.mean(axis=0)
         # s_2a = s_2.mean(axis=0)
         sa = soft_attention_tensor(hidden_dim*2)
-        s_1a = sa.soft_att(s_1,x1m) # (50,100,1)
-        s_2a = sa.soft_att(s_2,x2m) # (50,100,1)
+        s_1a, s_1a_att = sa.soft_att(s_1,x1m) # (50,100,1)
+        s_2a, s_2a_att = sa.soft_att(s_2,x2m) # (50,100,1)
 
         # sb = soft_attention_tensor(hidden_dim*4)
         
@@ -993,6 +1018,7 @@ class framework:
         # framework assign function
         self.predict = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
         self.predict_class = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
+        self.sp_att = theano.function([x_1,x_1_m,x_2,x_2_m],[s_1a_att,s_2a_att])
         self.ce_error = theano.function([x_1,x_1_m,x_2,x_2_m,y],cost)
 
         self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1,s_1a,prediction])
@@ -1040,7 +1066,8 @@ def relation():
     print X_2_train[0]
     print len(X_1_train[0])
     print len(X_2_train[0])
-
+    print len(X_1_test[0])
+    print len(X_2_test[0])
     model = framework(word_dim,label_size,vocabulary_size,maxlen,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
