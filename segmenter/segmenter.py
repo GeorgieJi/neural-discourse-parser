@@ -162,6 +162,220 @@ def build_datasetlabel(trnedus):
     return edus_toks_label
 
 
+class gru_tensor:
+
+    def __init__(self,word_dim,hidden_dim,bptt_truncate=-1):
+
+        # assign instance variables
+        self.word_dim = word_dim
+        self.hidden_dim = hidden_dim
+        self.bptt_truncate = bptt_truncate
+
+        # 
+        W = np.concatenate([init_weight(word_dim,hidden_dim),init_weight(word_dim,hidden_dim)],axis=1)
+        U = np.concatenate([ortho_weight(hidden_dim),ortho_weight(hidden_dim)],axis=1)
+        b = np.zeros((2*hidden_dim)).astype('float32')
+        Wx = init_weight(word_dim, hidden_dim)
+        Ux = ortho_weight(hidden_dim)
+        bx = np.zeros((hidden_dim)).astype('float32')
+
+        # Created shared variable
+        self.W = theano.shared(name='W',value=W.astype(theano.config.floatX))
+        self.U = theano.shared(name='U',value=U.astype(theano.config.floatX))
+        self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
+        self.Wx = theano.shared(name='Wx',value=Wx.astype(theano.config.floatX))
+        self.Ux = theano.shared(name='Ux',value=Ux.astype(theano.config.floatX))
+        self.bx = theano.shared(name='bx',value=bx.astype(theano.config.floatX))
+
+
+        # self.params = [self.U,self.W,self.b,self.W_att,self.v_att,self.b_att,self.sv_att]
+        self.params = [self.U,self.W,self.b,self.Ux,self.Wx,self.bx]
+ 
+    def recurrent(self,x_s,x_m,E_):
+        U, W, b, Wx, Ux, bx = self.U, self.W, self.b, self.Wx, self.Ux, self.bx
+        word_dim, hidden_dim = self.word_dim, self.hidden_dim
+
+
+        # x_s -> x_s_emb
+        # (n_samples,nsteps) -> (nsteps,n_samples)
+        xs = x_s         
+        xm = x_m
+
+        E = E_.T
+
+        n_steps = xs.shape[0] #
+        word_dim = E.shape[1]
+        n_samples = xs.shape[1]
+
+        emb = E[xs.flatten()]
+        emb = emb.reshape([n_steps, n_samples, word_dim])
+        # shape of (n_steps, n_samples, word_dim)
+
+        state_below_ = T.dot(emb,W) + b.dimshuffle('x','x',0)
+        state_belowx = T.dot(emb,Wx) + bx.dimshuffle('x','x',0)
+
+        def _slice(_x,n,dim):
+            return _x[:,n*dim:(n+1)*dim]
+
+        def _step_slice(m_, x_, xx_, h_, U, Ux):
+            preact = T.dot(h_,U)
+            preact += x_
+
+            # reset and update gates
+            r = T.nnet.hard_sigmoid(_slice(preact,0,hidden_dim))
+            u = T.nnet.hard_sigmoid(_slice(preact,1,hidden_dim))
+
+            # compute the hidden state proposal
+            preactx = T.dot(h_, Ux)
+            preactx = preactx * r
+            preactx = preactx + xx_
+
+            # hidden state proposal
+            h = T.tanh(preactx)
+
+            # leaky integrate and obtain next hidden state
+            h = u * h_ + (1. - u) * h
+            h = m_[:,None] * h + (1. - m_)[:,None] * h_
+
+            return h
+
+        seqs = [xm, state_below_, state_belowx]
+        init_states = [T.alloc(0., n_samples, hidden_dim)]
+        _step = _step_slice
+        shared_vars = [U, Ux]
+
+        rval, updates = theano.scan(
+                _step,
+                sequences=seqs,
+                outputs_info=init_states,
+                non_sequences=shared_vars,
+                n_steps=n_steps
+                # strict=True
+                )
+
+        
+        return rval
+
+
+
+
+
+
+class framework:
+    """
+    build all theano graph here , in here we can combine as many as nerual layer we need !
+    """
+    def  __init__(self,word_dim,label_dim,vocab_size,maxlen,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
+
+
+        n_steps = maxlen
+        # n_samples = batch_size
+        # load dataset as shared variables
+        # train_set
+        index = T.lscalar() # index to a [mini]batch
+        x = T.matrix('x',dtype='int64')
+        x_m = T.matrix('x_m',dtype='float32')
+        y = T.lmatrix('y') # the labels of relation discourse
+        
+        # convert the input shape from (n_samples,n_steps) -> (n_steps,n_samples)
+        x = x.T
+        x_m = x_m.T
+        x_r = x[::-1]
+        x_m_r = x_m[::-1]
+
+        # be careful about matrix
+
+        # the frameword only holds the global word embedding 
+        if word_embedding is None:
+            E = np.random.uniform(-np.sqrt(1./word_dim),np.sqrt(1./word_dim),(word_dim,vocab_size))
+        else:
+            E = word_embedding
+        self.E = theano.shared(name='E',value=E.astype(theano.config.floatX))
+
+        # Gru tensor version layer for forward and backword
+        forward_gru = gru_tensor(word_dim,hidden_dim,bptt_truncate=-1)
+        backward_gru = gru_tensor(word_dim,hidden_dim,bptt_truncate=-1)
+
+
+        x_f = forward_gru.recurrent(x,x_m,self.E)
+        x_b = backward_gru.recurrent(x_r,x_m_r,self.E)
+
+
+
+        # v_a/v_b -> (50, 100, 160)
+        # x1m/x2m -> (50,100)
+        s_1 = T.concatenate([x_1_f,x_1_b[::-1]],axis=2)
+        s_2 = T.concatenate([x_2_f,x_2_b[::-1]],axis=2)
+
+
+        # build across mapping
+        # build horizontal direction matrix and vertical direction matrix
+
+        # s_1a = s_1.mean(axis=0)
+        # s_2a = s_2.mean(axis=0)
+        sa = soft_attention_tensor(hidden_dim*2)
+        s_1a = sa.soft_att(s_1,x1m) # (50,100,1)
+        s_2a = sa.soft_att(s_2,x2m) # (50,100,1)
+
+        # sb = soft_attention_tensor(hidden_dim*4)
+        
+        # a_b_mapping = sb.soft_att(a_b_map,a_b_mask_map)
+        # right edu attention
+
+        edu_pair_fea = T.concatenate([s_1a,s_2a],axis=1) # (100,160+160)
+
+        # build hidden_layer for edu pair
+        mlp_layer = HiddenLayer(hidden_dim*4,label_dim)
+        # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
+        ep_fea_2 = mlp_layer.forward(edu_pair_fea)
+        # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
+
+        # softmax 
+        o = T.nnet.softmax(ep_fea_2)
+
+        # trick for prevent nan
+        eps = T.ones_like(o) * 1.0e-10
+        om = o + eps
+
+        # 
+        prediction = T.argmax(om,axis=1)
+        o_error = T.nnet.categorical_crossentropy(om,y)
+
+        # cost
+        cost = T.sum(o_error)
+
+        # collect the params from each model
+        self.params = []
+        self.params += [ self.E ]
+        self.params += sa.params
+        self.params += forward_gru.params
+        self.params += backward_gru.params
+        self.params += mlp_layer.params 
+
+
+        # please verify the parameters of model
+        print 'please verify the parameter of model'
+        print self.params
+        print len(self.params)
+
+        # updates
+        updates = sgd_updates_adadelta(norm=0,params=self.params,cost=cost)
+
+        # compiling a Theano function that computes the mistakes that are made
+        # by the model on a minibatch
+        # framework assign function
+        self.predict = theano.function([x,x_m],prediction)
+        self.predict_class = theano.function([x,x_m],prediction)
+        self.ce_error = theano.function([x,x_m,y],cost)
+
+        self.sgd_step = theano.function(
+                [x,x_m,y],
+                [],
+                updates = updates
+                )
+
+
+
 class bidirectional_GRU:
     """
     the bidirectional gated recurrent unit neural network 
@@ -203,11 +417,11 @@ class bidirectional_GRU:
             # using pre-trained word vector
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(18,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(18,hidden_dim,hidden_dim))
         # combine hidden states from 2 layer 
         V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
-        b = np.zeros((6,hidden_dim))
+        b = np.zeros((18,hidden_dim))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -244,8 +458,8 @@ class bidirectional_GRU:
             # Word embedding layer
             x_e = E[:,x_t]
             # GRU layer 1
-            z_t = T.nnet.hard_sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
-            r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
+            z_t = T.nnet.sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
+            r_t = T.nnet.sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
             c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             # directly return the hidden state as intermidate output 
@@ -258,15 +472,57 @@ class bidirectional_GRU:
             x_e = E[:,x_t]
 
             # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
-            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
+            z_t = T.nnet.sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
+            r_t = T.nnet.sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
             c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            return [s_t]
+        
+        def forward_direction_prop_step_2(x_e,s_t_prev):
+            #
+            #
+            # GRU layer 1
+            z_t = T.nnet.sigmoid(U[6].dot(x_e)+W[6].dot(s_t_prev)) + b[6]
+            r_t = T.nnet.sigmoid(U[7].dot(x_e)+W[7].dot(s_t_prev)) + b[7]
+            c_t = T.tanh(U[8].dot(x_e)+W[8].dot(s_t_prev*r_t)+b[8])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            # directly return the hidden state as intermidate output 
+            return [s_t]
+
+        def backward_direction_prop_step_2(x_e,s_t_prev):
+            #
+            #
+
+            # GRU layer 2
+            z_t = T.nnet.sigmoid(U[9].dot(x_e)+W[9].dot(s_t_prev)) + b[9]
+            r_t = T.nnet.sigmoid(U[10].dot(x_e)+W[10].dot(s_t_prev)) + b[10]
+            c_t = T.tanh(U[11].dot(x_e)+W[11].dot(s_t_prev*r_t)+b[11])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            return [s_t]
+        
+        def forward_direction_prop_step_3(x_e,s_t_prev):
+            #
+            #
+            # GRU layer 3
+            z_t = T.nnet.hard_sigmoid(U[12].dot(x_e)+W[12].dot(s_t_prev)) + b[12]
+            r_t = T.nnet.hard_sigmoid(U[13].dot(x_e)+W[13].dot(s_t_prev)) + b[13]
+            c_t = T.tanh(U[14].dot(x_e)+W[14].dot(s_t_prev*r_t)+b[14])
+            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
+            # directly return the hidden state as intermidate output 
+            return [s_t]
+
+        def backward_direction_prop_step_3(x_e,s_t_prev):
+            #
+            #
+            # GRU layer 3
+            z_t = T.nnet.hard_sigmoid(U[15].dot(x_e)+W[15].dot(s_t_prev)) + b[15]
+            r_t = T.nnet.hard_sigmoid(U[16].dot(x_e)+W[16].dot(s_t_prev)) + b[16]
+            c_t = T.tanh(U[17].dot(x_e)+W[17].dot(s_t_prev*r_t)+b[17])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             return [s_t]
 
         def o_step(combined_s_t):
-            o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0]
-        
+            o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0] 
             eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
             o_t = o_t + eps
 
@@ -294,11 +550,44 @@ class bidirectional_GRU:
 
 
         # combine the forward GRU state and backward GRU state together 
-        combined_s = T.concatenate([f_s,b_s[::-1]],axis=1)
+        c_x = T.concatenate([f_s,b_s[::-1]],axis=1)
+        
+        # forward direction states
+        f_s_2 , updates = theano.scan(
+                forward_direction_prop_step_2,
+                sequences=c_x,
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+            
+        # backward direction states
+        b_s_2 , updates = theano.scan(
+                backward_direction_prop_step_2,
+                sequences=c_x[::-1], # the reverse direction input
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+
+        c_x_2 = T.concatenate([f_s_2,b_s_2[::-1]],axis=1)
+        
+        # forward direction states
+        f_s_3 , updates = theano.scan(
+                forward_direction_prop_step_3,
+                sequences=c_x_2,
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+            
+        # backward direction states
+        b_s_3 , updates = theano.scan(
+                backward_direction_prop_step_3,
+                sequences=c_x_2[::-1], # the reverse direction input
+                truncate_gradient=self.bptt_truncate,
+                outputs_info=T.zeros(self.hidden_dim))
+
+        c_x_3 = T.concatenate([f_s_3,b_s_3[::-1]],axis=1)
+       
         # concatenate the hidden state from 2 GRU layer to do the output
         o , updates = theano.scan(
                 o_step,
-                sequences=combined_s,
+                sequences=c_x_3,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=None)
 
@@ -582,7 +871,7 @@ def parser():
 
     token_list = [];
     for sen in trnset:
-        print sen
+        # print sen
         token_list.extend(sen)
 
     word_freq = nltk.FreqDist(token_list);
@@ -624,14 +913,25 @@ def parser():
     # build Embedding matrix
     label_size = 2
     wvdic = load_word_embedding('../data/glove.6B.300d.txt')
-    # 
     word_dim = wvdic.values()[0].shape[0]
-
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
+    hidden_dim = 300
+    batch_size = 50
+
+    print 'now build model ... '
+    print 'hidden dim : ' , hidden_dim
+    print 'word dim : ' , word_dim
+    print 'batch_size : ' , batch_size 
+    print 'vocabulary size : ' , len(index_to_word)
     # build model GRU and test it for first output
     # def  __init__(self,word_dim,label_dim,vocab_size,hidden_dim=128,word_embedding=None,bptt_truncate=-1):
-    model = bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=300,word_embedding=E,bptt_truncate=-1)
+
+    print 'word dim : ' , word_dim
+    print 'hidden dim : ' , hidden_dim
+    model = bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
+    
+    model = bidirectional_GRU(word_dim,label_size,vocabulary_size,hidden_dim=hidden_dim,word_embedding=E,bptt_truncate=-1)
 
     # Print SGD step time
     t1 = time.time()

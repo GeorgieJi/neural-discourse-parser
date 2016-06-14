@@ -203,11 +203,11 @@ class bidirectional_GRU:
             # using pre-trained word vector
             E = word_embedding
 
-        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(18,hidden_dim,word_dim))
-        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(18,hidden_dim,hidden_dim))
+        U = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,word_dim))
+        W = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(6,hidden_dim,hidden_dim))
         # combine hidden states from 2 layer 
         V = np.random.uniform(-np.sqrt(1./hidden_dim),np.sqrt(1./hidden_dim),(label_dim,hidden_dim*2))
-        b = np.zeros((18,hidden_dim))
+        b = np.zeros((6,hidden_dim))
         c = np.zeros(label_dim)
 
         # Created shared variable
@@ -218,13 +218,6 @@ class bidirectional_GRU:
         self.b = theano.shared(name='b',value=b.astype(theano.config.floatX))
         self.c = theano.shared(name='c',value=c.astype(theano.config.floatX))
 
-        # SGD / rmsprop : initialize parameters
-        self.mE = theano.shared(name='mE', value=np.zeros(E.shape).astype(theano.config.floatX))
-        self.mU = theano.shared(name='mU', value=np.zeros(U.shape).astype(theano.config.floatX))
-        self.mV = theano.shared(name='mV', value=np.zeros(V.shape).astype(theano.config.floatX))
-        self.mW = theano.shared(name='mW', value=np.zeros(W.shape).astype(theano.config.floatX))
-        self.mb = theano.shared(name='mb', value=np.zeros(b.shape).astype(theano.config.floatX))
-        self.mc = theano.shared(name='mc', value=np.zeros(c.shape).astype(theano.config.floatX))
 
         # params
         self.params = [self.E,self.U,self.W,self.V,self.b,self.c]
@@ -239,71 +232,18 @@ class bidirectional_GRU:
         y = T.ivector('y')
 
         def forward_direction_prop_step(x_t,s_t_prev):
-            #
-            #
-            # Word embedding layer
             x_e = E[:,x_t]
-            # GRU layer 1
-            z_t = T.nnet.hard_sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
-            r_t = T.nnet.hard_sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
+            z_t = T.nnet.sigmoid(U[0].dot(x_e)+W[0].dot(s_t_prev)) + b[0]
+            r_t = T.nnet.sigmoid(U[1].dot(x_e)+W[1].dot(s_t_prev)) + b[1]
             c_t = T.tanh(U[2].dot(x_e)+W[2].dot(s_t_prev*r_t)+b[2])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            # directly return the hidden state as intermidate output 
             return [s_t]
 
         def backward_direction_prop_step(x_t,s_t_prev):
-            #
-            #
-            #
             x_e = E[:,x_t]
-
-            # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
-            r_t = T.nnet.hard_sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
+            z_t = T.nnet.sigmoid(U[3].dot(x_e)+W[3].dot(s_t_prev)) + b[3]
+            r_t = T.nnet.sigmoid(U[4].dot(x_e)+W[4].dot(s_t_prev)) + b[4]
             c_t = T.tanh(U[5].dot(x_e)+W[5].dot(s_t_prev*r_t)+b[5])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            return [s_t]
-        
-        def forward_direction_prop_step_2(x_e,s_t_prev):
-            #
-            #
-            # GRU layer 1
-            z_t = T.nnet.hard_sigmoid(U[6].dot(x_e)+W[6].dot(s_t_prev)) + b[6]
-            r_t = T.nnet.hard_sigmoid(U[7].dot(x_e)+W[7].dot(s_t_prev)) + b[7]
-            c_t = T.tanh(U[8].dot(x_e)+W[8].dot(s_t_prev*r_t)+b[8])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            # directly return the hidden state as intermidate output 
-            return [s_t]
-
-        def backward_direction_prop_step_2(x_e,s_t_prev):
-            #
-            #
-
-            # GRU layer 2
-            z_t = T.nnet.hard_sigmoid(U[9].dot(x_e)+W[9].dot(s_t_prev)) + b[9]
-            r_t = T.nnet.hard_sigmoid(U[10].dot(x_e)+W[10].dot(s_t_prev)) + b[10]
-            c_t = T.tanh(U[11].dot(x_e)+W[11].dot(s_t_prev*r_t)+b[11])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            return [s_t]
-        
-        def forward_direction_prop_step_3(x_e,s_t_prev):
-            #
-            #
-            # GRU layer 3
-            z_t = T.nnet.hard_sigmoid(U[12].dot(x_e)+W[12].dot(s_t_prev)) + b[12]
-            r_t = T.nnet.hard_sigmoid(U[13].dot(x_e)+W[13].dot(s_t_prev)) + b[13]
-            c_t = T.tanh(U[14].dot(x_e)+W[14].dot(s_t_prev*r_t)+b[14])
-            s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
-            # directly return the hidden state as intermidate output 
-            return [s_t]
-
-        def backward_direction_prop_step_3(x_e,s_t_prev):
-            #
-            #
-            # GRU layer 3
-            z_t = T.nnet.hard_sigmoid(U[15].dot(x_e)+W[15].dot(s_t_prev)) + b[15]
-            r_t = T.nnet.hard_sigmoid(U[16].dot(x_e)+W[16].dot(s_t_prev)) + b[16]
-            c_t = T.tanh(U[17].dot(x_e)+W[17].dot(s_t_prev*r_t)+b[17])
             s_t = (T.ones_like(z_t) - z_t) * c_t + z_t*s_t_prev
             return [s_t]
 
@@ -311,7 +251,6 @@ class bidirectional_GRU:
             o_t = T.nnet.softmax(V.dot(combined_s_t)+c)[0] 
             eps = np.asarray([1.0e-10]*self.label_dim,dtype=theano.config.floatX)
             o_t = o_t + eps
-
             return o_t
 
 
@@ -331,49 +270,15 @@ class bidirectional_GRU:
 
         self.f_s = f_s
         self.b_s = b_s
-
         f_b_s = b_s[::-1]
-
 
         # combine the forward GRU state and backward GRU state together 
         c_x = T.concatenate([f_s,b_s[::-1]],axis=1)
         
-        # forward direction states
-        f_s_2 , updates = theano.scan(
-                forward_direction_prop_step_2,
-                sequences=c_x,
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-            
-        # backward direction states
-        b_s_2 , updates = theano.scan(
-                backward_direction_prop_step_2,
-                sequences=c_x[::-1], # the reverse direction input
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-
-        c_x_2 = T.concatenate([f_s_2,b_s_2[::-1]],axis=1)
-        
-        # forward direction states
-        f_s_3 , updates = theano.scan(
-                forward_direction_prop_step_3,
-                sequences=c_x_2,
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-            
-        # backward direction states
-        b_s_3 , updates = theano.scan(
-                backward_direction_prop_step_3,
-                sequences=c_x_2[::-1], # the reverse direction input
-                truncate_gradient=self.bptt_truncate,
-                outputs_info=T.zeros(self.hidden_dim))
-
-        c_x_3 = T.concatenate([f_s_3,b_s_3[::-1]],axis=1)
-       
         # concatenate the hidden state from 2 GRU layer to do the output
         o , updates = theano.scan(
                 o_step,
-                sequences=c_x_3,
+                sequences=c_x,
                 truncate_gradient=self.bptt_truncate,
                 outputs_info=None)
 

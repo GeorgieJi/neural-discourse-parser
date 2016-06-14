@@ -423,27 +423,53 @@ def build_data(dir_path,maxlen):
     senbs = []
     disrels = []
 
+    print '****************************'
+    rc = 0
+
     for pair in pairs:
 
         pair[1] = pair[1].strip().replace('<P>',' p_end ')
         pair[2] = pair[2].strip().replace('<P>',' p_end ')
 
+        # pair[1] = pair[1].strip().replace('<P>','')
+        # pair[2] = pair[2].strip().replace('<P>','')
+        pair[1] = pair[1].strip()
+        pair[2] = pair[2].strip()
+        
         wrdsa = nltk.word_tokenize(pair[1].strip().lower())
         wrdsb = nltk.word_tokenize(pair[2].strip().lower())
+
+        # contains . , p_end and the right part should not contains multiple sentences
+        if ( '.' in wrdsa or 'p_end' in wrdsa ) or ( wrdsb.count('.') > 1 or wrdsb.count('p_end') > 1 ):
+        # if pair[1][-1] == '.' or pair[1][-5:] == 'p_end':
+            continue
+        else:
+            pass
+
 
         # only focus on 18 discourse relations
         rel = relation_mapping(pair[0].lower()).lower()
 
         # replace the < P > with 'p-end'
-        wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
-        wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
+        # wrdsa = (" ".join(wrdsa)).replace('< p >','p-end').split()
+        # wrdsb = (" ".join(wrdsb)).replace('< p >','p-end').split()
 
         # wrdsa.insert(0,'B_O_E')
         # wrdsb.insert(0,'B_O_E')
-        wrdsa.append('E_O_E')
-        wrdsb.append('E_O_E')
+        # wrdsa.append('E_O_E')
+        # wrdsb.append('E_O_E')
 
+        # print '....'
+        # if True:
+        
+        # if len(wrdsa) < maxlen or len(wrdsb) < maxlen:
+            # rc = rc + 1
+            # print rc
+            # print " ".join(wrdsa)
+            # print " ".join(wrdsb)
+            # rint pair
 
+        
         if len(wrdsa) < maxlen and len(wrdsb) < maxlen:
             senas.append(wrdsa)
             senbs.append(wrdsb)
@@ -451,6 +477,7 @@ def build_data(dir_path,maxlen):
         else:
             continue
 
+    # print rc , ' above 50'
     
     return senas , senbs , disrels
 
@@ -979,6 +1006,8 @@ class framework:
 
 
 def relation():
+
+    # relation classification on intra-sentence level
 
     # load data set
     train_set , test_set , index_to_word, word_to_index, vocabulary_size, index_to_relation, relation_to_index, maxlen = load_data()
