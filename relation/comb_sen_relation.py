@@ -425,7 +425,7 @@ def build_data(dir_path,maxlen):
 
     print '****************************'
     rc = 0
-    lens = []
+
     for pair in pairs:
 
         pair[1] = pair[1].strip().replace('<P>',' p_end ')
@@ -442,9 +442,9 @@ def build_data(dir_path,maxlen):
         # contains . , p_end and the right part should not contains multiple sentences
         if ( '.' in wrdsa or 'p_end' in wrdsa ) or ( wrdsb.count('.') > 1 or wrdsb.count('p_end') > 1 ):
         # if pair[1][-1] == '.' or pair[1][-5:] == 'p_end':
-            pass
-        else:
             continue
+        else:
+            pass
 
 
         # only focus on 18 discourse relations
@@ -462,15 +462,12 @@ def build_data(dir_path,maxlen):
         # print '....'
         # if True:
         
-        #if len(wrdsa) < maxlen or len(wrdsb) < maxlen:
+        # if len(wrdsa) < maxlen or len(wrdsb) < maxlen:
             # rc = rc + 1
             # print rc
             # print " ".join(wrdsa)
             # print " ".join(wrdsb)
-            # print pair
-
-            # lens.append(len(wrdsa))
-            # lens.append(len(wrdsb))
+            # rint pair
 
         
         if len(wrdsa) < maxlen and len(wrdsb) < maxlen:
@@ -481,8 +478,6 @@ def build_data(dir_path,maxlen):
             continue
 
     # print rc , ' above 50'
-
-    print lens
     
     return senas , senbs , disrels
 
@@ -642,7 +637,7 @@ def load_data():
     warp them with theano shared object
     """
 
-    maxlen = 1800
+    maxlen = 50
     ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING',maxlen);
     tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST',maxlen)
     print 'load in ' , len(rels) , 'training sample'
@@ -936,18 +931,19 @@ class framework:
 
         # v_a/v_b -> (50, 100, 160)
         # x1m/x2m -> (50,100)
-        s_1 = T.concatenate([x_1_f,x_1_b[::-1]],axis=2)
-        s_2 = T.concatenate([x_2_f,x_2_b[::-1]],axis=2)
+        # s_1 = T.concatenate([x_1_f,x_1_b[::-1]],axis=2)
+        # s_2 = T.concatenate([x_2_f,x_2_b[::-1]],axis=2)
 
-
+        s_1a = T.concatenate([x_1_f[-1],x_1_b[-1]],axis=1)
+        s_2a = T.concatenate([x_2_f[-1],x_2_b[-1]],axis=1)
         # build across mapping
         # build horizontal direction matrix and vertical direction matrix
 
         # s_1a = s_1.mean(axis=0)
         # s_2a = s_2.mean(axis=0)
-        sa = soft_attention_tensor(hidden_dim*2)
-        s_1a = sa.soft_att(s_1,x1m) # (50,100,1)
-        s_2a = sa.soft_att(s_2,x2m) # (50,100,1)
+        # sa = soft_attention_tensor(hidden_dim*2)
+        # s_1a = sa.soft_att(s_1,x1m) # (50,100,1)
+        # s_2a = sa.soft_att(s_2,x2m) # (50,100,1)
 
         # sb = soft_attention_tensor(hidden_dim*4)
         
@@ -958,9 +954,7 @@ class framework:
 
         # build hidden_layer for edu pair
         mlp_layer = HiddenLayer(hidden_dim*4,label_dim)
-        # mlp_layer_2 = HiddenLayer(hidden_dim,label_dim)
         ep_fea_2 = mlp_layer.forward(edu_pair_fea)
-        # ep_fea_3 = mlp_layer_2.forward(ep_fea_2)
 
         # softmax 
         o = T.nnet.softmax(ep_fea_2)
@@ -979,7 +973,7 @@ class framework:
         # collect the params from each model
         self.params = []
         self.params += [ self.E ]
-        self.params += sa.params
+        # self.params += sa.params
         self.params += forward_gru.params
         self.params += backward_gru.params
         self.params += mlp_layer.params 
@@ -996,11 +990,12 @@ class framework:
         # compiling a Theano function that computes the mistakes that are made
         # by the model on a minibatch
         # framework assign function
+        
         self.predict = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
         self.predict_class = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
         self.ce_error = theano.function([x_1,x_1_m,x_2,x_2_m,y],cost)
 
-        self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1,s_1a,prediction])
+        self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1a,edu_pair_fea,ep_fea_2])
         self.check_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x1,x1m,x2,x2m])
 
         self.sgd_step = theano.function(
@@ -1035,7 +1030,7 @@ def relation():
     E = build_we_matrix(wvdic,index_to_word,word_to_index,word_dim)
 
     hidden_dim = 300
-    batch_size = 50
+    batch_size = 20
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
     print 'word dim : ' , word_dim
@@ -1052,12 +1047,14 @@ def relation():
     t1 = time.time()
     
     # rs = model.sgd_step(X_1_train[:10],X_1_train_mask[:10],X_2_train[:10],X_2_train_mask[:10],y_train[:10])
+    rs = model.batch_(X_1_train[:10],X_1_train_mask[:10],X_2_train[:10],X_2_train_mask[:10])
+    print rs
     #print 'shape of rs : '
-    #print rs[0].shape
-    #print rs[1].shape
-    #print rs[2].shape
-    #print rs[3].shape
-    #print rs[4].shape
+    print rs[0].shape
+    print rs[1].shape
+    print rs[2].shape
+    print rs[3].shape
+    print rs[4].shape
     #print rs[5].shape
 
     learning_rate = 0.000005

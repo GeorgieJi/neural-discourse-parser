@@ -799,8 +799,8 @@ def prepare_data(seqs_x, maxlen=None):
     n_samples = len(seqs_x)
     maxlen_x = np.max(lengths_x) + 1
 
-    x = np.zeros((n_samples, maxlen_x)).astype('int64')
-    x_mask = np.zeros((n_samples, maxlen_x)).astype('float32')
+    x = np.zeros((n_samples, maxlen)).astype('int64')
+    x_mask = np.zeros((n_samples, maxlen)).astype('float32')
 
     for idx , s_x in enumerate(seqs_x):
         x[idx,:lengths_x[idx]] = s_x
