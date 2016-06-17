@@ -610,7 +610,7 @@ def load_data():
     warp them with theano shared object
     """
 
-    maxlen = 50
+    maxlen = 1800
     ledus, redus , rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TRAINING',maxlen);
     tst_ledus, tst_redus, tst_rels = build_data('../data/RSTmain/RSTtrees-WSJ-main-1.0/TEST',maxlen)
     print 'load in ' , len(rels) , 'training sample'

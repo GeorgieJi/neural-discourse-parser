@@ -979,7 +979,7 @@ class framework:
         # collect the params from each model
         self.params = []
         self.params += [ self.E ]
-        self.params += sa.params
+        # self.params += sa.params
         self.params += forward_gru.params
         self.params += backward_gru.params
         self.params += mlp_layer.params 
@@ -1000,7 +1000,7 @@ class framework:
         self.predict_class = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
         self.ce_error = theano.function([x_1,x_1_m,x_2,x_2_m,y],cost)
 
-        self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1,s_1a,prediction])
+        # self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1,s_1a,prediction])
         self.check_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x1,x1m,x2,x2m])
 
         self.sgd_step = theano.function(
