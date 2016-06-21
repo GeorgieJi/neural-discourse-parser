@@ -19,7 +19,7 @@ sys.path.append('../tree')
 from tree import *
 # from utils import *
 
-def build_batch_set(x1,x1m,x2,x2m,y,batch_size):
+def build_batch_set(x1,x1m,x2,x2m,p1,p2,y,batch_size):
 
     total_n = len(x1)
     print 'total number of dataset : ' , total_n
@@ -41,6 +41,8 @@ def build_batch_set(x1,x1m,x2,x2m,y,batch_size):
         tmp.append(x1m[i*batch_size:(i+1)*batch_size])
         tmp.append(x2[i*batch_size:(i+1)*batch_size])
         tmp.append(x2m[i*batch_size:(i+1)*batch_size])
+        tmp.append(p1[i*batch_size:(i+1)*batch_size])
+        tmp.append(p2[i*batch_size:(i+1)*batch_size])
         tmp.append(y[i*batch_size:(i+1)*batch_size])
         samples.append(tmp)
 
@@ -50,10 +52,10 @@ def build_batch_set(x1,x1m,x2,x2m,y,batch_size):
         tmp.append(x1m[batch_num*batch_size:])
         tmp.append(x2[batch_num*batch_size:])
         tmp.append(x2m[batch_num*batch_size:])
+        tmp.append(p1[batch_num*batch_size:])
+        tmp.append(p2[batch_num*batch_size:])
         tmp.append(y[batch_num*batch_size:])
         samples.append(tmp)
-
-
     return samples
 
         
@@ -75,12 +77,15 @@ def train_with_sgd(model,train_samples,index_to_word=[],index_to_relation=[]):
         X_1_train_mask = train_samples[i][1]
         X_2_train = train_samples[i][2]
         X_2_train_mask = train_samples[i][3]
-        y_train = train_samples[i][4]
+        X_1_train_pos = train_samples[i][4]
+        X_2_train_pos = train_samples[i][5]
+
+        y_train = train_samples[i][6]
         
         # Optionally do callback
-        model.sgd_step(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
-        ce_err = model.ce_error(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
-        output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask)
+        model.sgd_step(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,X_1_train_pos,X_2_train_pos,y_train) 
+        ce_err = model.ce_error(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,X_1_train_pos,X_2_train_pos,y_train) 
+        output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,X_1_train_pos,X_2_train_pos)
         
         for i in range(len(X_1_train)):
             lwrds = [index_to_word[j] for j in X_1_train[i]]
@@ -163,12 +168,15 @@ def test_score(model,train_samples,index_to_word=[],index_to_relation=[]):
         X_1_train_mask = train_samples[i][1]
         X_2_train = train_samples[i][2]
         X_2_train_mask = train_samples[i][3]
-        y_train = train_samples[i][4]
+        X_1_train_pos = train_samples[i][4]
+        X_2_train_pos = train_samples[i][5]
+
+        y_train = train_samples[i][6]
         
         # Optionally do callback
         # model.sgd_step(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,y_train) 
         # print 'the number of example have seen for now : ' , num_examples_seen
-        output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask)
+        output = model.predict_class(X_1_train,X_1_train_mask,X_2_train,X_2_train_mask,X_1_train_pos,X_2_train_pos)
         
         for i in range(len(X_1_train)):
             lwrds = [index_to_word[j] for j in X_1_train[i]]
@@ -404,6 +412,7 @@ def pos_parser(inputfile,outputfile):
     print dirpath
     print 'cwd' , os.getcwd()
     cmd = ('java -cp lib/stanford-tagger/ TaggerDemo '+dirpath+'/lib/stanford-tagger/models/english-left3words-distsim.tagger %s %s')%(inputfile,outputfile)
+    print '/////////////////////////////////'
     print cmd
     os.system(cmd)
     posSentence = open(outputfile,'r').readlines()
@@ -481,11 +490,8 @@ def build_data(dir_path,maxlen):
 
     # add pos extract here
     # process all "pair" in "pairs"
-
     senpos = preprocess(pairs)
-
     n = 0
-
     # multi view of pairs
     mv_pairs = []
     for pair in pairs:
@@ -1023,7 +1029,7 @@ class framework:
         x2m = x_2_m.T
 
         p1 = p_1.T
-        p2 = P_2.T
+        p2 = p_2.T
 
         x1r = x1[::-1]
         x1mr = x1m[::-1]
@@ -1066,17 +1072,18 @@ class framework:
         x_2_b = backward_gru.recurrent(x2r,x2mr,self.E)
 
         # POS 
-        p_1_f = f_gru_1.recurrent(p1,x1m,self.E)
-        p_1_b = b_gru_1.recurrent(p1r,x1mr,self.E)
+        p_1_f = f_gru_1.recurrent(p1,x1m,self.P)
+        p_1_b = b_gru_1.recurrent(p1r,x1mr,self.P)
 
-        p_2_f = f_gru_1.recurrent(p2,x2m,self.E)
-        p_2_b = b_gru_1.recurrent(p2r,x2mr,self.E)
+        p_2_f = f_gru_1.recurrent(p2,x2m,self.P)
+        p_2_b = b_gru_1.recurrent(p2r,x2mr,self.P)
 
         # v_a/v_b -> (50, 100, 160)
         # x1m/x2m -> (50,100)
         # s_1 = T.concatenate([x_1_f,x_1_b[::-1]],axis=2)
         # s_2 = T.concatenate([x_2_f,x_2_b[::-1]],axis=2)
 
+        # directly combine 
         s_1a = T.concatenate([x_1_f[-1],x_1_b[-1],p_1_f[-1],p_1_b[-1]],axis=1)
         s_2a = T.concatenate([x_2_f[-1],x_2_b[-1],p_2_f[-1],p_2_b[-1]],axis=1)
 
@@ -1138,15 +1145,15 @@ class framework:
         # by the model on a minibatch
         # framework assign function
         
-        self.predict = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
-        self.predict_class = theano.function([x_1,x_1_m,x_2,x_2_m],prediction)
-        self.ce_error = theano.function([x_1,x_1_m,x_2,x_2_m,y],cost)
+        self.predict = theano.function([x_1,x_1_m,x_2,x_2_m,p_1,p_2],prediction)
+        self.predict_class = theano.function([x_1,x_1_m,x_2,x_2_m,p_1,p_2],prediction)
+        self.ce_error = theano.function([x_1,x_1_m,x_2,x_2_m,p_1,p_2,y],cost)
 
-        self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x_1_f,x_1_b,s_1a,edu_pair_fea,ep_fea_2])
-        self.check_ = theano.function([x_1,x_1_m,x_2,x_2_m],[x1,x1m,x2,x2m])
+        self.batch_ = theano.function([x_1,x_1_m,x_2,x_2_m,p_1,p_2],[x_1_f,x_1_b,s_1a,edu_pair_fea,ep_fea_2])
+        # self.check_ = theano.function([x_1,x_1_m,x_2,x_2_m,p_1,p_2],[x1,x1m,x2,x2m])
 
         self.sgd_step = theano.function(
-                [x_1,x_1_m,x_2,x_2_m,y],
+                [x_1,x_1_m,x_2,x_2_m,p_1,p_2,y],
                 [],
                 updates = updates
                 )
@@ -1179,14 +1186,15 @@ def relation():
     pvdic = load_word_embedding('../data/pos.200d.txt')
     
     pos_dim = pvdic.values()[0].shape[0]
-    pos_size = pvdic.values()[0].shape[1]
+    pos_size = len(pvdic)
     print pos_dim
+    print pos_size
     P = build_we_matrix(pvdic,index_to_pos,pos_to_index,pos_dim)
 
     print 'the shape of POS matrix : ' , P.shape
 
     label_size = 18
-    hidden_dim = 150
+    hidden_dim = 300
     batch_size = 20
     print 'now build model ...'
     print 'hidden dim : ' , hidden_dim
@@ -1204,7 +1212,7 @@ def relation():
     t1 = time.time()
     
     # rs = model.sgd_step(X_1_train[:10],X_1_train_mask[:10],X_2_train[:10],X_2_train_mask[:10],y_train[:10])
-    rs = model.batch_(X_1_train[:10],X_1_train_mask[:10],X_2_train[:10],X_2_train_mask[:10])
+    rs = model.batch_(X_1_train[:10],X_1_train_mask[:10],X_2_train[:10],X_2_train_mask[:10],X_1_train_pos[:10],X_2_train_pos[:10])
     print rs
     #print 'shape of rs : '
     print rs[0].shape
@@ -1221,8 +1229,8 @@ def relation():
 
     # 
     NEPOCH = 100
-    train_samples = build_batch_set(X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, y_train, batch_size)
-    test_samples = build_batch_set(X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, y_test, batch_size)
+    train_samples = build_batch_set(X_1_train, X_1_train_mask, X_2_train, X_2_train_mask, X_1_train_pos, X_2_train_pos, y_train, batch_size)
+    test_samples = build_batch_set(X_1_test, X_1_test_mask, X_2_test, X_2_test_mask, X_1_test_pos, X_2_test_pos, y_test, batch_size)
     for epoch in range(NEPOCH):
 
         print 'this is epoch : ' , epoch
